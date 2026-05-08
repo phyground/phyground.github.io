@@ -61,10 +61,25 @@ def _local_source_for_target(target: str) -> Path:
     `_wmbench_src/`. The mapping mirrors the upload layout:
 
       paperdemo/<law>/<file>.mp4              → _wmbench_src/data/paperdemo/<law>/<file>.mp4
-      videos/<model>-<dataset>/<stem>.mp4     → _wmbench_src/data/videos/<model>-<dataset>/<stem>.mp4
+      videos/<model>/<stem>.mp4               → _wmbench_src/data/videos/<model>/<stem>.mp4
+                                                (humaneval-specific runs fallback below)
       prompts/<dataset>/first_frames/<f>.jpg  → _wmbench_src/data/prompts/<dataset>/first_frames/<f>.jpg
+
+    For `videos/<model>/<stem>.mp4` we also try `data/videos/<model>-humaneval/<stem>.mp4`
+    when the primary path is absent — that's where wmbench keeps several
+    humaneval-specific generation runs.
     """
-    return WMBENCH_SRC / "data" / target
+    primary = WMBENCH_SRC / "data" / target
+    if primary.is_file():
+        return primary
+    if target.startswith("videos/"):
+        parts = target.split("/", 2)
+        if len(parts) == 3:
+            _, model_key, rest = parts
+            alt = WMBENCH_SRC / "data" / "videos" / f"{model_key}-humaneval" / rest
+            if alt.is_file():
+                return alt
+    return primary
 
 
 def _collect_targets_from_site_config(site_config: dict) -> set[str]:

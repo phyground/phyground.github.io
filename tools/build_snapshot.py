@@ -967,10 +967,15 @@ def _prompts_index(prompts: list[dict],
 # ---------- per-prompt + per-model HuggingFace URL helpers ----------
 
 def _video_hf_url(model_key: str, source_dataset: str, stem: str) -> str:
-    """Per plan §2: data/videos/<model>-<dataset>/<stem>.mp4. The HF dataset
-    mirrors that layout under `videos/<model>-<dataset>/<stem>.mp4`.
+    """HF target follows wmbench's actual on-disk layout: `videos/<model>/<stem>.mp4`.
+
+    `source_dataset` is no longer part of the path because wmbench's
+    `data/videos/<model>/` already aggregates every dataset's outputs under
+    one folder. Some models additionally have `data/videos/<model>-humaneval/`
+    for humaneval-specific runs; the HF manifest's local-source resolver
+    falls back to that location.
     """
-    return f"{HF_BASE}/videos/{model_key}-{source_dataset}/{stem}.mp4"
+    return f"{HF_BASE}/videos/{model_key}/{stem}.mp4"
 
 
 def _first_frame_hf_url(source_dataset: str, stem: str) -> str:
@@ -1209,16 +1214,39 @@ def _site_config(catalog: list[dict],
                  leaderboard_unpublished: list[dict],
                  prompt_scores: dict[str, dict[str, float]],
                  build_meta: dict) -> dict:
+    # Per the user's "先减量进仓库" guidance: every HF video URL the site
+    # embeds must correspond to a video in the humaneval-100 published set
+    # (or paperdemo). Restrict prompt-derived HF URL generation to those 100
+    # prompt_ids so the upload manifest stays at ~100 prompts × ≤8 models +
+    # paperdemo + first_frames ≈ 900 files instead of 250 × ≤8 ≈ 2200.
+    selected_pids = {p["prompt_id"] for p in humaneval_100.get("prompts", [])}
+    if selected_pids:
+        prompt_scores_published = {
+            pid: ms for pid, ms in prompt_scores.items() if pid in selected_pids
+        }
+        humaneval_prompts_published = [
+            p for p in humaneval_prompts if p.get("video") in selected_pids
+        ]
+    else:
+        # Stub case (no selection committed yet): fall back to the full set so
+        # the site still renders something during early-round development.
+        prompt_scores_published = prompt_scores
+        humaneval_prompts_published = humaneval_prompts
+
     models = _all_known_models(catalog, registry, [
         {"model": v["model"]} for law in paperdemo_grouped for v in law["videos"]
     ])
     datasets = _datasets_summary(vis_datasets)
-    videos_index = _videos_index(leaderboard_entries, paperdemo_grouped, humaneval_prompts, models, prompt_scores)
-    prompts_index = _prompts_index(humaneval_prompts, prompt_scores)
+    videos_index = _videos_index(
+        leaderboard_entries, paperdemo_grouped,
+        humaneval_prompts_published, models, prompt_scores_published,
+    )
+    prompts_index = _prompts_index(humaneval_prompts_published, prompt_scores_published)
 
     for m in models:
         m["representative_videos"] = _representative_videos(
-            m["key"], paperdemo_grouped, humaneval_prompts, prompt_scores,
+            m["key"], paperdemo_grouped,
+            humaneval_prompts_published, prompt_scores_published,
         )
         # Always provide leaderboard-slice cards as a final fallback for the
         # by-model gallery, even when representative_videos is non-empty (the

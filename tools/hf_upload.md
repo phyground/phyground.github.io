@@ -1,85 +1,116 @@
 # HuggingFace upload — `juyil/wmbench-public`
 
-The static site's `<video>` and `<img>` tags reference URLs of the form
+The static site references HF URLs of the form:
 
     https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/<rel>
 
-This document walks through populating that dataset so the rendered HTML resolves at runtime. The phyground build is offline and produces a deterministic upload manifest; the actual upload is a manual step with a HuggingFace write token.
+This document walks through populating that dataset so every `<video>` and
+`<img poster=...>` resolves at runtime. The repo handles every step except
+the actual `huggingface-cli upload` (which needs a write token).
 
-## What the snapshot expects
+## URL scheme
 
-`tools/build_hf_upload_manifest.py` enumerates every URL the snapshot embeds and emits:
+The site embeds three families of HF URLs:
 
-- `snapshot/HF_UPLOAD_MANIFEST.json` — the file list with local source paths, HF target paths, sha256s, and `exists_locally` flags.
+| Family | HF target | Local source (under `_wmbench_src/`)  |
+|--------|-----------|----------------------------------------|
+| paperdemo videos        | `paperdemo/<law>/<model>__<file>.mp4`        | `data/paperdemo/<law>/<model>__<file>.mp4` |
+| humaneval-100 videos    | `videos/<model>/<stem>.mp4`                  | `data/videos/<model>/<stem>.mp4` (or `data/videos/<model>-humaneval/<stem>.mp4`) |
+| first-frame thumbnails  | `prompts/<dataset>/first_frames/<stem>.jpg` | `data/prompts/<dataset>/first_frames/<stem>.jpg` |
 
-Three URL families:
+The HF dataset must mirror this layout exactly. The `tools/build_site.py`
+audit walks every rendered HTML and fails the build if any embedded URL
+is missing from `snapshot/HF_UPLOAD_MANIFEST.json`, so the manifest is
+authoritative.
 
-| Family | HF target path | Local source (under `_wmbench_src/`) |
-|--------|----------------|---------------------------------------|
-| paperdemo videos    | `paperdemo/<law>/<model>__<file>.mp4`             | `data/paperdemo/<law>/<...>.mp4`     |
-| humaneval per-model videos | `videos/<model>-<dataset>/<prompt_id>.mp4` | `data/videos/<model>-<dataset>/<prompt_id>.mp4` |
-| first-frame thumbnails | `prompts/<dataset>/first_frames/<prompt_id>.jpg` | `data/prompts/<dataset>/first_frames/<prompt_id>.jpg` |
+## Scope: ~1,000 files
 
-The first-frame JPGs and the paperdemo PDF→PNG thumbnails are tracked in `snapshot/index/figs/` and `snapshot/index/first_frames/`; they are also part of the upload list so a fresh HF dataset clone can rebuild the site without the wmbench checkout.
+`snapshot/HF_UPLOAD_MANIFEST.json` is **scoped to the published
+humaneval-100 set + paperdemo + first-frames**, NOT every model × every
+prompt the registry knows. That keeps the dataset small (~900 MB) while
+still covering the published evidence end-to-end.
+
+Current counts: **62 paperdemo videos + 83 first-frames + ~875 humaneval
+videos = ~1020 target files** (≈ 100 prompts × 8 strict-intersection
+models, plus a few additional models that scored some humaneval-100
+prompts via the prompt manifest). Total bytes ≈ 900 MB.
 
 ## Quick path
 
 ```bash
-# 1. Generate manifest + materialize a staging tree (only files actually present locally).
-python tools/build_snapshot.py --select-humaneval-100
-python tools/build_hf_upload_manifest.py --materialize hf_staging/
+git clone https://github.com/phyground/phyground.github.io.git
+cd phyground.github.io
 
-# 2. Authenticate (one-time, with a write token scoped to juyil/wmbench-public).
-pip install huggingface_hub
+pip install -r requirements.txt huggingface_hub
+
+# 1. Build the snapshot (this also writes HF_UPLOAD_MANIFEST.json):
+python3 tools/build_snapshot.py --select-humaneval-100
+
+# 2. Stage missing video bytes from a wmbench checkout (gitignored):
+python3 tools/stage_hf_assets.py /path/to/wmbench
+
+# 3. Re-build so the manifest's `n_missing_locally` reflects the staging:
+python3 tools/build_snapshot.py --select-humaneval-100
+python3 tools/verify_snapshot.py
+python3 tools/build_site.py --config snapshot/index/site_config.json
+
+# 4. Materialise the staging tree (also gitignored):
+python3 tools/build_hf_upload_manifest.py --materialize hf_staging/
+
+# 5. Authenticate (one-time, with a write token for juyil/wmbench-public):
 huggingface-cli login
 
-# 3. Upload the staging tree in one shot.
-huggingface-cli upload --repo-type dataset juyil/wmbench-public hf_staging/ .
+# 6. Upload the entire layout in one shot:
+huggingface-cli upload --repo-type dataset juyil/wmbench-public hf_staging .
 ```
 
-## Verifying after upload
+After step 6 every `<video>` and `<img poster=...>` on the rendered site
+plays / loads.
+
+## Dry-run / inspection
 
 ```bash
-# Spot-check a paperdemo video URL the site embeds.
-curl -I "https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/collision/ltx-2-19b-dev__collision_156.mp4"
-# Expect HTTP 200 + Content-Type: video/mp4
+python3 tools/stage_hf_assets.py /path/to/wmbench --dry-run
+python3 -c "import json; m=json.load(open('snapshot/HF_UPLOAD_MANIFEST.json')); print(m['n_total_files'], m['n_present_locally'], m['n_missing_locally'])"
 ```
 
-Open `index.html`, `videos/index.html`, and `videos/compare/index.html` in a browser and confirm the videos play. The static HTML never changes between "URLs assumed" and "URLs verified" — only the HF dataset state does.
+## Smoke tests after upload
+
+```bash
+# Spot-check a paperdemo URL the home page embeds:
+curl -I "https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/collision/ltx-2-19b-dev__collision_156.mp4"
+# Expect: HTTP/2 200 + Content-Type: video/mp4
+
+# A humaneval per-(model, prompt) URL the compare page embeds:
+curl -I "https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/videos/cosmos-predict2.5-2b/collision_156.mp4"
+
+# A first-frame thumbnail:
+curl -I "https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/prompts/video_phy_2/first_frames/collision_156.jpg"
+```
+
+Then open the live site and verify playback on:
+
+- `/`                                — home Featured Comparison plays.
+- `/videos/`                         — by-law and by-model panes show videos.
+- `/videos/compare/?prompt_id=<pid>` — every model card has a video.
+- `/models/cosmos-predict2.5-2b/`    — representative-video grid plays.
+- `/models/ltx-2.3-22b-dev/`         — same.
 
 ## Files marked `exists_locally: false`
 
-These are videos the wmbench tree has but the public repo deliberately does not (they live in `data/videos/<model>-<dataset>/<stem>.mp4`, ~100 GB). Source them from a local wmbench checkout when running the upload:
-
-```bash
-# Materialize from wmbench instead of _wmbench_src for the videos:
-python -c "
-import json, shutil
-from pathlib import Path
-WM = Path('/path/to/wmbench')
-STAGE = Path('hf_staging')
-m = json.load(open('snapshot/HF_UPLOAD_MANIFEST.json'))
-for e in m['files']:
-    if e['exists_locally']:
-        continue
-    src = e['local_source']
-    if not src.startswith('_wmbench_src/'):
-        continue
-    rel = src[len('_wmbench_src/'):]
-    cand = WM / rel
-    if cand.is_file():
-        dst = STAGE / e['hf_target_path']
-        dst.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(cand, dst)
-"
-```
+There is a small residual (currently 2 entries for `cogvideox1.5-5b-i2v`
+prompts the upstream tree never finished generating). These are noted in
+`_wmbench_src/PROVENANCE.md`'s "missing upstream" section. After upload
+their HF URLs will 404 — that's a known gap in the published evidence,
+not a bug in the static site.
 
 ## Repo hygiene
 
-`hf_staging/` is gitignored. The HF dataset itself is the source of truth for video bytes; the static site is always rebuildable from `_wmbench_src/` + the HF dataset.
-
-## Troubleshooting
-
-- **HF returns 404 for a manifest URL**: check the path matches exactly — case and separator characters matter. The leaderboard's `Download raw JSON` links don't go through HF; they hit `snapshot/scores/...` inside the GitHub Pages repo.
-- **HF returns 401**: re-run `huggingface-cli login` with a token that has write access to `juyil/wmbench-public`.
-- **Repo too large**: HF datasets allow up to several hundred GB; the wmbench video set fits easily. If you ever exceed limits, prune `videos_index[<low-priority-model>]` from the snapshot's site_config.
+- `_wmbench_src/data/videos/` and `_wmbench_src/data/paperdemo/**/*.mp4`
+  stay gitignored. The staging script only writes there; nothing
+  multi-MB-per-file ever lands in git.
+- `hf_staging/` is gitignored. Delete it after the upload completes if
+  disk is tight.
+- The HF dataset itself is the source of truth for video bytes; the
+  static site is always rebuildable from `_wmbench_src/` (snapshot small
+  files in git) + the HF dataset (videos and first-frames).
