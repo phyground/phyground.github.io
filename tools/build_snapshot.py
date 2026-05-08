@@ -1320,12 +1320,26 @@ def _site_config(catalog: list[dict],
     # surface models that actually have something to show. The upstream
     # MODEL_CATALOG.py is unchanged; future evidence will automatically
     # un-hide these keys via this same filter.
+    #
+    # Round 16 (Codex review): leaderboard_entries are keyed by `video_model`
+    # (from `_dedup_leaderboard`), not `model_key`; using the wrong field in
+    # Round 15 silently dropped all 51 published rows and zeroed the home
+    # `n_eval_combos`. The per_model_scores filter below also closes the
+    # compare-page leak the Round 15 audit missed — `static/js/compare.js`
+    # renders one card per `per_model_scores` key, so any hidden model key
+    # left in the prompts_index would still surface on `/videos/compare/`.
     models = [m for m in models if m["representative_videos"] or m["leaderboard_slices"]]
     rendered_model_keys = {m["key"] for m in models}
     videos_index = {k: v for k, v in videos_index.items() if k in rendered_model_keys}
     leaderboard_entries = [
-        e for e in leaderboard_entries if e.get("model_key") in rendered_model_keys
+        e for e in leaderboard_entries if e.get("video_model") in rendered_model_keys
     ]
+    for _p in prompts_index.values():
+        pms = _p.get("per_model_scores")
+        if pms:
+            _p["per_model_scores"] = {
+                k: v for k, v in pms.items() if k in rendered_model_keys
+            }
 
     n_models = len(models)
     n_eval_combos = len(leaderboard_entries)

@@ -51,7 +51,68 @@
 <h2>Leaderboard appearances</h2>
 
 
-<p style="color:var(--gray-dark);">No published leaderboard rows for this model yet.</p>
+<table class="lb">
+    <thead><tr><th>Dataset</th><th>Subset</th><th>Evaluator</th><th>Schema</th><th class="num">N</th><th class="num">gen_avg</th><th class="num">phys_avg</th><th class="num">coverage</th><th>datetime</th><th>raw</th></tr></thead>
+    <tbody>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>gemini</td>
+            <td>cot_subq/v1</td>
+            <td class="num">250</td>
+            <td class="num">2.54</td>
+            <td class="num">2.76</td>
+            <td class="num">1.00</td>
+            <td>04-23 23:09:25</td>
+            <td><a href="../../scores/gemini/eval_gemini_cot-subq_humaneval_set_omniweaving_20260423_200215.json" download>JSON</a></td>
+        </tr>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>qwen-27b</td>
+            <td>cot_subq/v1</td>
+            <td class="num">134</td>
+            <td class="num">3.99</td>
+            <td class="num">4.91</td>
+            <td class="num">1.00</td>
+            <td>04-23 12:15:42</td>
+            <td><a href="../../scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_112715.json" download>JSON</a></td>
+        </tr>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>qwen-9b</td>
+            <td>cot_subq/v1</td>
+            <td class="num">250</td>
+            <td class="num">4.36</td>
+            <td class="num">4.71</td>
+            <td class="num">1.00</td>
+            <td>04-23 10:23:20</td>
+            <td><a href="../../scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_095236.json" download>JSON</a></td>
+        </tr>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>qwen-9b</td>
+            <td>subq_hint/v1</td>
+            <td class="num">250</td>
+            <td class="num">2.78</td>
+            <td class="num">2.80</td>
+            <td class="num">1.00</td>
+            <td>04-26 15:32:08</td>
+            <td><a href="../../scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_omniweaving_20260426_151022.json" download>JSON</a></td>
+        </tr>
+        
+    </tbody>
+</table>
 
 
 <h2>Representative videos</h2>
@@ -180,7 +241,8 @@
 
 <p style="margin-top:1.5rem;font-size:0.9rem;">
     
-    <a href="../../leaderboard/">View leaderboard &rarr;</a> ·
+    
+    <a href="../../leaderboard/#omniweaving--humaneval--humaneval_set--gemini--cot_subq/v1">Jump to leaderboard rows &rarr;</a> ·
     
     <a href="../../videos/?model=omniweaving">Open in by-model gallery &rarr;</a> ·
     <a href="../../videos/">Back to gallery</a>
@@ -194,7 +256,7 @@
             <div class="footer-left">
                 <p>phyground &mdash; physics-grounded video benchmark</p>
                 
-                <p style="font-size:0.85rem;color:var(--gray-dark);">Built 2026-05-08T15:00:00Z &middot; snapshot <code>ab7738aa</code></p>
+                <p style="font-size:0.85rem;color:var(--gray-dark);">Built 2026-05-08T15:00:00Z &middot; snapshot <code>092b6337</code></p>
                 
             </div>
             <div class="footer-right">
