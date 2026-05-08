@@ -20,28 +20,71 @@ This file is the rule that produces the 100. Anyone re-running the selection wit
 
 ## Selection algorithm (deterministic)
 
-1. **Intersection gate.** Restrict the candidate pool to `prompt_id` values that appear in:
-   - the `humaneval_set` subset, and
-   - **every** leaderboard model in `MODEL_CATALOG` that has a row in `eval_registry.json` for `dataset=humaneval, subset=humaneval_set` with `coverage = 1.0`.
-   This guarantees that for each surviving prompt, every published model has a video.
+This is the algorithm the Round-4 selector implements verbatim, after the
+upstream evidence — the per-model `humaneval_set` score JSONs ingested into
+`_wmbench_src/data/scores/` — replaced the prompt manifest's sparse
+`per_model_scores` as the gate input. Earlier draft revisions described a
+strict per-law fill; the current rule (a) sources scores from the JSONs,
+not from `anonymous_humaneval_set.json`, (b) normalises each composite
+component once over the entire kept pool, and (c) assigns prompts to laws
+with a capacity-constrained allocation rather than a per-law top-N fill.
 
-2. **paperdemo seed (must-include).** Force-include every `(law, video_id)` pair listed in `paperdemo/manifest.csv` whose `video_id` resolves to a prompt that survived step 1. These are curator-blessed; they cannot be dropped.
+1. **Source the prompt → {model: phys_score} table.** For every leaderboard
+   model with a `humaneval_set` `coverage=1.0` registry row, pick the newest
+   resolvable score JSON (`_wmbench_src/data/scores/<evaluator>/...`).
+   `_build_humaneval_score_table` walks each chosen JSON's `results[*]`
+   array and reads `prompt_id = result.video`, `phys = result.physical.avg`
+   (with documented fallbacks to other shapes / `general_avg`). The result
+   is `{prompt_id: {model_key: phys_score}}` and per-prompt
+   `physical_laws` (union over the JSONs that mention the prompt).
 
-3. **Per-law quota.** With the 13 physical laws (`paperdemo` law column), allocate a target of `floor(100 / 13) = 7` slots per law plus `100 - 7*13 = 9` extra slots distributed across laws by descending paperdemo n_ann coverage (i.e. laws where humans annotated more thoroughly get the spare slots first; tie-break by alphabetical law name). After this step the per-law target is fixed, e.g. `{collision: 8, gravity: 8, ..., shadow: 7}`.
+2. **Strict intersection gate.** Restrict the candidate pool to prompt_ids
+   whose score-table entry covers every model in
+   `_humaneval_full_model_set(registry)` (the leaderboard models with at
+   least one humaneval_set cov=1.0 row). No fallback gate. Prompts dropped
+   here are accounted for in `humaneval_100.json.gate_stats`.
 
-4. **Score-based fill.** Within each law's remaining quota (after deducting the paperdemo seed for that law), rank the surviving candidate prompts on a deterministic composite score:
+3. **paperdemo seed (must-include).** A surviving prompt is "seeded" for
+   law `L` if its filename stem matches a paperdemo `src_filename` whose
+   `law == L`. The seed locks the prompt into that law before the
+   capacity assignment runs.
 
+4. **Per-law quota.** 13 physical laws × `floor(100/13)=7` base slots = 91,
+   plus 9 spare slots distributed by descending paperdemo `n_ann` coverage
+   (laws where humans annotated more thoroughly get spare slots first,
+   alphabetical tie-break). Result: a fixed `{collision: 8, gravity: 8, …,
+   shadow: 7}` map summing to exactly 100.
+
+5. **Composite score, min-max normalised over the entire kept pool.**
+   For every surviving prompt:
    ```
-   score(prompt) =
-       0.40 · variance(scores across leaderboard models)        # prompts that separate models > prompts where everyone agrees
-     + 0.30 · coverage(non-null evaluator results)              # prefer prompts with full evaluator support
-     + 0.30 · mid-difficulty(distance from mean phys_avg = 3.0) # prefer mid-table prompts over trivially easy / hard
+   raw(prompt) = (variance(per_model_scores),
+                  coverage = len(per_model_scores) / |full_model_set|,
+                  mid_difficulty = 1 − |mean(per_model_scores) − 3| / 3)
    ```
-   - Each component is min-max normalized to `[0,1]` per law.
-   - Tie-break on lower numeric `prompt_id` (so the rule is total-order deterministic).
-   Take the top `quota - len(seed_for_law)` prompts to fill the law.
+   Each axis is min-max normalised across the kept pool; the composite is
+   `0.40·variance_norm + 0.30·coverage_norm + 0.30·mid_difficulty_norm`.
+   The composite is law-agnostic; per-law normalisation would only re-order
+   within-law ranks and not change the absolute ranking the assignment
+   walks over.
 
-5. **Manual review gate (optional, recorded).** A human curator may swap a selected prompt for another prompt **of the same law** that survived step 1. Each swap is recorded in `snapshot/index/humaneval_100.json` under `manual_overrides` with reason. If `manual_overrides` is empty (default), the file is reproducible from steps 1–4 alone.
+6. **Capacity-constrained multi-label assignment.** A prompt is *eligible*
+   for any law in its `physical_laws` array (multi-label, not just the
+   primary). The assignment walks all kept prompts in deterministic order:
+   - Step a. Apply paperdemo seeds first; subtract from quota.
+   - Step b. For non-seed prompts in `(-composite, prompt_id_numeric)`
+     order, pick the eligible law whose remaining capacity is highest
+     (alphabetical tie-break) and decrement. If no eligible law has
+     capacity, the prompt is skipped.
+   The result: the 13 fixed quotas are filled to 100 from a pool of ~250
+   strict-intersection prompts; every selected prompt has a per-prompt
+   composite score and a deterministic law assignment.
+
+7. **Manual review gate (optional, recorded).** A curator may swap a
+   selected prompt for another prompt **of the same law** that survived
+   step 2. Each swap is recorded in `snapshot/index/humaneval_100.json`
+   under `manual_overrides` with reason. If `manual_overrides` is empty
+   (default), the artifact is reproducible from steps 1–6 alone.
 
 ## Output schema (`snapshot/index/humaneval_100.json`)
 
@@ -53,20 +96,30 @@ This file is the rule that produces the 100. Anyone re-running the selection wit
     "registry_sha256": "<sha256 of _wmbench_src/evals/eval_registry.json at selection time>",
     "paperdemo_manifest_sha256": "<sha256 of _wmbench_src/data/paperdemo/manifest.csv>",
     "model_catalog_sha256": "<sha256 of _wmbench_src/videogen/runner/MODEL_CATALOG.py>",
-    "humaneval_prompts_sha256": "<sha256 of _wmbench_src/data/prompts/humaneval/<file>.json>"
+    "humaneval_prompts_sha256": "<sha256 of _wmbench_src/data/prompts/anonymous_humaneval_set.json>",
+    "humaneval_score_jsons": {"<model_key>": "<rel score json path under _wmbench_src/>"},
+    "humaneval_score_jsons_sha256": {"<model_key>": "<sha256 of that JSON>"}
   },
   "law_quotas": {                          // step 3 result
     "collision": 8, "gravity": 8, "buoyancy": 7, ...
   },
-  "prompts": [                             // length 100 once populated
+  "intersection_gate_full_model_set": ["cosmos-predict2.5-2b", "...", "veo-3.1"],
+  "gate_stats": { "kept": 250, "dropped_no_score": 0, "dropped_partial_models": 0 },
+  "per_law_audit": {                       // per-law diagnostics
+    "collision": {"quota": 8, "seeds": 5, "fill": 3, "available_for_law": 200},
+    ...
+  },
+  "effective_law_counts": {"collision": 8, "gravity": 8, ...},
+  "n_selected": 100,                       // hard target after the new selector
+  "prompts": [
     {
-      "prompt_id": 1303,
+      "prompt_id": "collision_156",
       "law": "collision",
       "source": "paperdemo_seed" | "score_fill" | "manual_override",
-      "score_components": {                 // null for paperdemo_seed
-        "variance": 0.81,
-        "coverage": 1.0,
-        "mid_difficulty": 0.62
+      "score_components": {                 // normalised, may be null for manual_override
+        "variance_norm": 0.81,
+        "coverage_norm": 1.0,
+        "mid_difficulty_norm": 0.62
       }
     }
   ],

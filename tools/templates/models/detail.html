@@ -61,8 +61,14 @@
     </figure>
     {% endfor %}
 </div>
+{% elif my_entries %}
+<p style="color:var(--gray-dark);">No paperdemo videos and no humaneval prompts scored this model. See the published leaderboard slices above for the evaluation context.</p>
 {% else %}
-<p style="color:var(--gray-dark);">No paperdemo videos and no humaneval prompts scored this model. The leaderboard slices below show the published evaluation context.</p>
+<div class="placeholder">
+    <p><strong>No public videos yet for this model.</strong></p>
+    <p style="margin-top:0.5rem;">This catalog entry has no paperdemo coverage and no published leaderboard rows in the current snapshot. When upstream evaluations land in <code>_wmbench_src/data/scores/</code> or paperdemo videos are added for this model, this page will populate automatically.</p>
+    <p style="margin-top:0.5rem;"><a href="{{ rel('leaderboard/') }}">View the full leaderboard &rarr;</a></p>
+</div>
 {% endif %}
 
 <p style="margin-top:1.5rem;font-size:0.9rem;">

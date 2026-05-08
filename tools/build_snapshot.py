@@ -919,12 +919,20 @@ def _read_openvid_db() -> dict:
     return d.get("prompts") or {}
 
 
-def _prompts_index(prompts: list[dict]) -> dict:
-    """Per-prompt index keyed by prompt_id. Carries first_frame_url, per-model HF
-    video URLs, and (for openvid prompts) real-video metadata so the compare
-    page and by-law modal can render YouTube context.
+def _prompts_index(prompts: list[dict],
+                   prompt_scores: dict[str, dict[str, float]] | None = None) -> dict:
+    """Per-prompt index keyed by prompt_id.
+
+    `per_model_scores` and `per_model_videos` come from the in-snapshot score
+    JSONs (`prompt_scores`, built by `_build_humaneval_score_table`) so the
+    compare page and per-model fallback see every published humaneval model
+    that scored a prompt — not just the 4-model subset the prompt manifest's
+    `per_model_scores` records. The manifest scores are kept as a secondary
+    lookup so prompts that exist only in the manifest still render text +
+    first_frame context.
     """
     openvid_db = _read_openvid_db()
+    prompt_scores = prompt_scores or {}
     out: dict[str, dict] = {}
     for p in prompts:
         pid = p.get("video")
@@ -932,9 +940,14 @@ def _prompts_index(prompts: list[dict]) -> dict:
         if not pid:
             continue
         ff_url = _first_frame_hf_url(ds, pid) if _has_first_frame(ds, pid) else None
+        score_jsons = prompt_scores.get(pid) or {}
+        manifest_scores = p.get("per_model_scores") or {}
+        # Prefer in-snapshot score-JSON values where they exist; fall back to
+        # the manifest's per_model_scores for any model the JSONs don't cover.
+        merged_scores = {**manifest_scores, **score_jsons}
         per_model_videos = {
             model_key: _video_hf_url(model_key, ds, pid)
-            for model_key in (p.get("per_model_scores") or {})
+            for model_key in merged_scores
         }
         rv = _openvid_realvideo_meta(pid, openvid_db) if ds == "openvid" else None
         out[pid] = {
@@ -943,7 +956,7 @@ def _prompts_index(prompts: list[dict]) -> dict:
             "prompt": p.get("prompt"),
             "physical_laws": p.get("physical_laws") or [],
             "difficulty": p.get("difficulty") or {},
-            "per_model_scores": p.get("per_model_scores") or {},
+            "per_model_scores": merged_scores,
             "per_model_videos": per_model_videos,
             "first_frame_url": ff_url,
             "realvideo": rv,
@@ -1052,12 +1065,18 @@ def _videos_index(leaderboard: list[dict],
 def _representative_videos(model_key: str,
                            paperdemo: list[dict],
                            prompts: list[dict],
+                           prompt_scores: dict[str, dict[str, float]] | None = None,
                            target: int = 9) -> list[dict]:
     """Per plan §3: 6-9 representative videos for a model. Paperdemo first;
-    deterministic-random fallback over humaneval prompts the model scored
-    (seeded by `model_key` so the picks are stable across builds).
+    deterministic-random fallback over humaneval prompts the model scored.
+
+    The fallback pool is built from `prompt_scores` (the in-snapshot score-JSON
+    table) so every published humaneval model — not just the 4-model subset
+    the prompt manifest's `per_model_scores` covers — gets a fallback set.
+    `prompts` is still consulted for prompt metadata (dataset, physical_laws).
     """
     import random as _random
+    prompt_scores = prompt_scores or {}
     out: list[dict] = []
     for law_entry in paperdemo:
         for v in law_entry["videos"]:
@@ -1077,15 +1096,41 @@ def _representative_videos(model_key: str,
                     return out
     if len(out) >= target:
         return out
+
+    prompt_meta = {p.get("video"): p for p in prompts if p.get("video")}
     fallback_pool: list[dict] = []
+    seen: set[str] = set()
+    for pid, models_to_scores in prompt_scores.items():
+        if model_key not in models_to_scores:
+            continue
+        if pid in seen:
+            continue
+        seen.add(pid)
+        meta = prompt_meta.get(pid) or {}
+        ds = meta.get("dataset") or ""
+        ff_url = _first_frame_hf_url(ds, pid) if _has_first_frame(ds, pid) else None
+        fallback_pool.append({
+            "law": ((meta.get("physical_laws") or [None]) or [None])[0],
+            "src_filename": f"{pid}.mp4",
+            "video_url_hf": _video_hf_url(model_key, ds, pid) if ds else f"{HF_BASE}/videos/{model_key}/{pid}.mp4",
+            "first_frame_url": ff_url,
+            "kind": "humaneval",
+            "score": models_to_scores[model_key],
+            "n_ann": None,
+            "prompt_id": pid,
+            "dataset": ds,
+        })
+    # Manifest-only prompts not covered by score JSONs: include if model_key
+    # appears there (rare but cheap to keep).
     for p in prompts:
         pid = p.get("video")
-        ds = p.get("dataset") or ""
-        if not pid:
+        if not pid or pid in seen:
             continue
         scores = p.get("per_model_scores") or {}
         if model_key not in scores:
             continue
+        seen.add(pid)
+        ds = p.get("dataset") or ""
         ff_url = _first_frame_hf_url(ds, pid) if _has_first_frame(ds, pid) else None
         fallback_pool.append({
             "law": (p.get("physical_laws") or [None])[0],
@@ -1098,7 +1143,7 @@ def _representative_videos(model_key: str,
             "prompt_id": pid,
             "dataset": ds,
         })
-    # Sort first so the deterministic-random shuffle sees a stable input order.
+
     fallback_pool.sort(key=lambda v: (v["prompt_id"] or "", v["dataset"] or ""))
     rng = _random.Random(f"phyground:{model_key}")
     rng.shuffle(fallback_pool)
@@ -1140,17 +1185,18 @@ def _site_config(catalog: list[dict],
                  humaneval_100: dict,
                  leaderboard_entries: list[dict],
                  leaderboard_unpublished: list[dict],
+                 prompt_scores: dict[str, dict[str, float]],
                  build_meta: dict) -> dict:
     models = _all_known_models(catalog, registry, [
         {"model": v["model"]} for law in paperdemo_grouped for v in law["videos"]
     ])
     datasets = _datasets_summary(vis_datasets)
     videos_index = _videos_index(leaderboard_entries, paperdemo_grouped, humaneval_prompts, models)
-    prompts_index = _prompts_index(humaneval_prompts)
+    prompts_index = _prompts_index(humaneval_prompts, prompt_scores)
 
     for m in models:
         m["representative_videos"] = _representative_videos(
-            m["key"], paperdemo_grouped, humaneval_prompts,
+            m["key"], paperdemo_grouped, humaneval_prompts, prompt_scores,
         )
         # Always provide leaderboard-slice cards as a final fallback for the
         # by-model gallery, even when representative_videos is non-empty (the
@@ -1229,10 +1275,10 @@ def _site_config(catalog: list[dict],
         featured_videos = _build_featured(featured_law_name, paperdemo_grouped[0]["videos"])
 
     huggingface_dataset_url = HF_BASE.replace("/resolve/main", "")
-    paper_url_override = os.environ.get("PHYGROUND_PAPER_URL", "").strip()
-    # Default the paper CTA to the HF dataset card so the hero button is never
-    # dead. If a real arxiv / openreview link is set via env, that wins.
-    paper_url = paper_url_override or huggingface_dataset_url
+    # Per Round-5 user choice "Hide until paper is posted": no fallback to the
+    # HF dataset card. The hero button + Paper Browse card are suppressed when
+    # the env override is empty; setting PHYGROUND_PAPER_URL re-enables them.
+    paper_url = os.environ.get("PHYGROUND_PAPER_URL", "").strip()
 
     return {
         "site": {
@@ -1240,7 +1286,6 @@ def _site_config(catalog: list[dict],
             "short_title": "phyground",
             "description": "A physics-grounded benchmark for video generation. Browse model outputs by physical law, compare side-by-side, and explore evaluator-by-dataset leaderboards.",
             "paper_url": paper_url,
-            "paper_url_is_default": not paper_url_override,
             "github_url": "https://github.com/phyground/phyground.github.io",
             "huggingface_url": "https://huggingface.co/juyil",
             "huggingface_dataset_url": huggingface_dataset_url,
@@ -1443,10 +1488,15 @@ def build(*, now_iso: str | None = None,
         "humaneval_prompts_sha256": prompts_sha256,
         "snapshot_sha": None,                 # filled in below
     }
+    # Source the prompt → {model: phys_score} table from the same in-snapshot
+    # score JSONs the humaneval-100 selector uses, so the compare page and
+    # per-model representative videos see every published humaneval model
+    # (8 of them) — not just the 4-model subset the prompt manifest covers.
+    prompt_scores, _prompt_laws_unused, _score_files_unused = _build_humaneval_score_table(registry)
     site_config = _site_config(
         catalog, registry, paperdemo_grouped, vis_datasets,
         humaneval_prompts, humaneval_100, leaderboard_entries,
-        leaderboard_unpublished, build_meta,
+        leaderboard_unpublished, prompt_scores, build_meta,
     )
     _write_json(STAGING_DIR / "index" / "site_config.json", site_config)
 
