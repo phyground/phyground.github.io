@@ -78,12 +78,26 @@ plays / loads.
 
 ## Smoke tests after upload
 
+One-shot probe (recommended): run the bundled script, which reads
+`snapshot/HF_UPLOAD_MANIFEST.json`, picks one representative video URL
+plus one first-frame URL plus the dataset root README, and reports
+`OK <status>` / `FAIL <status>` per probe. Exits non-zero on any failure.
+
 ```bash
-# Per-(model, prompt) video the compare page embeds:
+python3 tools/smoke_test_hf.py
+# Expected output (after upload):
+#   [smoke_test_hf] OK   302 (video) https://huggingface.co/datasets/juyil/...mp4
+#   [smoke_test_hf] OK   302 (first_frame) https://huggingface.co/datasets/juyil/...jpg
+#   [smoke_test_hf] OK   200 (dataset_root) https://huggingface.co/datasets/juyil/.../README.md
+#   [smoke_test_hf] 3/3 probes OK
+```
+
+Manual probes (if you need to spot-check a specific path):
+
+```bash
 curl -I "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-2b/collision_156.mp4"
 # Expect HTTP/2 302 (redirect to a CDN URL that returns the video)
 
-# A first-frame thumbnail (flat layout):
 curl -I "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_156.jpg"
 ```
 
