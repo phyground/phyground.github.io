@@ -458,3 +458,218 @@ def test_structural_audit_writes_json_report(tmp_path: Path) -> None:
     assert isinstance(payload["audited"], list)
     entry = payload["audited"][0]
     assert set(entry.keys()) >= {"file", "broken", "absolute", "fragments"}
+
+
+# ---------------------------------------------------------------------------
+# Code-quality follow-up tests (correctness gaps surfaced by review of the
+# initial structural-auditor commit).
+# ---------------------------------------------------------------------------
+
+
+def test_structural_audit_protocol_relative_url_treated_as_absolute(
+    tmp_path: Path,
+) -> None:
+    """`<img src="//cdn.example.com/x.js">` is absolute, not a broken local path.
+
+    `urlsplit("//cdn...")` yields a non-empty netloc with an empty scheme.
+    Such hrefs must never trigger an on-disk lookup; they belong on the
+    ``absolute`` list.
+    """
+    site = tmp_path / "site"
+    html = _write(
+        site / "index.html",
+        '<html><body>'
+        '<a href="//cdn.example.com/x.js">protocol-relative</a>'
+        '</body></html>',
+    )
+    report = tmp_path / "report.json"
+    result = _run(
+        str(STRUCTURAL_AUDIT_SCRIPT),
+        str(html),
+        "--repo-root", str(site),
+        "--report", str(report),
+    )
+    assert result.returncode == 0, result.stderr + result.stdout
+    payload = json.loads(report.read_text(encoding="utf-8"))
+    entry = payload["audited"][0]
+    assert entry["broken"] == []
+    assert any("cdn.example.com" in u for u in entry["absolute"])
+
+
+def test_structural_audit_empty_allow_prefix_rejected(tmp_path: Path) -> None:
+    """`--allow-prefix ""` must be rejected so the auditor cannot be silenced.
+
+    An empty string would make `startswith("") == True` for every href and
+    classify everything as absolute, neutering the auditor.
+    """
+    site = tmp_path / "site"
+    html = _write(
+        site / "index.html",
+        '<html><body><a href="missing.txt">x</a></body></html>',
+    )
+    result = _run(
+        str(STRUCTURAL_AUDIT_SCRIPT),
+        str(html),
+        "--repo-root", str(site),
+        "--allow-prefix", "",
+    )
+    assert result.returncode != 0, (
+        f"empty --allow-prefix must not exit 0; got {result.returncode}\n"
+        f"stdout={result.stdout!r}\nstderr={result.stderr!r}"
+    )
+    combined = (result.stderr + result.stdout).lower()
+    assert "allow-prefix" in combined or "allow_prefix" in combined or "empty" in combined, (
+        f"stderr should explain why empty --allow-prefix is rejected; got:\n{result.stderr}"
+    )
+
+
+def test_structural_audit_path_escape_classified_as_broken(tmp_path: Path) -> None:
+    """A relative href that resolves outside --repo-root must be reported broken.
+
+    Even if the resolved file actually exists on disk, it would 404 in the
+    rendered site because it is not part of the deployed tree. The auditor
+    sandboxes resolution to the repo root.
+    """
+    site = tmp_path / "site"
+    html = _write(
+        site / "about" / "index.html",
+        '<html><body><a href="../../outside.txt">escape</a></body></html>',
+    )
+    # Plant an actual file at the resolved escape target so the auditor
+    # cannot rely on a missing-file check alone.
+    outside = site.parent / "outside.txt"
+    outside.write_text("escaped\n", encoding="utf-8")
+
+    report = tmp_path / "report.json"
+    result = _run(
+        str(STRUCTURAL_AUDIT_SCRIPT),
+        str(html),
+        "--repo-root", str(site),
+        "--report", str(report),
+    )
+    assert result.returncode == 2, (
+        f"path escape should be broken; got rc={result.returncode}\n"
+        f"stdout={result.stdout}\nstderr={result.stderr}"
+    )
+    payload = json.loads(report.read_text(encoding="utf-8"))
+    broken = payload["audited"][0]["broken"]
+    assert len(broken) == 1
+    assert broken[0]["original_href"] == "../../outside.txt"
+
+
+def test_structural_audit_percent_encoded_path_decoded(tmp_path: Path) -> None:
+    """`<img src="my%20pic.png">` must resolve to the on-disk file `my pic.png`."""
+    site = tmp_path / "site"
+    html = _write(
+        site / "index.html",
+        '<html><body><img src="my%20pic.png"></body></html>',
+    )
+    _touch(site / "my pic.png")
+    report = tmp_path / "report.json"
+    result = _run(
+        str(STRUCTURAL_AUDIT_SCRIPT),
+        str(html),
+        "--repo-root", str(site),
+        "--report", str(report),
+    )
+    assert result.returncode == 0, result.stderr + result.stdout
+    payload = json.loads(report.read_text(encoding="utf-8"))
+    assert payload["summary"]["broken_refs"] == 0
+
+
+def test_structural_audit_standalone_source_src_is_inspected(
+    tmp_path: Path,
+) -> None:
+    """A `<source src=...>` outside `<picture>`/`<video>`/`<audio>` is still inspected."""
+    site = tmp_path / "site"
+    html = _write(
+        site / "index.html",
+        '<html><body><source src="missing-standalone.mp4"></body></html>',
+    )
+    report = tmp_path / "report.json"
+    result = _run(
+        str(STRUCTURAL_AUDIT_SCRIPT),
+        str(html),
+        "--repo-root", str(site),
+        "--report", str(report),
+    )
+    assert result.returncode == 2, result.stderr + result.stdout
+    payload = json.loads(report.read_text(encoding="utf-8"))
+    broken = payload["audited"][0]["broken"]
+    assert len(broken) == 1
+    assert broken[0]["tag"] == "source"
+    assert broken[0]["attribute"] == "src"
+    assert broken[0]["original_href"] == "missing-standalone.mp4"
+
+
+def test_structural_audit_default_allow_prefixes_route_correctly(
+    tmp_path: Path,
+) -> None:
+    """Each of the 6 default prefixes routes to absolute or fragments, never broken.
+
+    Run with NO `--allow-prefix` flag so this exercises the defaults baked
+    into ``DEFAULT_ALLOW_PREFIXES``.
+    """
+    site = tmp_path / "site"
+    html = _write(
+        site / "index.html",
+        """
+        <html><body>
+          <a href="http://example.com/a">http</a>
+          <a href="https://example.com/b">https</a>
+          <a href="data:text/plain,hello">data</a>
+          <a href="mailto:foo@example.com">mailto</a>
+          <a href="javascript:void(0)">js</a>
+          <a href="#x">frag</a>
+        </body></html>
+        """,
+    )
+    report = tmp_path / "report.json"
+    result = _run(
+        str(STRUCTURAL_AUDIT_SCRIPT),
+        str(html),
+        "--repo-root", str(site),
+        "--report", str(report),
+    )
+    assert result.returncode == 0, result.stderr + result.stdout
+    payload = json.loads(report.read_text(encoding="utf-8"))
+    entry = payload["audited"][0]
+    assert entry["broken"] == []
+    # http, https, data, mailto, javascript -> absolute (5 entries)
+    assert len(entry["absolute"]) >= 5
+    # #x -> fragments
+    assert len(entry["fragments"]) >= 1
+    assert any(f == "#x" for f in entry["fragments"])
+
+
+def test_structural_audit_query_only_href_treated_as_fragment(
+    tmp_path: Path,
+) -> None:
+    """`<a href="?foo=1">` and `<a href="#section">` route to fragments, never broken.
+
+    A query-only or fragment-only href is a self-reference; it should never
+    trigger an on-disk lookup against the HTML's parent directory.
+    """
+    site = tmp_path / "site"
+    html = _write(
+        site / "index.html",
+        '<html><body>'
+        '<a href="?foo=1">query</a>'
+        '<a href="#section">frag</a>'
+        '</body></html>',
+    )
+    report = tmp_path / "report.json"
+    result = _run(
+        str(STRUCTURAL_AUDIT_SCRIPT),
+        str(html),
+        "--repo-root", str(site),
+        "--report", str(report),
+    )
+    assert result.returncode == 0, result.stderr + result.stdout
+    payload = json.loads(report.read_text(encoding="utf-8"))
+    entry = payload["audited"][0]
+    assert entry["broken"] == []
+    # Both refs land in fragments.
+    assert len(entry["fragments"]) >= 2
+    assert any("?foo=1" in f for f in entry["fragments"])
+    assert any(f == "#section" for f in entry["fragments"])

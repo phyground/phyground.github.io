@@ -70,7 +70,7 @@ from dataclasses import asdict
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Iterable
-from urllib.parse import urlsplit
+from urllib.parse import unquote, urlsplit
 
 # Support both `python tools/site_audit/structural_audit.py` and
 # `python -m tools.site_audit.structural_audit`.
@@ -162,10 +162,15 @@ def _resolve_on_disk(
 
     Strips query string and fragment; root-relative hrefs (starting with
     ``/``) resolve against ``repo_root``, others against the directory
-    containing the HTML file.
+    containing the HTML file. Percent-encoded path segments are decoded
+    so that ``my%20pic.png`` resolves to the on-disk file ``my pic.png``.
     """
     parts = urlsplit(href)
-    raw_path = parts.path or ""
+    # Decode percent-escapes in the path component before joining with the
+    # filesystem so ``my%20pic.png`` matches ``my pic.png`` on disk. The
+    # original (raw) href is preserved in BrokenRef.original_href by the
+    # caller — only the on-disk lookup uses the decoded form.
+    raw_path = unquote(parts.path or "")
     # If a relative href is just "?foo" or "#frag" its path is empty;
     # callers should have classified it as fragment beforehand. We still
     # guard here so the function never returns html_path itself.
@@ -175,6 +180,20 @@ def _resolve_on_disk(
         rel = raw_path.lstrip("/")
         return (repo_root / rel).resolve()
     return (html_path.parent / raw_path).resolve()
+
+
+def _is_outside_root(resolved: Path, repo_root: Path) -> bool:
+    """Return True if ``resolved`` does not lie under ``repo_root``.
+
+    Uses ``Path.relative_to`` (Python 3.9+) wrapped in try/except for
+    portability — ``Path.is_relative_to`` is only 3.9+ and we want to keep
+    the dependency surface minimal.
+    """
+    try:
+        resolved.relative_to(repo_root)
+    except ValueError:
+        return True
+    return False
 
 
 def _classify(
@@ -200,8 +219,25 @@ def _classify(
             result.absolute.append(value)
         return
 
+    parts = urlsplit(value)
+    # Protocol-relative URLs (``//cdn.example.com/x.js``) and any href that
+    # parses to a non-empty network location are absolute references the
+    # browser will fetch from another origin; never look them up on disk.
+    if parts.netloc:
+        result.absolute.append(value)
+        return
+    # Query-only (``?foo=1``) or fragment-only (``#section``) hrefs have an
+    # empty path; they are self-references and must not trigger a disk
+    # lookup against the HTML's parent directory.
+    if (parts.path or "") == "":
+        result.fragments.append(value)
+        return
+
     resolved = _resolve_on_disk(value, html_path=html_path, repo_root=repo_root)
-    if not resolved.exists():
+    # Sandbox to repo_root: a resolved path that escapes the deployed tree
+    # (e.g. via ``../../outside.txt``) would 404 in production even when
+    # the file happens to exist on the build machine.
+    if _is_outside_root(resolved, repo_root) or not resolved.exists():
         result.broken.append(
             BrokenRef(
                 original_href=value,
@@ -252,6 +288,22 @@ def audit_html_file(
 # ---------------------------------------------------------------------------
 
 
+def _nonempty_prefix(value: str) -> str:
+    """argparse ``type=`` callable that rejects empty allow-prefix values.
+
+    An empty prefix would make ``startswith("") == True`` for every href
+    and silently classify every reference as absolute, neutering the
+    auditor. ``argparse`` converts the ``ArgumentTypeError`` into a clear
+    "argument --allow-prefix: ..." message and exit code 2.
+    """
+    if value == "":
+        raise argparse.ArgumentTypeError(
+            "--allow-prefix must be a non-empty string; "
+            "an empty prefix would match every href and silence the auditor"
+        )
+    return value
+
+
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="structural_audit",
@@ -283,11 +335,12 @@ def _build_parser() -> argparse.ArgumentParser:
         action="append",
         default=[],
         metavar="PREFIX",
+        type=_nonempty_prefix,
         help=(
             "Treat any href starting with PREFIX as an absolute reference "
             "and skip the on-disk check. Repeat to allow more prefixes. "
             "The defaults http:// https:// data: mailto: javascript: # "
-            "are always included."
+            "are always included. PREFIX must be non-empty."
         ),
     )
     parser.add_argument(
