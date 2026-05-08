@@ -1354,12 +1354,20 @@ def _site_config(catalog: list[dict],
                 for model_key, score in (p.get("per_model_scores") or {}).items():
                     if model_key in seen:
                         continue
+                    # Same allowlist + on-disk gate the rest of the snapshot
+                    # uses. Without this the homepage fallback can leak HF
+                    # URLs for models outside `_HF_PUBLISHED_MODELS`
+                    # (cogvideox1.5-5b-i2v, hunyuanvideo-i2v, etc.) — those
+                    # would 404 on the published `juyil/phygroundwebsitevideo`
+                    # dataset.
+                    if not _video_exists_locally(model_key, pid):
+                        continue
                     humaneval_for_law.append({
                         "model": model_key,
                         "video_id": None,
                         "n_ann": None,
                         "src_filename": f"{pid}.mp4",
-                        "src_path": f"data/videos/{model_key}-{ds}/{pid}.mp4",
+                        "src_path": f"data/videos/{model_key}/{pid}.mp4",
                         "video_url_hf": _video_hf_url(model_key, ds, pid),
                         "_role": "model_output",
                         "_humaneval_prompt_id": pid,

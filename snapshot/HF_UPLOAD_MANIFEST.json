@@ -500,12 +500,6 @@
     },
     {
       "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
-      "sha256": "f510e8bc72e7e21cf30248a88a93b80751ee17924b6510ac550da46641975604"
-    },
-    {
-      "exists_locally": true,
       "hf_target_path": "videos/cosmos-predict2.5-14b/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
       "local_source": "_wmbench_src/data/videos/cosmos-predict2.5-14b/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
       "sha256": "5ee59eeb0b46972cd806e3333cc9dfd1ed0c130e3f4e40854830518506019d20"
@@ -1703,12 +1697,6 @@
       "hf_target_path": "videos/cosmos-predict2.5-2b/xDxQMZjHR4s_3_18to227.mp4",
       "local_source": "_wmbench_src/data/videos/cosmos-predict2.5-2b/xDxQMZjHR4s_3_18to227.mp4",
       "sha256": "ac3fc57b0354606a9ac7f8a5de909e52f0603e0c9af52f77d5e4511680772db2"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
-      "sha256": "70d42d2309821744c99f868e2ab09b93a784285296f3bcd8f9dc5d6df097118a"
     },
     {
       "exists_locally": true,
@@ -5315,7 +5303,7 @@
   "hf_repo_type": "dataset",
   "hf_url_base": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main",
   "n_missing_locally": 0,
-  "n_present_locally": 885,
-  "n_total_files": 885,
+  "n_present_locally": 883,
+  "n_total_files": 883,
   "schema_version": "1"
 }
