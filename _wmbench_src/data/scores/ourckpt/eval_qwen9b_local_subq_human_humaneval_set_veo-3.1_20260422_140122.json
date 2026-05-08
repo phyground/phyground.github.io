@@ -1,0 +1,27 @@
+{
+  "general_dimensions": [
+    "SA",
+    "PTV",
+    "persistence"
+  ],
+  "judge": "qwen9b:Qwen/Qwen3.5-9B",
+  "meta": {
+    "eval_timestamp": "20260422_140124",
+    "evaluator": "qwen9b",
+    "prompt_config": "subq+human.yaml",
+    "prompt_mode": "eval_prompts",
+    "scheme": "subq_hint",
+    "source_filename": "eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_20260422_140122.json",
+    "subset": "humaneval_set",
+    "type": "eval_result",
+    "video_model": "veo-3.1"
+  },
+  "num_videos": 0,
+  "prompt_config": "subq+human.yaml",
+  "prompt_mode": "eval_prompts",
+  "results": [],
+  "visual_config": {
+    "fps": 1,
+    "max_height": 360
+  }
+}

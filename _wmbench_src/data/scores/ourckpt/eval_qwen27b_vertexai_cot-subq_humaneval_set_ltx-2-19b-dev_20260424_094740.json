@@ -1,0 +1,30 @@
+{
+  "general_dimensions": [
+    "SA",
+    "PTV",
+    "persistence"
+  ],
+  "inference_config": {
+    "max_tokens": 1024
+  },
+  "judge": "qwen27b:Qwen/Qwen3.5-27B",
+  "meta": {
+    "eval_timestamp": "20260424_095018",
+    "evaluator": "qwen27b",
+    "prompt_config": "cot-subq.yaml",
+    "prompt_mode": "eval_prompts",
+    "scheme": "cot_subq",
+    "source_filename": "eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260424_094740.json",
+    "subset": "humaneval_set",
+    "type": "eval_result",
+    "video_model": "ltx-2-19b-dev"
+  },
+  "num_videos": 0,
+  "prompt_config": "cot-subq.yaml",
+  "prompt_mode": "eval_prompts",
+  "results": [],
+  "visual_config": {
+    "fps": null,
+    "max_height": 360
+  }
+}

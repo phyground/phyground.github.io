@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% set active_page = 'models' %}
+{% block title %}{{ model.key }} &mdash; {{ site.title }}{% endblock %}
+{% block content %}
+<p style="font-size:0.9rem;"><a href="{{ rel('') }}">Home</a> &rsaquo; <a href="{{ rel('videos/') }}">Videos</a> &rsaquo; {{ model.key }}</p>
+<h1>{{ model.key }}</h1>
+{% if model.display_name and model.display_name != model.key %}<p style="font-size:1.1rem;color:var(--gray-dark);">{{ model.display_name }}</p>{% endif %}
+
+<dl class="model-meta">
+    <dt>Family</dt><dd>{{ model.family }}</dd>
+    {% if model.params_b is not none %}<dt>Params</dt><dd>{{ model.params_b }}B</dd>{% endif %}
+    {% if model.fps %}<dt>FPS</dt><dd>{{ model.fps }}</dd>{% endif %}
+    {% if model.frames %}<dt>Frames</dt><dd>{{ model.frames }}</dd>{% endif %}
+    {% if model.resolution %}<dt>Resolution</dt><dd>{{ model.resolution }}</dd>{% endif %}
+    {% if model.model %}<dt>Upstream</dt><dd><code>{{ model.model }}</code></dd>{% endif %}
+    <dt>Source</dt><dd>{{ model.source }}</dd>
+</dl>
+
+<h2>Leaderboard appearances</h2>
+{% set my_entries = leaderboard_entries | selectattr('video_model', 'equalto', model.key) | list %}
+{% if my_entries %}
+<table class="lb">
+    <thead><tr><th>Dataset</th><th>Subset</th><th>Evaluator</th><th>Schema</th><th class="num">N</th><th class="num">gen_avg</th><th class="num">phys_avg</th><th class="num">coverage</th><th>datetime</th><th>raw</th></tr></thead>
+    <tbody>
+        {% for e in my_entries %}
+        {% set c = e.current %}
+        <tr>
+            <td>{{ e.dataset }}</td>
+            <td>{{ e.subset }}</td>
+            <td>{{ e.evaluator }}</td>
+            <td>{{ e.schema }}</td>
+            <td class="num">{{ c.n if c.n is not none else '—' }}</td>
+            <td class="num">{{ '%.2f'|format(c.gen_avg) if c.gen_avg is not none else '—' }}</td>
+            <td class="num">{{ '%.2f'|format(c.phys_avg) if c.phys_avg is not none else '—' }}</td>
+            <td class="num">{{ '%.2f'|format(c.coverage) if c.coverage is not none else '—' }}</td>
+            <td>{{ c.datetime or '—' }}</td>
+            <td>{% if c.source_url_snapshot %}<a href="{{ rel(c.source_url_snapshot) }}" download>JSON</a>{% else %}—{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p style="color:var(--gray-dark);">No published leaderboard rows for this model yet.</p>
+{% endif %}
+
+<h2>Representative videos</h2>
+{% if model.representative_videos %}
+<div class="video-grid">
+    {% for v in model.representative_videos %}
+    <figure class="video-card">
+        <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"></video>
+        <figcaption>
+            <span class="model">{{ v.law|replace('_', ' ') }}</span>
+            <span class="meta">n_ann={{ v.n_ann }} · {{ v.src_filename }}</span>
+        </figcaption>
+    </figure>
+    {% endfor %}
+</div>
+{% else %}
+<p style="color:var(--gray-dark);">No paperdemo videos for this model in the published snapshot.</p>
+{% endif %}
+
+<p style="margin-top:1.5rem;font-size:0.9rem;">
+    <a href="{{ rel('leaderboard/') }}?evaluator=&dataset=&subset=&schema=#{{ model.key }}">All leaderboard slices &rarr;</a> ·
+    <a href="{{ rel('videos/') }}">Back to gallery</a>
+</p>
+{% endblock %}

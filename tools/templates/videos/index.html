@@ -3,9 +3,91 @@
 {% block title %}Video Gallery &mdash; {{ site.title }}{% endblock %}
 {% block content %}
 <h1>Video Gallery</h1>
-<p>Browse generated videos by physical law (default) or by model. Videos play directly from <a href="{{ site.huggingface_url }}">HuggingFace</a>; this site only carries the index.</p>
+<p>
+    Browse generated videos by physical law (default) or by model.
+    Videos play directly from <a href="{{ site.huggingface_url }}">HuggingFace</a>;
+    this site only carries the index.
+</p>
 
-<div class="placeholder">
-    Video Gallery renders here once the snapshot and HuggingFace video manifest are wired in (Round 3).
+<div class="gallery-tabs" role="tablist">
+    <button type="button" class="gallery-tab active" data-mode="by-law" role="tab" aria-selected="true">By law</button>
+    <button type="button" class="gallery-tab" data-mode="by-model" role="tab" aria-selected="false">By model</button>
 </div>
+
+<section class="gallery-pane" id="pane-by-law">
+    <nav class="gallery-nav" id="law-nav">
+        {% for law_entry in paperdemo %}
+        <button type="button" class="gallery-nav-item" data-law="{{ law_entry.law }}">
+            {{ law_entry.law|replace('_', ' ') }}
+            <span class="badge">{{ law_entry.videos|length }}</span>
+        </button>
+        {% endfor %}
+    </nav>
+    <div class="gallery-content" id="law-content">
+        {% for law_entry in paperdemo %}
+        <div class="gallery-section" data-law="{{ law_entry.law }}"{% if not loop.first %} hidden{% endif %}>
+            <h2>{{ law_entry.law|replace('_', ' ') }}</h2>
+            <p style="font-size:0.9rem;color:var(--gray-dark);">
+                <a href="{{ rel(law_entry.fig_pdf) }}" target="_blank">law illustration (PDF)</a>
+                · {{ law_entry.videos|length }} curated videos
+            </p>
+            <div class="video-grid">
+                {% for v in law_entry.videos %}
+                <figure class="video-card">
+                    <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"></video>
+                    <figcaption>
+                        <span class="model"><a href="{{ rel('models/') }}{{ v.model }}/">{{ v.model }}</a></span>
+                        <span class="meta">n_ann={{ v.n_ann }} · {{ v.src_filename }}</span>
+                    </figcaption>
+                </figure>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="gallery-pane" id="pane-by-model" hidden>
+    <nav class="gallery-nav" id="model-nav">
+        {% for m in models %}
+        {% if m.representative_videos %}
+        <button type="button" class="gallery-nav-item" data-model="{{ m.key }}">
+            {{ m.key }}
+            <span class="badge">{{ m.representative_videos|length }}</span>
+        </button>
+        {% endif %}
+        {% endfor %}
+    </nav>
+    <div class="gallery-content" id="model-content">
+        {% for m in models %}
+        {% if m.representative_videos %}
+        <div class="gallery-section" data-model="{{ m.key }}"{% if not loop.first %} hidden{% endif %}>
+            <h2>{{ m.key }}</h2>
+            <p style="font-size:0.9rem;color:var(--gray-dark);">
+                family: {{ m.family }}{% if m.params_b %} · {{ m.params_b }}B params{% endif %}{% if m.fps %} · {{ m.fps }} fps{% endif %}{% if m.frames %} · {{ m.frames }} frames{% endif %}{% if m.resolution %} · {{ m.resolution }}{% endif %}
+                · <a href="{{ rel('models/') }}{{ m.key }}/">model detail</a>
+            </p>
+            <div class="video-grid">
+                {% for v in m.representative_videos %}
+                <figure class="video-card">
+                    <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"></video>
+                    <figcaption>
+                        <span class="model">{{ v.law|replace('_', ' ') }}</span>
+                        <span class="meta">n_ann={{ v.n_ann }} · {{ v.src_filename }}</span>
+                    </figcaption>
+                </figure>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+<p style="margin-top:1rem;font-size:0.9rem;color:var(--gray-dark);">
+    Want a single-prompt cross-model view?
+    <a href="{{ rel('videos/compare/') }}">Open the compare page</a>.
+</p>
+
+<script src="{{ rel('static/js/gallery.js') }}"></script>
 {% endblock %}

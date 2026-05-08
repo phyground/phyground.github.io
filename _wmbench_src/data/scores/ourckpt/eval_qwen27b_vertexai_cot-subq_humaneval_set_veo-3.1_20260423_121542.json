@@ -1,0 +1,3464 @@
+{
+  "general_dimensions": [
+    "SA",
+    "PTV",
+    "persistence"
+  ],
+  "inference_config": {
+    "max_tokens": 1024
+  },
+  "judge": "qwen27b:Qwen/Qwen3.5-27B",
+  "meta": {
+    "eval_timestamp": "20260423_125849",
+    "evaluator": "qwen27b",
+    "prompt_config": "cot-subq.yaml",
+    "prompt_mode": "eval_prompts",
+    "scheme": "cot_subq",
+    "source_filename": "eval_qwen27b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_121542.json",
+    "subset": "humaneval_set",
+    "type": "eval_result",
+    "video_model": "veo-3.1"
+  },
+  "num_videos": 99,
+  "prompt_config": "cot-subq.yaml",
+  "prompt_mode": "eval_prompts",
+  "results": [
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 3.6666666666666665,
+      "persistence": 2,
+      "physical": {
+        "avg": 4.3333,
+        "coverage": 1.0,
+        "laws": {
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 3,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "inertia",
+        "material",
+        "gravity"
+      ],
+      "prompt": "A powerful gust of wind blows a large pile of leaves down a city street, causing them to swirl and scatter.",
+      "video": "mechanics_245"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 4.666666666666667,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "material",
+        "momentum"
+      ],
+      "prompt": "A shot put is thrown; the projectile creates a small crater upon impact with the sand.",
+      "video": "mechanics_274"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 3.6666666666666665,
+      "persistence": 2,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "material",
+        "momentum",
+        "impenetrability"
+      ],
+      "prompt": "A metallic hurdle is struck by a hurdler's foot, creating a visible metallic clang.",
+      "video": "mechanics_289"
+    },
+    {
+      "PTV": 4,
+      "SA": 4,
+      "general_avg": 4.333333333333333,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "material",
+        "momentum"
+      ],
+      "prompt": "A large, thick wooden beam is broken in two with a powerful overhead axe swing, showing a clean, straight break.",
+      "video": "mechanics_57"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 4.333333333333333,
+      "persistence": 3,
+      "physical": {
+        "avg": 4.75,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 4,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "impenetrability",
+        "material",
+        "momentum"
+      ],
+      "prompt": "A car crashes into a stack of cardboard boxes, sending the boxes flying in all directions.",
+      "video": "collision_260"
+    },
+    {
+      "PTV": 5,
+      "SA": 2,
+      "general_avg": 4.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "gravity",
+        "impenetrability",
+        "momentum"
+      ],
+      "prompt": "A player runs and hits the ball into the goal, the ball directly impacting the backboard.",
+      "video": "collision_271"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 4.666666666666667,
+      "persistence": 4,
+      "physical": {
+        "avg": 4.25,
+        "coverage": 1.0,
+        "laws": {
+          "impenetrability": {
+            "score": 2,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "reflection": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "reflection",
+        "impenetrability",
+        "material",
+        "shadow"
+      ],
+      "prompt": "A person ties a bow tie while standing in front of a mirror, adjusting the knot's symmetry.",
+      "video": "lighting_381"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "material",
+        "impenetrability",
+        "collision"
+      ],
+      "prompt": "A 30lb kettlebell is slowly lowered on top of a yellow ceramic coffee mug placed on a wooden table. The ceramic mug shatters under the weight of the kettlebell. Static shot with no camera movement.",
+      "video": "0188_perspective-center_trimmed-weight-on-ceramic"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "fluid_continuity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "flow_dynamics",
+        "material",
+        "collision",
+        "fluid_continuity"
+      ],
+      "prompt": "A heavy car tire rolls over a green bottle on concrete, crushing it flat. The trapped liquid bursts from the broken bottle and rapidly flows outward, spreading across the ground in an expanding puddle.",
+      "video": "88H1BBqFzXQ_1_118to222"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "impenetrability",
+        "material",
+        "momentum"
+      ],
+      "prompt": "A pinball hits the metal side of the machine, creating a distinct clang and ricocheting back into play.",
+      "video": "collision_399"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 4.666666666666667,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "impenetrability",
+        "material",
+        "momentum"
+      ],
+      "prompt": "A steel ball bearing rolls across a flat surface and collides with another ball bearing, both ceasing motion.",
+      "video": "collision_60"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.0,
+      "persistence": 3,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "gravity",
+        "momentum",
+        "impenetrability"
+      ],
+      "prompt": "A series of hammers are thrown onto a pile of scrap metal, the impacts causing the metal to shift.",
+      "video": "mechanics_317"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.666666666666667,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "material",
+        "momentum",
+        "gravity"
+      ],
+      "prompt": "A person throws a throwing axe at a large pumpkin; the axe cuts cleanly through the pumpkin.",
+      "video": "mechanics_407"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "material",
+        "impenetrability",
+        "momentum"
+      ],
+      "prompt": "A discus hits a large wooden target with a clear impact mark.",
+      "video": "mechanics_420"
+    },
+    {
+      "PTV": 1,
+      "SA": 5,
+      "general_avg": 3.3333333333333335,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "impenetrability",
+        "momentum"
+      ],
+      "prompt": "Arrows are shot at a moving target, with some arrows hitting and some missing visibly.",
+      "video": "mechanics_424"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.333333333333333,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "impenetrability",
+        "momentum"
+      ],
+      "prompt": "A pinball bounces between the flippers and several posts before entering a bonus area.",
+      "video": "collision_292"
+    },
+    {
+      "PTV": 5,
+      "SA": 3,
+      "general_avg": 4.333333333333333,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "buoyancy": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "buoyancy",
+        "flow_dynamics",
+        "boundary_interaction"
+      ],
+      "prompt": "The rising ocean tide floods a sandy beach, surrounding several grounded boats. As the water deepens, it lifts the vessels off the wet sand, causing them to become buoyant and float. The boats bob gently on the surface of the incoming water while a person walks along the shoreline.",
+      "video": "7zUyKYlCdFU_32_22to164"
+    },
+    {
+      "PTV": 5,
+      "SA": 3,
+      "general_avg": 4.333333333333333,
+      "persistence": 5,
+      "physical": {
+        "avg": 4.3333,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "buoyancy": {
+            "score": 3,
+            "status": "scored"
+          },
+          "displacement": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "displacement",
+        "buoyancy",
+        "boundary_interaction"
+      ],
+      "prompt": "A pair of black leather boots is slowly lowered into a clear glass bowl filled with water. As the boots submerge, they displace the liquid, causing the water level to steadily rise until it reaches the top rim of the bowl.",
+      "video": "at1CsLu4RIU_53_0to197"
+    },
+    {
+      "PTV": 5,
+      "SA": 3,
+      "general_avg": 4.0,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "material",
+        "gravity",
+        "inertia"
+      ],
+      "prompt": "A person blows a bubble gum bubble while sitting on a park bench, the bubble expanding until it pops and deflates back onto their face.",
+      "video": "fluid_239"
+    },
+    {
+      "PTV": 4,
+      "SA": 5,
+      "general_avg": 4.666666666666667,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "fluid_continuity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "fluid_continuity",
+        "flow_dynamics",
+        "material"
+      ],
+      "prompt": "A person squeezes a tube of toothpaste, a continuous stream emerging onto a toothbrush.",
+      "video": "fluid_405"
+    },
+    {
+      "PTV": 4,
+      "SA": 5,
+      "general_avg": 4.666666666666667,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "material",
+        "impenetrability"
+      ],
+      "prompt": "A child's toy hammer smashes a small plastic egg, breaking it open.",
+      "video": "mechanics_182"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "inertia",
+        "collision"
+      ],
+      "prompt": "A badminton shuttlecock is served underhand, traveling across the net and landing within the service box.",
+      "video": "mechanics_26"
+    },
+    {
+      "PTV": 5,
+      "SA": 3,
+      "general_avg": 4.333333333333333,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "gravity",
+        "material",
+        "momentum"
+      ],
+      "prompt": "An outside hitter hits a line shot, the ball bouncing sharply off the side line.",
+      "video": "collision_6"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "buoyancy": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "fluid_continuity": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "buoyancy",
+        "boundary_interaction",
+        "fluid_continuity",
+        "flow_dynamics"
+      ],
+      "prompt": "A hand holds a small pink-haired doll above a clear glass filled with water and ice cubes. The hand drops the doll into the liquid. The lightweight toy bobs back up, floating buoyantly on the water's surface among the ice.",
+      "video": "ANAekpD8mDQ_28_55to547"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.666666666666667,
+      "persistence": 5,
+      "physical": {
+        "avg": 4.3333,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "fluid_continuity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 3,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "fluid_continuity",
+        "material",
+        "boundary_interaction"
+      ],
+      "prompt": "A person mops up a puddle of water on a concrete floor, the water disappearing as the mop passes.",
+      "video": "lighting_359"
+    },
+    {
+      "PTV": 5,
+      "SA": 1,
+      "general_avg": 3.6666666666666665,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "flow_dynamics",
+        "boundary_interaction",
+        "gravity"
+      ],
+      "prompt": "A person carries a heavy bucket while wading through chest-deep water.",
+      "video": "gravity_36"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "gravity",
+        "momentum"
+      ],
+      "prompt": "A player hits a forehand drive, the ball spinning rapidly as it crosses the net.",
+      "video": "collision_368"
+    },
+    {
+      "PTV": 5,
+      "SA": 2,
+      "general_avg": 3.6666666666666665,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "gravity",
+        "impenetrability",
+        "momentum"
+      ],
+      "prompt": "A player performs a bicycle kick; their foot makes contact with the ball, launching it upward.",
+      "video": "collision_387"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "gravity",
+        "impenetrability",
+        "momentum"
+      ],
+      "prompt": "A player checks another player, sending them sprawling onto the ice.",
+      "video": "collision_431"
+    },
+    {
+      "PTV": 5,
+      "SA": 3,
+      "general_avg": 4.0,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "material"
+      ],
+      "prompt": "A blue grabber tool holds a tennis ball above a pile of green kinetic sand on a wooden table. The grabber then releases the ball. The ball falls onto the kinetic sand, forming a depression upon impact. Static shot with no camera movement.",
+      "video": "0017_perspective-center_trimmed-ball-in-sand"
+    },
+    {
+      "PTV": 3,
+      "SA": 3,
+      "general_avg": 3.6666666666666665,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "momentum",
+        "collision",
+        "impenetrability",
+        "gravity"
+      ],
+      "prompt": "A yellow rubber duck is positioned in the middle of a line of black and white dominoes on a wooden table. A stick attached to a black rotating platform rotates clockwise and knocks the first domino block. The dominoes topple over in a chain reaction, knocking the rubber duck. Static shot with no camera movement.",
+      "video": "0056_perspective-center_trimmed-duck-and-dominos"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 3.6666666666666665,
+      "persistence": 2,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "buoyancy": {
+            "score": 5,
+            "status": "scored"
+          },
+          "displacement": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "material",
+        "flow_dynamics",
+        "displacement",
+        "buoyancy"
+      ],
+      "prompt": "The person gently places an egg yolk in a measuring cup into a pot of boiling water. The egg yolk quickly cooks and solidifies due to the heat.",
+      "video": "B_e9xjkuVy4_000124_000134"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "reflection": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "reflection",
+        "shadow",
+        "impenetrability"
+      ],
+      "prompt": "A blonde woman in a red tank top and leggings performs stretching exercises in a brightly lit gym. A large mirror on the wall behind her reflects her every movement. As she shifts her body, her vibrant reflection moves in exact synchronization across the smooth glass surface.",
+      "video": "zTt7hkz0O8M_17_102to320"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "impenetrability",
+        "material"
+      ],
+      "prompt": "An orange inflatable basketball is suspended above a black plastic crate placed on a wooden table. The ball is then released. The ball falls and lands in the crate. Static shot with no camera movement.",
+      "video": "0014_perspective-center_trimmed-ball-in-basket"
+    },
+    {
+      "PTV": 5,
+      "SA": 3,
+      "general_avg": 4.333333333333333,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "shadow",
+        "inertia",
+        "material",
+        "impenetrability"
+      ],
+      "prompt": "A motorcycle rests on its kickstand on dry, textured sand. As the bike is lifted and begins to roll forward, the sharp, dark shadows cast by its front wheel, intricate brake rotor, and suspension forks stretch and glide dynamically across the uneven ground.",
+      "video": "LReETYVrmo0_7_70to284"
+    },
+    {
+      "PTV": 5,
+      "SA": 2,
+      "general_avg": 4.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "gravity",
+        "material",
+        "momentum"
+      ],
+      "prompt": "A person throws a snowball with great force, causing it to leave an impact crater in a soft snow bank.",
+      "video": "collision_196"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "displacement": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "fluid_continuity": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "flow_dynamics",
+        "displacement",
+        "boundary_interaction",
+        "fluid_continuity"
+      ],
+      "prompt": "A young woman in a polka dot apron stirs food in a pan with a wooden spoon. She then tilts the pan, pouring the hot contents so the liquid flows continuously down into a bowl on the kitchen counter.",
+      "video": "Sl3C5JMaCTo_22_0to159"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.333333333333333,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "momentum",
+        "impenetrability"
+      ],
+      "prompt": "A person throws a frisbee that tumbles along the ground before stopping.",
+      "video": "mechanics_369"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.666666666666667,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "impenetrability",
+        "collision",
+        "momentum"
+      ],
+      "prompt": "A horseshoe is tossed, landing around a metal stake.",
+      "video": "mechanics_52"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.666666666666667,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "impenetrability",
+        "momentum"
+      ],
+      "prompt": "A small toy car is thrown across a room, stopping against a wall.",
+      "video": "mechanics_520"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.666666666666667,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "momentum",
+        "impenetrability",
+        "gravity"
+      ],
+      "prompt": "Two rows of alternating black and white dominoes are set up on a wooden table with a gap between the two rows. A wooden stick attached to a rotating platform rotates clockwise and knocks the first domino in the first row. The dominoes in the first row topple over one by one, bridging the gap and causing the second row to also topple. Static shot with no camera movement.",
+      "video": "0050_perspective-center_trimmed-dominos-with-space"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "buoyancy": {
+            "score": 5,
+            "status": "scored"
+          },
+          "displacement": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "displacement",
+        "buoyancy",
+        "flow_dynamics",
+        "material"
+      ],
+      "prompt": "A bundle of lit matchsticks is placed in a bowl of red liquid. A glass jar gets lowered and covers the matchsticks. The burning matches consume oxygen, creating a vacuum that pulls the liquid into the jar. Static shot with no camera movement.",
+      "video": "0164_perspective-center_trimmed-siphon"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 4.5,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 3,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "impenetrability",
+        "collision",
+        "material"
+      ],
+      "prompt": "A yellow rubber ducky is suspended above an open dark green fabric box on a wooden table. The duck is then released. The duck falls due to gravity and lands inside the box. Static shot with no camera movement.",
+      "video": "0059_perspective-center_trimmed-duck-falls-in-box"
+    },
+    {
+      "PTV": 3,
+      "SA": 3,
+      "general_avg": 3.6666666666666665,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "inertia",
+        "impenetrability",
+        "momentum",
+        "collision"
+      ],
+      "prompt": "An olive green fabric box is on a light wood surface. A brown tennis ball rolls out of the black tube sitting on the table and rolls towards the box. The tennis ball impacts the fabric box, pushing it across the surface. Static shot with no camera movement.",
+      "video": "0152_perspective-center_trimmed-roll-in-box"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "reflection": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "reflection",
+        "shadow"
+      ],
+      "prompt": "A teapot on a rotating display base that rotates clockwise in front of a mirror reflecting the teapot's image. The teapot's reflection in the mirror rotates in the opposite direction. Static shot with no camera movement.",
+      "video": "0122_perspective-center_trimmed-mirror-teapot-rotate"
+    },
+    {
+      "PTV": 5,
+      "SA": 2,
+      "general_avg": 4.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "impenetrability",
+        "inertia"
+      ],
+      "prompt": "A pink block is being lowered towards a simple structure made of colorful blocks resembling a gate. The pink block hits the gate structure, causing it to collapse. Static shot with no camera movement.",
+      "video": "0173_perspective-center_trimmed-stable-blocks"
+    },
+    {
+      "PTV": 2,
+      "SA": 4,
+      "general_avg": 3.6666666666666665,
+      "persistence": 5,
+      "physical": {
+        "avg": 4.75,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 4,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "momentum",
+        "material",
+        "gravity"
+      ],
+      "prompt": "A piece of clear glass resting on the edge of a light-colored wooden table against a plain white wall. A blue tennis ball rolls on the wooden table and towards the glass. The ball collides with the glass, causing it to fall off the table and shatter. Static shot with no camera movement.",
+      "video": "0026_perspective-center_trimmed-ball-rolls-on-glass"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 4.666666666666667,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "impenetrability",
+        "material",
+        "momentum"
+      ],
+      "prompt": "A metal pipe smashes a pumpkin, causing its insides to spill out.",
+      "video": "collision_264"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "displacement": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "fluid_continuity": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "flow_dynamics",
+        "displacement",
+        "fluid_continuity",
+        "boundary_interaction"
+      ],
+      "prompt": "A shiny silver espresso machine sits against an orange wall, next to a bright green coffee bag and a bean-filled grinder. Dark, rich espresso begins to flow smoothly from the machine's metal spout, streaming downward in a steady, continuous liquid pour.",
+      "video": "57UqPDirHoU_15_24to135"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.666666666666667,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "material",
+        "momentum",
+        "impenetrability"
+      ],
+      "prompt": "Nunchucks are swung, striking a punching bag, creating a visible ripple effect.",
+      "video": "mechanics_118"
+    },
+    {
+      "PTV": 3,
+      "SA": 4,
+      "general_avg": 4.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "material",
+        "momentum",
+        "gravity"
+      ],
+      "prompt": "A small throwing axe is launched and lodges in a wooden fence post, causing splintering.",
+      "video": "mechanics_218"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "momentum",
+        "collision",
+        "inertia",
+        "shadow"
+      ],
+      "prompt": "A golfer chips the ball onto the green, the ball rolling smoothly towards the hole.",
+      "video": "mechanics_35"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "impenetrability",
+        "material"
+      ],
+      "prompt": "A landscaper uses a chain saw to cut down a small tree, the tree falling to the ground.",
+      "video": "mechanics_547"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "momentum",
+        "collision",
+        "gravity",
+        "inertia"
+      ],
+      "prompt": "A single domino tips over, causing a chain reaction of dominoes falling down a long slanted line.",
+      "video": "mechanics_56"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "gravity",
+        "material",
+        "impenetrability"
+      ],
+      "prompt": "A woodcutter with a long handled axe chops down a thick tree in a forest.",
+      "video": "mechanics_579"
+    },
+    {
+      "PTV": 5,
+      "SA": 2,
+      "general_avg": 4.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "flow_dynamics",
+        "gravity",
+        "material"
+      ],
+      "prompt": "Snow melts and slides down the mountain cliff in the scenic landscape.",
+      "video": "PNs68O5JSKg_160_0to156"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "shadow",
+        "inertia"
+      ],
+      "prompt": "A sleek, gold car drives forward along a dusty dirt road under a bright, clear sky. The strong sunlight casts a sharp, dark shadow of the moving vehicle, which shifts and travels across the unpaved ground beside it as the car advances.",
+      "video": "2CH9DL5j-XA_13_0to130"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.333333333333333,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "impenetrability",
+        "collision",
+        "momentum"
+      ],
+      "prompt": "A person's finger pokes a stack of CDs, creating a small gap between the top two discs.",
+      "video": "lighting_73"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 4.666666666666667,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "buoyancy": {
+            "score": 5,
+            "status": "scored"
+          },
+          "reflection": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "reflection",
+        "shadow",
+        "buoyancy"
+      ],
+      "prompt": "A white boat glides down the center of a narrow canyon surrounded by towering rock walls. The calm water acts as a mirror, perfectly reflecting the sunlit stone curves and the hull. As the vessel moves forward, its gentle wake ripples outward, subtly distorting the reflections.",
+      "video": "4y1a9bjbxQU_27_0to128"
+    },
+    {
+      "PTV": 5,
+      "SA": 2,
+      "general_avg": 4.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "material",
+        "collision",
+        "impenetrability"
+      ],
+      "prompt": "A bubble gum bubble is blown and then punctured using a finger.",
+      "video": "fluid_336"
+    },
+    {
+      "PTV": 1,
+      "SA": 5,
+      "general_avg": 3.3333333333333335,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "material",
+        "collision",
+        "impenetrability"
+      ],
+      "prompt": "A small piece of wood is broken along the grain creating a small splintered tear.",
+      "video": "hardness_529"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "momentum",
+        "inertia",
+        "impenetrability"
+      ],
+      "prompt": "A skater pushes off the wall of the ice rink, gaining momentum before beginning their routine.",
+      "video": "mechanics_152"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.333333333333333,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "inertia",
+        "impenetrability"
+      ],
+      "prompt": "An athlete with a prosthetic arm throws a hammer, emphasizing the motion of the arm and the hammer's flight.",
+      "video": "mechanics_240"
+    },
+    {
+      "PTV": 4,
+      "SA": 2,
+      "general_avg": 3.6666666666666665,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "impenetrability",
+        "inertia"
+      ],
+      "prompt": "A car's hood, propped open with a stick, is lifted from the other side; the stick comes loose and the hood begins to fall.",
+      "video": "mechanics_412"
+    },
+    {
+      "PTV": 2,
+      "SA": 2,
+      "general_avg": 3.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "momentum",
+        "collision",
+        "impenetrability",
+        "inertia"
+      ],
+      "prompt": "A light beige coffee table with a black kettlebell in the center and a yellow rubber duck on the right. A grey tennis ball rolls out of a black tube on the left side of the table, flies towards the duck and kettlebell, hits the kettlebell, and bounces back rolling left into the tube. Static shot with no camera movement.",
+      "video": "0008_perspective-center_trimmed-ball-hits-duck"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "inertia",
+        "impenetrability",
+        "collision"
+      ],
+      "prompt": "The athlete performs a pole vault jump over the bar. The athlete then falls back to the ground under the influence of gravity.",
+      "video": "k-y525A8mRw_000008_000018"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.666666666666667,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "shadow",
+        "inertia",
+        "impenetrability"
+      ],
+      "prompt": "A person walks confidently across a rocky desert. Under the warm sunlight, the person casts a long, distinct shadow that stretches and shifts dynamically across the uneven ground as they move.",
+      "video": "FNIitZt3pyc_59_78to215"
+    },
+    {
+      "PTV": 5,
+      "SA": 3,
+      "general_avg": 4.333333333333333,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "impenetrability",
+        "inertia"
+      ],
+      "prompt": "A grabber tool carefully placing a blue wooden block on top of a yellow block which is balanced on a red block forming an L shape. The stack loses its balance and collapses. Static shot with no camera movement.",
+      "video": "0182_perspective-center_trimmed-unstable-block-stack"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 3.6666666666666665,
+      "persistence": 2,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "reflection": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "reflection",
+        "shadow",
+        "inertia"
+      ],
+      "prompt": "A child in a white dress walks towards a mirror, her reflection shifting and expanding as she gets closer. A woman stands beside her while surrounding glass surfaces endlessly duplicate their figures, bouncing their moving reflections across the room.",
+      "video": "VJ82LkozoT0_60_0to175"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 4.666666666666667,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "inertia",
+        "collision"
+      ],
+      "prompt": "The athlete throws the discus across the field. The discus flies through the air following a parabolic trajectory and lands on the field.",
+      "video": "Lt0TIkZdUs4_000003_000013"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "shadow",
+        "inertia"
+      ],
+      "prompt": "A sleek yellow sports car drives from left to right down a dirt road bordered by tall grass. As it moves, the car casts a distinct, dark shadow that glides rapidly across the uneven ground alongside the vehicle.",
+      "video": "3pcZAS8d7Ic_85_0to237"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.666666666666667,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "shadow",
+        "material"
+      ],
+      "prompt": "A man in a shiny white outfit with a massive inflated waist structure walks forward. Bright lighting casts a distinct, shifting shadow of his bulky silhouette onto the floor, trailing behind him with every step.",
+      "video": "EF6eDVTI8tg_6_91to197"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.666666666666667,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "displacement": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "fluid_continuity": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "flow_dynamics",
+        "displacement",
+        "fluid_continuity",
+        "boundary_interaction"
+      ],
+      "prompt": "A glass bottle filled with dark amber syrup sits on a rustic wooden table. In the foreground, a wooden spoon containing the same thick liquid tilts downward. The viscous syrup flows smoothly off the edge of the spoon in a slow, continuous stream.",
+      "video": "A3y_x1XMu-4_17_227to407"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "displacement": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "fluid_continuity": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "flow_dynamics",
+        "displacement",
+        "fluid_continuity",
+        "boundary_interaction"
+      ],
+      "prompt": "A glass separatory funnel holds a layered yellow and amber liquid directly above an empty glass beaker. The blue-knobbed valve at the base of the funnel opens, releasing a steady stream of the pale yellow fluid. The liquid flows smoothly downward, splashing into and slowly filling the beaker below.",
+      "video": "HaWe0Af_0hg_6_0to222"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "reflection": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "reflection",
+        "shadow"
+      ],
+      "prompt": "A bulky, dark metallic robot figure stands enclosed behind a clear glass pane. As the light shifts, bright reflections of an overhead lamp glide smoothly across the surface of the glass. The shifting illumination also casts dynamic, gleaming reflections across the robot's polished metallic armor.",
+      "video": "xDxQMZjHR4s_3_18to227"
+    },
+    {
+      "PTV": 5,
+      "SA": 3,
+      "general_avg": 3.6666666666666665,
+      "persistence": 3,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "flow_dynamics",
+        "boundary_interaction",
+        "material",
+        "gravity"
+      ],
+      "prompt": "Liquid soap is poured from a dispenser into a sink, producing bubbles.",
+      "video": "fluid_75"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 4.666666666666667,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "displacement": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "fluid_continuity": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "displacement",
+        "flow_dynamics",
+        "boundary_interaction",
+        "fluid_continuity"
+      ],
+      "prompt": "Hot chocolate is poured from a mug into a saucer, a small amount sloshing over the edge.",
+      "video": "fluid_83"
+    },
+    {
+      "PTV": 2,
+      "SA": 2,
+      "general_avg": 2.6666666666666665,
+      "persistence": 4,
+      "physical": {
+        "avg": 4.25,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 3,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 4,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "impenetrability",
+        "material"
+      ],
+      "prompt": "A rower's hands release the oar, and the oar falls into the boat, making a gentle thud.",
+      "video": "mechanics_140"
+    },
+    {
+      "PTV": 5,
+      "SA": 2,
+      "general_avg": 4.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "momentum",
+        "material"
+      ],
+      "prompt": "A player drops the ball during a handoff, the ball bounces off the ground, creating a visible impact.",
+      "video": "mechanics_166"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "inertia",
+        "impenetrability"
+      ],
+      "prompt": "A librarian pushes a book off a high shelf, causing it to fall open onto the floor.",
+      "video": "mechanics_281"
+    },
+    {
+      "PTV": 5,
+      "SA": 2,
+      "general_avg": 2.6666666666666665,
+      "persistence": 1,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "inertia"
+      ],
+      "prompt": "An athlete throws a hammer, the rotation of the hammer head clearly visible against the sky.",
+      "video": "mechanics_42"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 4.666666666666667,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "material",
+        "momentum",
+        "impenetrability"
+      ],
+      "prompt": "A wedge is driven into a log using a sledgehammer, splitting the log cleanly apart.",
+      "video": "mechanics_494"
+    },
+    {
+      "PTV": 5,
+      "SA": 2,
+      "general_avg": 4.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "material",
+        "momentum"
+      ],
+      "prompt": "A gymnast drops from the parallel bars and lands safely on the mat below.",
+      "video": "mechanics_72"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "momentum",
+        "material",
+        "inertia"
+      ],
+      "prompt": "A person on a bicycle collides with a snowbank, their bike momentarily stopping.",
+      "video": "mechanics_81"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "boundary_interaction",
+        "material",
+        "gravity"
+      ],
+      "prompt": "A water balloon is thrown against a brick wall, splattering water and leaving a wet mark.",
+      "video": "mechanics_87"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "buoyancy": {
+            "score": 5,
+            "status": "scored"
+          },
+          "displacement": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "displacement",
+        "buoyancy",
+        "gravity"
+      ],
+      "prompt": "A small piece of crumpled white paper is being lowered into a tall glass containing blue liquid with a green band showing the water level. The crumpled paper is released into the glass. The paper sinks to the bottom, causing the liquid level to rise. Static shot with no camera movement.",
+      "video": "0137_perspective-center_trimmed-paper-in-water"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "inertia",
+        "impenetrability",
+        "collision",
+        "shadow"
+      ],
+      "prompt": "The person in blue launches the yellow frisbee across the lawn. The frisbee flies through the air, following a parabolic trajectory before landing on the grass.",
+      "video": "e8KlPriHwBU_000025_000035"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.666666666666667,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "shadow",
+        "inertia",
+        "material"
+      ],
+      "prompt": "A gray Mustang performs a fierce burnout on a desert road, spinning its rear tires to churn up a thick cloud of white smoke. Bright sunlight casts a dark, sharp shadow of the car across the pavement, while the driver's shadow shifts dynamically inside the cabin.",
+      "video": "64bzaj2uHC4_44_16to313"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "flow_dynamics",
+        "inertia",
+        "boundary_interaction",
+        "shadow"
+      ],
+      "prompt": "A powerful waterfall cascades down a moss-covered cliff, the rushing water flowing continuously over jagged rocks and churning into a drifting mist. In the foreground, a blue car drives from left to right across a stone bridge.",
+      "video": "Pmq00R5zrEo_9_0to107"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 4.75,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "buoyancy": {
+            "score": 4,
+            "status": "scored"
+          },
+          "displacement": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "buoyancy",
+        "gravity",
+        "displacement",
+        "boundary_interaction"
+      ],
+      "prompt": "A red strawberry drops into a glass filled with foamy pink liquid. As the fruit submerges, it displaces the drink, forcing the liquid level to rise and the surface foam to splash outward.",
+      "video": "UsL5HzxP68A_2_76to287"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.333333333333333,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "fluid_continuity": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "flow_dynamics",
+        "boundary_interaction",
+        "fluid_continuity"
+      ],
+      "prompt": "A stream of water from a handheld nozzle hits a small oil fire, extinguishing the blaze.",
+      "video": "fluid_553"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "material",
+        "collision"
+      ],
+      "prompt": "A large pumpkin is placed on a small, flimsy stool; the stool breaks, and the pumpkin rolls onto the ground.",
+      "video": "hardness_339"
+    },
+    {
+      "PTV": 5,
+      "SA": 4,
+      "general_avg": 4.666666666666667,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "material",
+        "momentum"
+      ],
+      "prompt": "A luger's sled impacts a small snowbank at the edge of the track, causing a slight spray of snow.",
+      "video": "mechanics_111"
+    },
+    {
+      "PTV": 5,
+      "SA": 2,
+      "general_avg": 3.6666666666666665,
+      "persistence": 4,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "inertia": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "material",
+        "gravity",
+        "inertia"
+      ],
+      "prompt": "A rectangular pizza base is thrown and caught several times; the edges become increasingly rounded with each toss.",
+      "video": "mechanics_401"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "material"
+      ],
+      "prompt": "An athlete runs, jumps, and lands, creating a small indentation in the sand.",
+      "video": "mechanics_454"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "material": {
+            "score": 5,
+            "status": "scored"
+          },
+          "shadow": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "material",
+        "impenetrability",
+        "collision",
+        "shadow"
+      ],
+      "prompt": "A black balloon is sitting on a wooden table next to a small rotating platform with a lit matchstick taped to it. The match rotates clockwise and touches the balloon. The balloon immediately pops upon contact with the flame. Static shot with no camera movement.",
+      "video": "0113_perspective-center_trimmed-match-blows-balloon"
+    },
+    {
+      "PTV": 1,
+      "SA": 5,
+      "general_avg": 2.3333333333333335,
+      "persistence": 1,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "displacement": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "fluid_continuity": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "displacement",
+        "flow_dynamics",
+        "fluid_continuity",
+        "boundary_interaction"
+      ],
+      "prompt": "Water is dispensed into plastic bottles on a rotary filling machine. The bottles are filled with water.",
+      "video": "WgrxxdVBEGc_50_64to186"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": 5,
+            "status": "scored"
+          },
+          "displacement": {
+            "score": 5,
+            "status": "scored"
+          },
+          "flow_dynamics": {
+            "score": 5,
+            "status": "scored"
+          },
+          "fluid_continuity": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "flow_dynamics",
+        "fluid_continuity",
+        "displacement",
+        "boundary_interaction"
+      ],
+      "prompt": "A woman in a kitchen tilts a bowl, pouring a smooth, steady stream of yellow liquid into a pot below. The thick liquid flows continuously from the rim, pooling inside the cookware. She then drags a wooden spoon through the liquid, stirring it into a swirling motion.",
+      "video": "6-75qQ0rpE4_10_17to126"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": null,
+        "coverage": 0.0,
+        "laws": {
+          "boundary_interaction": {
+            "score": null,
+            "status": "failed"
+          },
+          "displacement": {
+            "score": null,
+            "status": "failed"
+          },
+          "flow_dynamics": {
+            "score": null,
+            "status": "failed"
+          },
+          "fluid_continuity": {
+            "score": null,
+            "status": "failed"
+          }
+        },
+        "missing_laws": [
+          "displacement",
+          "flow_dynamics",
+          "fluid_continuity",
+          "boundary_interaction"
+        ]
+      },
+      "physical_laws": [
+        "displacement",
+        "flow_dynamics",
+        "fluid_continuity",
+        "boundary_interaction"
+      ],
+      "prompt": "A bald, bearded man in a dimly lit bar tilts a blender, pouring a thick white liquid into a glass. The liquid flows smoothly and continuously from the spout, cascading down to fill the container. He then holds up the freshly poured drink.",
+      "video": "7_O1YdVAWSU_14_0to102"
+    }
+  ],
+  "visual_config": {
+    "fps": null,
+    "max_height": 360
+  }
+}

@@ -6,20 +6,47 @@
 <p>{{ site.description }}</p>
 
 <h2>Method</h2>
-<p>See the paper{% if site.paper_url %} (<a href="{{ site.paper_url }}">link</a>){% endif %} for the full evaluation methodology, scoring schema, and dataset construction.</p>
+<p>
+    Each video model in the catalog is run on a fixed prompt set per dataset (humaneval / wmb / video_phy_2 / physics_iq).
+    Outputs are scored by multiple evaluators (Claude, Gemini, GPT, Qwen-9B/27B/397B, our finetuned checkpoints) under several scoring schemas
+    (<code>plain/v1</code>, <code>plain/v2</code>, <code>subq_hint/v1</code>, …) producing a per-prompt <code>gen_avg</code> (general fidelity) and
+    <code>phys_avg</code> (physical correctness) score, plus per-physical-law scores. The leaderboard shows the newest
+    <em>coverage&nbsp;&gt;&nbsp;0</em> result per <code>(model, dataset, subset, evaluator, schema)</code>; older runs are kept in each row's history.
+</p>
+<p>
+    Aggregate <code>gen_avg</code>/<code>phys_avg</code> are <em>domain-pooled</em>: arithmetic mean over per-prompt scores. Macro-averaging
+    across physical laws produces different rankings; we ship the domain-pooled view because it matches the upstream registry.
+</p>
 
 <h2>Citation</h2>
-<div class="placeholder">
-    BibTeX renders here in Round 3+.
-</div>
+<pre>@misc{phyground2026,
+  title  = { {{ site.title }}: a physics-grounded benchmark for video generation},
+  author = {phyground contributors},
+  year   = 2026,
+  url    = {https://github.com/phyground/phyground.github.io},
+  note   = {Public site; videos hosted at https://huggingface.co/juyil}
+}</pre>
 
 <h2>Resources</h2>
 <ul>
-    {% if site.paper_url %}<li><a href="{{ site.paper_url }}">Paper</a></li>{% endif %}
-    {% if site.github_url %}<li><a href="{{ site.github_url }}">GitHub repository</a></li>{% endif %}
-    {% if site.huggingface_url %}<li><a href="{{ site.huggingface_url }}">HuggingFace organization (videos)</a></li>{% endif %}
+    {% if site.paper_url %}<li><a href="{{ site.paper_url }}">Paper (arXiv)</a></li>{% endif %}
+    <li><a href="{{ site.github_url }}">GitHub repository</a> ({{ site.title }})</li>
+    <li><a href="{{ site.huggingface_url }}">HuggingFace organization</a> &mdash; raw video assets</li>
+    {% if site.huggingface_dataset_url %}<li><a href="{{ site.huggingface_dataset_url }}">HuggingFace dataset</a> &mdash; <code>juyil/wmbench-public</code></li>{% endif %}
 </ul>
 
 <h2>License &amp; contact</h2>
-<p>Code: MIT (see <code>LICENSE</code>). Generated videos: license per upstream model. Contact: open an issue on the GitHub repo.</p>
+<p>Code: MIT (see <code>LICENSE</code>). Generated videos: per upstream model license (HuggingFace dataset cards on <code>juyil</code>). Hand-curated paperdemo annotations: CC-BY-4.0 unless otherwise noted in the manifest.</p>
+<p>Questions / corrections: open an issue on the GitHub repo, or contact the corresponding author listed in the paper.</p>
+
+<h2>Build provenance</h2>
+{% if build_meta %}
+<p style="font-size:0.9rem;color:var(--gray-dark);">
+    {% if build_meta.built_at %}Built <code>{{ build_meta.built_at }}</code>{% endif %}
+    {% if build_meta.snapshot_sha %} &middot; snapshot <code>{{ build_meta.snapshot_sha[:16] }}…</code>{% endif %}
+    {% if build_meta.registry_sha256 %}<br>registry <code>{{ build_meta.registry_sha256[:12] }}…</code>{% endif %}
+    {% if build_meta.paperdemo_manifest_sha256 %} &middot; paperdemo <code>{{ build_meta.paperdemo_manifest_sha256[:12] }}…</code>{% endif %}
+    {% if build_meta.model_catalog_sha256 %} &middot; catalog <code>{{ build_meta.model_catalog_sha256[:12] }}…</code>{% endif %}
+</p>
+{% endif %}
 {% endblock %}

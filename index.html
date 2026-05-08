@@ -39,28 +39,79 @@
     <p class="lead">A physics-grounded benchmark for video generation. Browse model outputs by physical law, compare side-by-side, and explore evaluator-by-dataset leaderboards.</p>
     <div class="hero-actions">
         
-        <a class="btn btn-outline btn-lg" href="https://github.com/phyground/phyground.github.io">GitHub</a>
+        <a class="btn btn-outline btn-lg" href="leaderboard/">View leaderboard</a>
+        <a class="btn btn-outline btn-lg" href="videos/">Browse videos</a>
     </div>
 </section>
 
 <section class="headline-numbers">
     <div class="headline-number"><span class="num">16</span><span class="label">Video models</span></div>
-    <div class="headline-number"><span class="num">0</span><span class="label">Prompts</span></div>
+    <div class="headline-number"><span class="num">79</span><span class="label">Published prompts</span></div>
     <div class="headline-number"><span class="num">163</span><span class="label">Human annotations</span></div>
-    <div class="headline-number"><span class="num">64</span><span class="label">Eval combinations</span></div>
+    <div class="headline-number"><span class="num">64</span><span class="label">Evaluator&times;dataset combos</span></div>
 </section>
 
-<h2>Featured comparison</h2>
-<p>Same prompt, multiple video generators, scored on the same physical law.</p>
-<div class="placeholder">
-    Featured comparison renders here once the snapshot is built (Round 3).
+
+<h2>Featured comparison &mdash; collision</h2>
+<p>Same physical law, multiple video generators, scored side-by-side.</p>
+<div class="video-grid">
+    
+    <figure class="video-card">
+        <video src="https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/collision/cosmos-predict2.5-2b__mechanics_186.mp4" controls muted loop preload="metadata"
+               poster=""></video>
+        <figcaption>
+            <span class="model">cosmos-predict2.5-2b</span>
+            <span class="meta">n_ann = 4</span>
+        </figcaption>
+    </figure>
+    
+    <figure class="video-card">
+        <video src="https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/collision/cosmos-predict2.5-2b__mechanics_257.mp4" controls muted loop preload="metadata"
+               poster=""></video>
+        <figcaption>
+            <span class="model">cosmos-predict2.5-2b</span>
+            <span class="meta">n_ann = 3</span>
+        </figcaption>
+    </figure>
+    
+    <figure class="video-card">
+        <video src="https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/collision/cosmos-predict2.5-2b__collision_380.mp4" controls muted loop preload="metadata"
+               poster=""></video>
+        <figcaption>
+            <span class="model">cosmos-predict2.5-2b</span>
+            <span class="meta">n_ann = 3</span>
+        </figcaption>
+    </figure>
+    
+    <figure class="video-card">
+        <video src="https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/collision/cosmos-predict2.5-2b__mechanics_420.mp4" controls muted loop preload="metadata"
+               poster=""></video>
+        <figcaption>
+            <span class="model">cosmos-predict2.5-2b</span>
+            <span class="meta">n_ann = 3</span>
+        </figcaption>
+    </figure>
+    
+    <figure class="video-card">
+        <video src="https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/collision/ltx-2-19b-dev__collision_156.mp4" controls muted loop preload="metadata"
+               poster=""></video>
+        <figcaption>
+            <span class="model">ltx-2-19b-dev</span>
+            <span class="meta">n_ann = 8</span>
+        </figcaption>
+    </figure>
+    
 </div>
+<p style="margin-top:0.5rem;">
+    <a class="btn btn-outline btn-sm" href="videos/?law=collision">All collision videos &rarr;</a>
+</p>
+
 
 <h2>Browse</h2>
 <div class="entry-cards">
     <a class="entry-card" href="leaderboard/">
         <h3>Leaderboard</h3>
-        <p>Rank video models by evaluator &times; dataset &times; subset.</p>
+        <p>64 evaluator&times;dataset slices across 16 models.</p>
     </a>
     <a class="entry-card" href="videos/">
         <h3>Video Gallery</h3>
@@ -80,7 +131,7 @@
             <div class="footer-left">
                 <p>phyground &mdash; physics-grounded video benchmark</p>
                 
-                <p style="font-size:0.85rem;color:var(--gray-dark);">Built 2026-05-08T07:50:00Z &middot; snapshot <code>5942373c</code></p>
+                <p style="font-size:0.85rem;color:var(--gray-dark);">Built 2026-05-08T08:00:00Z &middot; snapshot <code>988f6113</code></p>
                 
             </div>
             <div class="footer-right">

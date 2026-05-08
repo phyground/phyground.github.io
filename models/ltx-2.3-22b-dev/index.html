@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ltx-2.3-22b-dev &mdash; phyground</title>
+    <meta name="description" content="A physics-grounded benchmark for video generation. Browse model outputs by physical law, compare side-by-side, and explore evaluator-by-dataset leaderboards.">
+    <link rel="stylesheet" href="../../static/css/base.css">
+    
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-left">
+            <div class="navbar-brand">
+                <a class="brand-link" href="../../">phyground</a>
+            </div>
+            <ul class="navbar-menu">
+                <li class="nav-item-wrapper"><a class="nav-link" href="../../">Home</a></li>
+                <li class="nav-item-wrapper"><a class="nav-link" href="../../leaderboard/">Leaderboard</a></li>
+                <li class="nav-item-wrapper"><a class="nav-link" href="../../videos/">Video Gallery</a></li>
+                <li class="nav-item-wrapper"><a class="nav-link" href="../../about/">About</a></li>
+            </ul>
+        </div>
+        <div class="navbar-title">phyground</div>
+        <div class="navbar-actions">
+            
+            <a class="nav-link" href="https://github.com/phyground/phyground.github.io">GitHub</a>
+        </div>
+    </div>
+</nav>
+
+<main id="main" class="main-content">
+    <div class="container">
+        
+<p style="font-size:0.9rem;"><a href="../../">Home</a> &rsaquo; <a href="../../videos/">Videos</a> &rsaquo; ltx-2.3-22b-dev</p>
+<h1>ltx-2.3-22b-dev</h1>
+
+
+<dl class="model-meta">
+    <dt>Family</dt><dd>External</dd>
+    <dt>Params</dt><dd>22.0B</dd>
+    
+    
+    
+    
+    <dt>Source</dt><dd>eval_registry</dd>
+</dl>
+
+<h2>Leaderboard appearances</h2>
+
+
+<table class="lb">
+    <thead><tr><th>Dataset</th><th>Subset</th><th>Evaluator</th><th>Schema</th><th class="num">N</th><th class="num">gen_avg</th><th class="num">phys_avg</th><th class="num">coverage</th><th>datetime</th><th>raw</th></tr></thead>
+    <tbody>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>claude-opus-4.7</td>
+            <td>cot/v4</td>
+            <td class="num">250</td>
+            <td class="num">3.30</td>
+            <td class="num">3.11</td>
+            <td class="num">1.00</td>
+            <td>04-22 22:03:33</td>
+            <td>—</td>
+        </tr>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>gemini</td>
+            <td>cot_subq/v1</td>
+            <td class="num">250</td>
+            <td class="num">2.85</td>
+            <td class="num">2.78</td>
+            <td class="num">1.00</td>
+            <td>04-23 20:02:14</td>
+            <td><a href="../../scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_170017.json" download>JSON</a></td>
+        </tr>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>qwen-27b</td>
+            <td>cot_subq/v1</td>
+            <td class="num">250</td>
+            <td class="num">4.06</td>
+            <td class="num">4.89</td>
+            <td class="num">1.00</td>
+            <td>04-23 11:27:15</td>
+            <td><a href="../../scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_101908.json" download>JSON</a></td>
+        </tr>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>qwen-9b</td>
+            <td>cot_subq/v1</td>
+            <td class="num">250</td>
+            <td class="num">4.24</td>
+            <td class="num">4.69</td>
+            <td class="num">1.00</td>
+            <td>04-23 09:52:36</td>
+            <td><a href="../../scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_092131.json" download>JSON</a></td>
+        </tr>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>qwen-9b</td>
+            <td>subq_hint/v1</td>
+            <td class="num">250</td>
+            <td class="num">2.78</td>
+            <td class="num">2.68</td>
+            <td class="num">1.00</td>
+            <td>04-26 15:10:21</td>
+            <td><a href="../../scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2.3-22b-dev_20260426_144807.json" download>JSON</a></td>
+        </tr>
+        
+    </tbody>
+</table>
+
+
+<h2>Representative videos</h2>
+
+<div class="video-grid">
+    
+    <figure class="video-card">
+        <video src="https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/boundary_interaction/ltx-2.3-22b-dev__collision_222.mp4" controls muted loop preload="metadata"></video>
+        <figcaption>
+            <span class="model">boundary interaction</span>
+            <span class="meta">n_ann=3 · collision_222.mp4</span>
+        </figcaption>
+    </figure>
+    
+    <figure class="video-card">
+        <video src="https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/displacement/ltx-2.3-22b-dev__0143_perspective-center_trimmed-potato-in-water.mp4" controls muted loop preload="metadata"></video>
+        <figcaption>
+            <span class="model">displacement</span>
+            <span class="meta">n_ann=2 · 0143_perspective-center_trimmed-potato-in-water.mp4</span>
+        </figcaption>
+    </figure>
+    
+</div>
+
+
+<p style="margin-top:1.5rem;font-size:0.9rem;">
+    <a href="../../leaderboard/?evaluator=&dataset=&subset=&schema=#ltx-2.3-22b-dev">All leaderboard slices &rarr;</a> ·
+    <a href="../../videos/">Back to gallery</a>
+</p>
+
+    </div>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-main">
+            <div class="footer-left">
+                <p>phyground &mdash; physics-grounded video benchmark</p>
+                
+                <p style="font-size:0.85rem;color:var(--gray-dark);">Built 2026-05-08T08:00:00Z &middot; snapshot <code>988f6113</code></p>
+                
+            </div>
+            <div class="footer-right">
+                <div class="footer-section">
+                    <span class="footer-heading">Site</span>
+                    <ul class="footer-links">
+                        <li><a href="../../">Home</a></li>
+                        <li><a href="../../leaderboard/">Leaderboard</a></li>
+                        <li><a href="../../videos/">Video Gallery</a></li>
+                        <li><a href="../../about/">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <span class="footer-heading">Resources</span>
+                    <ul class="footer-links">
+                        
+                        <li><a href="https://github.com/phyground/phyground.github.io">GitHub</a></li>
+                        <li><a href="https://huggingface.co/juyil">HuggingFace</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2026 phyground.</p>
+            <p class="footer-tagline">Physics-grounded video evaluation</p>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>

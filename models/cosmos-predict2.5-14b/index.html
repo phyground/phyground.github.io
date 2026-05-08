@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cosmos-predict2.5-14b &mdash; phyground</title>
+    <meta name="description" content="A physics-grounded benchmark for video generation. Browse model outputs by physical law, compare side-by-side, and explore evaluator-by-dataset leaderboards.">
+    <link rel="stylesheet" href="../../static/css/base.css">
+    
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-left">
+            <div class="navbar-brand">
+                <a class="brand-link" href="../../">phyground</a>
+            </div>
+            <ul class="navbar-menu">
+                <li class="nav-item-wrapper"><a class="nav-link" href="../../">Home</a></li>
+                <li class="nav-item-wrapper"><a class="nav-link" href="../../leaderboard/">Leaderboard</a></li>
+                <li class="nav-item-wrapper"><a class="nav-link" href="../../videos/">Video Gallery</a></li>
+                <li class="nav-item-wrapper"><a class="nav-link" href="../../about/">About</a></li>
+            </ul>
+        </div>
+        <div class="navbar-title">phyground</div>
+        <div class="navbar-actions">
+            
+            <a class="nav-link" href="https://github.com/phyground/phyground.github.io">GitHub</a>
+        </div>
+    </div>
+</nav>
+
+<main id="main" class="main-content">
+    <div class="container">
+        
+<p style="font-size:0.9rem;"><a href="../../">Home</a> &rsaquo; <a href="../../videos/">Videos</a> &rsaquo; cosmos-predict2.5-14b</p>
+<h1>cosmos-predict2.5-14b</h1>
+<p style="font-size:1.1rem;color:var(--gray-dark);">Cosmos-Predict2.5-14B — Image2World, 93f @ 16fps (~5.8s)</p>
+
+<dl class="model-meta">
+    <dt>Family</dt><dd>Cosmos</dd>
+    <dt>Params</dt><dd>14.0B</dd>
+    <dt>FPS</dt><dd>16</dd>
+    <dt>Frames</dt><dd>93</dd>
+    
+    <dt>Upstream</dt><dd><code>nvidia/Cosmos-Predict2.5-14B</code></dd>
+    <dt>Source</dt><dd>MODEL_CATALOG</dd>
+</dl>
+
+<h2>Leaderboard appearances</h2>
+
+
+<table class="lb">
+    <thead><tr><th>Dataset</th><th>Subset</th><th>Evaluator</th><th>Schema</th><th class="num">N</th><th class="num">gen_avg</th><th class="num">phys_avg</th><th class="num">coverage</th><th>datetime</th><th>raw</th></tr></thead>
+    <tbody>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>claude-opus-4.7</td>
+            <td>cot/v4</td>
+            <td class="num">250</td>
+            <td class="num">3.34</td>
+            <td class="num">3.11</td>
+            <td class="num">1.00</td>
+            <td>04-22 20:17:23</td>
+            <td>—</td>
+        </tr>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>gemini</td>
+            <td>cot_subq/v1</td>
+            <td class="num">250</td>
+            <td class="num">2.57</td>
+            <td class="num">2.61</td>
+            <td class="num">1.00</td>
+            <td>04-23 14:14:16</td>
+            <td><a href="../../scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_111158.json" download>JSON</a></td>
+        </tr>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>qwen-27b</td>
+            <td>cot_subq/v1</td>
+            <td class="num">116</td>
+            <td class="num">4.07</td>
+            <td class="num">4.86</td>
+            <td class="num">1.00</td>
+            <td>04-23 09:13:47</td>
+            <td><a href="../../scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_082629.json" download>JSON</a></td>
+        </tr>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>qwen-9b</td>
+            <td>cot_subq/v1</td>
+            <td class="num">250</td>
+            <td class="num">4.27</td>
+            <td class="num">4.68</td>
+            <td class="num">1.00</td>
+            <td>04-23 08:49:26</td>
+            <td><a href="../../scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_081719.json" download>JSON</a></td>
+        </tr>
+        
+        
+        <tr>
+            <td>humaneval</td>
+            <td>humaneval_set</td>
+            <td>qwen-9b</td>
+            <td>subq_hint/v1</td>
+            <td class="num">250</td>
+            <td class="num">3.01</td>
+            <td class="num">2.95</td>
+            <td class="num">1.00</td>
+            <td>04-26 13:50:30</td>
+            <td><a href="../../scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-14b_20260426_132821.json" download>JSON</a></td>
+        </tr>
+        
+    </tbody>
+</table>
+
+
+<h2>Representative videos</h2>
+
+<div class="video-grid">
+    
+    <figure class="video-card">
+        <video src="https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/flow_dynamics/cosmos-predict2.5-14b__QfWrBHgD9go_5_0to145.mp4" controls muted loop preload="metadata"></video>
+        <figcaption>
+            <span class="model">flow dynamics</span>
+            <span class="meta">n_ann=2 · QfWrBHgD9go_5_0to145.mp4</span>
+        </figcaption>
+    </figure>
+    
+    <figure class="video-card">
+        <video src="https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/fluid_continuity/cosmos-predict2.5-14b__88H1BBqFzXQ_1_118to222.mp4" controls muted loop preload="metadata"></video>
+        <figcaption>
+            <span class="model">fluid continuity</span>
+            <span class="meta">n_ann=2 · 88H1BBqFzXQ_1_118to222.mp4</span>
+        </figcaption>
+    </figure>
+    
+    <figure class="video-card">
+        <video src="https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/gravity/cosmos-predict2.5-14b__mechanics_157.mp4" controls muted loop preload="metadata"></video>
+        <figcaption>
+            <span class="model">gravity</span>
+            <span class="meta">n_ann=3 · mechanics_157.mp4</span>
+        </figcaption>
+    </figure>
+    
+    <figure class="video-card">
+        <video src="https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/inertia/cosmos-predict2.5-14b__mechanics_33.mp4" controls muted loop preload="metadata"></video>
+        <figcaption>
+            <span class="model">inertia</span>
+            <span class="meta">n_ann=2 · mechanics_33.mp4</span>
+        </figcaption>
+    </figure>
+    
+    <figure class="video-card">
+        <video src="https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/shadow/cosmos-predict2.5-14b__lighting_381.mp4" controls muted loop preload="metadata"></video>
+        <figcaption>
+            <span class="model">shadow</span>
+            <span class="meta">n_ann=1 · lighting_381.mp4</span>
+        </figcaption>
+    </figure>
+    
+</div>
+
+
+<p style="margin-top:1.5rem;font-size:0.9rem;">
+    <a href="../../leaderboard/?evaluator=&dataset=&subset=&schema=#cosmos-predict2.5-14b">All leaderboard slices &rarr;</a> ·
+    <a href="../../videos/">Back to gallery</a>
+</p>
+
+    </div>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-main">
+            <div class="footer-left">
+                <p>phyground &mdash; physics-grounded video benchmark</p>
+                
+                <p style="font-size:0.85rem;color:var(--gray-dark);">Built 2026-05-08T08:00:00Z &middot; snapshot <code>988f6113</code></p>
+                
+            </div>
+            <div class="footer-right">
+                <div class="footer-section">
+                    <span class="footer-heading">Site</span>
+                    <ul class="footer-links">
+                        <li><a href="../../">Home</a></li>
+                        <li><a href="../../leaderboard/">Leaderboard</a></li>
+                        <li><a href="../../videos/">Video Gallery</a></li>
+                        <li><a href="../../about/">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <span class="footer-heading">Resources</span>
+                    <ul class="footer-links">
+                        
+                        <li><a href="https://github.com/phyground/phyground.github.io">GitHub</a></li>
+                        <li><a href="https://huggingface.co/juyil">HuggingFace</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2026 phyground.</p>
+            <p class="footer-tagline">Physics-grounded video evaluation</p>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>

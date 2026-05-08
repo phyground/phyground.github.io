@@ -45,15 +45,32 @@ STATIC_OUT_DIR = REPO_ROOT / "static"
 class Page:
     template: str          # path within templates/, e.g. "home/index.html"
     out_path: str          # path within REPO_ROOT, e.g. "index.html" or "leaderboard/index.html"
+    extra_ctx: dict | None = None   # extra Jinja context (e.g. {"model": <model dict>})
 
 
-# Pages currently rendered. Each new top-level page in the plan adds one entry here.
-PAGES: tuple[Page, ...] = (
+# Top-level pages. Per-model pages are appended at render time.
+STATIC_PAGES: tuple[Page, ...] = (
     Page(template="home/index.html", out_path="index.html"),
     Page(template="leaderboard/index.html", out_path="leaderboard/index.html"),
     Page(template="videos/index.html", out_path="videos/index.html"),
+    Page(template="videos/compare.html", out_path="videos/compare/index.html"),
     Page(template="about/index.html", out_path="about/index.html"),
 )
+
+
+def _model_pages(models: list[dict]) -> list[Page]:
+    """One /models/<key>/index.html per model in the snapshot."""
+    out: list[Page] = []
+    for m in models:
+        key = m.get("key")
+        if not key:
+            continue
+        out.append(Page(
+            template="models/detail.html",
+            out_path=f"models/{key}/index.html",
+            extra_ctx={"model": m},
+        ))
+    return out
 
 
 def _load_config(path: Path) -> dict:
@@ -127,9 +144,14 @@ def render(config_path: Path, *, verbose: bool = True) -> None:
         "leaderboard_entries": config.get("leaderboard_entries", []),
         "paperdemo": config.get("paperdemo", []),
         "videos_index": config.get("videos_index", {}),
+        "prompts_index": config.get("prompts_index", {}),
+        "featured_comparison": config.get("featured_comparison", {}),
+        "humaneval_100_summary": config.get("humaneval_100_summary", {}),
     }
 
-    for page in PAGES:
+    pages: list[Page] = list(STATIC_PAGES) + _model_pages(snapshot_ctx["models"])
+
+    for page in pages:
         out_path = REPO_ROOT / page.out_path
         out_path.parent.mkdir(parents=True, exist_ok=True)
         template = env.get_template(page.template)
@@ -140,10 +162,14 @@ def render(config_path: Path, *, verbose: bool = True) -> None:
             "rel": _make_rel(page.out_path),
             **snapshot_ctx,
         }
+        if page.extra_ctx:
+            ctx.update(page.extra_ctx)
         html = template.render(**ctx)
         out_path.write_text(html, encoding="utf-8")
         if verbose:
             print(f"[build_site] rendered {page.template} -> {page.out_path}")
+    if verbose:
+        print(f"[build_site] {len(pages)} pages total")
 
 
 def main(argv: list[str]) -> int:

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% set active_page = 'videos' %}
+{% block title %}Compare &mdash; {{ site.title }}{% endblock %}
+{% block content %}
+<h1>Same-prompt comparison</h1>
+<p>Pick a published prompt; see every model's score side-by-side. Append <code>?prompt_id=&lt;id&gt;</code> to share a specific prompt.</p>
+
+<form class="filters" onsubmit="return false;">
+    <div class="filter" style="min-width: 280px; flex: 1;">
+        <label for="prompt-picker">Prompt</label>
+        <select id="prompt-picker">
+            <option value="">— select a prompt —</option>
+        </select>
+    </div>
+</form>
+
+<section id="compare-view" hidden>
+    <h2 id="compare-title"></h2>
+    <p id="compare-meta" style="color:var(--gray-dark);"></p>
+    <p id="compare-prompt-text" class="caveat"></p>
+    <div class="video-grid" id="compare-videos"></div>
+</section>
+
+<section id="compare-empty">
+    <div class="placeholder">Select a prompt above (or pass <code>?prompt_id=</code>) to compare model outputs.</div>
+</section>
+
+<!-- Inline JSON used by the compare page so the static HTML carries everything. -->
+<script id="prompts-data" type="application/json">{{ prompts_index|tojson }}</script>
+<script id="paperdemo-data" type="application/json">{{ paperdemo|tojson }}</script>
+<script src="{{ rel('static/js/compare.js') }}"></script>
+{% endblock %}

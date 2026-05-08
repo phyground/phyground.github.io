@@ -1,0 +1,127 @@
+{
+  "general_dimensions": [
+    "SA",
+    "PTV",
+    "persistence"
+  ],
+  "inference_config": {
+    "max_tokens": 1024
+  },
+  "judge": "qwen9b:Qwen/Qwen3.5-9B",
+  "meta": {
+    "eval_timestamp": "20260429_122935",
+    "evaluator": "qwen9b",
+    "prompt_config": "subq+human.yaml",
+    "prompt_mode": "eval_prompts",
+    "scheme": "subq_hint",
+    "source_filename": "eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps2_20260429_122923.json",
+    "subset": "anonymous_humaneval_set",
+    "type": "eval_result",
+    "video_model": "veo-3.1"
+  },
+  "num_videos": 3,
+  "prompt_config": "subq+human.yaml",
+  "prompt_mode": "eval_prompts",
+  "results": [
+    {
+      "PTV": 3,
+      "SA": 3,
+      "general_avg": 2.3333333333333335,
+      "persistence": 1,
+      "physical": {
+        "avg": 3.3333,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 3,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 4,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 3,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "impenetrability",
+        "momentum"
+      ],
+      "prompt": "A player hits the ball off the side of the mallet, resulting in an unexpected trajectory.",
+      "video": "collision_156"
+    },
+    {
+      "PTV": 4,
+      "SA": 2,
+      "general_avg": 3.0,
+      "persistence": 3,
+      "physical": {
+        "avg": 2.6667,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 3,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 2,
+            "status": "scored"
+          },
+          "material": {
+            "score": 3,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "material"
+      ],
+      "prompt": "A discus is thrown from a raised platform, landing sharply in the soft sand of a beach, creating a visible impact crater.",
+      "video": "mechanics_236"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 5.0,
+      "persistence": 5,
+      "physical": {
+        "avg": 3.3333,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 2,
+            "status": "scored"
+          },
+          "material": {
+            "score": 3,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "material",
+        "momentum"
+      ],
+      "prompt": "A yo-yo is tossed against a brick wall; it bounces back without sustaining visible damage.",
+      "video": "collision_0"
+    }
+  ],
+  "visual_config": {
+    "fps": 2,
+    "max_height": 360
+  }
+}
