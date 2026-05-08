@@ -312,6 +312,10 @@ All originally pending decisions were resolved by the user during plan generatio
 
 ## Implementation Notes
 
+### Execution Model (mandatory)
+- Drive this plan with the **superpowers `subagent-driven-development`** skill using **opus** subagents, and follow **TDD** (red-green-refactor) inside every subagent: write or extend a failing test before any production code, make it pass, then refactor.
+- Concretely: every `coding` task in the breakdown above is dispatched to an opus subagent via the superpowers harness; the subagent first lands a failing pytest (or a failing audit assertion), then implements the minimum change to make it green, then commits. `analyze` tasks are still routed through `/humanize:ask-codex`.
+
 ### Code Style Requirements
 - Implementation code, comments, file names, and CLI flags MUST NOT contain plan-progress markers like "AC-", "Milestone", "Step", or "Phase". Use descriptive, domain-appropriate names instead (e.g. `defect_class`, `symptom`, `root_cause_path`, `audit_artifacts/`).
 - These markers are for plan documentation only, not for the resulting codebase.
