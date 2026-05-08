@@ -1315,11 +1315,11 @@ def _site_config(catalog: list[dict],
         m["leaderboard_slices"] = _model_leaderboard_cards(m["key"], leaderboard_entries)
 
     # Round 15 (user direction: "没有视频的 这几个不要在 website 显示."): drop
-    # models with zero in-snapshot evidence from the published model set so
+    # models with zero rendered evidence from the published model set so
     # /models/<key>/ pages, the by-model gallery, and the model picker only
     # surface models that actually have something to show. The upstream
-    # MODEL_CATALOG.py is unchanged; future evidence will automatically
-    # un-hide these keys via this same filter.
+    # MODEL_CATALOG.py is unchanged; future evidence un-hides these keys via
+    # this same filter.
     #
     # Round 16 (Codex review): leaderboard_entries are keyed by `video_model`
     # (from `_dedup_leaderboard`), not `model_key`; using the wrong field in
@@ -1328,6 +1328,20 @@ def _site_config(catalog: list[dict],
     # compare-page leak the Round 15 audit missed — `static/js/compare.js`
     # renders one card per `per_model_scores` key, so any hidden model key
     # left in the prompts_index would still surface on `/videos/compare/`.
+    #
+    # Round 17 (Codex Round-16 review): the "zero evidence" framing is
+    # technically coupled to `_HF_PUBLISHED_MODELS` upstream — that allowlist
+    # gates HF URL emission, which makes representative_videos empty for the
+    # 3 partial-coverage models that *do* have humaneval-100 MP4s on disk
+    # (cogvideox1.5-5b-i2v: 24/100; hunyuanvideo-i2v: 33/100;
+    # ltx-2-19b-distilled-fp8: 16/100). After the Round-17 AskUserQuestion
+    # surfaced these numbers, the user re-confirmed "Keep all 8 hidden" with
+    # full data in hand, so the filter result still matches user intent.
+    # The 5 truly empty catalog keys (4 baseline_i2v_* + cogvideox-5b-i2v)
+    # are also intentionally hidden rather than rendered as empty-state
+    # routes (also user-confirmed Round 17). This is a documented
+    # user-validated reduction of AC5 scope, not a closure — see the
+    # goal-tracker row labeled `not-a-closure (user-validated reduction)`.
     models = [m for m in models if m["representative_videos"] or m["leaderboard_slices"]]
     rendered_model_keys = {m["key"] for m in models}
     videos_index = {k: v for k, v in videos_index.items() if k in rendered_model_keys}
