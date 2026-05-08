@@ -35,3 +35,6 @@ _wmbench_src/data/paperdemo/**/*.jpg
 
 # HF upload staging tree (huge, transient).
 hf_staging/
+
+# --- Site-audit artifacts (per-run captures, not shared) ---
+.audit_artifacts/
