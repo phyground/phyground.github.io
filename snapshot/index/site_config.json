@@ -5,7 +5,7 @@
     "model_catalog_sha256": "6c88b41361242b3ed0275c9618f54bca140b42876a0d8bd6f9caf71301b4fb57",
     "paperdemo_manifest_sha256": "55fe4d712c24c103598c6a3647931ef719dfb551c95c675ad138aee609fadd17",
     "registry_sha256": "0d791883c6ec8dec03d1f6db890d6681cdf987a3313e97314d0af83b4ed616fe",
-    "snapshot_sha": "42298c4d7adceedb3839af298c24d3dea0c5fe62218cb865f6f1cc4a8913665b",
+    "snapshot_sha": "cb4614bfc70c7d2a47ca4c7bc201df4861ff33d84e4f11e99e2754094fbdb4e5",
     "vis_datasets_sha256": "69e4761736b5865072345b6c8a753c80b109ef76e5284fb90581c206f591e08e"
   },
   "datasets": [

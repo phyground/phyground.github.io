@@ -2,6 +2,12 @@
   "files": [
     {
       "exists_locally": true,
+      "hf_target_path": "README.md",
+      "local_source": "(synthesized in build_hf_upload_manifest.py)",
+      "sha256": "a1eee35b75fbbf2d70714d5c90ebdff8eb1f6e00f1ccf119ba6e81e6c3da6f8c"
+    },
+    {
+      "exists_locally": true,
       "hf_target_path": "first_images/03zaIVEqtg8_10_0to155.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/03zaIVEqtg8_10_0to155.jpg",
       "sha256": "b5cb2d06a86dff214e96e5f1ea1e144ce46763fc889380cfc61cee5c16be637a"
@@ -5303,7 +5309,7 @@
   "hf_repo_type": "dataset",
   "hf_url_base": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main",
   "n_missing_locally": 0,
-  "n_present_locally": 883,
-  "n_total_files": 883,
+  "n_present_locally": 884,
+  "n_total_files": 884,
   "schema_version": "1"
 }

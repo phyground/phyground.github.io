@@ -14,6 +14,7 @@ the actual `huggingface-cli upload` (which needs a write token).
 |--------|-----------|----------------------------------------|
 | Per-(model, prompt) videos | `videos/<model>/<stem>.mp4`        | `data/videos/<model>/<stem>.mp4` (or `data/videos/<model>-humaneval/<stem>.mp4`) |
 | First-frame thumbnails     | `first_images/<stem>.jpg`          | walked across `data/prompts/<dataset>/first_frames/<stem>.jpg` |
+| Dataset root README        | `README.md`                        | synthesized in `tools/build_hf_upload_manifest.py` (no on-disk source under `_wmbench_src/`) |
 
 There is **no** `paperdemo/` folder and **no** per-source-dataset subdir
 under `first_images/`; the dataset is flat. Paperdemo videos that share a
@@ -23,17 +24,25 @@ stem with a humaneval prompt for the same model are emitted as
 shown without a `<video>` tag — the by-law card still names the model
 and `n_ann`, but does not embed a broken URL.
 
+The dataset root `README.md` is generated deterministically from the
+manifest counts (model dirs × video count × first-frame count); its bytes
+are recorded in the manifest with a real sha256 and `materialize` writes
+it to `hf_staging/README.md` alongside the media tree, so a single
+`huggingface-cli upload --repo-type dataset ... hf_staging .` ships the
+documentation along with the videos.
+
 ## Scope
 
 `snapshot/HF_UPLOAD_MANIFEST.json` is **scoped to the published
-humaneval-100 set + first-frames**, ~885 files / ~890 MB:
+humaneval-100 set + first-frames + dataset README**, 884 files / ~797 MB:
 
-- ~802 humaneval videos (100 prompts × 8 strict-intersection models, plus
+- 800 humaneval videos (100 prompts × 8 strict-intersection models, plus
   the few paperdemo entries that share humaneval stems for a published
   model)
-- ~83 first-frame JPGs (the humaneval-100 prompts that have an upstream
+- 83 first-frame JPGs (the humaneval-100 prompts that have an upstream
   first_frame on disk; a handful of `wmb` and `physics_iq` prompts have
   no first_frame upstream, so the count is below 100)
+- 1 dataset `README.md` (synthesized at build time)
 
 The 8 published model dirs are:
 
