@@ -1332,16 +1332,24 @@ def _site_config(catalog: list[dict],
     # Round 17 (Codex Round-16 review): the "zero evidence" framing is
     # technically coupled to `_HF_PUBLISHED_MODELS` upstream — that allowlist
     # gates HF URL emission, which makes representative_videos empty for the
-    # 3 partial-coverage models that *do* have humaneval-100 MP4s on disk
-    # (cogvideox1.5-5b-i2v: 24/100; hunyuanvideo-i2v: 33/100;
-    # ltx-2-19b-distilled-fp8: 16/100). After the Round-17 AskUserQuestion
-    # surfaced these numbers, the user re-confirmed "Keep all 8 hidden" with
-    # full data in hand, so the filter result still matches user intent.
-    # The 5 truly empty catalog keys (4 baseline_i2v_* + cogvideox-5b-i2v)
-    # are also intentionally hidden rather than rendered as empty-state
-    # routes (also user-confirmed Round 17). This is a documented
-    # user-validated reduction of AC5 scope, not a closure — see the
-    # goal-tracker row labeled `not-a-closure (user-validated reduction)`.
+    # 3 partial-coverage MODEL_CATALOG keys that *do* have humaneval-100 MP4s
+    # on disk (cogvideox1.5-5b-i2v: 24/100; hunyuanvideo-i2v: 33/100;
+    # ltx-2-19b-distilled-fp8: 16/100). The 4 baseline_i2v_* keys come from
+    # eval_registry rows (not MODEL_CATALOG.py); the 5th truly evidence-less
+    # key is cogvideox-5b-i2v (MODEL_CATALOG, 0/100 humaneval-100 MP4s).
+    #
+    # Round 18 (user direction, AskUserQuestion with explicit
+    # catalog-vs-baseline framing): "不足100的不要显示. 都不管了. 网站
+    # 根本不考虑这些模型." ("Don't show models without 100/100 coverage.
+    # Don't bother with them. The website doesn't consider these models at
+    # all.") This is a definitive user-validated reduction: only models with
+    # complete humaneval-100 coverage (currently the 8 keys in
+    # `_HF_PUBLISHED_MODELS`) are part of the website. The 4 omitted catalog
+    # routes (cogvideox-5b-i2v, cogvideox1.5-5b-i2v, hunyuanvideo-i2v,
+    # ltx-2-19b-distilled-fp8) and the 4 eval_registry baselines are *not*
+    # rendered, regardless of any partial MP4 evidence. AC5 stays Active in
+    # the loop framework (immutable text isn't satisfied by reduction); see
+    # the goal-tracker row `not-a-closure (user-validated reduction)`.
     models = [m for m in models if m["representative_videos"] or m["leaderboard_slices"]]
     rendered_model_keys = {m["key"] for m in models}
     videos_index = {k: v for k, v in videos_index.items() if k in rendered_model_keys}
