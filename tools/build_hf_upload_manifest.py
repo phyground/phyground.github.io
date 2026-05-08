@@ -5,7 +5,7 @@ The static site's `<video>` and `<img>` tags reference URLs of the form
 
     {HF_BASE}/<rel>
 
-where `HF_BASE = https://huggingface.co/datasets/juyil/wmbench-public/resolve/main`.
+where `HF_BASE = https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main`.
 This script enumerates every `<rel>` the snapshot needs and writes:
 
   - `snapshot/HF_UPLOAD_MANIFEST.json`  (machine-readable: list of
@@ -30,7 +30,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 WMBENCH_SRC = REPO_ROOT / "_wmbench_src"
 SNAPSHOT_DIR = REPO_ROOT / "snapshot"
 
-HF_REPO = "juyil/wmbench-public"           # `huggingface-cli upload <repo>` target
+HF_REPO = "NU-World-Model-Embodied-AI/phyground"           # `huggingface-cli upload <repo>` target
 HF_REPO_TYPE = "dataset"
 
 
@@ -42,7 +42,7 @@ def _sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
-HF_PREFIX = "https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/"
+HF_PREFIX = "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main/"
 
 
 def _hf_target_from_url(url: str) -> str | None:
@@ -154,7 +154,7 @@ def build_manifest(site_config: dict) -> dict:
         "schema_version": "1",
         "hf_repo": HF_REPO,
         "hf_repo_type": HF_REPO_TYPE,
-        "hf_url_base": "https://huggingface.co/datasets/juyil/wmbench-public/resolve/main",
+        "hf_url_base": "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main",
         "n_total_files": len(manifest_entries),
         "n_present_locally": n_present,
         "n_missing_locally": len(manifest_entries) - n_present,

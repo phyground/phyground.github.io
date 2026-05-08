@@ -1,8 +1,8 @@
-# HuggingFace upload — `juyil/wmbench-public`
+# HuggingFace upload — `NU-World-Model-Embodied-AI/phyground`
 
 The static site references HF URLs of the form:
 
-    https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/<rel>
+    https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main/<rel>
 
 This document walks through populating that dataset so every `<video>` and
 `<img poster=...>` resolves at runtime. The repo handles every step except
@@ -57,11 +57,11 @@ python3 tools/build_site.py --config snapshot/index/site_config.json
 # 4. Materialise the staging tree (also gitignored):
 python3 tools/build_hf_upload_manifest.py --materialize hf_staging/
 
-# 5. Authenticate (one-time, with a write token for juyil/wmbench-public):
+# 5. Authenticate (one-time, with a write token for NU-World-Model-Embodied-AI/phyground):
 huggingface-cli login
 
 # 6. Upload the entire layout in one shot:
-huggingface-cli upload --repo-type dataset juyil/wmbench-public hf_staging .
+huggingface-cli upload --repo-type dataset NU-World-Model-Embodied-AI/phyground hf_staging .
 ```
 
 After step 6 every `<video>` and `<img poster=...>` on the rendered site
@@ -78,14 +78,14 @@ python3 -c "import json; m=json.load(open('snapshot/HF_UPLOAD_MANIFEST.json')); 
 
 ```bash
 # Spot-check a paperdemo URL the home page embeds:
-curl -I "https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/paperdemo/collision/ltx-2-19b-dev__collision_156.mp4"
+curl -I "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main/paperdemo/collision/ltx-2-19b-dev__collision_156.mp4"
 # Expect: HTTP/2 200 + Content-Type: video/mp4
 
 # A humaneval per-(model, prompt) URL the compare page embeds:
-curl -I "https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/videos/cosmos-predict2.5-2b/collision_156.mp4"
+curl -I "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main/videos/cosmos-predict2.5-2b/collision_156.mp4"
 
 # A first-frame thumbnail:
-curl -I "https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/prompts/video_phy_2/first_frames/collision_156.jpg"
+curl -I "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main/prompts/video_phy_2/first_frames/collision_156.jpg"
 ```
 
 Then open the live site and verify playback on:

@@ -43,7 +43,7 @@ WMBENCH_SRC = REPO_ROOT / "_wmbench_src"
 SNAPSHOT_DIR = REPO_ROOT / "snapshot"
 STAGING_DIR = REPO_ROOT / "snapshot.staging"
 
-HF_BASE = "https://huggingface.co/datasets/juyil/wmbench-public/resolve/main"
+HF_BASE = "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main"
 
 
 # ---------- low-level helpers ----------
@@ -945,9 +945,14 @@ def _prompts_index(prompts: list[dict],
         # Prefer in-snapshot score-JSON values where they exist; fall back to
         # the manifest's per_model_scores for any model the JSONs don't cover.
         merged_scores = {**manifest_scores, **score_jsons}
+        # Only emit per_model_videos URLs for (model, prompt) pairs whose
+        # source bytes are present locally; otherwise the rendered site would
+        # embed an HF URL that 404s after upload. The score is still surfaced
+        # so the score table on the compare page stays complete.
         per_model_videos = {
             model_key: _video_hf_url(model_key, ds, pid)
             for model_key in merged_scores
+            if _video_exists_locally(model_key, pid)
         }
         rv = _openvid_realvideo_meta(pid, openvid_db) if ds == "openvid" else None
         out[pid] = {
@@ -990,6 +995,23 @@ def _has_first_frame(source_dataset: str, stem: str) -> bool:
     return p.is_file()
 
 
+def _video_exists_locally(model_key: str, stem: str) -> bool:
+    """True iff a per-(model, stem) video is present under `_wmbench_src/data/videos/`.
+
+    Checks the canonical layout (`<model>/<stem>.mp4`) first, then falls back to
+    wmbench's secondary humaneval-only layout (`<model>-humaneval/<stem>.mp4`).
+    Used at snapshot-build time so the rendered site never embeds an HF URL
+    for a source byte that doesn't exist.
+    """
+    if not model_key or not stem:
+        return False
+    primary = WMBENCH_SRC / "data" / "videos" / model_key / f"{stem}.mp4"
+    if primary.is_file():
+        return True
+    alt = WMBENCH_SRC / "data" / "videos" / f"{model_key}-humaneval" / f"{stem}.mp4"
+    return alt.is_file()
+
+
 # ---------- videos_index (now per-(model, prompt) with HF URLs) ----------
 
 def _videos_index(leaderboard: list[dict],
@@ -1029,7 +1051,9 @@ def _videos_index(leaderboard: list[dict],
             })
 
     # humaneval entries: one per (model, prompt) from the score-JSON table.
-    # Falls back to manifest scores for prompts the JSONs don't cover.
+    # Skip pairs whose source video is not present locally so the rendered
+    # site never embeds an HF URL that will 404 after upload. (The leaderboard
+    # / model-detail score tables still surface the score elsewhere.)
     seen: set[tuple[str, str]] = set()
     for pid, models_to_scores in prompt_scores.items():
         meta = prompt_meta.get(pid) or {}
@@ -1037,6 +1061,8 @@ def _videos_index(leaderboard: list[dict],
         ff_url = _first_frame_hf_url(ds, pid) if _has_first_frame(ds, pid) else None
         for model_key, score in models_to_scores.items():
             seen.add((model_key, pid))
+            if not _video_exists_locally(model_key, pid):
+                continue
             _slot(model_key)["humaneval"].append({
                 "prompt_id": pid,
                 "dataset": ds,
@@ -1057,6 +1083,8 @@ def _videos_index(leaderboard: list[dict],
             if (model_key, pid) in seen:
                 continue
             seen.add((model_key, pid))
+            if not _video_exists_locally(model_key, pid):
+                continue
             _slot(model_key)["humaneval"].append({
                 "prompt_id": pid,
                 "dataset": ds,
@@ -1132,6 +1160,8 @@ def _representative_videos(model_key: str,
             continue
         if pid in seen:
             continue
+        if not _video_exists_locally(model_key, pid):
+            continue
         seen.add(pid)
         meta = prompt_meta.get(pid) or {}
         ds = meta.get("dataset") or ""
@@ -1155,6 +1185,8 @@ def _representative_videos(model_key: str,
             continue
         scores = p.get("per_model_scores") or {}
         if model_key not in scores:
+            continue
+        if not _video_exists_locally(model_key, pid):
             continue
         seen.add(pid)
         ds = p.get("dataset") or ""
@@ -1337,7 +1369,7 @@ def _site_config(catalog: list[dict],
             "description": "A physics-grounded benchmark for video generation. Browse model outputs by physical law, compare side-by-side, and explore evaluator-by-dataset leaderboards.",
             "paper_url": paper_url,
             "github_url": "https://github.com/phyground/phyground.github.io",
-            "huggingface_url": "https://huggingface.co/juyil",
+            "huggingface_url": "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground",
             "huggingface_dataset_url": huggingface_dataset_url,
             "copyright_year": 2026,
         },

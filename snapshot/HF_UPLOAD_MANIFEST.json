@@ -913,18 +913,6 @@
       "sha256": "8d4131464815a6112f85771c257dfc7812e066adcdcef4c200195f7798d51bd3"
     },
     {
-      "exists_locally": false,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/0164_perspective-center_trimmed-siphon.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/0164_perspective-center_trimmed-siphon.mp4",
-      "sha256": null
-    },
-    {
-      "exists_locally": false,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/0197_perspective-center_trimmed-weight-protects-duck.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/0197_perspective-center_trimmed-weight-protects-duck.mp4",
-      "sha256": null
-    },
-    {
       "exists_locally": true,
       "hf_target_path": "videos/cogvideox1.5-5b-i2v/03zaIVEqtg8_10_0to155.mp4",
       "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/03zaIVEqtg8_10_0to155.mp4",
@@ -6121,11 +6109,11 @@
       "sha256": "b4cfe867afe05cb5214ae8ced10bd184d5261701a959272172edb27e61c5ef32"
     }
   ],
-  "hf_repo": "juyil/wmbench-public",
+  "hf_repo": "NU-World-Model-Embodied-AI/phyground",
   "hf_repo_type": "dataset",
-  "hf_url_base": "https://huggingface.co/datasets/juyil/wmbench-public/resolve/main",
-  "n_missing_locally": 2,
+  "hf_url_base": "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main",
+  "n_missing_locally": 0,
   "n_present_locally": 1018,
-  "n_total_files": 1020,
+  "n_total_files": 1018,
   "schema_version": "1"
 }

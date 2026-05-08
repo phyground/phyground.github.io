@@ -117,7 +117,7 @@ def _mirror_static(src: Path, dst: Path) -> int:
 
 
 HF_URL_RE = re.compile(
-    r"https://huggingface\.co/datasets/juyil/wmbench-public/resolve/main/([^\s'\"<>]+)"
+    r"https://huggingface\.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main/([^\s'\"<>]+)"
 )
 
 

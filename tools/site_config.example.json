@@ -5,7 +5,7 @@
     "description": "A physics-grounded benchmark for video generation. Browse model outputs by physical law, compare side-by-side, and explore evaluator-by-dataset leaderboards.",
     "paper_url": "",
     "github_url": "https://github.com/phyground/phyground.github.io",
-    "huggingface_url": "https://huggingface.co/juyil",
+    "huggingface_url": "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground",
     "copyright_year": 2026
   },
   "headline": {
