@@ -5,7 +5,7 @@ Public companion site for the **wmbench** physics-grounded video benchmark.
 - **Video Gallery** — browse video-generation model outputs, side-by-side per physical law.
 - **Leaderboard** — slice rankings by evaluator × dataset × subset × scoring schema.
 
-The site is **static** and deployed via GitHub Pages from the repository root. Videos are hosted on HuggingFace at <https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground>; this repo only carries the index/manifest, rendered HTML, and a small CSS asset.
+The site is **static** and deployed via GitHub Pages from the repository root. Videos are hosted on HuggingFace at <https://huggingface.co/datasets/juyil/phygroundwebsitevideo>; this repo only carries the index/manifest, rendered HTML, and a small CSS asset.
 
 ## Architecture
 

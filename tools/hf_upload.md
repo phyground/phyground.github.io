@@ -1,39 +1,47 @@
-# HuggingFace upload — `NU-World-Model-Embodied-AI/phyground`
+# HuggingFace upload — `juyil/phygroundwebsitevideo`
 
 The static site references HF URLs of the form:
 
-    https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main/<rel>
+    https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/<rel>
 
 This document walks through populating that dataset so every `<video>` and
 `<img poster=...>` resolves at runtime. The repo handles every step except
 the actual `huggingface-cli upload` (which needs a write token).
 
-## URL scheme
-
-The site embeds three families of HF URLs:
+## URL scheme (matches the NU-World-Model-Embodied-AI/phyground layout)
 
 | Family | HF target | Local source (under `_wmbench_src/`)  |
 |--------|-----------|----------------------------------------|
-| paperdemo videos        | `paperdemo/<law>/<model>__<file>.mp4`        | `data/paperdemo/<law>/<model>__<file>.mp4` |
-| humaneval-100 videos    | `videos/<model>/<stem>.mp4`                  | `data/videos/<model>/<stem>.mp4` (or `data/videos/<model>-humaneval/<stem>.mp4`) |
-| first-frame thumbnails  | `prompts/<dataset>/first_frames/<stem>.jpg` | `data/prompts/<dataset>/first_frames/<stem>.jpg` |
+| Per-(model, prompt) videos | `videos/<model>/<stem>.mp4`        | `data/videos/<model>/<stem>.mp4` (or `data/videos/<model>-humaneval/<stem>.mp4`) |
+| First-frame thumbnails     | `first_images/<stem>.jpg`          | walked across `data/prompts/<dataset>/first_frames/<stem>.jpg` |
 
-The HF dataset must mirror this layout exactly. The `tools/build_site.py`
-audit walks every rendered HTML and fails the build if any embedded URL
-is missing from `snapshot/HF_UPLOAD_MANIFEST.json`, so the manifest is
-authoritative.
+There is **no** `paperdemo/` folder and **no** per-source-dataset subdir
+under `first_images/`; the dataset is flat. Paperdemo videos that share a
+stem with a humaneval prompt for the same model are emitted as
+`videos/<model>/<stem>.mp4`. Paperdemo entries whose model is not in the
+8 published model dirs (or whose stem is not a humaneval-100 prompt) are
+shown without a `<video>` tag — the by-law card still names the model
+and `n_ann`, but does not embed a broken URL.
 
-## Scope: ~1,000 files
+## Scope
 
 `snapshot/HF_UPLOAD_MANIFEST.json` is **scoped to the published
-humaneval-100 set + paperdemo + first-frames**, NOT every model × every
-prompt the registry knows. That keeps the dataset small (~900 MB) while
-still covering the published evidence end-to-end.
+humaneval-100 set + first-frames**, ~885 files / ~890 MB:
 
-Current counts: **62 paperdemo videos + 83 first-frames + ~875 humaneval
-videos = ~1020 target files** (≈ 100 prompts × 8 strict-intersection
-models, plus a few additional models that scored some humaneval-100
-prompts via the prompt manifest). Total bytes ≈ 900 MB.
+- ~802 humaneval videos (100 prompts × 8 strict-intersection models, plus
+  the few paperdemo entries that share humaneval stems for a published
+  model)
+- ~83 first-frame JPGs (the humaneval-100 prompts that have an upstream
+  first_frame on disk; a handful of `wmb` and `physics_iq` prompts have
+  no first_frame upstream, so the count is below 100)
+
+The 8 published model dirs are:
+
+```
+cosmos-predict2.5-14b   ltx-2.3-22b-dev    veo-3.1
+cosmos-predict2.5-2b    omniweaving        wan2.2-i2v-a14b
+ltx-2-19b-dev                              wan2.2-ti2v-5b
+```
 
 ## Quick path
 
@@ -46,7 +54,7 @@ pip install -r requirements.txt huggingface_hub
 # 1. Build the snapshot (this also writes HF_UPLOAD_MANIFEST.json):
 python3 tools/build_snapshot.py --select-humaneval-100
 
-# 2. Stage missing video bytes from a wmbench checkout (gitignored):
+# 2. Stage the missing source bytes from a wmbench checkout (gitignored):
 python3 tools/stage_hf_assets.py /path/to/wmbench
 
 # 3. Re-build so the manifest's `n_missing_locally` reflects the staging:
@@ -57,52 +65,35 @@ python3 tools/build_site.py --config snapshot/index/site_config.json
 # 4. Materialise the staging tree (also gitignored):
 python3 tools/build_hf_upload_manifest.py --materialize hf_staging/
 
-# 5. Authenticate (one-time, with a write token for NU-World-Model-Embodied-AI/phyground):
+# 5. Authenticate (one-time, with a write token for juyil/phygroundwebsitevideo):
 huggingface-cli login
 
-# 6. Upload the entire layout in one shot:
-huggingface-cli upload --repo-type dataset NU-World-Model-Embodied-AI/phyground hf_staging .
+# 6. Create the dataset (one-time) and upload the entire layout in one shot:
+huggingface-cli repo create juyil/phygroundwebsitevideo --type dataset
+huggingface-cli upload --repo-type dataset juyil/phygroundwebsitevideo hf_staging .
 ```
 
 After step 6 every `<video>` and `<img poster=...>` on the rendered site
 plays / loads.
 
-## Dry-run / inspection
-
-```bash
-python3 tools/stage_hf_assets.py /path/to/wmbench --dry-run
-python3 -c "import json; m=json.load(open('snapshot/HF_UPLOAD_MANIFEST.json')); print(m['n_total_files'], m['n_present_locally'], m['n_missing_locally'])"
-```
-
 ## Smoke tests after upload
 
 ```bash
-# Spot-check a paperdemo URL the home page embeds:
-curl -I "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main/paperdemo/collision/ltx-2-19b-dev__collision_156.mp4"
-# Expect: HTTP/2 200 + Content-Type: video/mp4
+# Per-(model, prompt) video the compare page embeds:
+curl -I "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-2b/collision_156.mp4"
+# Expect HTTP/2 302 (redirect to a CDN URL that returns the video)
 
-# A humaneval per-(model, prompt) URL the compare page embeds:
-curl -I "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main/videos/cosmos-predict2.5-2b/collision_156.mp4"
-
-# A first-frame thumbnail:
-curl -I "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main/prompts/video_phy_2/first_frames/collision_156.jpg"
+# A first-frame thumbnail (flat layout):
+curl -I "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_156.jpg"
 ```
 
 Then open the live site and verify playback on:
 
 - `/`                                — home Featured Comparison plays.
 - `/videos/`                         — by-law and by-model panes show videos.
-- `/videos/compare/?prompt_id=<pid>` — every model card has a video.
+- `/videos/compare/?prompt_id=collision_156` — every model card has a video.
 - `/models/cosmos-predict2.5-2b/`    — representative-video grid plays.
 - `/models/ltx-2.3-22b-dev/`         — same.
-
-## Files marked `exists_locally: false`
-
-There is a small residual (currently 2 entries for `cogvideox1.5-5b-i2v`
-prompts the upstream tree never finished generating). These are noted in
-`_wmbench_src/PROVENANCE.md`'s "missing upstream" section. After upload
-their HF URLs will 404 — that's a known gap in the published evidence,
-not a bug in the static site.
 
 ## Repo hygiene
 
@@ -111,6 +102,6 @@ not a bug in the static site.
   multi-MB-per-file ever lands in git.
 - `hf_staging/` is gitignored. Delete it after the upload completes if
   disk is tight.
-- The HF dataset itself is the source of truth for video bytes; the
-  static site is always rebuildable from `_wmbench_src/` (snapshot small
-  files in git) + the HF dataset (videos and first-frames).
+- The HF dataset is the source of truth for video bytes; the static site
+  is rebuildable from `_wmbench_src/` (small index files in git) + the HF
+  dataset (videos + first-frames).

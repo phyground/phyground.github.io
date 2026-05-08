@@ -43,7 +43,23 @@ WMBENCH_SRC = REPO_ROOT / "_wmbench_src"
 SNAPSHOT_DIR = REPO_ROOT / "snapshot"
 STAGING_DIR = REPO_ROOT / "snapshot.staging"
 
-HF_BASE = "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main"
+HF_BASE = "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main"
+
+# The HF dataset's `videos/` directory holds exactly these 8 model dirs (the
+# strict-intersection set of leaderboard models that scored every humaneval
+# prompt with coverage=1.0). Per the user's layout match: every other model
+# key is excluded from emitted HF URLs because it has no asset on the
+# dataset.
+_HF_PUBLISHED_MODELS = frozenset({
+    "cosmos-predict2.5-14b",
+    "cosmos-predict2.5-2b",
+    "ltx-2-19b-dev",
+    "ltx-2.3-22b-dev",
+    "omniweaving",
+    "veo-3.1",
+    "wan2.2-i2v-a14b",
+    "wan2.2-ti2v-5b",
+})
 
 
 # ---------- low-level helpers ----------
@@ -375,18 +391,23 @@ def _dedup_leaderboard(registry: list[dict]) -> tuple[list[dict], list[dict]]:
 def _group_paperdemo(rows: list[dict]) -> list[dict]:
     by_law: dict[str, list[dict]] = defaultdict(list)
     for r in rows:
-        rel_under_wmbench = r["src_path"].lstrip("/")
-        if rel_under_wmbench.startswith("data/paperdemo/"):
-            hf_rel = rel_under_wmbench[len("data/"):]
+        # Paperdemo videos remap to `videos/<model>/<stem>.mp4` on the HF
+        # dataset (the dataset has no `paperdemo/` folder; it shares the
+        # videos/ tree with the humaneval set). Only emit the URL when the
+        # (model, stem) pair has an actual file on disk in the HF-published
+        # set; otherwise the card renders without a `<video>` source.
+        stem = Path(r["src_filename"]).stem
+        if _video_exists_locally(r["model"], stem):
+            video_url = f"{HF_BASE}/videos/{r['model']}/{stem}.mp4"
         else:
-            hf_rel = rel_under_wmbench
+            video_url = None
         by_law[r["law"]].append({
             "model": r["model"],
             "video_id": r["video_id"],
             "n_ann": r["n_ann"],
             "src_filename": r["src_filename"],
             "src_path": r["src_path"],
-            "video_url_hf": f"{HF_BASE}/{hf_rel}",
+            "video_url_hf": video_url,
         })
     out = []
     for law in sorted(by_law.keys()):
@@ -984,8 +1005,11 @@ def _video_hf_url(model_key: str, source_dataset: str, stem: str) -> str:
 
 
 def _first_frame_hf_url(source_dataset: str, stem: str) -> str:
-    """First-frame images mirror data/prompts/<dataset>/first_frames/<stem>.jpg."""
-    return f"{HF_BASE}/prompts/{source_dataset}/first_frames/{stem}.jpg"
+    """First-frame images on the HF dataset live under a flat `first_images/`
+    folder (no per-source-dataset subdirs). `source_dataset` is kept in the
+    signature for caller compatibility but is unused.
+    """
+    return f"{HF_BASE}/first_images/{stem}.jpg"
 
 
 def _has_first_frame(source_dataset: str, stem: str) -> bool:
@@ -996,14 +1020,19 @@ def _has_first_frame(source_dataset: str, stem: str) -> bool:
 
 
 def _video_exists_locally(model_key: str, stem: str) -> bool:
-    """True iff a per-(model, stem) video is present under `_wmbench_src/data/videos/`.
+    """True iff a (model, stem) pair has an HF-published video.
 
-    Checks the canonical layout (`<model>/<stem>.mp4`) first, then falls back to
-    wmbench's secondary humaneval-only layout (`<model>-humaneval/<stem>.mp4`).
-    Used at snapshot-build time so the rendered site never embeds an HF URL
-    for a source byte that doesn't exist.
+    Two gates: the model must be in `_HF_PUBLISHED_MODELS` (the 8 model dirs
+    actually present on the HF dataset), and the local source must exist
+    under `_wmbench_src/data/videos/<model>/<stem>.mp4` (with a fallback to
+    `<model>-humaneval/<stem>.mp4`). Manifest-only fallback models like
+    `cogvideox1.5-5b-i2v`, `hunyuanvideo-i2v`, `ltx-2-19b-distilled-fp8` are
+    pruned even when their bytes are on disk locally — the HF dataset has no
+    folder for them, so emitting their URLs would 404.
     """
     if not model_key or not stem:
+        return False
+    if model_key not in _HF_PUBLISHED_MODELS:
         return False
     primary = WMBENCH_SRC / "data" / "videos" / model_key / f"{stem}.mp4"
     if primary.is_file():
@@ -1369,7 +1398,7 @@ def _site_config(catalog: list[dict],
             "description": "A physics-grounded benchmark for video generation. Browse model outputs by physical law, compare side-by-side, and explore evaluator-by-dataset leaderboards.",
             "paper_url": paper_url,
             "github_url": "https://github.com/phyground/phyground.github.io",
-            "huggingface_url": "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground",
+            "huggingface_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo",
             "huggingface_dataset_url": huggingface_dataset_url,
             "copyright_year": 2026,
         },

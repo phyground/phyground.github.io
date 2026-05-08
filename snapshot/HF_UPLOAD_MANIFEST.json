@@ -2,1017 +2,507 @@
   "files": [
     {
       "exists_locally": true,
-      "hf_target_path": "paperdemo/boundary_interaction/cosmos-predict2.5-2b__7zUyKYlCdFU_32_22to164.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/boundary_interaction/cosmos-predict2.5-2b__7zUyKYlCdFU_32_22to164.mp4",
-      "sha256": "9ce21f4d0b0e2f2228532c163faabd565d0c3a892e02c62f9ffe8fb2130798c3"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/boundary_interaction/cosmos-predict2.5-2b__at1CsLu4RIU_53_0to197.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/boundary_interaction/cosmos-predict2.5-2b__at1CsLu4RIU_53_0to197.mp4",
-      "sha256": "56c087f658b6d9ebdf5947b5e8d0c14ea859301f9d89ede0e8602a9d82a00204"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/boundary_interaction/ltx-2.3-22b-dev__collision_222.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/boundary_interaction/ltx-2.3-22b-dev__collision_222.mp4",
-      "sha256": "932d3f7bcde1ec301d254237e2e3b81ade7bea11d4480de63184ee2d28ba24f4"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/boundary_interaction/omniweaving__lighting_359.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/boundary_interaction/omniweaving__lighting_359.mp4",
-      "sha256": "2ad180195b6a6e7ff29e0fa80001d6e8fd0da28261d77ad0b737e0c49b923204"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/boundary_interaction/wan2.2-i2v-a14b__57UqPDirHoU_15_24to135.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/boundary_interaction/wan2.2-i2v-a14b__57UqPDirHoU_15_24to135.mp4",
-      "sha256": "7202e73e2859dd312e3e7231e1896f846eff038b00fea39adc9f5bb702465da8"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/buoyancy/cosmos-predict2.5-2b__0164_perspective-center_trimmed-siphon.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/buoyancy/cosmos-predict2.5-2b__0164_perspective-center_trimmed-siphon.mp4",
-      "sha256": "796d38ef03098e5907491f251da740eebd4218163d0db33312e51c0bf48a9186"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/buoyancy/cosmos-predict2.5-2b__at1CsLu4RIU_53_0to197.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/buoyancy/cosmos-predict2.5-2b__at1CsLu4RIU_53_0to197.mp4",
-      "sha256": "56c087f658b6d9ebdf5947b5e8d0c14ea859301f9d89ede0e8602a9d82a00204"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/buoyancy/ltx-2-19b-dev__0143_perspective-center_trimmed-potato-in-water.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/buoyancy/ltx-2-19b-dev__0143_perspective-center_trimmed-potato-in-water.mp4",
-      "sha256": "2dd9ef1e1a5597c39d20eee3fd6134104aeeff8d3ac671e15f0afb7ab73fb1bb"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/buoyancy/ltx-2-19b-dev__7zUyKYlCdFU_32_22to164.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/buoyancy/ltx-2-19b-dev__7zUyKYlCdFU_32_22to164.mp4",
-      "sha256": "6d816225c835fd570b59db9948e877490231ff0a4996c804494d254fb86518de"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/buoyancy/wan2.2-ti2v-5b__UsL5HzxP68A_2_76to287.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/buoyancy/wan2.2-ti2v-5b__UsL5HzxP68A_2_76to287.mp4",
-      "sha256": "d3617441c7a0d82ed0a14bdd32ebc4a4270b182c0cce793308f88bc701d89cbd"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/collision/cosmos-predict2.5-2b__collision_380.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/collision/cosmos-predict2.5-2b__collision_380.mp4",
-      "sha256": "d8652b519e91f07f794cb7fa9ba8f14d47c6f872779096eebfea1a31318b47e5"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/collision/cosmos-predict2.5-2b__mechanics_186.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/collision/cosmos-predict2.5-2b__mechanics_186.mp4",
-      "sha256": "e97e212d19a2f974c29e82de85faaaf28f5738811ccc1cb466948c8b5ae4938c"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/collision/cosmos-predict2.5-2b__mechanics_257.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/collision/cosmos-predict2.5-2b__mechanics_257.mp4",
-      "sha256": "8052c8c2638ab5951054d5d7f48a9269fe7f7ac0d67da74e1e17ff821e340525"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/collision/cosmos-predict2.5-2b__mechanics_420.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/collision/cosmos-predict2.5-2b__mechanics_420.mp4",
-      "sha256": "18ce4d970e8ef3a5b13bdb1f852ebe390d81d155a642b246ed8d3c8439b70d93"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/collision/ltx-2-19b-dev__collision_156.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/collision/ltx-2-19b-dev__collision_156.mp4",
-      "sha256": "c41e003138227b9be78d71a8bc9ff16d86792c3c621955048f00d1204d4cbdc3"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/displacement/cosmos-predict2.5-2b__0164_perspective-center_trimmed-siphon.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/displacement/cosmos-predict2.5-2b__0164_perspective-center_trimmed-siphon.mp4",
-      "sha256": "796d38ef03098e5907491f251da740eebd4218163d0db33312e51c0bf48a9186"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/displacement/cosmos-predict2.5-2b__A3y_x1XMu-4_17_227to407.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/displacement/cosmos-predict2.5-2b__A3y_x1XMu-4_17_227to407.mp4",
-      "sha256": "e976f02199accfdb3dd8a7a43852ab562a0bef8211ed1460de1ce0b3af9e0552"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/displacement/ltx-2.3-22b-dev__0143_perspective-center_trimmed-potato-in-water.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/displacement/ltx-2.3-22b-dev__0143_perspective-center_trimmed-potato-in-water.mp4",
-      "sha256": "4c9f8cb4da5e4f36457e8bb355bc0aebf223a800f375b872d5dd4d2e3c38cfb7"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/displacement/wan2.2-i2v-a14b__HaWe0Af_0hg_6_0to222.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/displacement/wan2.2-i2v-a14b__HaWe0Af_0hg_6_0to222.mp4",
-      "sha256": "8bbd61a32a11b4397816d7dad5e406a1e6e9c78f635c7a41fc9f82bab3839677"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/displacement/wan2.2-ti2v-5b__UsL5HzxP68A_2_76to287.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/displacement/wan2.2-ti2v-5b__UsL5HzxP68A_2_76to287.mp4",
-      "sha256": "d3617441c7a0d82ed0a14bdd32ebc4a4270b182c0cce793308f88bc701d89cbd"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/flow_dynamics/cosmos-predict2.5-14b__QfWrBHgD9go_5_0to145.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/flow_dynamics/cosmos-predict2.5-14b__QfWrBHgD9go_5_0to145.mp4",
-      "sha256": "f5a46b6374c20b6db27a7ec76a0055ef8ecec60e48c508fd3574a685ef762828"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/flow_dynamics/cosmos-predict2.5-2b__0164_perspective-center_trimmed-siphon.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/flow_dynamics/cosmos-predict2.5-2b__0164_perspective-center_trimmed-siphon.mp4",
-      "sha256": "796d38ef03098e5907491f251da740eebd4218163d0db33312e51c0bf48a9186"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/flow_dynamics/cosmos-predict2.5-2b__7zUyKYlCdFU_32_22to164.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/flow_dynamics/cosmos-predict2.5-2b__7zUyKYlCdFU_32_22to164.mp4",
-      "sha256": "9ce21f4d0b0e2f2228532c163faabd565d0c3a892e02c62f9ffe8fb2130798c3"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/flow_dynamics/wan2.2-ti2v-5b__4oDE9-8h-A8_62_32to212.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/flow_dynamics/wan2.2-ti2v-5b__4oDE9-8h-A8_62_32to212.mp4",
-      "sha256": "19d6dca9644227c661ae3b92832a13d2fe89e77126e244b02ec280a2aea04a9c"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/flow_dynamics/wan2.2-ti2v-5b__88H1BBqFzXQ_1_118to222.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/flow_dynamics/wan2.2-ti2v-5b__88H1BBqFzXQ_1_118to222.mp4",
-      "sha256": "53376279d876defecbfa56b4573af7f7b7d23974d710a27e226fccec57b38927"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/fluid_continuity/cosmos-predict2.5-14b__88H1BBqFzXQ_1_118to222.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/fluid_continuity/cosmos-predict2.5-14b__88H1BBqFzXQ_1_118to222.mp4",
-      "sha256": "a85d4db63a9d9da627a6d5688faf41f935246387a130d1d0fb6d5cad199be8d8"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/fluid_continuity/cosmos-predict2.5-2b__A3y_x1XMu-4_17_227to407.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/fluid_continuity/cosmos-predict2.5-2b__A3y_x1XMu-4_17_227to407.mp4",
-      "sha256": "e976f02199accfdb3dd8a7a43852ab562a0bef8211ed1460de1ce0b3af9e0552"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/fluid_continuity/wan2.2-ti2v-5b__4oDE9-8h-A8_62_32to212.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/fluid_continuity/wan2.2-ti2v-5b__4oDE9-8h-A8_62_32to212.mp4",
-      "sha256": "19d6dca9644227c661ae3b92832a13d2fe89e77126e244b02ec280a2aea04a9c"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/fluid_continuity/wan2.2-ti2v-5b__57UqPDirHoU_15_24to135.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/fluid_continuity/wan2.2-ti2v-5b__57UqPDirHoU_15_24to135.mp4",
-      "sha256": "19b805cf70be13528fa1b6e21a469ed312d5e3799a3c33d21f7172825fac3bce"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/fluid_continuity/wan2.2-ti2v-5b__6-75qQ0rpE4_10_17to126.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/fluid_continuity/wan2.2-ti2v-5b__6-75qQ0rpE4_10_17to126.mp4",
-      "sha256": "a9c8c22be9af928fde62138f4c78851ea7d1a75cc68cafa0197a985457009dc7"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/gravity/cosmos-predict2.5-14b__mechanics_157.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/gravity/cosmos-predict2.5-14b__mechanics_157.mp4",
-      "sha256": "4348480e5a8862e218d613d768b31923b66b50bea144a578c0a543a7def716fd"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/gravity/cosmos-predict2.5-2b__collision_271.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/gravity/cosmos-predict2.5-2b__collision_271.mp4",
-      "sha256": "706057b6e5c593cc5ffa75b22c856112a2f8241c2bf9b83854b07747a9ad90f5"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/gravity/cosmos-predict2.5-2b__fluid_426.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/gravity/cosmos-predict2.5-2b__fluid_426.mp4",
-      "sha256": "6763b019df6e40ce8b70ed01fe6bccba47a3e415b0755b3c3fc190e0ae790891"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/gravity/cosmos-predict2.5-2b__mechanics_257.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/gravity/cosmos-predict2.5-2b__mechanics_257.mp4",
-      "sha256": "8052c8c2638ab5951054d5d7f48a9269fe7f7ac0d67da74e1e17ff821e340525"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/gravity/cosmos-predict2.5-2b__mechanics_290.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/gravity/cosmos-predict2.5-2b__mechanics_290.mp4",
-      "sha256": "53fb2c831297860bcb169bc89bfd5a1c023bfa1cb2ebb7ad414724812e8311d4"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/impenetrability/ltx-2-19b-dev__collision_156.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/impenetrability/ltx-2-19b-dev__collision_156.mp4",
-      "sha256": "c41e003138227b9be78d71a8bc9ff16d86792c3c621955048f00d1204d4cbdc3"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/impenetrability/ltx-2-19b-dev__collision_223.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/impenetrability/ltx-2-19b-dev__collision_223.mp4",
-      "sha256": "17890ce9bc8bdeed615ee032489e61acda913e84f8d807ff3d947fae8861608d"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/impenetrability/ltx-2-19b-dev__collision_271.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/impenetrability/ltx-2-19b-dev__collision_271.mp4",
-      "sha256": "e13a0537ef7c76212c773c5d5836c280c9eac00688ecbdff031668df53843e57"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/impenetrability/ltx-2-19b-dev__collision_594.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/impenetrability/ltx-2-19b-dev__collision_594.mp4",
-      "sha256": "e7ddf2fa6862532cdc17161bc0050cf08af80f616322149bfb5bfbd8ba298f98"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/impenetrability/ltx-2-19b-dev__mechanics_411.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/impenetrability/ltx-2-19b-dev__mechanics_411.mp4",
-      "sha256": "b569c144c2fc6c8d9e2ca5e53243e4c5ef6f06b5d5564b290b93492a5ad459d5"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/inertia/cosmos-predict2.5-14b__mechanics_33.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/inertia/cosmos-predict2.5-14b__mechanics_33.mp4",
-      "sha256": "7487b588edc397b29f33502e5f2fb2aff8494450147a39a616c29671bb3a12dc"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/inertia/ltx-2-19b-dev__0152_perspective-center_trimmed-roll-in-box.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/inertia/ltx-2-19b-dev__0152_perspective-center_trimmed-roll-in-box.mp4",
-      "sha256": "a57620d3cb1a7bc86c341c7cec10df0c473ff73169d9091475a38c30ce73aa0d"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/inertia/ltx-2-19b-dev__0197_perspective-center_trimmed-weight-protects-duck.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/inertia/ltx-2-19b-dev__0197_perspective-center_trimmed-weight-protects-duck.mp4",
-      "sha256": "f9b4824334856ee6aac5a8133cb4ee899926e1717b3e36698f626a6cf89ecfd6"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/inertia/omniweaving__0161_perspective-center_trimmed-single-cradle.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/inertia/omniweaving__0161_perspective-center_trimmed-single-cradle.mp4",
-      "sha256": "c11aab59156b4f6bcf1f03b23559e0ce64ee19bc920941191ddff49a52e75277"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/inertia/veo-3.1__0035_perspective-center_trimmed-block-domino.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/inertia/veo-3.1__0035_perspective-center_trimmed-block-domino.mp4",
-      "sha256": "69165e42161a39eea80c4d5f09a5fc0f5b9309578038b5faf2e8c8679256fd29"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/material/cosmos-predict2.5-2b__fluid_426.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/material/cosmos-predict2.5-2b__fluid_426.mp4",
-      "sha256": "6763b019df6e40ce8b70ed01fe6bccba47a3e415b0755b3c3fc190e0ae790891"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/material/cosmos-predict2.5-2b__mechanics_186.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/material/cosmos-predict2.5-2b__mechanics_186.mp4",
-      "sha256": "e97e212d19a2f974c29e82de85faaaf28f5738811ccc1cb466948c8b5ae4938c"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/material/cosmos-predict2.5-2b__mechanics_257.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/material/cosmos-predict2.5-2b__mechanics_257.mp4",
-      "sha256": "8052c8c2638ab5951054d5d7f48a9269fe7f7ac0d67da74e1e17ff821e340525"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/material/ltx-2-19b-dev__collision_594.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/material/ltx-2-19b-dev__collision_594.mp4",
-      "sha256": "e7ddf2fa6862532cdc17161bc0050cf08af80f616322149bfb5bfbd8ba298f98"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/material/wan2.2-ti2v-5b__1jnsHJ1u3Pk_10_0to149.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/material/wan2.2-ti2v-5b__1jnsHJ1u3Pk_10_0to149.mp4",
-      "sha256": "7eb30446866d3332f99206bb1a583a753cc4618af8840beb02ab2a4185f50fe8"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/momentum/cosmos-predict2.5-2b__mechanics_186.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/momentum/cosmos-predict2.5-2b__mechanics_186.mp4",
-      "sha256": "e97e212d19a2f974c29e82de85faaaf28f5738811ccc1cb466948c8b5ae4938c"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/momentum/cosmos-predict2.5-2b__mechanics_419.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/momentum/cosmos-predict2.5-2b__mechanics_419.mp4",
-      "sha256": "cae099259185176dfcf61330bad2c7677ec6b06fbf4303e8e9b4154dad46e41e"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/momentum/ltx-2-19b-dev__collision_156.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/momentum/ltx-2-19b-dev__collision_156.mp4",
-      "sha256": "c41e003138227b9be78d71a8bc9ff16d86792c3c621955048f00d1204d4cbdc3"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/momentum/ltx-2-19b-dev__collision_594.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/momentum/ltx-2-19b-dev__collision_594.mp4",
-      "sha256": "e7ddf2fa6862532cdc17161bc0050cf08af80f616322149bfb5bfbd8ba298f98"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/momentum/wan2.2-ti2v-5b__mechanics_449.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/momentum/wan2.2-ti2v-5b__mechanics_449.mp4",
-      "sha256": "682f7094f1a0f30ea5be3b9d43b4302e542da5f564f6011b0ad58c4e217300fc"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/reflection/cosmos-predict2.5-2b__0119_perspective-center_trimmed-mirror-ball-rotate.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/reflection/cosmos-predict2.5-2b__0119_perspective-center_trimmed-mirror-ball-rotate.mp4",
-      "sha256": "7fae918e1ca1c0c6852a5cdc149ae141975b1f6f9dc7c5e66bf0dcf1fd539394"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/reflection/ltx-2-19b-dev__mechanics_411.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/reflection/ltx-2-19b-dev__mechanics_411.mp4",
-      "sha256": "b569c144c2fc6c8d9e2ca5e53243e4c5ef6f06b5d5564b290b93492a5ad459d5"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/shadow/cosmos-predict2.5-14b__lighting_381.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/shadow/cosmos-predict2.5-14b__lighting_381.mp4",
-      "sha256": "8a55500f1e620f54f49a06fdd340b0de9a41a05c90948575d6d676627a3dc5a1"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/shadow/cosmos-predict2.5-2b__0119_perspective-center_trimmed-mirror-ball-rotate.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/shadow/cosmos-predict2.5-2b__0119_perspective-center_trimmed-mirror-ball-rotate.mp4",
-      "sha256": "7fae918e1ca1c0c6852a5cdc149ae141975b1f6f9dc7c5e66bf0dcf1fd539394"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/shadow/cosmos-predict2.5-2b__mechanics_253.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/shadow/cosmos-predict2.5-2b__mechanics_253.mp4",
-      "sha256": "b2cb18f4e51835389c5f87d15874953ca19679b7f2cf4e2c0873dc99fe95c1e8"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/shadow/ltx-2-19b-dev__e8KlPriHwBU_000025_000035.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/shadow/ltx-2-19b-dev__e8KlPriHwBU_000025_000035.mp4",
-      "sha256": "901808d201c1b7088f6d778aab3ee78bb30c2f0eaa2ecfb863339d1fc18378b4"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "paperdemo/shadow/wan2.2-i2v-a14b__2CH9DL5j-XA_13_0to130.mp4",
-      "local_source": "_wmbench_src/data/paperdemo/shadow/wan2.2-i2v-a14b__2CH9DL5j-XA_13_0to130.mp4",
-      "sha256": "8d1b894cea650e3e000f9883699d335f4eec52302a0d59705cba563a58e2ed6d"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/03zaIVEqtg8_10_0to155.jpg",
+      "hf_target_path": "first_images/03zaIVEqtg8_10_0to155.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/03zaIVEqtg8_10_0to155.jpg",
       "sha256": "b5cb2d06a86dff214e96e5f1ea1e144ce46763fc889380cfc61cee5c16be637a"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/1jnsHJ1u3Pk_10_0to149.jpg",
+      "hf_target_path": "first_images/1jnsHJ1u3Pk_10_0to149.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/1jnsHJ1u3Pk_10_0to149.jpg",
       "sha256": "59cbf7096ab684c12ef72f6d99c2316f39801f8f6c51b334bee57a8757cc41b0"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/2CH9DL5j-XA_13_0to130.jpg",
+      "hf_target_path": "first_images/2CH9DL5j-XA_13_0to130.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/2CH9DL5j-XA_13_0to130.jpg",
       "sha256": "7d3cf4a629b3caa014871ea827195d7a6a655f5469bcecf511bda7f99b20495f"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/4HoslLqqsps_9_0to118.jpg",
+      "hf_target_path": "first_images/4HoslLqqsps_9_0to118.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/4HoslLqqsps_9_0to118.jpg",
       "sha256": "5f665e60763bf2f6e412924b574b1f0047654af0817d8572436aaa09c52078a5"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/4oDE9-8h-A8_62_32to212.jpg",
+      "hf_target_path": "first_images/4oDE9-8h-A8_62_32to212.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/4oDE9-8h-A8_62_32to212.jpg",
       "sha256": "b6d482e0687cc417e10183a506255fcadcc34df3588e0110700928f8c78e3fbf"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/4y1a9bjbxQU_27_0to128.jpg",
+      "hf_target_path": "first_images/4y1a9bjbxQU_27_0to128.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/4y1a9bjbxQU_27_0to128.jpg",
       "sha256": "af70a0273dd1dce8588fc68677d5671d869cc1ec15cb6d64c3781c56efd42751"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/57UqPDirHoU_15_24to135.jpg",
+      "hf_target_path": "first_images/57UqPDirHoU_15_24to135.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/57UqPDirHoU_15_24to135.jpg",
       "sha256": "ebb8e360dc06c404b2e8276b24dab908b1414d08b079fcb5f7316e040af0b026"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/6-75qQ0rpE4_10_17to126.jpg",
+      "hf_target_path": "first_images/6-75qQ0rpE4_10_17to126.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/6-75qQ0rpE4_10_17to126.jpg",
       "sha256": "944fea64aadaec16c25a8b1080aa720923613f3582d28ae2b5b932f29d7e7156"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/7_O1YdVAWSU_14_0to102.jpg",
+      "hf_target_path": "first_images/7_O1YdVAWSU_14_0to102.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/7_O1YdVAWSU_14_0to102.jpg",
       "sha256": "13fe920321710f00c8bb896260bed990795d43b675da2e82d4d4ae6238d5a78d"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/7zUyKYlCdFU_32_22to164.jpg",
+      "hf_target_path": "first_images/7zUyKYlCdFU_32_22to164.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/7zUyKYlCdFU_32_22to164.jpg",
       "sha256": "cf0f867423d2bbde3fb08895df330fbc574f5851ac5ee4e3721148f06347852c"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/88H1BBqFzXQ_1_118to222.jpg",
+      "hf_target_path": "first_images/88H1BBqFzXQ_1_118to222.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/88H1BBqFzXQ_1_118to222.jpg",
       "sha256": "1d8c7851e5a4ccb52050e1ba23f0dd09710331a342456c84922ac9ac43da9768"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/A3y_x1XMu-4_17_227to407.jpg",
+      "hf_target_path": "first_images/A3y_x1XMu-4_17_227to407.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/A3y_x1XMu-4_17_227to407.jpg",
       "sha256": "3692538a54fa9bcb9d2467c98903cc5495d527926c9f08115cca6aad21e3624d"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/AupVdYKP3bo_5_0to165.jpg",
+      "hf_target_path": "first_images/AupVdYKP3bo_5_0to165.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/AupVdYKP3bo_5_0to165.jpg",
       "sha256": "0c4cb5289c1e1adb19aeb53f5fcdf732d4d34bd855968756440ee6a6cb94c891"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/HaWe0Af_0hg_6_0to222.jpg",
+      "hf_target_path": "first_images/HaWe0Af_0hg_6_0to222.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/HaWe0Af_0hg_6_0to222.jpg",
       "sha256": "a7cc342dd3c6fad0bf8b33a9817c246650eff53824f975f00c6c153c068ae4f6"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/I5BdJ04K1Vg_2_0to102.jpg",
+      "hf_target_path": "first_images/I5BdJ04K1Vg_2_0to102.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/I5BdJ04K1Vg_2_0to102.jpg",
       "sha256": "2ad3a9370d759d8407155e0bf4a18c074224bc83afa978e91fb6587f01c053e8"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/Pmq00R5zrEo_9_0to107.jpg",
+      "hf_target_path": "first_images/Pmq00R5zrEo_9_0to107.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/Pmq00R5zrEo_9_0to107.jpg",
       "sha256": "194571c43c6bb2d7f4309c2ecaa74eb37fa6c8eaa0bc2b391523b10f4190d3b5"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/QfWrBHgD9go_5_0to145.jpg",
+      "hf_target_path": "first_images/QfWrBHgD9go_5_0to145.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/QfWrBHgD9go_5_0to145.jpg",
       "sha256": "51a8ab8a7cdb3eca15c4523bb04260b57f905c8fa97ad95997f27cf2c6851a32"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/Sl3C5JMaCTo_22_0to159.jpg",
+      "hf_target_path": "first_images/Sl3C5JMaCTo_22_0to159.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/Sl3C5JMaCTo_22_0to159.jpg",
       "sha256": "62d7a9c0f7723fce4b646f341d6b13d69c9dce63078ae035187a7fcdb14d15be"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/UsL5HzxP68A_2_76to287.jpg",
+      "hf_target_path": "first_images/UsL5HzxP68A_2_76to287.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/UsL5HzxP68A_2_76to287.jpg",
       "sha256": "af3e2774c7c56c632db4167f6d37bb8f43ff23256fdbad0ef80c60f62d3d90b3"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/VJ82LkozoT0_60_0to175.jpg",
+      "hf_target_path": "first_images/VJ82LkozoT0_60_0to175.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/VJ82LkozoT0_60_0to175.jpg",
       "sha256": "1b0d2d1d70834b63a260d6a4494179b0cab868c75eda40fdea08a92c14194753"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/at1CsLu4RIU_53_0to197.jpg",
+      "hf_target_path": "first_images/at1CsLu4RIU_53_0to197.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/at1CsLu4RIU_53_0to197.jpg",
       "sha256": "6ee380d0235b7a4aa967a10cdb855488fedf42a10e4bea5bfc7944bf63d58847"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/ttTPAWrn110_45_0to227.jpg",
-      "local_source": "_wmbench_src/data/prompts/openvid/first_frames/ttTPAWrn110_45_0to227.jpg",
-      "sha256": "d3171fa31acc4d7ba70b590d8ebe3ffaaae9aa525bb55abc3f3b8f0058bf09af"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "prompts/openvid/first_frames/xDxQMZjHR4s_3_18to227.jpg",
-      "local_source": "_wmbench_src/data/prompts/openvid/first_frames/xDxQMZjHR4s_3_18to227.jpg",
-      "sha256": "aeb25fdd7542824e889b2fd7484b39ccb7989f49545cd12e024b1c5d581d1281"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_145.jpg",
+      "hf_target_path": "first_images/collision_145.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_145.jpg",
       "sha256": "853a63c9601d2266c3a3e853d5be9e2aeb8bc1fec600abc823791323960bfa0b"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_156.jpg",
+      "hf_target_path": "first_images/collision_156.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_156.jpg",
       "sha256": "d6ab13c9a38ceb49134a65a45943a6cd0b3d58db85270b7249a6169ff0e229de"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_165.jpg",
+      "hf_target_path": "first_images/collision_165.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_165.jpg",
       "sha256": "faa6bc557d317aa8706e77669ca530e880659c0db99a2f1d6e5fb8fb366af9d5"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_222.jpg",
+      "hf_target_path": "first_images/collision_222.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_222.jpg",
       "sha256": "7fa3c3fc49cafd09671600ba84fd00d366e3a56722b948c0c7b733dfb588e034"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_223.jpg",
+      "hf_target_path": "first_images/collision_223.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_223.jpg",
       "sha256": "1c267055c6f2c558ca234ddf2da0a78aeae40379c0861ec8335865393627bf8d"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_261.jpg",
+      "hf_target_path": "first_images/collision_261.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_261.jpg",
       "sha256": "c64281a516487cbe32cbc33d1e2e0e4a314c09cb63e013bdea3224cb3a21d722"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_271.jpg",
+      "hf_target_path": "first_images/collision_271.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_271.jpg",
       "sha256": "1e746bfd2416e4af31aaa0929ef76679ecf9692b6d7e06412a1108ef959b1e64"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_283.jpg",
+      "hf_target_path": "first_images/collision_283.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_283.jpg",
       "sha256": "e594e9139fd681088a49b79784d526c9a6a35b6b3cb4ce789815dbcc819b4b20"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_307.jpg",
+      "hf_target_path": "first_images/collision_307.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_307.jpg",
       "sha256": "72cc382d905c50a94ae5ba844084ca7db94f0528b3fccbacbd983fca3f884778"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_32.jpg",
+      "hf_target_path": "first_images/collision_32.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_32.jpg",
       "sha256": "30ca9f294877bc61c42f8eb5c412031c598096a64701070d3946145b23a26520"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_331.jpg",
+      "hf_target_path": "first_images/collision_331.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_331.jpg",
       "sha256": "a2c6b70f9b4bccd3dce204a95baac6e04d83d3c04e8381650720c5ee523e5205"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_363.jpg",
+      "hf_target_path": "first_images/collision_363.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_363.jpg",
       "sha256": "c812f3b4d3e2bc0c3472026020bf4b2f516d6ca8c38d51d4301955349d9e8174"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_380.jpg",
+      "hf_target_path": "first_images/collision_380.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_380.jpg",
       "sha256": "70a929f37d8b5cd56e5cd010afbe23c277723d57e44aed5a4fd25a12c62af505"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_431.jpg",
+      "hf_target_path": "first_images/collision_431.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_431.jpg",
       "sha256": "818f6625393633a5438417f52c7241bf8d2b8154b000f26382e5c57b62f8ee21"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_436.jpg",
+      "hf_target_path": "first_images/collision_436.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_436.jpg",
       "sha256": "0f7cff4270e61ad0f54e42e87d3254a04a70b55d22528b307b3d9b4321662f1b"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_443.jpg",
+      "hf_target_path": "first_images/collision_443.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_443.jpg",
       "sha256": "65960f208e4e752f2cca94f0debcdea60d448f50645f22e4cdd2db62506d7a03"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_583.jpg",
+      "hf_target_path": "first_images/collision_583.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_583.jpg",
       "sha256": "7a30142ea5a71869e7b86a7c2629d919952c18ac9a52b9152cdca07f6414c191"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/collision_594.jpg",
+      "hf_target_path": "first_images/collision_594.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/collision_594.jpg",
       "sha256": "771fc8eafb89591ae4611cf6dca6e4fd3ba237efef1ea6b2a6f3bdd43ba8297e"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/fluid_239.jpg",
+      "hf_target_path": "first_images/fluid_239.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/fluid_239.jpg",
       "sha256": "20f35406f5c5850eff9fa3f40138a41b54e81423174f59ea651ad802b61cd8f3"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/fluid_405.jpg",
+      "hf_target_path": "first_images/fluid_405.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/fluid_405.jpg",
       "sha256": "aa6061be3418b7f8c83b45308cd840020975d4c86ed0b26469e8e0d01d0c90f8"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/fluid_409.jpg",
+      "hf_target_path": "first_images/fluid_409.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/fluid_409.jpg",
       "sha256": "27367ff1671023e45b7cb051ff743770ceb5475504cd7eccbfeb3a700130094b"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/fluid_426.jpg",
+      "hf_target_path": "first_images/fluid_426.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/fluid_426.jpg",
       "sha256": "f65b4f632942195a0d8c7619a96bd7e90faaf09e798380dfd21fd23c875e0696"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/fluid_553.jpg",
+      "hf_target_path": "first_images/fluid_553.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/fluid_553.jpg",
       "sha256": "9161f662b39d9291ae6b954b2cce64d692eeb8c4013b699d89461f07ff38bd4f"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/fluid_75.jpg",
+      "hf_target_path": "first_images/fluid_75.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/fluid_75.jpg",
       "sha256": "323177d329503d3bd29c9ed3240d7ffc027f2164e80e81b3f54a856083db2249"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/fluid_83.jpg",
+      "hf_target_path": "first_images/fluid_83.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/fluid_83.jpg",
       "sha256": "cf5b16f4873be777a6c6786e6f214b964f72555e9ea15e5c228bef0e4d91fdbf"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/gravity_217.jpg",
+      "hf_target_path": "first_images/gravity_217.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/gravity_217.jpg",
       "sha256": "b83a449b9c27a5387156e091e26b1bdb607c7d987f5ff60cd8ec3bd5b71d7079"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/gravity_36.jpg",
+      "hf_target_path": "first_images/gravity_36.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/gravity_36.jpg",
       "sha256": "282df0b0f745cab8ca37f0879bd7f23ad596d307f72dd3cc89faa9d935e6fcda"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/gravity_90.jpg",
+      "hf_target_path": "first_images/gravity_90.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/gravity_90.jpg",
       "sha256": "62c6ae322d34cd311fbb1bba3016cfc2f072229c31383ecffa932347fdfa0fe5"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/hardness_288.jpg",
+      "hf_target_path": "first_images/hardness_288.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/hardness_288.jpg",
       "sha256": "d6e6f3e4d096da3723cf8f134fe5c2cb9880ca1ace0cccf69b48ae2c96e35537"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/lighting_248.jpg",
+      "hf_target_path": "first_images/lighting_248.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/lighting_248.jpg",
       "sha256": "eac321c5d127571eff8f10e4bf589787d4eae69fd521e9600e923d8a87df14bc"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/lighting_359.jpg",
+      "hf_target_path": "first_images/lighting_359.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/lighting_359.jpg",
       "sha256": "6b8b0df5226fce2b90816c6ba11bae535367c48ba1efe4406b57cd6ba6891230"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/lighting_381.jpg",
+      "hf_target_path": "first_images/lighting_381.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/lighting_381.jpg",
       "sha256": "e368281adb9ac600df803660c57a7856d63d294960ad0833f09ab017d0c12844"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_157.jpg",
+      "hf_target_path": "first_images/mechanics_157.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_157.jpg",
       "sha256": "0c175b0cb0d84188d04fbfdcf64be4c92c014d697783ee56910bb7479c5f8989"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_186.jpg",
+      "hf_target_path": "first_images/mechanics_186.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_186.jpg",
       "sha256": "f2cbdaf79f645e330007358047513655253fe7ce2bcd78481946d88f822460fa"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_192.jpg",
+      "hf_target_path": "first_images/mechanics_192.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_192.jpg",
       "sha256": "6f21ea9df730c7c6c0a58058fc298dd7f4b1bf5c63e7fde781d2165bbbd59f6f"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_193.jpg",
+      "hf_target_path": "first_images/mechanics_193.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_193.jpg",
       "sha256": "39167e5ea88e3d30a7f6e2ece5a506aba89edadf1db0f2e9dad936747a00cc0b"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_211.jpg",
+      "hf_target_path": "first_images/mechanics_211.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_211.jpg",
       "sha256": "9da44e6a8bfe2ad9096968b5535810a524d660d70fbae75e4f5a038eb8657e25"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_216.jpg",
+      "hf_target_path": "first_images/mechanics_216.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_216.jpg",
       "sha256": "42aa6f25dfbf887ad2421d89e682868026dd62a0d37395d410c321c9e67e16b4"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_242.jpg",
+      "hf_target_path": "first_images/mechanics_242.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_242.jpg",
       "sha256": "34cde89f166fe2731370bf7b8c446718413809b619df19d01fb82c9fc6369ed1"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_253.jpg",
+      "hf_target_path": "first_images/mechanics_253.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_253.jpg",
       "sha256": "b22a04e7507c995a586139c8ca9b5df05bf323143841122f527dd5115b6c71e2"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_257.jpg",
+      "hf_target_path": "first_images/mechanics_257.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_257.jpg",
       "sha256": "62a8dadd36d9cdbf25ba9e5f355712ed3a73beb67dbb89d5b47f4492e695e826"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_268.jpg",
+      "hf_target_path": "first_images/mechanics_268.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_268.jpg",
       "sha256": "904e4a8b90d71a57ef9eacbf34ae303bb429d9be6c00cca330601baa2e2caa0f"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_290.jpg",
+      "hf_target_path": "first_images/mechanics_290.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_290.jpg",
       "sha256": "f902be1bcdeef0f44e76daac9ab79efbae3164eaae921817b68da11520cbd573"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_293.jpg",
+      "hf_target_path": "first_images/mechanics_293.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_293.jpg",
       "sha256": "337266dd2e40f1c09890ad50a759fe85c671b5f388d8c9cf1ca1c18c5b03f87d"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_325.jpg",
+      "hf_target_path": "first_images/mechanics_325.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_325.jpg",
       "sha256": "c0edeae100773c9ad7240bc4a91fe5e920cdabf2677547f12f7a67d5e4aa0561"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_33.jpg",
+      "hf_target_path": "first_images/mechanics_33.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_33.jpg",
       "sha256": "c9e536fd76ceb82fb06f73112d45948c2ce035d4b24f1f0c2b695bb8d693a477"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_370.jpg",
+      "hf_target_path": "first_images/mechanics_370.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_370.jpg",
       "sha256": "e25d9798a5ba7e1825d01725938d692640d6c372a604f00bf518212b925063fb"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_411.jpg",
+      "hf_target_path": "first_images/mechanics_411.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_411.jpg",
       "sha256": "8c12c8f4b6d18ea5460f8d0b711b8581895dda843009f468fed33cbda8070f82"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_413.jpg",
+      "hf_target_path": "first_images/mechanics_413.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_413.jpg",
       "sha256": "58c0e04813ead4965e167659fb0cb32799576f75b47b8fb561442ba9a33c89ea"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_419.jpg",
+      "hf_target_path": "first_images/mechanics_419.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_419.jpg",
       "sha256": "01a5d961bfdbb505b452848c3f103cfc523e760f71a4e8794a4f733a32e2ed87"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_42.jpg",
+      "hf_target_path": "first_images/mechanics_42.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_42.jpg",
       "sha256": "a7dcf9a1653e2196ca05d57f18cc4c4b7721efb271638004d92feb231e184317"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_420.jpg",
+      "hf_target_path": "first_images/mechanics_420.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_420.jpg",
       "sha256": "24b1a7a4de97edb4c9910a9ec9686d32886872e9a0dfccbf20e5f38085e37ded"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_438.jpg",
+      "hf_target_path": "first_images/mechanics_438.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_438.jpg",
       "sha256": "a7c704a4da0817e015d840a80bebc07edf812af785bf938f8566603ece45a9e6"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_449.jpg",
+      "hf_target_path": "first_images/mechanics_449.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_449.jpg",
       "sha256": "e664bb8cb76bdd55a0371b88010b918dfdaebbed06836ffb777b6a7d8bb53310"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_469.jpg",
+      "hf_target_path": "first_images/mechanics_469.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_469.jpg",
       "sha256": "55f0128348825bd99a39c5efd3b76436b52b4155767c8e6041f879dbe2314682"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_507.jpg",
+      "hf_target_path": "first_images/mechanics_507.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_507.jpg",
       "sha256": "2c93bc23e604125f4792ea89d80c309fc69c4ee151feb372df4e51a7c1699d87"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_81.jpg",
+      "hf_target_path": "first_images/mechanics_81.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_81.jpg",
       "sha256": "cc8f3c54d33d1c50e1e2173c62576da24dea4cd5fddca6bf30d08d77e2c07a62"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_87.jpg",
+      "hf_target_path": "first_images/mechanics_87.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_87.jpg",
       "sha256": "562b8c8eb99d1653f56fce474c6e754da10734e30e8ce307a8c805cdb3c9d330"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_97.jpg",
+      "hf_target_path": "first_images/mechanics_97.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_97.jpg",
       "sha256": "658c65383edd51890950d9b579ca2df9026673364954056d9122c8eaf3b378c0"
     },
     {
       "exists_locally": true,
-      "hf_target_path": "prompts/video_phy_2/first_frames/mechanics_98.jpg",
+      "hf_target_path": "first_images/mechanics_98.jpg",
       "local_source": "_wmbench_src/data/prompts/video_phy_2/first_frames/mechanics_98.jpg",
       "sha256": "0216e3fdc338b00669fe87c89ea7c76248cf5face566f5112c1921ef5b848cb6"
+    },
+    {
+      "exists_locally": true,
+      "hf_target_path": "first_images/ttTPAWrn110_45_0to227.jpg",
+      "local_source": "_wmbench_src/data/prompts/openvid/first_frames/ttTPAWrn110_45_0to227.jpg",
+      "sha256": "d3171fa31acc4d7ba70b590d8ebe3ffaaae9aa525bb55abc3f3b8f0058bf09af"
+    },
+    {
+      "exists_locally": true,
+      "hf_target_path": "first_images/xDxQMZjHR4s_3_18to227.jpg",
+      "local_source": "_wmbench_src/data/prompts/openvid/first_frames/xDxQMZjHR4s_3_18to227.jpg",
+      "sha256": "aeb25fdd7542824e889b2fd7484b39ccb7989f49545cd12e024b1c5d581d1281"
     },
     {
       "exists_locally": true,
       "hf_target_path": "videos/cogvideox1.5-5b-i2v/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
       "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
       "sha256": "f510e8bc72e7e21cf30248a88a93b80751ee17924b6510ac550da46641975604"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/0029_perspective-center_trimmed-ball-train.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/0029_perspective-center_trimmed-ball-train.mp4",
-      "sha256": "d7c3ad709e62422919e108caf6983dd7013846d32aadb020477eccaa26d77f46"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/0035_perspective-center_trimmed-block-domino.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/0035_perspective-center_trimmed-block-domino.mp4",
-      "sha256": "edf47a104519cad5b41bfb2af71cee46f3a4c1237046e4f6ff67d5e49e30cbde"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/0047_perspective-center_trimmed-domino-in-juice.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/0047_perspective-center_trimmed-domino-in-juice.mp4",
-      "sha256": "a3475939bf6335cde3a65f7042f63a920f296ad3d4bfa76f1f9ea91b390a448a"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/0110_perspective-center_trimmed-match.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/0110_perspective-center_trimmed-match.mp4",
-      "sha256": "014eb1ba319665ab260bea4e72b93531d70970276d68e243ee7607c2fa1acf85"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/0152_perspective-center_trimmed-roll-in-box.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/0152_perspective-center_trimmed-roll-in-box.mp4",
-      "sha256": "4d9964d5f3281b6fa1dcd80c72a7d634f2e40a23a39e38bd2a9534f5654d68de"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/0161_perspective-center_trimmed-single-cradle.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/0161_perspective-center_trimmed-single-cradle.mp4",
-      "sha256": "8d4131464815a6112f85771c257dfc7812e066adcdcef4c200195f7798d51bd3"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/03zaIVEqtg8_10_0to155.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/03zaIVEqtg8_10_0to155.mp4",
-      "sha256": "e212f4264a648c038221a5f4830dcc2b6f7435eeb358ac48073739bcd549afc0"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/1jnsHJ1u3Pk_10_0to149.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/1jnsHJ1u3Pk_10_0to149.mp4",
-      "sha256": "28ea186277d624b221ba432dbfc49e0928b919ec3acc3f6465ede7e91dcab475"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/2CH9DL5j-XA_13_0to130.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/2CH9DL5j-XA_13_0to130.mp4",
-      "sha256": "747a18a9b9ff147e2adaab32676ac17d8c43c12da15d3756d0405a6d0877a866"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/88H1BBqFzXQ_1_118to222.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/88H1BBqFzXQ_1_118to222.mp4",
-      "sha256": "8f5a42509100ebc2cb293b1745955cf651dee263f2c6c32332be1bbe10d13e7d"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/B_e9xjkuVy4_000124_000134.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/B_e9xjkuVy4_000124_000134.mp4",
-      "sha256": "3173269342af9ba8f0e2e5998af313d8d9b6b387e7809455ce00fb19992a82cc"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/Cj5OoWr0k0E_92_0to279.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/Cj5OoWr0k0E_92_0to279.mp4",
-      "sha256": "c3501d21665dc59ef2168bbca47843d18647c3dad8bb633de86025a1d152f2fa"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/I5BdJ04K1Vg_2_0to102.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/I5BdJ04K1Vg_2_0to102.mp4",
-      "sha256": "06566de1b236d3b3bac566bd0ea584b7c212e7fee8348f5af30bf1f15e0cdf39"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/Pmq00R5zrEo_9_0to107.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/Pmq00R5zrEo_9_0to107.mp4",
-      "sha256": "674acf363c219a4c2532627620e4115f3cd22336c12307a3d810101ae25feba1"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/UsL5HzxP68A_2_76to287.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/UsL5HzxP68A_2_76to287.mp4",
-      "sha256": "44fef72de6a85ac3f03faa3030dd4cff17f0c167a6c17034857283d41751a368"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/VJ82LkozoT0_60_0to175.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/VJ82LkozoT0_60_0to175.mp4",
-      "sha256": "6ebb3e182b06fa56e4dd4a21928259891f3bc18e90278fd611ff32d7a32e2b2e"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/collision_261.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/collision_261.mp4",
-      "sha256": "5c4b8467c872ebd806b7f91b2bc4f2cecbb5d5a6e817915460c26647c02908b5"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/collision_271.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/collision_271.mp4",
-      "sha256": "ca3eee5b4de2b2bf884f27ebe703926f5938ac0e98ee701d059f32df0c9cbb0c"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/collision_331.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/collision_331.mp4",
-      "sha256": "3fb268df60edb426c21b6c72fd050192c069191aa73eb1f3335d12b8c0aae594"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/collision_363.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/collision_363.mp4",
-      "sha256": "cb3d5f69dae5739d8418663255fc6d7e563e5fc430bff90ad1fb3c72dd32571f"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/collision_594.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/collision_594.mp4",
-      "sha256": "be17e88620e991fdd471b1abba614e7aa492ea69c82b88677e40da1c0e34e95c"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/e8KlPriHwBU_000025_000035.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/e8KlPriHwBU_000025_000035.mp4",
-      "sha256": "ba812a1e57c906a75a980e7c69de85d54d31e98a660f7332fe78aa397d306bd0"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cogvideox1.5-5b-i2v/ttTPAWrn110_45_0to227.mp4",
-      "local_source": "_wmbench_src/data/videos/cogvideox1.5-5b-i2v/ttTPAWrn110_45_0to227.mp4",
-      "sha256": "9098ad62e5bf2c82c9d901eaff5dedfd0e2f861b188a164824f6a8837e71c79d"
     },
     {
       "exists_locally": true,
@@ -2222,198 +1712,6 @@
     },
     {
       "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/0029_perspective-center_trimmed-ball-train.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/0029_perspective-center_trimmed-ball-train.mp4",
-      "sha256": "3273ed30d609ce4adb0c412ffd51433572f556f6fc4c23f0de144376c6452e50"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/0035_perspective-center_trimmed-block-domino.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/0035_perspective-center_trimmed-block-domino.mp4",
-      "sha256": "5df937c88d54ed388c76508d382ad3e4bd0502313bafff748f81cb4c2339f5a8"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/0047_perspective-center_trimmed-domino-in-juice.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/0047_perspective-center_trimmed-domino-in-juice.mp4",
-      "sha256": "753934236c158c6d1dd31f31ab50d7df037f29330964fb81291d1b7ce955a884"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/0110_perspective-center_trimmed-match.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/0110_perspective-center_trimmed-match.mp4",
-      "sha256": "5eb2a994219f6a4527088b42c0bb65e384c62f1bc1cfd9cce00eb7ca68f7077c"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/0152_perspective-center_trimmed-roll-in-box.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/0152_perspective-center_trimmed-roll-in-box.mp4",
-      "sha256": "0f64f2aac949c202dfa4a27dc4ab63cfe2b4a13540a87cb26a2b62d36830f73c"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/0161_perspective-center_trimmed-single-cradle.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/0161_perspective-center_trimmed-single-cradle.mp4",
-      "sha256": "fa11f045d1a4a4997901952405d053db64aeb9c0b61e974418a4b1c8dedc169e"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/0164_perspective-center_trimmed-siphon.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/0164_perspective-center_trimmed-siphon.mp4",
-      "sha256": "99233eb7c61f1669baec7e6887300e9b4467f4c2fd8dda6763c7bf6f168254d8"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/0197_perspective-center_trimmed-weight-protects-duck.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/0197_perspective-center_trimmed-weight-protects-duck.mp4",
-      "sha256": "5dc2b76ed119e77b6e6c9015dd9c2f1af66b5405c8ffac1337291b6430417b2b"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/03zaIVEqtg8_10_0to155.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/03zaIVEqtg8_10_0to155.mp4",
-      "sha256": "859d9d3e4405fba5863e52b27618ea9e3cb728dc490e1afc6e2e8df59d28a222"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/1jnsHJ1u3Pk_10_0to149.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/1jnsHJ1u3Pk_10_0to149.mp4",
-      "sha256": "042d07461f8014af0eee07102275af8f02202876837c7d04db252813966ddbcb"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/2CH9DL5j-XA_13_0to130.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/2CH9DL5j-XA_13_0to130.mp4",
-      "sha256": "86060b0ab8b5a19f91640fe34925cd9723a493b55cef8c85fe1137d040efcbe3"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/88H1BBqFzXQ_1_118to222.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/88H1BBqFzXQ_1_118to222.mp4",
-      "sha256": "b6d7444000a56cace7e1144dd34e9ca5caea2db5625e6a901173ad97fc129ad3"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/B_e9xjkuVy4_000124_000134.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/B_e9xjkuVy4_000124_000134.mp4",
-      "sha256": "81cc4f79efc96c5de218522a59b34957bf6278a4194f268f148e19c33c1ce649"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/I5BdJ04K1Vg_2_0to102.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/I5BdJ04K1Vg_2_0to102.mp4",
-      "sha256": "a13e16ec367336fd5e438829c03fd467ebef19e4a174a4a3aff71c60e9fb1f25"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/Pmq00R5zrEo_9_0to107.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/Pmq00R5zrEo_9_0to107.mp4",
-      "sha256": "4769a6ef5140d7e82e286da4c88c90a53719bf910ddcc0c95b982b60185cf25b"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/UsL5HzxP68A_2_76to287.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/UsL5HzxP68A_2_76to287.mp4",
-      "sha256": "da86f7b09c83539238d11f8851f9be575f851a99ee3e7223042ff333afeebbcf"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/VJ82LkozoT0_60_0to175.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/VJ82LkozoT0_60_0to175.mp4",
-      "sha256": "7a2b93abef018cf8dea6e9fb67cff9cff0aad0ca5e7b4495f84fd7864badec69"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/collision_145.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/collision_145.mp4",
-      "sha256": "f041fe6dc24c384a7b9652c674ae457c31083cca4f620bf83b0c7265889e0b48"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/collision_156.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/collision_156.mp4",
-      "sha256": "8ce08e6f1070fea49dd539b2b80b0e7a4ed61562f3e01adc1c77840be8cff02c"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/collision_165.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/collision_165.mp4",
-      "sha256": "7d5a4666796cce64ee8c89e3c024ef3097beee68fb6e73fcbb21d406c5ee07a0"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/collision_222.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/collision_222.mp4",
-      "sha256": "9ef9f104625b047b061f53cd7b0d750e99eef376eae73f65a4948829848240e6"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/collision_223.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/collision_223.mp4",
-      "sha256": "a0bd6f096960cb3cc34dc6354cadda11a82ba3f94e0c59e55fbbfa103c6fd811"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/collision_283.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/collision_283.mp4",
-      "sha256": "d284a04a543a18c92192ce48551ea878abc9c51ad8614cbc203e243149bd9534"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/collision_307.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/collision_307.mp4",
-      "sha256": "f0882cc4a8bc85dabd37557044f3c27e0d7ac1268247384fbb6e58e721b53247"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/collision_32.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/collision_32.mp4",
-      "sha256": "0102f72da05ac8ab8c5d64a6e35385486198d8fe61c86f26620f9ec4f6b9efa5"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/collision_380.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/collision_380.mp4",
-      "sha256": "78ed22fb0b49defc7b8172751c3bffac85b70fd82d39b3e9885ebc607fa08305"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/collision_436.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/collision_436.mp4",
-      "sha256": "49b60f12262bbe0036bec224d8ee9ab0ff60caefc21ee0c05d2a4d894552936e"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/collision_443.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/collision_443.mp4",
-      "sha256": "a4bda4a92e54ff970267ef0a14b52427550b9f3dfdf193f628c53355c55129df"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/collision_583.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/collision_583.mp4",
-      "sha256": "aff2ae2313ceefc44b126f91a4f0a4b42a067bfe9c0ff6a6d88fd57122a7d13c"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/e8KlPriHwBU_000025_000035.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/e8KlPriHwBU_000025_000035.mp4",
-      "sha256": "a0c152ab5beb0b6a292cb246f38b4d4d2fe506c362b927fe5febbe7b4d3efe51"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/gravity_217.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/gravity_217.mp4",
-      "sha256": "93066c772ffb415ebf668102aa15322d6aa22c508e605b9060f4d9863ea5e2c1"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/hunyuanvideo-i2v/ttTPAWrn110_45_0to227.mp4",
-      "local_source": "_wmbench_src/data/videos/hunyuanvideo-i2v/ttTPAWrn110_45_0to227.mp4",
-      "sha256": "d1804f0ccf7f8332e6fb02fb58ca453fffebc32bb060597b7701dd26193a31e8"
-    },
-    {
-      "exists_locally": true,
       "hf_target_path": "videos/ltx-2-19b-dev/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
       "local_source": "_wmbench_src/data/videos/ltx-2-19b-dev/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
       "sha256": "fda1042e60ee46b10adb130e77dbf16dfd6c4d7fce1d941808c789bca1ff2fcd"
@@ -3011,102 +2309,6 @@
       "hf_target_path": "videos/ltx-2-19b-dev/xDxQMZjHR4s_3_18to227.mp4",
       "local_source": "_wmbench_src/data/videos/ltx-2-19b-dev/xDxQMZjHR4s_3_18to227.mp4",
       "sha256": "1a7017e82d0327effa0b31fae05f6c5ad667d55a81a88636a387a5b1e417d11f"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
-      "sha256": "2a178eca546d0931689c58b84d6bdc6d2b021535284c324ceb781788ebadc130"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/0029_perspective-center_trimmed-ball-train.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/0029_perspective-center_trimmed-ball-train.mp4",
-      "sha256": "9bcf5e05677f3f4654dd0296c3b809f447a38687caedd05f832921aeb9e5aaa7"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/0035_perspective-center_trimmed-block-domino.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/0035_perspective-center_trimmed-block-domino.mp4",
-      "sha256": "68e8bed04b49c81ff81aaa3833292246f0c49cfffcf5f9c8b8634fe5798894bd"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/0047_perspective-center_trimmed-domino-in-juice.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/0047_perspective-center_trimmed-domino-in-juice.mp4",
-      "sha256": "5a39995526ae9b2a5dc6c977d69885faf5231749ca01cebc0c81d3746234b92d"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/0110_perspective-center_trimmed-match.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/0110_perspective-center_trimmed-match.mp4",
-      "sha256": "aceaefd50d0016ff2a8791f6ec352ba7b301e4eb87039a9053bfc664c9ac9855"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/0152_perspective-center_trimmed-roll-in-box.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/0152_perspective-center_trimmed-roll-in-box.mp4",
-      "sha256": "acf13272f7bf3148db2b4f8cfe2e32030276ebe78d1383b2ed6d315d13c77583"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/0161_perspective-center_trimmed-single-cradle.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/0161_perspective-center_trimmed-single-cradle.mp4",
-      "sha256": "ab28d497f08a1973e32a893244bf6764ad355a548e4ae181e819ea1a26cd96bc"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/0164_perspective-center_trimmed-siphon.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/0164_perspective-center_trimmed-siphon.mp4",
-      "sha256": "47f007efe365b23a7835388983b1ca7d9c6e10ad31d2014d08fd1eb42b74fa94"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/0197_perspective-center_trimmed-weight-protects-duck.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/0197_perspective-center_trimmed-weight-protects-duck.mp4",
-      "sha256": "e46faf33530b0ade6b9ebecc85c1ad5dc0e8dbeb62b85686257bdf5adc913c3e"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/B_e9xjkuVy4_000124_000134.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/B_e9xjkuVy4_000124_000134.mp4",
-      "sha256": "20be334be8d2b4bc3f2cc0783a9ad14a5f94755aa43ac3183824a6073edcd12a"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/collision_431.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/collision_431.mp4",
-      "sha256": "cd3a5db7f3e0d65ffffe780b1908bc162b939e75fdc7f0cd9dd195bec1ee73be"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/e8KlPriHwBU_000025_000035.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/e8KlPriHwBU_000025_000035.mp4",
-      "sha256": "3532491ae78db536d06aefcbf91f2f859f407bc061975527e54ac9d5e77d968e"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/gravity_36.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/gravity_36.mp4",
-      "sha256": "888630054a1d53baff3facb558e45e2bd8ef7c6a13c9b94a126e7dddb88b2b73"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/lighting_248.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/lighting_248.mp4",
-      "sha256": "33462a451614f5dc5e2128ebfa114bc5e26fbaa751369e0bb2f458bd29c07e81"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/lighting_359.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/lighting_359.mp4",
-      "sha256": "212cca0e0dcf65437d96fc6cd0de7da76302fecb961e3f213692ca42904dfb21"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-distilled-fp8/lighting_381.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-distilled-fp8/lighting_381.mp4",
-      "sha256": "117ae3c415ea0064e8d6945b8883553b8063d9d196109c954ff0f74d91e8ac78"
     },
     {
       "exists_locally": true,
@@ -6109,11 +5311,11 @@
       "sha256": "b4cfe867afe05cb5214ae8ced10bd184d5261701a959272172edb27e61c5ef32"
     }
   ],
-  "hf_repo": "NU-World-Model-Embodied-AI/phyground",
+  "hf_repo": "juyil/phygroundwebsitevideo",
   "hf_repo_type": "dataset",
-  "hf_url_base": "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main",
+  "hf_url_base": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main",
   "n_missing_locally": 0,
-  "n_present_locally": 1018,
-  "n_total_files": 1018,
+  "n_present_locally": 885,
+  "n_total_files": 885,
   "schema_version": "1"
 }

@@ -5,7 +5,7 @@ The static site's `<video>` and `<img>` tags reference URLs of the form
 
     {HF_BASE}/<rel>
 
-where `HF_BASE = https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main`.
+where `HF_BASE = https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main`.
 This script enumerates every `<rel>` the snapshot needs and writes:
 
   - `snapshot/HF_UPLOAD_MANIFEST.json`  (machine-readable: list of
@@ -30,7 +30,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 WMBENCH_SRC = REPO_ROOT / "_wmbench_src"
 SNAPSHOT_DIR = REPO_ROOT / "snapshot"
 
-HF_REPO = "NU-World-Model-Embodied-AI/phyground"           # `huggingface-cli upload <repo>` target
+HF_REPO = "juyil/phygroundwebsitevideo"           # `huggingface-cli upload <repo>` target
 HF_REPO_TYPE = "dataset"
 
 
@@ -42,7 +42,7 @@ def _sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
-HF_PREFIX = "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main/"
+HF_PREFIX = "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/"
 
 
 def _hf_target_from_url(url: str) -> str | None:
@@ -58,28 +58,42 @@ def _hf_target_from_url(url: str) -> str | None:
 
 def _local_source_for_target(target: str) -> Path:
     """Map an HF target path back to its expected local source under
-    `_wmbench_src/`. The mapping mirrors the upload layout:
+    `_wmbench_src/`. The HF layout mirrors the NU-WME-AI dataset shape:
 
-      paperdemo/<law>/<file>.mp4              → _wmbench_src/data/paperdemo/<law>/<file>.mp4
-      videos/<model>/<stem>.mp4               → _wmbench_src/data/videos/<model>/<stem>.mp4
-                                                (humaneval-specific runs fallback below)
-      prompts/<dataset>/first_frames/<f>.jpg  → _wmbench_src/data/prompts/<dataset>/first_frames/<f>.jpg
+      videos/<model>/<stem>.mp4    → _wmbench_src/data/videos/<model>/<stem>.mp4
+                                     (humaneval-specific fallback below)
+      first_images/<stem>.jpg      → looked up across every dataset's first_frames/
 
     For `videos/<model>/<stem>.mp4` we also try `data/videos/<model>-humaneval/<stem>.mp4`
-    when the primary path is absent — that's where wmbench keeps several
-    humaneval-specific generation runs.
+    where wmbench keeps several humaneval-specific generation runs.
+
+    For `first_images/<stem>.jpg` we walk every `data/prompts/<dataset>/first_frames/`
+    directory in `_wmbench_src/` because the HF dataset is flat but the wmbench
+    source side keeps them in per-dataset subdirs.
     """
-    primary = WMBENCH_SRC / "data" / target
-    if primary.is_file():
-        return primary
     if target.startswith("videos/"):
+        primary = WMBENCH_SRC / "data" / target
+        if primary.is_file():
+            return primary
         parts = target.split("/", 2)
         if len(parts) == 3:
             _, model_key, rest = parts
             alt = WMBENCH_SRC / "data" / "videos" / f"{model_key}-humaneval" / rest
             if alt.is_file():
                 return alt
-    return primary
+        return primary
+    if target.startswith("first_images/"):
+        stem_jpg = target[len("first_images/"):]
+        prompts_root = WMBENCH_SRC / "data" / "prompts"
+        if prompts_root.is_dir():
+            for ds_dir in sorted(prompts_root.iterdir()):
+                if not ds_dir.is_dir():
+                    continue
+                cand = ds_dir / "first_frames" / stem_jpg
+                if cand.is_file():
+                    return cand
+        return prompts_root / "_first_images_unresolved" / stem_jpg
+    return WMBENCH_SRC / "data" / target
 
 
 def _collect_targets_from_site_config(site_config: dict) -> set[str]:
@@ -154,7 +168,7 @@ def build_manifest(site_config: dict) -> dict:
         "schema_version": "1",
         "hf_repo": HF_REPO,
         "hf_repo_type": HF_REPO_TYPE,
-        "hf_url_base": "https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground/resolve/main",
+        "hf_url_base": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main",
         "n_total_files": len(manifest_entries),
         "n_present_locally": n_present,
         "n_missing_locally": len(manifest_entries) - n_present,
