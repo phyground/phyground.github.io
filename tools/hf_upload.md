@@ -86,12 +86,27 @@ huggingface-cli repo create juyil/phygroundwebsitevideo --type dataset
 huggingface-cli upload --repo-type dataset juyil/phygroundwebsitevideo hf_staging .
 ```
 
-`--clean` contract: with `--clean`, an existing `hf_staging/` is removed and
-recreated, so `set(files in hf_staging/) == set(files in HF_UPLOAD_MANIFEST.json)`
-holds after every run. Without `--clean`, the script will hard-fail on a
-non-empty destination rather than silently appending — this prevents the
-common rerun footgun where a stale file (e.g. a removed model dir from a
-previous snapshot) gets uploaded alongside the new manifest.
+`--materialize` contract — every check below runs **before** any mutation
+of the destination, so a failed preflight never leaves a partial tree:
+
+1. **Destination type**: if the path already exists but is not a directory
+   (regular file, symlink to a file, etc.), the script aborts with
+   `<path> exists but is not a directory; remove or rename it and rerun.`
+   This applies even with `--clean` — the script never `rm`s anything that
+   is not already a directory.
+2. **Non-empty / clean**: a non-empty existing directory is rejected
+   without `--clean`; with `--clean`, the directory is wiped and recreated.
+3. **Manifest preflight**: every manifest target's local source must
+   resolve to a real file under `_wmbench_src/`. If any are missing, the
+   script lists a sample of the missing paths and aborts before touching
+   the staging directory; resolve via `python3 tools/stage_hf_assets.py
+   /path/to/wmbench` or rebuild the snapshot.
+
+Post-condition (after a successful `--materialize --clean`):
+`set(files in hf_staging/) == set(targets in HF_UPLOAD_MANIFEST.json)`,
+exactly `n_total_files` entries. The script also asserts the file count
+after the copy phase, so a copy-loop bug fails closed rather than producing
+an under-staged tree.
 
 After step 6 every `<video>` and `<img poster=...>` on the rendered site
 plays / loads.

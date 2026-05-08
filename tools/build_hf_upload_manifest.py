@@ -306,23 +306,45 @@ def materialize(staging: Path, *, clean: bool = False) -> None:
     """Reconcile `<staging>` to be a byte-for-byte canonical copy of the
     manifest's HF layout, ready for `huggingface-cli upload <repo> hf_staging .`.
 
-    Contract:
-      - With `clean=True`, an existing `<staging>` directory is removed first,
-        guaranteeing the post-condition `set(files in <staging>) == set(manifest)`.
-      - With `clean=False` (default), a non-empty `<staging>` is rejected with
-        a clear error so a stale rerun cannot silently upload non-manifest
-        files. An empty or missing `<staging>` is accepted.
+    Fail-closed contract — every check below runs *before* any mutation of
+    `<staging>`:
+
+      1. **Destination type check.** If `<staging>` already exists but is
+         not a directory (regular file, symlink to a file, etc.), abort with
+         a clear `SystemExit` and tell the operator to remove or rename it.
+      2. **Non-empty / clean check.** If `<staging>` is a non-empty directory
+         and `clean=False`, abort. If `clean=True`, remove the entire
+         directory before recreating it.
+      3. **Manifest preflight.** Walk every manifest target and verify its
+         local source resolves to a real file. If any target is missing,
+         abort with `SystemExit` and list a sample of missing paths *before*
+         touching `<staging>` — so a partial `_wmbench_src/` cannot produce
+         an incomplete upload tree.
+
+    Post-condition (after a successful return):
+      - `set(files in <staging>) == set(targets in manifest)`
+      - `len(files in <staging>) == manifest['n_total_files']`
 
     The post-condition matters because `huggingface-cli upload <repo> <local> .`
     walks `<local>` and uploads every file it finds; any leftover stale file
-    in `<staging>` would be uploaded alongside the manifest's targets.
+    in `<staging>` would be uploaded alongside the manifest's targets, and
+    any missing manifest target would silently leave a 404 on the dataset.
     """
     cfg_path = SNAPSHOT_DIR / "index" / "site_config.json"
     if not cfg_path.is_file():
         raise SystemExit("snapshot/index/site_config.json not found; run build_snapshot.py first.")
     import shutil
 
-    if staging.exists():
+    # 1. Destination type check.
+    if staging.exists() and not staging.is_dir():
+        raise SystemExit(
+            f"[hf_upload_manifest] {staging} exists but is not a directory; "
+            f"remove or rename it and rerun."
+        )
+
+    # 2. Non-empty / clean check.
+    will_wipe = False
+    if staging.is_dir():
         is_empty = not any(staging.iterdir())
         if not is_empty:
             if not clean:
@@ -330,16 +352,38 @@ def materialize(staging: Path, *, clean: bool = False) -> None:
                     f"[hf_upload_manifest] refusing to materialize into non-empty {staging}; "
                     f"pass --clean to wipe it first, or remove it manually."
                 )
-            shutil.rmtree(staging)
-    staging.mkdir(parents=True, exist_ok=True)
+            will_wipe = True
 
     site_config = json.loads(cfg_path.read_text(encoding="utf-8"))
     targets = sorted(_collect_targets_from_site_config(site_config))
-    n = 0
+
+    # 3. Manifest preflight — every target must have a local source on disk
+    # before we mutate <staging>.
+    missing: list[str] = []
     for target in targets:
         local = _local_source_for_target(target)
         if not local.is_file():
-            continue
+            missing.append(target)
+    if missing:
+        sample = missing[:5]
+        more = f" (+{len(missing) - len(sample)} more)" if len(missing) > len(sample) else ""
+        raise SystemExit(
+            f"[hf_upload_manifest] {len(missing)} manifest target(s) missing locally; "
+            f"refusing to materialize an incomplete tree. Sample:\n  - "
+            + "\n  - ".join(sample)
+            + more
+            + f"\nResolve via `python3 tools/stage_hf_assets.py /path/to/wmbench` or "
+              f"rebuild the snapshot before retrying."
+        )
+
+    # All preflight checks passed; safe to mutate <staging>.
+    if will_wipe:
+        shutil.rmtree(staging)
+    staging.mkdir(parents=True, exist_ok=True)
+
+    n = 0
+    for target in targets:
+        local = _local_source_for_target(target)
         dst = staging / target
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(local, dst)
@@ -350,6 +394,13 @@ def materialize(staging: Path, *, clean: bool = False) -> None:
     readme_dst.parent.mkdir(parents=True, exist_ok=True)
     readme_dst.write_text(readme_text, encoding="utf-8")
     n += 1
+
+    expected = len(targets) + 1  # +1 for the synthesized README
+    if n != expected:
+        raise SystemExit(
+            f"[hf_upload_manifest] post-condition violated: copied {n} files but "
+            f"manifest declares {expected}. Aborting; remove {staging} and retry."
+        )
 
     print(f"[hf_upload_manifest] materialized {n} files into {staging}")
 
