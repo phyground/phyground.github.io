@@ -297,22 +297,44 @@ def build(*, out_path: Path) -> dict:
     print(f"#   huggingface-cli upload --repo-type {HF_REPO_TYPE} {HF_REPO} \\")
     print(f"#       <local-source>  <hf-target-path>")
     print(f"# Or, to upload the entire layout in one shot, materialize a staging tree:")
-    print(f"#   python tools/build_hf_upload_manifest.py --materialize hf_staging/")
+    print(f"#   python tools/build_hf_upload_manifest.py --materialize hf_staging/ --clean")
     print(f"#   huggingface-cli upload --repo-type {HF_REPO_TYPE} {HF_REPO} hf_staging .")
     return manifest_obj
 
 
-def materialize(staging: Path) -> None:
-    """Hard-link / copy every present `local_source` into a single folder
-    mirroring the HF target layout, for one-shot upload via
-    `huggingface-cli upload <repo> hf_staging .`.
+def materialize(staging: Path, *, clean: bool = False) -> None:
+    """Reconcile `<staging>` to be a byte-for-byte canonical copy of the
+    manifest's HF layout, ready for `huggingface-cli upload <repo> hf_staging .`.
+
+    Contract:
+      - With `clean=True`, an existing `<staging>` directory is removed first,
+        guaranteeing the post-condition `set(files in <staging>) == set(manifest)`.
+      - With `clean=False` (default), a non-empty `<staging>` is rejected with
+        a clear error so a stale rerun cannot silently upload non-manifest
+        files. An empty or missing `<staging>` is accepted.
+
+    The post-condition matters because `huggingface-cli upload <repo> <local> .`
+    walks `<local>` and uploads every file it finds; any leftover stale file
+    in `<staging>` would be uploaded alongside the manifest's targets.
     """
     cfg_path = SNAPSHOT_DIR / "index" / "site_config.json"
     if not cfg_path.is_file():
         raise SystemExit("snapshot/index/site_config.json not found; run build_snapshot.py first.")
+    import shutil
+
+    if staging.exists():
+        is_empty = not any(staging.iterdir())
+        if not is_empty:
+            if not clean:
+                raise SystemExit(
+                    f"[hf_upload_manifest] refusing to materialize into non-empty {staging}; "
+                    f"pass --clean to wipe it first, or remove it manually."
+                )
+            shutil.rmtree(staging)
+    staging.mkdir(parents=True, exist_ok=True)
+
     site_config = json.loads(cfg_path.read_text(encoding="utf-8"))
     targets = sorted(_collect_targets_from_site_config(site_config))
-    import shutil
     n = 0
     for target in targets:
         local = _local_source_for_target(target)
@@ -336,12 +358,18 @@ def main(argv: list[str]) -> int:
     parser = argparse.ArgumentParser(description="Emit HuggingFace upload manifest.")
     parser.add_argument("--out", type=Path, default=SNAPSHOT_DIR / "HF_UPLOAD_MANIFEST.json")
     parser.add_argument("--materialize", type=Path, default=None,
-                        help="Copy every locally-present file into <dir>/<hf_target_path>.")
+                        help="Copy every locally-present file into <dir>/<hf_target_path>. "
+                             "Refuses a non-empty <dir> unless --clean is passed.")
+    parser.add_argument("--clean", action="store_true",
+                        help="With --materialize, wipe <dir> first so the result is "
+                             "canonical (no stale files survive).")
     parser.add_argument("--quiet", action="store_true")
     args = parser.parse_args(argv)
     build(out_path=args.out)
     if args.materialize:
-        materialize(args.materialize)
+        materialize(args.materialize, clean=args.clean)
+    elif args.clean:
+        raise SystemExit("--clean requires --materialize.")
     return 0
 
 

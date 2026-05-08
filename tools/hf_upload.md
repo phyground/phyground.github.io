@@ -71,8 +71,12 @@ python3 tools/build_snapshot.py --select-humaneval-100
 python3 tools/verify_snapshot.py
 python3 tools/build_site.py --config snapshot/index/site_config.json
 
-# 4. Materialise the staging tree (also gitignored):
-python3 tools/build_hf_upload_manifest.py --materialize hf_staging/
+# 4. Materialise the staging tree (also gitignored). Always pass --clean for
+#    reruns: the script refuses a non-empty hf_staging/ without it, and with
+#    it the tree is wiped + recreated to be byte-for-byte canonical against
+#    snapshot/HF_UPLOAD_MANIFEST.json. Without --clean, a stale file from a
+#    previous rerun would otherwise survive into the upload.
+python3 tools/build_hf_upload_manifest.py --materialize hf_staging/ --clean
 
 # 5. Authenticate (one-time, with a write token for juyil/phygroundwebsitevideo):
 huggingface-cli login
@@ -81,6 +85,13 @@ huggingface-cli login
 huggingface-cli repo create juyil/phygroundwebsitevideo --type dataset
 huggingface-cli upload --repo-type dataset juyil/phygroundwebsitevideo hf_staging .
 ```
+
+`--clean` contract: with `--clean`, an existing `hf_staging/` is removed and
+recreated, so `set(files in hf_staging/) == set(files in HF_UPLOAD_MANIFEST.json)`
+holds after every run. Without `--clean`, the script will hard-fail on a
+non-empty destination rather than silently appending — this prevents the
+common rerun footgun where a stale file (e.g. a removed model dir from a
+previous snapshot) gets uploaded alongside the new manifest.
 
 After step 6 every `<video>` and `<img poster=...>` on the rendered site
 plays / loads.
