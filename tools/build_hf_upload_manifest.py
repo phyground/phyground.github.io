@@ -114,32 +114,33 @@ def _dedup(entries: list[tuple[Path, str]]) -> list[tuple[Path, str]]:
     return out
 
 
-def build(*, out_path: Path) -> dict:
-    cfg_path = SNAPSHOT_DIR / "index" / "site_config.json"
-    if not cfg_path.is_file():
-        raise SystemExit(f"snapshot/index/site_config.json not found; run build_snapshot.py first.")
-    site_config = json.loads(cfg_path.read_text(encoding="utf-8"))
-
+def build_manifest(site_config: dict) -> dict:
+    """Pure-function variant: takes the parsed site_config and returns the
+    manifest dict. Useful for callers that want to embed the manifest into
+    a larger build without writing it to disk first.
+    """
     entries = _dedup(
         _walk_paperdemo_videos()
         + _walk_humaneval_videos(site_config)
         + _walk_first_frames(site_config),
     )
-
     manifest_entries = []
     n_present = 0
     for local, target in entries:
         exists = local.is_file()
         if exists:
             n_present += 1
+        try:
+            local_str = str(local.relative_to(REPO_ROOT))
+        except ValueError:
+            local_str = str(local)
         manifest_entries.append({
-            "local_source": str(local.relative_to(REPO_ROOT)) if local.is_relative_to(REPO_ROOT) else str(local),
+            "local_source": local_str,
             "hf_target_path": target,
             "exists_locally": exists,
             "sha256": _sha256_file(local) if exists else None,
         })
-
-    manifest_obj = {
+    return {
         "schema_version": "1",
         "hf_repo": HF_REPO,
         "hf_repo_type": HF_REPO_TYPE,
@@ -149,14 +150,28 @@ def build(*, out_path: Path) -> dict:
         "n_missing_locally": len(manifest_entries) - n_present,
         "files": manifest_entries,
     }
+
+
+def build(*, out_path: Path) -> dict:
+    cfg_path = SNAPSHOT_DIR / "index" / "site_config.json"
+    if not cfg_path.is_file():
+        raise SystemExit(f"snapshot/index/site_config.json not found; run build_snapshot.py first.")
+    site_config = json.loads(cfg_path.read_text(encoding="utf-8"))
+    manifest_obj = build_manifest(site_config)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(
         json.dumps(manifest_obj, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
-    print(f"[hf_upload_manifest] wrote {out_path.relative_to(REPO_ROOT)}")
+    try:
+        printable = str(out_path.relative_to(REPO_ROOT))
+    except ValueError:
+        printable = str(out_path)
+    print(f"[hf_upload_manifest] wrote {printable}")
+    manifest_entries = manifest_obj["files"]
     print(f"[hf_upload_manifest] {len(manifest_entries)} target files; "
-          f"{n_present} present locally, {len(manifest_entries)-n_present} need upstream sourcing")
+          f"{manifest_obj['n_present_locally']} present locally, "
+          f"{manifest_obj['n_missing_locally']} need upstream sourcing")
     print()
     print("# Once the upstream files are colocated under _wmbench_src/, run:")
     print(f"#   pip install huggingface_hub")

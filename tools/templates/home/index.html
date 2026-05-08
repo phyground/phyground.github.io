@@ -6,7 +6,7 @@
     <h1>{{ site.title }}</h1>
     <p class="lead">{{ site.description }}</p>
     <div class="hero-actions">
-        {% if site.paper_url %}<a class="btn btn-primary btn-lg" href="{{ site.paper_url }}">Read paper</a>{% endif %}
+        <a class="btn btn-primary btn-lg" href="{{ site.paper_url }}">Read paper{% if site.paper_url_is_default %} (HF dataset card){% endif %}</a>
         <a class="btn btn-outline btn-lg" href="{{ rel('leaderboard/') }}">View leaderboard</a>
         <a class="btn btn-outline btn-lg" href="{{ rel('videos/') }}">Browse videos</a>
         <a class="btn btn-outline btn-lg" href="{{ site.github_url }}">GitHub</a>
@@ -23,15 +23,17 @@
 
 {% if featured_comparison and featured_comparison.videos %}
 <h2>Featured comparison &mdash; {{ featured_comparison.law|replace('_', ' ') }}</h2>
-<p>Same physical law, multiple video generators, scored side-by-side.</p>
+<p>One physical law, several video generators side-by-side. The reference tile is the curator-blessed paperdemo annotation; the others are independent generations of related prompts.</p>
 <div class="video-grid">
     {% for v in featured_comparison.videos %}
-    <figure class="video-card">
-        <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"
-               poster=""></video>
+    <figure class="video-card{% if v._role == 'reference' %} video-card-ref{% endif %}">
+        <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"></video>
         <figcaption>
-            <span class="model">{{ v.model }}</span>
-            <span class="meta">n_ann = {{ v.n_ann }}</span>
+            <span class="model">
+                {{ v.model }}
+                {% if v._role == 'reference' %}<span class="badge">reference</span>{% endif %}
+            </span>
+            <span class="meta">n_ann = {{ v.n_ann }} · {{ v.src_filename }}</span>
         </figcaption>
     </figure>
     {% endfor %}

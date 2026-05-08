@@ -76,6 +76,36 @@
         var firstFrame = p.first_frame_url || null;
         var perModelVideos = p.per_model_videos || {};
 
+        // OpenVid real-video context (YouTube, caption, expected outcomes).
+        var rvBlock = document.getElementById('compare-realvideo');
+        if (rvBlock) rvBlock.remove();
+        if (p.realvideo) {
+            var rv = p.realvideo;
+            var block = document.createElement('section');
+            block.id = 'compare-realvideo';
+            block.style.margin = '1rem 0';
+            var html = '<h3 style="margin-bottom:0.4rem;">Real-video context (OpenVid)</h3>';
+            if (rv.youtube_url) {
+                html += '<p style="margin-bottom:0.4rem;">YouTube source: <a href="' + escapeHtml(rv.youtube_url) + '" target="_blank">'
+                     + escapeHtml(rv.youtube_id || rv.youtube_url) + '</a>';
+                if (rv.time_range) {
+                    html += ' &middot; segment ' + rv.time_range.start_s + 's&ndash;' + rv.time_range.end_s + 's';
+                }
+                html += '</p>';
+            }
+            if (rv.caption) html += '<p class="caveat" style="margin-bottom:0.4rem;"><strong>Caption:</strong> ' + escapeHtml(rv.caption) + '</p>';
+            if (rv.expected_outcome && rv.expected_outcome.length) {
+                html += '<details style="margin-top:0.4rem;"><summary>Expected outcomes (' + rv.expected_outcome.length + ')</summary><ul>';
+                rv.expected_outcome.forEach(function (e) {
+                    html += '<li>' + escapeHtml(e) + '</li>';
+                });
+                html += '</ul></details>';
+            }
+            block.innerHTML = html;
+            var view = document.getElementById('compare-view');
+            view.insertBefore(block, document.getElementById('compare-videos'));
+        }
+
         function card(model, score, videoUrl, extra, posterUrl) {
             var fig = document.createElement('figure');
             fig.className = 'video-card';

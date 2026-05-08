@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% set active_page = 'videos' %}
 {% block title %}Video Gallery &mdash; {{ site.title }}{% endblock %}
+{% block head_extra %}
+<style>
+.modal[open] { display: block; }
+</style>
+{% endblock %}
 {% block content %}
 <h1>Video Gallery</h1>
 <p>
@@ -42,11 +47,18 @@
             </div>
             <div class="video-grid">
                 {% for v in law_entry.videos %}
-                <figure class="video-card">
+                {% set stem = v.src_filename.rsplit('.', 1)[0] %}
+                <figure class="video-card video-card-clickable"
+                        data-prompt-id="{{ stem }}"
+                        data-model="{{ v.model }}"
+                        data-law="{{ law_entry.law }}"
+                        data-n-ann="{{ v.n_ann }}"
+                        data-src-filename="{{ v.src_filename }}"
+                        data-video-url="{{ v.video_url_hf }}">
                     <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"></video>
                     <figcaption>
                         <span class="model"><a href="{{ rel('models/') }}{{ v.model }}/">{{ v.model }}</a></span>
-                        <span class="meta">n_ann={{ v.n_ann }} · {{ v.src_filename }}</span>
+                        <span class="meta">n_ann={{ v.n_ann }} · {{ v.src_filename }} · <button type="button" class="btn btn-sm video-card-info" aria-label="Open details">details</button></span>
                     </figcaption>
                 </figure>
                 {% endfor %}
@@ -61,12 +73,10 @@
         {% for m in models %}
         {% set n_repr = m.representative_videos|length %}
         {% set n_slices = m.leaderboard_slices|length %}
-        {% if n_repr or n_slices %}
         <button type="button" class="gallery-nav-item" data-model="{{ m.key }}">
             {{ m.key }}
-            <span class="badge">{{ n_repr if n_repr else n_slices }}</span>
+            <span class="badge">{{ n_repr if n_repr else (n_slices if n_slices else '0') }}</span>
         </button>
-        {% endif %}
         {% endfor %}
     </nav>
     <div class="gallery-content" id="model-content">
@@ -74,7 +84,6 @@
         {% for m in models %}
         {% set n_repr = m.representative_videos|length %}
         {% set n_slices = m.leaderboard_slices|length %}
-        {% if n_repr or n_slices %}
         <div class="gallery-section" data-model="{{ m.key }}"{% if not ns.first %} hidden{% endif %}>
             {% set ns.first = false %}
             <h2>{{ m.key }}</h2>
@@ -111,9 +120,10 @@
                 </a>
                 {% endfor %}
             </div>
+            {% elif not n_repr %}
+            <p class="placeholder">No published videos or leaderboard rows for this model in the current snapshot. See the <a href="{{ rel('models/') }}{{ m.key }}/">model detail page</a> for catalog metadata.</p>
             {% endif %}
         </div>
-        {% endif %}
         {% endfor %}
     </div>
 </section>
@@ -123,5 +133,18 @@
     <a href="{{ rel('videos/compare/') }}">Open the compare page</a>.
 </p>
 
+<dialog id="card-modal" class="modal">
+    <button type="button" class="btn btn-sm modal-close" aria-label="Close">&times;</button>
+    <h2 id="modal-title"></h2>
+    <p id="modal-meta" style="color:var(--gray-dark);font-size:0.9rem;"></p>
+    <div id="modal-frame-wrap" style="display:none;margin-bottom:0.75rem;">
+        <img id="modal-frame" alt="first frame" style="max-width:100%;border:1px solid var(--border);">
+    </div>
+    <p id="modal-prompt" class="caveat"></p>
+    <div id="modal-scores"></div>
+    <p id="modal-link" style="margin-top:0.75rem;"></p>
+</dialog>
+
+<script id="prompts-data" type="application/json">{{ prompts_index|tojson }}</script>
 <script src="{{ rel('static/js/gallery.js') }}"></script>
 {% endblock %}

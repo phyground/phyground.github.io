@@ -66,7 +66,13 @@
 {% endif %}
 
 <p style="margin-top:1.5rem;font-size:0.9rem;">
-    <a href="{{ rel('leaderboard/') }}?evaluator=&dataset=&subset=&schema=#{{ model.key }}">All leaderboard slices &rarr;</a> ·
+    {% if my_entries %}
+    {% set first = my_entries[0] %}
+    <a href="{{ rel('leaderboard/') }}#{{ model.key }}--{{ first.dataset }}--{{ first.subset }}--{{ first.evaluator }}--{{ first.schema }}">Jump to leaderboard rows &rarr;</a> ·
+    {% else %}
+    <a href="{{ rel('leaderboard/') }}">View leaderboard &rarr;</a> ·
+    {% endif %}
+    <a href="{{ rel('videos/') }}?model={{ model.key }}">Open in by-model gallery &rarr;</a> ·
     <a href="{{ rel('videos/') }}">Back to gallery</a>
 </p>
 {% endblock %}

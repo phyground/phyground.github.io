@@ -399,6 +399,31 @@ table.lb td.num { text-align: right; font-variant-numeric: tabular-nums; }
 }
 .lb-permalink:hover { color: var(--black); text-decoration: underline; }
 
+/* ---------- modal (by-law detail panel) ---------- */
+.modal {
+    border: 1px solid var(--black);
+    background: var(--white);
+    color: var(--black);
+    padding: 1.5rem;
+    max-width: 720px;
+    width: 90%;
+    font-family: 'Times New Roman', Times, serif;
+}
+.modal::backdrop { background: rgba(0, 0, 0, 0.4); }
+.modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.25rem;
+    background: var(--white);
+    border: 1px solid var(--black);
+    cursor: pointer;
+}
+.video-card-ref {
+    border: 2px solid var(--black);
+    box-shadow: 2px 2px 0 var(--gray-medium);
+}
+
 /* ---------- leaderboard sortable + expandable ---------- */
 table.lb th[data-sort] {
     cursor: pointer;

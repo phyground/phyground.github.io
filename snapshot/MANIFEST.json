@@ -1,6 +1,7 @@
 {
-  "built_at": "2026-05-08T08:30:00Z",
+  "built_at": "2026-05-08T09:00:00Z",
   "files": {
+    "HF_UPLOAD_MANIFEST.json": "6c011cc54ef7358df316311909b9bbc92dbf96d70c0631613dbd45b90e9ef741",
     "index/eval_registry.frozen.json": "0d791883c6ec8dec03d1f6db890d6681cdf987a3313e97314d0af83b4ed616fe",
     "index/figs/boundary_interaction.pdf": "52868ec0ae753f308a8029f253e6cf010f9687de03c1f3226956e5324a1bda91",
     "index/figs/boundary_interaction.png": "2fcf5712806e8678a193e162a6ec05572b30c414f635b51e868cc89e72448568",
@@ -229,12 +230,12 @@
     "index/first_frames/video_phy_2/mechanics_95.jpg": "1c19ce0587d0dab93d21560494bca81ca32ebf65ac55adf01f569b8ccbdde9e9",
     "index/first_frames/video_phy_2/mechanics_97.jpg": "658c65383edd51890950d9b579ca2df9026673364954056d9122c8eaf3b378c0",
     "index/first_frames/video_phy_2/mechanics_98.jpg": "0216e3fdc338b00669fe87c89ea7c76248cf5face566f5112c1921ef5b848cb6",
-    "index/humaneval_100.json": "3f7b940d1b6f4180b293416ccf87f56cafd382b814673bf4649d11f4077c0923",
+    "index/humaneval_100.json": "da9f488ffac7f6e0ef664d2b61b8cb95c6b31d8bd1e1e7b05d2ef0cac9039721",
     "index/humaneval_prompts.json": "bf8c755ba1e70ab2f862f9143d1d39360f7447bc533a43cfa2bada363ede5d01",
     "index/leaderboard_unpublished.json": "bb8e7716588a8e7347b33a4df8eb435c9b2ddaa3851db1ba338bb1d5ceba62ff",
     "index/model_catalog.frozen.json": "547e6c167aaa1f5e47ad6edac86878d23bc60ecd91eeb56b12f1bb6a07d9f718",
     "index/paperdemo.manifest.csv": "55fe4d712c24c103598c6a3647931ef719dfb551c95c675ad138aee609fadd17",
-    "index/site_config.json": "a2fd8b3631d00933ccc43cfc69d280fa8250c2472a81f67dcea0d0df914b11fe",
+    "index/site_config.json": "3a479853b11562adc869cbdba6643555171e2852d8d2393e33fc6e4457f04616",
     "index/vis_datasets.frozen.json": "69e4761736b5865072345b6c8a753c80b109ef76e5284fb90581c206f591e08e",
     "scores/_tmp/eval/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_115959.json": "4aed5837c922e22caaaef0c2919d3fdb70eceeff155752143d4b576035487a0e",
     "scores/_tmp/eval/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194743.json": "df55bdbf0142e75a999495a989e70633a55b2a7dee1300aefb3bb3eeb178ac49",
@@ -330,5 +331,5 @@
     "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260423_112711.json": "092fffd25d99473b5db84827f03ecdf1af6496afadb0a27776020024e4192bc6"
   },
   "schema_version": "1",
-  "snapshot_sha": "fb98ef91f8be6e30b0c2cc694dc7ae1d555708110763064cc49d1fbfef8aedd9"
+  "snapshot_sha": "a49a5f068d5e0ae2d7f4840e4252d537dc11186448f846e0fdf1fd665662a585"
 }
