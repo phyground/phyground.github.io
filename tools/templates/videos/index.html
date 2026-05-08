@@ -18,7 +18,8 @@
     <nav class="gallery-nav" id="law-nav">
         {% for law_entry in paperdemo %}
         <button type="button" class="gallery-nav-item" data-law="{{ law_entry.law }}">
-            {{ law_entry.law|replace('_', ' ') }}
+            {% if law_entry.fig_png %}<img src="{{ rel(law_entry.fig_png) }}" alt="" class="law-thumb">{% endif %}
+            <span>{{ law_entry.law|replace('_', ' ') }}</span>
             <span class="badge">{{ law_entry.videos|length }}</span>
         </button>
         {% endfor %}
@@ -27,10 +28,18 @@
         {% for law_entry in paperdemo %}
         <div class="gallery-section" data-law="{{ law_entry.law }}"{% if not loop.first %} hidden{% endif %}>
             <h2>{{ law_entry.law|replace('_', ' ') }}</h2>
-            <p style="font-size:0.9rem;color:var(--gray-dark);">
-                <a href="{{ rel(law_entry.fig_pdf) }}" target="_blank">law illustration (PDF)</a>
-                · {{ law_entry.videos|length }} curated videos
-            </p>
+            <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem;">
+                {% if law_entry.fig_png %}
+                <a href="{{ rel(law_entry.fig_pdf) }}" target="_blank">
+                    <img src="{{ rel(law_entry.fig_png) }}" alt="{{ law_entry.law }} illustration" style="max-width:280px;border:1px solid var(--border);">
+                </a>
+                {% endif %}
+                <p style="font-size:0.9rem;color:var(--gray-dark);">
+                    {{ law_entry.videos|length }} curated videos · {{ law_entry.n_ann_total }} human annotations<br>
+                    <a href="{{ rel(law_entry.fig_pdf) }}" target="_blank">PDF illustration</a> ·
+                    <a href="{{ rel(law_entry.fig_png) }}" target="_blank">PNG thumbnail</a>
+                </p>
+            </div>
             <div class="video-grid">
                 {% for v in law_entry.videos %}
                 <figure class="video-card">
@@ -50,34 +59,59 @@
 <section class="gallery-pane" id="pane-by-model" hidden>
     <nav class="gallery-nav" id="model-nav">
         {% for m in models %}
-        {% if m.representative_videos %}
+        {% set n_repr = m.representative_videos|length %}
+        {% set n_slices = m.leaderboard_slices|length %}
+        {% if n_repr or n_slices %}
         <button type="button" class="gallery-nav-item" data-model="{{ m.key }}">
             {{ m.key }}
-            <span class="badge">{{ m.representative_videos|length }}</span>
+            <span class="badge">{{ n_repr if n_repr else n_slices }}</span>
         </button>
         {% endif %}
         {% endfor %}
     </nav>
     <div class="gallery-content" id="model-content">
+        {% set ns = namespace(first=true) %}
         {% for m in models %}
-        {% if m.representative_videos %}
-        <div class="gallery-section" data-model="{{ m.key }}"{% if not loop.first %} hidden{% endif %}>
+        {% set n_repr = m.representative_videos|length %}
+        {% set n_slices = m.leaderboard_slices|length %}
+        {% if n_repr or n_slices %}
+        <div class="gallery-section" data-model="{{ m.key }}"{% if not ns.first %} hidden{% endif %}>
+            {% set ns.first = false %}
             <h2>{{ m.key }}</h2>
             <p style="font-size:0.9rem;color:var(--gray-dark);">
                 family: {{ m.family }}{% if m.params_b %} · {{ m.params_b }}B params{% endif %}{% if m.fps %} · {{ m.fps }} fps{% endif %}{% if m.frames %} · {{ m.frames }} frames{% endif %}{% if m.resolution %} · {{ m.resolution }}{% endif %}
                 · <a href="{{ rel('models/') }}{{ m.key }}/">model detail</a>
             </p>
+            {% if n_repr %}
             <div class="video-grid">
                 {% for v in m.representative_videos %}
                 <figure class="video-card">
-                    <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"></video>
+                    <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"
+                           {% if v.first_frame_url %}poster="{{ v.first_frame_url }}"{% endif %}></video>
                     <figcaption>
-                        <span class="model">{{ v.law|replace('_', ' ') }}</span>
-                        <span class="meta">n_ann={{ v.n_ann }} · {{ v.src_filename }}</span>
+                        <span class="model">{{ (v.law or 'humaneval')|replace('_', ' ') }}{% if v.kind == 'humaneval' %} <span class="badge">humaneval</span>{% endif %}</span>
+                        <span class="meta">{% if v.n_ann is not none %}n_ann={{ v.n_ann }} · {% endif %}{{ v.src_filename }}</span>
                     </figcaption>
                 </figure>
                 {% endfor %}
             </div>
+            {% else %}
+            <p style="color:var(--gray-dark);">No representative videos yet — see the leaderboard slices below.</p>
+            {% endif %}
+            {% if n_slices %}
+            <h3 style="margin-top:1.5rem;">Leaderboard slices</h3>
+            <div class="entry-cards">
+                {% for s in m.leaderboard_slices %}
+                <a class="entry-card" href="{{ rel('leaderboard/') }}#{{ m.key }}--{{ s.dataset }}--{{ s.subset }}--{{ s.evaluator }}--{{ s.schema }}">
+                    <h3 style="font-size:1rem;">{{ s.dataset }} / {{ s.subset }}</h3>
+                    <p>eval: {{ s.evaluator }} · schema: {{ s.schema }}<br>
+                       gen_avg: {{ '%.2f'|format(s.gen_avg) if s.gen_avg is not none else '—' }} ·
+                       phys_avg: {{ '%.2f'|format(s.phys_avg) if s.phys_avg is not none else '—' }} ·
+                       N: {{ s.n if s.n is not none else '—' }}</p>
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
         {% endif %}
         {% endfor %}

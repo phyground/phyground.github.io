@@ -1,0 +1,63 @@
+{
+  "general_dimensions": [
+    "SA",
+    "PTV",
+    "persistence"
+  ],
+  "inference_config": {
+    "max_tokens": 1024
+  },
+  "judge": "qwen9b:Qwen/Qwen3.5-9B",
+  "meta": {
+    "eval_timestamp": "20260423_120342",
+    "evaluator": "qwen9b",
+    "prompt_config": "cot-subq.yaml",
+    "prompt_mode": "eval_prompts",
+    "scheme": "cot_subq",
+    "source_filename": "eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_120334.json",
+    "subset": "humaneval_set",
+    "type": "eval_result",
+    "video_model": "veo-3.1"
+  },
+  "num_videos": 1,
+  "prompt_config": "cot-subq.yaml",
+  "prompt_mode": "eval_prompts",
+  "results": [
+    {
+      "PTV": 5,
+      "SA": 1,
+      "general_avg": 3.6666666666666665,
+      "persistence": 5,
+      "physical": {
+        "avg": 5.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 5,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 5,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "impenetrability",
+        "momentum"
+      ],
+      "prompt": "A player hits the ball off the side of the mallet, resulting in an unexpected trajectory.",
+      "video": "collision_156"
+    }
+  ],
+  "visual_config": {
+    "fps": 1,
+    "max_height": 360
+  }
+}

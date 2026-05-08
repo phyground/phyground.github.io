@@ -73,12 +73,19 @@
         // If we have a paperdemo video for this prompt, prepend it.
         var pdVids = pdByStem[id] || [];
 
-        function card(model, score, videoUrl, extra) {
+        var firstFrame = p.first_frame_url || null;
+        var perModelVideos = p.per_model_videos || {};
+
+        function card(model, score, videoUrl, extra, posterUrl) {
             var fig = document.createElement('figure');
             fig.className = 'video-card';
             var inner = '';
             if (videoUrl) {
-                inner += '<video src="' + escapeHtml(videoUrl) + '" controls muted loop preload="metadata"></video>';
+                inner += '<video src="' + escapeHtml(videoUrl) + '" controls muted loop preload="metadata"';
+                if (posterUrl) inner += ' poster="' + escapeHtml(posterUrl) + '"';
+                inner += '></video>';
+            } else if (posterUrl) {
+                inner += '<img src="' + escapeHtml(posterUrl) + '" alt="first frame" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--gray-light);">';
             } else {
                 inner += '<div class="placeholder" style="aspect-ratio:16/9;margin:0;border:none;background:var(--gray-light);">no video</div>';
             }
@@ -93,6 +100,11 @@
             return fig;
         }
 
+        // Reference card: prompt's first_frame as a "real source" tile.
+        if (firstFrame) {
+            grid.appendChild(card('first frame', undefined, null, 'reference', firstFrame));
+        }
+
         // Find a paperdemo video URL for a given model.
         function pdUrlFor(model) {
             var hit = pdVids.filter(function (v) { return v.model === model; })[0];
@@ -100,13 +112,16 @@
         }
 
         modelKeys.forEach(function (m) {
-            grid.appendChild(card(m, pms[m], pdUrlFor(m), null));
+            // Prefer paperdemo URL when this prompt is curated; otherwise use the
+            // per-(model,prompt) HF URL the snapshot precomputed.
+            var url = pdUrlFor(m) || perModelVideos[m] || null;
+            grid.appendChild(card(m, pms[m], url, null, firstFrame));
         });
 
         // Any paperdemo videos for models not in per_model_scores: show too.
         pdVids.forEach(function (pv) {
             if (modelKeys.indexOf(pv.model) === -1) {
-                grid.appendChild(card(pv.model, undefined, pv.video_url_hf, 'paperdemo n_ann=' + pv.n_ann));
+                grid.appendChild(card(pv.model, undefined, pv.video_url_hf, 'paperdemo n_ann=' + pv.n_ann, firstFrame));
             }
         });
 

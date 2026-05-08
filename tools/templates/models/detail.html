@@ -48,16 +48,21 @@
 <div class="video-grid">
     {% for v in model.representative_videos %}
     <figure class="video-card">
-        <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"></video>
+        <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"
+               {% if v.first_frame_url %}poster="{{ v.first_frame_url }}"{% endif %}></video>
         <figcaption>
-            <span class="model">{{ v.law|replace('_', ' ') }}</span>
-            <span class="meta">n_ann={{ v.n_ann }} · {{ v.src_filename }}</span>
+            <span class="model">{{ (v.law or 'humaneval')|replace('_', ' ') }}{% if v.kind == 'humaneval' %} <span class="badge">humaneval</span>{% endif %}</span>
+            <span class="meta">
+                {% if v.n_ann is not none %}n_ann={{ v.n_ann }} · {% endif %}
+                {% if v.score is not none %}phys_avg={{ '%.2f'|format(v.score) }} · {% endif %}
+                {{ v.src_filename }}
+            </span>
         </figcaption>
     </figure>
     {% endfor %}
 </div>
 {% else %}
-<p style="color:var(--gray-dark);">No paperdemo videos for this model in the published snapshot.</p>
+<p style="color:var(--gray-dark);">No paperdemo videos and no humaneval prompts scored this model. The leaderboard slices below show the published evaluation context.</p>
 {% endif %}
 
 <p style="margin-top:1.5rem;font-size:0.9rem;">

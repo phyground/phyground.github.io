@@ -9,6 +9,8 @@
         {% if site.paper_url %}<a class="btn btn-primary btn-lg" href="{{ site.paper_url }}">Read paper</a>{% endif %}
         <a class="btn btn-outline btn-lg" href="{{ rel('leaderboard/') }}">View leaderboard</a>
         <a class="btn btn-outline btn-lg" href="{{ rel('videos/') }}">Browse videos</a>
+        <a class="btn btn-outline btn-lg" href="{{ site.github_url }}">GitHub</a>
+        <a class="btn btn-outline btn-lg" href="{{ site.huggingface_url }}">HuggingFace</a>
     </div>
 </section>
 
@@ -48,6 +50,10 @@
     <a class="entry-card" href="{{ rel('videos/') }}">
         <h3>Video Gallery</h3>
         <p>Browse generated videos by physical law or by model.</p>
+    </a>
+    <a class="entry-card" href="{{ site.paper_url or site.huggingface_dataset_url or site.github_url }}">
+        <h3>Paper</h3>
+        <p>{% if site.paper_url %}Methodology, scoring schemas, and evaluation details.{% else %}Manuscript link will appear once published; meanwhile see the <em>About</em> page.{% endif %}</p>
     </a>
     <a class="entry-card" href="{{ rel('about/') }}">
         <h3>About</h3>

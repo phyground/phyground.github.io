@@ -32,3 +32,6 @@ _wmbench_src/data/paperdemo/**/*.jpg
 # --- Common temp ---
 *.log
 *.tmp
+
+# HF upload staging tree (huge, transient).
+hf_staging/

@@ -1,0 +1,96 @@
+{
+  "general_dimensions": [
+    "SA",
+    "PTV",
+    "persistence"
+  ],
+  "inference_config": {
+    "max_tokens": 4096
+  },
+  "judge": "claude:claude-opus-4-7",
+  "meta": {
+    "eval_timestamp": "20260422_173943",
+    "evaluator": "claude",
+    "prompt_config": "cotnosubq.yaml",
+    "prompt_mode": "eval_prompts",
+    "scheme": "cot",
+    "source_filename": "eval_claude_cot_humaneval_set_veo-3.1_20260422_173855.json",
+    "subset": "humaneval_set",
+    "type": "eval_result",
+    "video_model": "veo-3.1"
+  },
+  "num_videos": 2,
+  "prompt_config": "cotnosubq.yaml",
+  "prompt_mode": "eval_prompts",
+  "results": [
+    {
+      "PTV": 4,
+      "SA": 2,
+      "general_avg": 2.6666666666666665,
+      "persistence": 2,
+      "physical": {
+        "avg": 4.3333,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 4,
+            "status": "scored"
+          },
+          "impenetrability": {
+            "score": 5,
+            "status": "scored"
+          },
+          "momentum": {
+            "score": 4,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "collision",
+        "impenetrability",
+        "momentum"
+      ],
+      "prompt": "A player hits the ball off the side of the mallet, resulting in an unexpected trajectory.",
+      "video": "collision_156"
+    },
+    {
+      "PTV": 5,
+      "SA": 5,
+      "general_avg": 4.0,
+      "persistence": 2,
+      "physical": {
+        "avg": 3.0,
+        "coverage": 1.0,
+        "laws": {
+          "collision": {
+            "score": 2,
+            "status": "scored"
+          },
+          "gravity": {
+            "score": 4,
+            "status": "scored"
+          },
+          "material": {
+            "score": 3,
+            "status": "scored"
+          }
+        },
+        "missing_laws": []
+      },
+      "physical_laws": [
+        "gravity",
+        "collision",
+        "material"
+      ],
+      "prompt": "A discus is thrown from a raised platform, landing sharply in the soft sand of a beach, creating a visible impact crater.",
+      "video": "mechanics_236"
+    }
+  ],
+  "visual_config": {
+    "fps": 4.0,
+    "max_height": 360,
+    "max_images": 32
+  }
+}

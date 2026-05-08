@@ -48,7 +48,8 @@ URL query parameters are shareable.</p>
     <tbody>
         {% for entry in leaderboard_entries %}
         {% set c = entry.current %}
-        <tr class="lb-row"
+        {% set anchor = entry.video_model ~ '--' ~ entry.dataset ~ '--' ~ entry.subset ~ '--' ~ entry.evaluator ~ '--' ~ entry.schema %}
+        <tr class="lb-row" id="{{ anchor }}"
             data-key="{{ entry.video_model }}"
             data-dataset="{{ entry.dataset }}"
             data-subset="{{ entry.subset }}"
@@ -65,12 +66,11 @@ URL query parameters are shareable.</p>
             <td class="num" data-val="{{ c.phys_avg if c.phys_avg is not none else -1 }}">{{ '%.2f'|format(c.phys_avg) if c.phys_avg is not none else '—' }}</td>
             <td class="num" data-val="{{ c.coverage if c.coverage is not none else 0 }}">{{ '%.2f'|format(c.coverage) if c.coverage is not none else '—' }}</td>
             <td>{{ c.datetime or '—' }}</td>
+            <td><a href="{{ rel(c.source_url_snapshot) }}" download>JSON</a></td>
             <td>
-                {% if c.source_url_snapshot %}<a href="{{ rel(c.source_url_snapshot) }}" download>JSON</a>
-                {% else %}<span style="color:var(--gray-dark);" title="source_json missing on disk">—</span>{% endif %}
-            </td>
-            <td>
+                <a class="btn btn-sm" href="{{ rel('videos/') }}?model={{ entry.video_model }}">Videos</a>
                 {% if entry.history %}<button type="button" class="btn btn-sm lb-expand" aria-expanded="false">+{{ entry.history|length }}</button>{% endif %}
+                <a class="lb-permalink" href="#{{ anchor }}" title="Permalink to this row" aria-label="Permalink">¶</a>
             </td>
         </tr>
         {% if entry.history %}

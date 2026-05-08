@@ -382,6 +382,22 @@ table.lb td.num { text-align: right; font-variant-numeric: tabular-nums; }
     border-radius: 999px;
 }
 .gallery-nav-item.active .badge { background: var(--white); color: var(--black); }
+.law-thumb {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    background: var(--white);
+}
+.gallery-nav-item.active .law-thumb { background: var(--white); }
+
+.lb-permalink {
+    margin-left: 0.4rem;
+    color: var(--gray-dark);
+    text-decoration: none;
+    font-weight: bold;
+}
+.lb-permalink:hover { color: var(--black); text-decoration: underline; }
 
 /* ---------- leaderboard sortable + expandable ---------- */
 table.lb th[data-sort] {

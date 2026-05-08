@@ -207,40 +207,77 @@ def _read_humaneval_prompts(path: Path) -> list[dict]:
 # ---------- score JSON copy + URL rewrite ----------
 
 def _score_relpath(source_json: str) -> str | None:
-    """Map an `eval_registry.json` source_json value to a path under `_wmbench_src/data/scores/`.
+    """Resolve an `eval_registry.json` source_json value to a path under `_wmbench_src/`.
 
-    Returns the relative path under `_wmbench_src/` (`data/scores/...`) if the
-    file is present after the Round-2 ingest, else None.
+    Tries, in order:
+      1. Exact relative path under `_wmbench_src/` (handles `data/scores/...`,
+         `data/training/...`, `tmp/...`).
+      2. Absolute paths that contain `wmbench/<rel>` — strip up to and including
+         `wmbench/` and check `_wmbench_src/<rel>`.
+      3. `data/scores/<evaluator>/<basename>` with a one-level subdir fallback
+         (`cot/`, `direct/`, `fpsablation/`, `subq/`) so registry rows that record
+         the basename without the subdir still resolve.
+      4. External absolute paths get mapped to `data/scores/_external/<basename>`.
+    Returns the path relative to `_wmbench_src/`, or None if no candidate exists.
     """
     if not source_json:
         return None
-    if source_json.startswith("data/scores/"):
-        cand = source_json
-    elif source_json.startswith("/") or source_json.startswith("tmp/"):
-        # External or tmp paths: not in _wmbench_src/.
+    sj = source_json
+    if sj.startswith("/"):
+        if "wmbench/" in sj:
+            tail = sj.split("wmbench/", 1)[1]
+            if (WMBENCH_SRC / tail).is_file():
+                return tail
+        ext_rel = f"data/scores/_external/{Path(sj).name}"
+        if (WMBENCH_SRC / ext_rel).is_file():
+            return ext_rel
         return None
-    else:
-        # Bare basename or other: not ingested.
-        return None
-    if (WMBENCH_SRC / cand).is_file():
-        return cand
+    direct = WMBENCH_SRC / sj
+    if direct.is_file():
+        return sj
+    if sj.startswith("data/scores/"):
+        parts = Path(sj).parts
+        if len(parts) >= 4:
+            evaluator = parts[2]
+            base = Path(sj).name
+            for sub in ("", "cot", "direct", "fpsablation", "subq"):
+                cand = (WMBENCH_SRC / "data/scores" / evaluator / sub / base
+                        if sub else WMBENCH_SRC / "data/scores" / evaluator / base)
+                if cand.is_file():
+                    return str(cand.relative_to(WMBENCH_SRC))
     return None
 
 
-def _snapshot_score_url(rel_under_wmbench: str) -> str:
-    """Map `_wmbench_src/data/scores/<evaluator>/<...>` to `scores/<evaluator>/<...>`."""
-    assert rel_under_wmbench.startswith("data/scores/")
-    return rel_under_wmbench[len("data/"):]   # → "scores/<evaluator>/<...>"
+def _snapshot_score_url(rel_under_wmbench: str) -> str | None:
+    """Map a `_wmbench_src/`-relative score path to its snapshot-relative URL.
+
+    `data/scores/<...>`     → `scores/<...>`
+    `data/training/<...>`   → `scores/_training/<...>`
+    `tmp/<...>`             → `scores/_tmp/<...>`
+    Anything else is a programming bug.
+    """
+    if rel_under_wmbench.startswith("data/scores/"):
+        return rel_under_wmbench[len("data/"):]
+    if rel_under_wmbench.startswith("data/training/"):
+        return "scores/_training/" + rel_under_wmbench[len("data/training/"):]
+    if rel_under_wmbench.startswith("tmp/"):
+        return "scores/_tmp/" + rel_under_wmbench[len("tmp/"):]
+    return None
 
 
-# ---------- leaderboard dedup (coverage-aware) ----------
+# ---------- leaderboard dedup (coverage-aware, drops unresolvable currents) ----------
 
-def _dedup_leaderboard(registry: list[dict]) -> list[dict]:
+def _dedup_leaderboard(registry: list[dict]) -> tuple[list[dict], list[dict]]:
     """Group registry rows by (video_model, dataset, subset, evaluator, schema).
 
     Per plan §6: filter `coverage > 0` before choosing the newest row as `current`;
-    the dropped coverage-zero reruns are kept under `history` so they're not lost,
-    but they never replace a working result.
+    coverage-zero reruns are kept under `history` so they are not lost.
+
+    A group is published only if at least one of its valid (coverage > 0) rows
+    resolves to a snapshot-downloadable score JSON. Groups whose every valid
+    row is unresolvable are returned as a separate `unpublished` list so the
+    audit (`leaderboard_unpublished.json`) records them but the public table
+    never shows a row with a broken `Download raw JSON` cell.
     """
     groups: dict[tuple, list[dict]] = defaultdict(list)
     for row in registry:
@@ -253,56 +290,84 @@ def _dedup_leaderboard(registry: list[dict]) -> list[dict]:
         )
         groups[key].append(row)
 
-    entries: list[dict] = []
+    def _annotate(row: dict) -> dict:
+        r = dict(row)
+        rel = _score_relpath(r.get("source_json") or "")
+        if rel:
+            r["source_status"] = "available"
+            r["source_url_snapshot"] = _snapshot_score_url(rel)
+            r["_score_relpath"] = rel
+        else:
+            r["source_status"] = "missing"
+            r["source_url_snapshot"] = None
+            r["_score_relpath"] = None
+        return r
+
+    published: list[dict] = []
+    unpublished: list[dict] = []
     for key, rows in groups.items():
         valid = [r for r in rows if (r.get("coverage") or 0) > 0]
         invalid = [r for r in rows if r not in valid]
         if not valid:
-            # Skip groups where every result has coverage = 0; nothing publishable.
             continue
-        valid_sorted = sorted(
-            valid,
+        valid_annotated = [_annotate(r) for r in valid]
+        invalid_annotated = [_annotate(r) for r in invalid]
+        # Filter to valid rows whose source resolves; pick newest.
+        valid_with_source = [r for r in valid_annotated if r["source_url_snapshot"]]
+        all_valid_sorted = sorted(
+            valid_annotated,
             key=lambda r: (r.get("datetime") or "", r.get("source_json") or ""),
             reverse=True,
         )
         invalid_sorted = sorted(
-            invalid,
+            invalid_annotated,
             key=lambda r: (r.get("datetime") or "", r.get("source_json") or ""),
             reverse=True,
         )
-        current, *older_valid = valid_sorted
-        history = older_valid + invalid_sorted
         video_model, dataset, subset, evaluator, schema = key
-
-        # Annotate the row with snapshot-relative URLs for raw download.
-        def _annotate(row: dict) -> dict:
-            r = dict(row)
-            rel = _score_relpath(r.get("source_json") or "")
-            if rel:
-                r["source_status"] = "available"
-                r["source_url_snapshot"] = _snapshot_score_url(rel)
-            else:
-                r["source_status"] = "missing"
-                r["source_url_snapshot"] = None
-            return r
-
-        entries.append({
+        if not valid_with_source:
+            unpublished.append({
+                "video_model": video_model,
+                "dataset": dataset,
+                "subset": subset,
+                "evaluator": evaluator,
+                "schema": schema,
+                "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+                "rows": all_valid_sorted + invalid_sorted,
+            })
+            continue
+        valid_with_source_sorted = sorted(
+            valid_with_source,
+            key=lambda r: (r.get("datetime") or "", r.get("source_json") or ""),
+            reverse=True,
+        )
+        current = valid_with_source_sorted[0]
+        # History keeps every other row (with-source older + without-source + invalid).
+        history_rows = [r for r in all_valid_sorted if r is not current] + invalid_sorted
+        published.append({
             "video_model": video_model,
             "dataset": dataset,
             "subset": subset,
             "evaluator": evaluator,
             "schema": schema,
-            "current": _annotate(current),
-            "history": [_annotate(r) for r in history],
+            "current": current,
+            "history": history_rows,
         })
-    entries.sort(key=lambda e: (
+    published.sort(key=lambda e: (
         e["dataset"] or "",
         e["video_model"] or "",
         e["evaluator"] or "",
         e["schema"] or "",
         e["subset"] or "",
     ))
-    return entries
+    unpublished.sort(key=lambda e: (
+        e["dataset"] or "",
+        e["video_model"] or "",
+        e["evaluator"] or "",
+        e["schema"] or "",
+        e["subset"] or "",
+    ))
+    return published, unpublished
 
 
 # ---------- paperdemo grouping ----------
@@ -310,12 +375,9 @@ def _dedup_leaderboard(registry: list[dict]) -> list[dict]:
 def _group_paperdemo(rows: list[dict]) -> list[dict]:
     by_law: dict[str, list[dict]] = defaultdict(list)
     for r in rows:
-        rel_under_wmbench = r["src_path"].lstrip("/")  # e.g. "data/paperdemo/<law>/<file>"
-        # Snapshot relative path inside HF dataset (and inside snapshot/scores/figs is N/A).
-        # Build the HF URL the gallery <video> tag points at.
-        # Map "data/paperdemo/<law>/<file>" → "paperdemo/<law>/<file>" inside the HF dataset.
+        rel_under_wmbench = r["src_path"].lstrip("/")
         if rel_under_wmbench.startswith("data/paperdemo/"):
-            hf_rel = rel_under_wmbench[len("data/"):]   # "paperdemo/<law>/<file>"
+            hf_rel = rel_under_wmbench[len("data/"):]
         else:
             hf_rel = rel_under_wmbench
         by_law[r["law"]].append({
@@ -332,9 +394,16 @@ def _group_paperdemo(rows: list[dict]) -> list[dict]:
         out.append({
             "law": law,
             "fig_pdf": f"index/figs/{law}.pdf",
+            "fig_png": f"index/figs/{law}.png",
             "videos": videos,
+            "n_ann_total": sum(int(v["n_ann"]) for v in videos),
         })
     return out
+
+
+def _law_n_ann(paperdemo_grouped: list[dict]) -> dict[str, int]:
+    """Total n_ann per law from paperdemo manifest. Used by humaneval-100 quota."""
+    return {entry["law"]: entry.get("n_ann_total", 0) for entry in paperdemo_grouped}
 
 
 # ---------- model union + dataset summary ----------
@@ -422,110 +491,200 @@ LAWS_13 = [
 ]
 
 
-def _law_quotas() -> dict[str, int]:
-    base = 100 // len(LAWS_13)         # 7
-    extra = 100 - base * len(LAWS_13)  # 9
+def _law_quotas(law_n_ann: dict[str, int] | None = None) -> dict[str, int]:
+    """Per humaneval_100.md §3:
+
+      - floor(100 / 13) = 7 base slots per law.
+      - 100 - 7*13 = 9 extra slots, distributed by descending paperdemo `n_ann`
+        coverage. Tie-break alphabetical by law name.
+    If `law_n_ann` is None or every law has zero annotations, the alphabetical
+    fallback is used so the function still returns a deterministic value.
+    """
+    base = 100 // len(LAWS_13)
+    extra = 100 - base * len(LAWS_13)
     quotas = {law: base for law in LAWS_13}
-    for law in LAWS_13[:extra]:        # alphabetical first 9 laws → +1
+    if law_n_ann and any(v > 0 for v in law_n_ann.values()):
+        ranked = sorted(LAWS_13, key=lambda l: (-int(law_n_ann.get(l, 0)), l))
+    else:
+        ranked = list(LAWS_13)
+    for law in ranked[:extra]:
         quotas[law] += 1
     return quotas
 
 
+def _humaneval_full_model_set(registry: list[dict]) -> set[str]:
+    """Step-1 intersection-gate input: every leaderboard `video_model` that has
+    at least one humaneval_set row with `coverage = 1.0`.
+    """
+    return {
+        r.get("video_model")
+        for r in registry
+        if r.get("dataset") == "humaneval"
+        and r.get("subset") == "humaneval_set"
+        and (r.get("coverage") or 0) == 1.0
+        and r.get("video_model")
+    }
+
+
+def _minmax_normalize(values: list[float]) -> list[float]:
+    if not values:
+        return []
+    lo, hi = min(values), max(values)
+    if hi <= lo:
+        return [0.5] * len(values)
+    return [(v - lo) / (hi - lo) for v in values]
+
+
 def _select_humaneval_100(prompts: list[dict],
                           paperdemo: list[dict],
+                          registry: list[dict],
                           existing_selection: dict | None,
                           input_sha256: dict,
                           built_at: str) -> dict:
-    """Run the deterministic 5-step selection from humaneval_100.md.
+    """Implements docs/exp-plan/public/humaneval_100.md §"Selection algorithm" verbatim:
 
-    The implementation uses the per-prompt `per_model_scores` field shipped in
-    `_wmbench_src/data/prompts/anonymous_humaneval_set.json` for the score-based
-    fill, so it does not need to re-aggregate from per-evaluator score JSONs.
+      Step 1. Intersection gate: prompt's per_model_scores must cover every
+              leaderboard model that has a humaneval_set cov=1.0 entry.
+      Step 2. paperdemo seed: prompts whose `video` matches a paperdemo
+              `src_filename` stem are must-includes.
+      Step 3. Per-law quota: floor(100/13) = 7 slots, plus 9 spare slots
+              distributed by descending paperdemo n_ann (alphabetical tie-break).
+      Step 4. Score-based fill, per-law min-max normalized:
+              score = 0.40·variance + 0.30·coverage + 0.30·mid_difficulty.
+              Tie-break on lower numeric prompt_id.
+      Step 5. Manual overrides preserved across rebuilds.
+    If the data after the gate cannot fill 100 slots, the artifact's `note`
+    documents the cap precisely.
     """
-    quotas = _law_quotas()
-    # Group prompts by primary physical law (first entry of `physical_laws`).
-    by_law: dict[str, list[dict]] = defaultdict(list)
+    law_n_ann = _law_n_ann(paperdemo)
+    quotas = _law_quotas(law_n_ann)
+
+    full_model_set = _humaneval_full_model_set(registry)
+
+    # ── Step 1: intersection gate ──────────────────────────────
+    gate_kept: list[dict] = []
+    gate_dropped_no_models = 0
+    gate_dropped_partial = 0
     for p in prompts:
+        per = p.get("per_model_scores") or {}
+        if not per:
+            gate_dropped_no_models += 1
+            continue
+        if full_model_set and not full_model_set.issubset(per.keys()):
+            gate_dropped_partial += 1
+            continue
+        gate_kept.append(p)
+
+    # If the strict gate empties every law (it does on the current humaneval set
+    # because per_model_scores carries 4 of the 8 leaderboard models), fall back
+    # to a relaxed gate: prompts whose per_model_scores is a non-empty subset of
+    # `full_model_set` (or non-empty if the registry has no eligible models).
+    relaxed_gate = False
+    if not gate_kept:
+        relaxed_gate = True
+        for p in prompts:
+            per = p.get("per_model_scores") or {}
+            if not per:
+                continue
+            if full_model_set and not (set(per.keys()) & full_model_set):
+                continue
+            gate_kept.append(p)
+
+    # Group by primary law.
+    by_law: dict[str, list[dict]] = defaultdict(list)
+    for p in gate_kept:
         laws = p.get("physical_laws") or []
         if not laws:
             continue
         primary = laws[0]
-        if primary not in quotas:
-            continue
-        by_law[primary].append(p)
+        if primary in quotas:
+            by_law[primary].append(p)
 
-    # Step 1 (intersection gate): keep prompts that have non-empty per_model_scores.
-    # Prompts with no model coverage get dropped; they cannot meaningfully be ranked.
-    for law in list(by_law):
-        by_law[law] = [p for p in by_law[law] if p.get("per_model_scores")]
-
-    # Step 2 (paperdemo seed): include prompts whose `video` matches a paperdemo
-    # `src_filename` (without the `.mp4` extension). Paperdemo's video_id is just
-    # a row index, so we anchor on filename instead.
-    paperdemo_video_stems = {
+    # ── Step 2: paperdemo seed ────────────────────────────────
+    paperdemo_stems = {
         Path(v["src_filename"]).stem
         for law_entry in paperdemo
         for v in law_entry["videos"]
     }
-    seed_prompt_ids: set[str] = set()
-    for law in by_law:
-        for p in by_law[law]:
-            if p.get("video") in paperdemo_video_stems:
-                seed_prompt_ids.add(p["video"])
+    seed_ids: set[str] = {
+        p["video"] for ps in by_law.values() for p in ps
+        if p.get("video") in paperdemo_stems
+    }
 
-    # Honour any manual_overrides from a previously-committed selection: their
-    # added/removed prompt_ids are applied at the end. We don't bake them into
-    # the candidate pool here.
     manual_overrides = (existing_selection or {}).get("manual_overrides", []) or []
 
-    # Step 4 (composite score, normalized per law).
-    def _score(p: dict, all_in_law: list[dict]) -> float:
-        scores = list(p.get("per_model_scores", {}).values())
-        var = statistics.pvariance(scores) if len(scores) >= 2 else 0.0
-        cov = len(scores) / max(len(LAWS_13), 1)   # capped roughly at 1
-        diff = p.get("difficulty", {}) or {}
-        mid = 1.0 - abs((diff.get("phys_micro_avg") or 0.0) - 3.0) / 3.0
-        return 0.40 * var + 0.30 * min(cov, 1.0) + 0.30 * max(0.0, min(mid, 1.0))
-
     selected: list[dict] = []
+    per_law_audit: dict[str, dict] = {}
+
+    # ── Step 4: per-law min-max normalized composite ──────────
     for law, prompts_in_law in by_law.items():
-        # Per-law normalize variance to [0,1]
         if not prompts_in_law:
+            per_law_audit[law] = {"available": 0, "quota": quotas.get(law, 0), "seeds": 0, "fill": 0}
             continue
-        seeds = [p for p in prompts_in_law if p.get("video") in seed_prompt_ids]
-        non_seeds = [p for p in prompts_in_law if p.get("video") not in seed_prompt_ids]
-        # Score and rank non-seeds.
-        ranked = sorted(
-            non_seeds,
-            key=lambda p: (-_score(p, prompts_in_law), p.get("video") or ""),
-        )
+        # Compute raw components per prompt.
+        raw = []
+        for p in prompts_in_law:
+            scores = list((p.get("per_model_scores") or {}).values())
+            var = statistics.pvariance(scores) if len(scores) >= 2 else 0.0
+            cov = len(scores) / max(len(full_model_set or [1]), 1)
+            diff = (p.get("difficulty") or {})
+            mid = 1.0 - abs((diff.get("phys_micro_avg") or 0.0) - 3.0) / 3.0
+            raw.append((p, var, cov, mid))
+        # Min-max normalize per law for variance, coverage, mid_difficulty.
+        var_n = _minmax_normalize([t[1] for t in raw])
+        cov_n = _minmax_normalize([t[2] for t in raw])
+        mid_n = _minmax_normalize([max(0.0, min(t[3], 1.0)) for t in raw])
+
+        def _pid(s: str) -> tuple:
+            """Sort key for deterministic tie-break: lower numeric component first."""
+            try:
+                head, _, tail = (s or "").rpartition("_")
+                return (head or "", int(tail))
+            except ValueError:
+                return (s or "", 0)
+
+        scored = []
+        for (p, _, _, _), v, c, m in zip(raw, var_n, cov_n, mid_n):
+            composite = 0.40 * v + 0.30 * c + 0.30 * m
+            scored.append((p, composite, v, c, m))
+
+        seeds_in_law = [s for s in scored if s[0].get("video") in seed_ids]
+        non_seeds = [s for s in scored if s[0].get("video") not in seed_ids]
+        non_seeds_ranked = sorted(non_seeds, key=lambda t: (-t[1], _pid(t[0].get("video") or "")))
+
         quota = quotas.get(law, 0)
-        seeds_used = seeds[:quota]
+        seeds_used = seeds_in_law[:quota]
         fill_n = max(0, quota - len(seeds_used))
-        fill = ranked[:fill_n]
-        for p in seeds_used:
+        fill = non_seeds_ranked[:fill_n]
+
+        for (p, _, v, c, m) in seeds_used:
             selected.append({
                 "prompt_id": p["video"],
                 "law": law,
                 "source": "paperdemo_seed",
-                "score_components": None,
+                "score_components": {
+                    "variance_norm": round(v, 4),
+                    "coverage_norm": round(c, 4),
+                    "mid_difficulty_norm": round(m, 4),
+                },
             })
-        for p in fill:
-            scores = list(p.get("per_model_scores", {}).values())
-            var = statistics.pvariance(scores) if len(scores) >= 2 else 0.0
-            cov = len(scores) / max(len(LAWS_13), 1)
-            diff = p.get("difficulty", {}) or {}
-            mid = 1.0 - abs((diff.get("phys_micro_avg") or 0.0) - 3.0) / 3.0
+        for (p, _, v, c, m) in fill:
             selected.append({
                 "prompt_id": p["video"],
                 "law": law,
                 "source": "score_fill",
                 "score_components": {
-                    "variance": round(var, 4),
-                    "coverage": round(min(cov, 1.0), 4),
-                    "mid_difficulty": round(max(0.0, min(mid, 1.0)), 4),
+                    "variance_norm": round(v, 4),
+                    "coverage_norm": round(c, 4),
+                    "mid_difficulty_norm": round(m, 4),
                 },
             })
+        per_law_audit[law] = {
+            "available": len(prompts_in_law),
+            "quota": quota,
+            "seeds": len(seeds_used),
+            "fill": len(fill),
+        }
 
     # Step 5: apply manual overrides.
     for ov in manual_overrides:
@@ -542,23 +701,45 @@ def _select_humaneval_100(prompts: list[dict],
                 "score_components": None,
             })
 
-    # Sort by (law, prompt_id) for deterministic output.
+    # Sort deterministically by (law, prompt_id) for stable output.
     selected.sort(key=lambda s: (s["law"], str(s["prompt_id"])))
 
-    # Effective per-law totals after overrides.
     effective_counts = defaultdict(int)
     for s in selected:
         effective_counts[s["law"]] += 1
+
+    note = None
+    if relaxed_gate:
+        note = (
+            f"Relaxed intersection gate: the strict gate (every leaderboard humaneval "
+            f"cov=1.0 model present in `per_model_scores`) emptied every law because "
+            f"the shipped per_model_scores covers a strict subset of the {len(full_model_set)} "
+            f"eligible models. The relaxed gate kept prompts whose per_model_scores intersects "
+            f"that set. {gate_dropped_no_models} prompts were dropped for empty per_model_scores; "
+            f"strict-gate-rejected count: {gate_dropped_partial}."
+        )
+    if len(selected) < 100:
+        cap = ", ".join(f"{law}={info['available']}" for law, info in sorted(per_law_audit.items())
+                        if info["available"] < info["quota"])
+        cap_note = (
+            f"Selected {len(selected)} prompts. The cap is below 100 because some laws "
+            f"have fewer eligible prompts than their quota: {cap or '(no per-law shortfall)'}."
+        )
+        note = (note + " " if note else "") + cap_note
 
     return {
         "schema_version": "1",
         "selected_at": built_at,
         "selection_inputs": input_sha256,
         "law_quotas": quotas,
+        "law_n_ann": law_n_ann,
+        "intersection_gate_full_model_set": sorted(full_model_set),
+        "per_law_audit": per_law_audit,
         "effective_law_counts": dict(sorted(effective_counts.items())),
         "n_selected": len(selected),
         "prompts": selected,
         "manual_overrides": manual_overrides,
+        "note": note,
     }
 
 
@@ -580,71 +761,119 @@ def _humaneval_100_stub(input_sha256: dict, prompts_sha256: str | None) -> dict:
 # ---------- prompts index for the compare page ----------
 
 def _prompts_index(prompts: list[dict]) -> dict:
-    """Build a lightweight per-prompt index keyed by `video` (the prompt_id).
-
-    Keeps only fields the compare page needs: prompt text, dataset, physical_laws,
-    per_model_scores, difficulty.
+    """Per-prompt index keyed by prompt_id. Carries first_frame_url and the per-model
+    HF video URLs the compare page needs to render side-by-side without further
+    lookups.
     """
     out: dict[str, dict] = {}
     for p in prompts:
         pid = p.get("video")
+        ds = p.get("dataset") or ""
         if not pid:
             continue
+        ff_url = _first_frame_hf_url(ds, pid) if _has_first_frame(ds, pid) else None
+        per_model_videos = {
+            model_key: _video_hf_url(model_key, ds, pid)
+            for model_key in (p.get("per_model_scores") or {})
+        }
         out[pid] = {
             "prompt_id": pid,
-            "dataset": p.get("dataset"),
+            "dataset": ds,
             "prompt": p.get("prompt"),
             "physical_laws": p.get("physical_laws") or [],
             "difficulty": p.get("difficulty") or {},
             "per_model_scores": p.get("per_model_scores") or {},
+            "per_model_videos": per_model_videos,
+            "first_frame_url": ff_url,
         }
     return out
 
 
-# ---------- videos_index ----------
+# ---------- per-prompt + per-model HuggingFace URL helpers ----------
+
+def _video_hf_url(model_key: str, source_dataset: str, stem: str) -> str:
+    """Per plan §2: data/videos/<model>-<dataset>/<stem>.mp4. The HF dataset
+    mirrors that layout under `videos/<model>-<dataset>/<stem>.mp4`.
+    """
+    return f"{HF_BASE}/videos/{model_key}-{source_dataset}/{stem}.mp4"
+
+
+def _first_frame_hf_url(source_dataset: str, stem: str) -> str:
+    """First-frame images mirror data/prompts/<dataset>/first_frames/<stem>.jpg."""
+    return f"{HF_BASE}/prompts/{source_dataset}/first_frames/{stem}.jpg"
+
+
+def _has_first_frame(source_dataset: str, stem: str) -> bool:
+    if not source_dataset or not stem:
+        return False
+    p = WMBENCH_SRC / "data" / "prompts" / source_dataset / "first_frames" / f"{stem}.jpg"
+    return p.is_file()
+
+
+# ---------- videos_index (now per-(model, prompt) with HF URLs) ----------
 
 def _videos_index(leaderboard: list[dict],
-                 paperdemo: list[dict]) -> dict[str, list[dict]]:
-    """Map "<model>::<dataset>" → list of {prompt_id?, src_filename?, video_url_hf}.
+                  paperdemo: list[dict],
+                  prompts: list[dict]) -> dict[str, dict]:
+    """Build a structured by-model index.
 
-    Round 2 lacks per-(model,dataset) video filename ingestion, so the index is
-    derived from paperdemo (precise filenames) plus a synthetic placeholder per
-    leaderboard slice (used by the by-model gallery as "we know this combo
-    exists; concrete filenames will land when /videos/<model>/<dataset>/ is
-    populated upstream").
+    Output shape:
+      videos_index[<model_key>] = {
+          "paperdemo": [ {law, src_filename, video_url_hf, n_ann}, ... ],
+          "humaneval": [ {prompt_id, dataset, prompt, video_url_hf,
+                          first_frame_url|null, physical_laws, score}, ... ],
+          "datasets":  [ {dataset, subset, evaluator, schema, phys_avg,
+                          gen_avg, n} (one per leaderboard slice) ],
+      }
     """
-    idx: dict[str, list[dict]] = defaultdict(list)
-    # Paperdemo: each video's model + (we don't always know the dataset). Use law as
-    # a coarse bucket so the by-model view still has thumbnails.
+    idx: dict[str, dict] = defaultdict(lambda: {"paperdemo": [], "humaneval": [], "datasets": []})
+
+    # paperdemo entries: HF URL is locked to paperdemo/<law>/<file>
     for law_entry in paperdemo:
         for v in law_entry["videos"]:
-            key = f"{v['model']}::paperdemo:{law_entry['law']}"
-            idx[key].append({
+            idx[v["model"]]["paperdemo"].append({
+                "law": law_entry["law"],
                 "src_filename": v["src_filename"],
                 "video_url_hf": v["video_url_hf"],
-                "law": law_entry["law"],
-                "video_id": v["video_id"],
                 "n_ann": v["n_ann"],
             })
-    # Leaderboard slices: include a stub entry so the by-model UI knows the
-    # (model, dataset, subset) combination has results.
-    for entry in leaderboard:
-        key = f"{entry['video_model']}::{entry['dataset']}"
-        if not idx[key]:
-            idx[key] = []
-        # Avoid duplication; just record the slice exists.
-        slice_key = f"{entry['dataset']}/{entry['subset']}"
-        if not any(e.get("_slice_key") == slice_key for e in idx[key]):
-            idx[key].append({
-                "_slice_key": slice_key,
-                "dataset": entry["dataset"],
-                "subset": entry["subset"],
-                "evaluator": entry["evaluator"],
-                "schema": entry["schema"],
-                "phys_avg": entry["current"].get("phys_avg"),
-                "gen_avg": entry["current"].get("gen_avg"),
+
+    # humaneval-prompt × per_model_scores → one entry per (model, prompt)
+    for p in prompts:
+        pid = p.get("video")
+        ds = p.get("dataset") or ""
+        if not pid:
+            continue
+        ff_url = _first_frame_hf_url(ds, pid) if _has_first_frame(ds, pid) else None
+        for model_key, score in (p.get("per_model_scores") or {}).items():
+            idx[model_key]["humaneval"].append({
+                "prompt_id": pid,
+                "dataset": ds,
+                "prompt": p.get("prompt") or "",
+                "physical_laws": p.get("physical_laws") or [],
+                "score": score,
+                "video_url_hf": _video_hf_url(model_key, ds, pid),
+                "first_frame_url": ff_url,
             })
-    # Convert to plain dict, sort keys.
+
+    # leaderboard slices: one summary entry per (dataset, subset, evaluator, schema)
+    for entry in leaderboard:
+        idx[entry["video_model"]]["datasets"].append({
+            "dataset": entry["dataset"],
+            "subset": entry["subset"],
+            "evaluator": entry["evaluator"],
+            "schema": entry["schema"],
+            "phys_avg": entry["current"].get("phys_avg"),
+            "gen_avg": entry["current"].get("gen_avg"),
+            "n": entry["current"].get("n"),
+            "source_url_snapshot": entry["current"].get("source_url_snapshot"),
+        })
+
+    # Sort each list deterministically.
+    for k, sub in idx.items():
+        sub["paperdemo"].sort(key=lambda v: (v["law"], v["src_filename"]))
+        sub["humaneval"].sort(key=lambda v: (v["prompt_id"], v["dataset"]))
+        sub["datasets"].sort(key=lambda v: (v["dataset"], v["subset"], v["evaluator"], v["schema"]))
     return {k: idx[k] for k in sorted(idx.keys())}
 
 
@@ -652,7 +881,9 @@ def _videos_index(leaderboard: list[dict],
 
 def _representative_videos(model_key: str,
                            paperdemo: list[dict],
+                           prompts: list[dict],
                            target: int = 9) -> list[dict]:
+    """Paperdemo first; deterministic fallback over humaneval prompts the model scored."""
     out: list[dict] = []
     for law_entry in paperdemo:
         for v in law_entry["videos"]:
@@ -661,10 +892,64 @@ def _representative_videos(model_key: str,
                     "law": law_entry["law"],
                     "src_filename": v["src_filename"],
                     "video_url_hf": v["video_url_hf"],
+                    "first_frame_url": None,
+                    "kind": "paperdemo",
                     "n_ann": v["n_ann"],
+                    "score": None,
+                    "prompt_id": None,
+                    "dataset": None,
                 })
                 if len(out) >= target:
                     return out
+    if len(out) >= target:
+        return out
+    fallback: list[dict] = []
+    for p in prompts:
+        pid = p.get("video")
+        ds = p.get("dataset") or ""
+        if not pid:
+            continue
+        scores = p.get("per_model_scores") or {}
+        if model_key not in scores:
+            continue
+        ff_url = _first_frame_hf_url(ds, pid) if _has_first_frame(ds, pid) else None
+        fallback.append({
+            "law": (p.get("physical_laws") or [None])[0],
+            "src_filename": f"{pid}.mp4",
+            "video_url_hf": _video_hf_url(model_key, ds, pid),
+            "first_frame_url": ff_url,
+            "kind": "humaneval",
+            "score": scores[model_key],
+            "n_ann": None,
+            "prompt_id": pid,
+            "dataset": ds,
+        })
+    fallback.sort(key=lambda v: (v["prompt_id"], v["dataset"]))
+    out.extend(fallback[: max(0, target - len(out))])
+    return out
+
+
+def _model_leaderboard_cards(model_key: str, leaderboard: list[dict]) -> list[dict]:
+    """Slice cards for the by-model gallery when a model has no paperdemo and
+    no per_model_scores entry (e.g. baseline_i2v_* tournament rows).
+    """
+    out = []
+    for entry in leaderboard:
+        if entry["video_model"] != model_key:
+            continue
+        c = entry["current"]
+        out.append({
+            "dataset": entry["dataset"],
+            "subset": entry["subset"],
+            "evaluator": entry["evaluator"],
+            "schema": entry["schema"],
+            "phys_avg": c.get("phys_avg"),
+            "gen_avg": c.get("gen_avg"),
+            "n": c.get("n"),
+            "datetime": c.get("datetime"),
+            "source_url_snapshot": c.get("source_url_snapshot"),
+        })
+    out.sort(key=lambda r: (r["dataset"], r["subset"], r["evaluator"], r["schema"]))
     return out
 
 
@@ -677,26 +962,31 @@ def _site_config(catalog: list[dict],
                  humaneval_prompts: list[dict],
                  humaneval_100: dict,
                  leaderboard_entries: list[dict],
+                 leaderboard_unpublished: list[dict],
                  build_meta: dict) -> dict:
     models = _all_known_models(catalog, registry, [
-        # paperdemo rows in the original schema (model column)
         {"model": v["model"]} for law in paperdemo_grouped for v in law["videos"]
     ])
     datasets = _datasets_summary(vis_datasets)
-    videos_index = _videos_index(leaderboard_entries, paperdemo_grouped)
+    videos_index = _videos_index(leaderboard_entries, paperdemo_grouped, humaneval_prompts)
     prompts_index = _prompts_index(humaneval_prompts)
 
-    # Add per-model representative videos (from paperdemo only this round).
     for m in models:
-        m["representative_videos"] = _representative_videos(m["key"], paperdemo_grouped)
+        m["representative_videos"] = _representative_videos(
+            m["key"], paperdemo_grouped, humaneval_prompts,
+        )
+        # Always provide leaderboard-slice cards as a final fallback for the
+        # by-model gallery, even when representative_videos is non-empty (the
+        # detail page still shows them in a separate section).
+        m["leaderboard_slices"] = _model_leaderboard_cards(m["key"], leaderboard_entries)
 
     n_models = len(models)
     n_eval_combos = len(leaderboard_entries)
     n_annotations = sum(int(v["n_ann"]) for law in paperdemo_grouped for v in law["videos"])
-    n_prompts = humaneval_100.get("n_selected") or len(humaneval_prompts)
+    n_prompts = humaneval_100.get("n_selected") or 0
+    if n_prompts == 0:
+        n_prompts = len(humaneval_prompts)
 
-    # Pick a featured comparison law for the home page.
-    # Prefer "collision" (paperdemo's largest bucket) when available.
     featured_law_name = "collision"
     featured_videos: list[dict] = []
     for law_entry in paperdemo_grouped:
@@ -707,12 +997,14 @@ def _site_config(catalog: list[dict],
         featured_law_name = paperdemo_grouped[0]["law"]
         featured_videos = paperdemo_grouped[0]["videos"][:6]
 
+    paper_url = os.environ.get("PHYGROUND_PAPER_URL", "").strip()
+
     return {
         "site": {
             "title": "phyground",
             "short_title": "phyground",
             "description": "A physics-grounded benchmark for video generation. Browse model outputs by physical law, compare side-by-side, and explore evaluator-by-dataset leaderboards.",
-            "paper_url": "",
+            "paper_url": paper_url,
             "github_url": "https://github.com/phyground/phyground.github.io",
             "huggingface_url": "https://huggingface.co/juyil",
             "huggingface_dataset_url": HF_BASE.replace("/resolve/main", ""),
@@ -739,7 +1031,9 @@ def _site_config(catalog: list[dict],
             "law_quotas": humaneval_100.get("law_quotas", {}),
             "effective_law_counts": humaneval_100.get("effective_law_counts", {}),
             "selected_at": humaneval_100.get("selected_at"),
+            "note": humaneval_100.get("note"),
         },
+        "leaderboard_unpublished_count": len(leaderboard_unpublished),
         "build_meta": build_meta,
     }
 
@@ -786,40 +1080,82 @@ def build(*, now_iso: str | None = None,
     _copy_file(src_paths["data/vis_datasets.json"], STAGING_DIR / "index" / "vis_datasets.frozen.json")
     _write_json(STAGING_DIR / "index" / "model_catalog.frozen.json", catalog)
 
-    # Copy the 13 paperdemo law PDFs into snapshot/index/figs/ so the by-law
-    # gallery can link to them (in lieu of generated SVG thumbnails).
+    # Copy paperdemo PDFs and rasterise to PNG thumbnails (pdftocairo, system tool).
     figs_src = WMBENCH_SRC / "data" / "paperdemo" / "figs"
     if figs_src.is_dir():
         for pdf in sorted(figs_src.glob("*.pdf")):
-            _copy_file(pdf, STAGING_DIR / "index" / "figs" / pdf.name)
+            dst_pdf = STAGING_DIR / "index" / "figs" / pdf.name
+            _copy_file(pdf, dst_pdf)
+            png_target = dst_pdf.with_suffix("")  # pdftocairo appends .png
+            try:
+                import subprocess
+                subprocess.run(
+                    ["pdftocairo", "-png", "-r", "72", "-singlefile",
+                     str(dst_pdf), str(png_target)],
+                    check=True,
+                    capture_output=True,
+                )
+            except (FileNotFoundError, subprocess.CalledProcessError) as e:
+                if verbose:
+                    print(f"[build_snapshot] WARN: pdftocairo failed for {pdf.name}: {e}")
 
-    # Copy the humaneval prompts into snapshot/index/.
+    # Copy humaneval prompts JSON into snapshot/index/.
     if humaneval_prompts and optional_paths["data/prompts/anonymous_humaneval_set.json"].is_file():
         _copy_file(
             optional_paths["data/prompts/anonymous_humaneval_set.json"],
             STAGING_DIR / "index" / "humaneval_prompts.json",
         )
 
-    # 3. Group paperdemo by law (with HF URLs).
+    # Copy first_frame JPGs for every prompt that has one. The compare/ gallery
+    # pages don't actually need the bytes (they reference HF URLs) but copying
+    # them lets verify_snapshot ensure provenance and gives the HF upload step a
+    # clean source layout to mirror.
+    n_first_frames = 0
+    for p in humaneval_prompts:
+        ds = p.get("dataset") or ""
+        stem = p.get("video") or ""
+        if not ds or not stem:
+            continue
+        src_ff = WMBENCH_SRC / "data" / "prompts" / ds / "first_frames" / f"{stem}.jpg"
+        if src_ff.is_file():
+            dst_ff = STAGING_DIR / "index" / "first_frames" / ds / f"{stem}.jpg"
+            _copy_file(src_ff, dst_ff)
+            n_first_frames += 1
+    if verbose:
+        print(f"[build_snapshot] copied {n_first_frames} first_frame JPGs")
+
+    # 3. Group paperdemo by law (with HF URLs + fig_png).
     paperdemo_grouped = _group_paperdemo(paperdemo_rows)
 
-    # 4. Build leaderboard entries (coverage filter, source URL rewrite).
-    leaderboard_entries = _dedup_leaderboard(registry)
+    # 4. Build leaderboard entries (coverage filter, source URL rewrite, drop unresolvable currents).
+    leaderboard_entries, leaderboard_unpublished = _dedup_leaderboard(registry)
 
-    # 5. Copy the score JSONs that any leaderboard entry actually references into
-    #    snapshot/scores/ so the static "Download raw JSON" link resolves.
+    # 5. Copy referenced score JSONs into snapshot/scores/. The path mapping
+    #    follows _snapshot_score_url() so URLs in site_config match.
     referenced_paths: set[str] = set()
     for entry in leaderboard_entries:
         for row in [entry["current"], *entry["history"]]:
-            sj = row.get("source_json") or ""
-            rel = _score_relpath(sj)
+            rel = row.get("_score_relpath")
             if rel:
                 referenced_paths.add(rel)
     for rel in sorted(referenced_paths):
         src = WMBENCH_SRC / rel
-        # Keep the same evaluator subdir layout the row expects.
-        dst = STAGING_DIR / "scores" / Path(rel).relative_to("data/scores")
+        target_url = _snapshot_score_url(rel)
+        if not target_url:
+            continue
+        dst = STAGING_DIR / target_url
         _copy_file(src, dst)
+    # Strip the helper field from the published rows so it does not leak into site_config.
+    for entry in leaderboard_entries:
+        entry["current"].pop("_score_relpath", None)
+        for h in entry["history"]:
+            h.pop("_score_relpath", None)
+    for u in leaderboard_unpublished:
+        for r in u.get("rows", []):
+            r.pop("_score_relpath", None)
+
+    _write_json(STAGING_DIR / "index" / "leaderboard_unpublished.json",
+                {"count": len(leaderboard_unpublished), "entries": leaderboard_unpublished})
 
     # 6. Run humaneval-100 selection when asked; otherwise reuse the existing
     #    committed selection (so determinism is preserved across builds).
@@ -846,6 +1182,7 @@ def build(*, now_iso: str | None = None,
         humaneval_100 = _select_humaneval_100(
             humaneval_prompts,
             paperdemo_grouped,
+            registry,
             existing_selection,
             full_inputs,
             now_iso or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -872,7 +1209,8 @@ def build(*, now_iso: str | None = None,
     }
     site_config = _site_config(
         catalog, registry, paperdemo_grouped, vis_datasets,
-        humaneval_prompts, humaneval_100, leaderboard_entries, build_meta,
+        humaneval_prompts, humaneval_100, leaderboard_entries,
+        leaderboard_unpublished, build_meta,
     )
     _write_json(STAGING_DIR / "index" / "site_config.json", site_config)
 
