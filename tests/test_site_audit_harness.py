@@ -906,3 +906,232 @@ def test_run_audit_partial_records_json_written_after_each_url(
     final = json.loads(records_path.read_text(encoding="utf-8"))
     assert len(final) == 4
     assert not (out_dir / "records.json.tmp").exists()
+
+
+# ---------------------------------------------------------------------------
+# URL-set resolver: canonical 14-URL set sourced from
+# snapshot/index/site_config.json plus the run_audit `--url-set repo` wiring.
+# Both surfaces must agree on order, model coverage, and the deterministic
+# populated-compare prompt selection so the audit driver can ditch
+# hand-rolled urls.txt files.
+# ---------------------------------------------------------------------------
+
+
+from urllib.parse import parse_qs, urlsplit  # noqa: E402
+
+from tests.conftest import PUBLISHED_MODEL_KEYS, SITE_CONFIG_PATH  # noqa: E402
+
+
+_PUBLISHED_KEYS_SORTED = sorted(PUBLISHED_MODEL_KEYS)
+_TOP_LEVEL_PREFIX = ("/", "/leaderboard/", "/videos/", "/about/", "/videos/compare/")
+
+
+def _load_site_config() -> dict:
+    if not SITE_CONFIG_PATH.is_file():
+        pytest.skip(f"{SITE_CONFIG_PATH} missing; run build_snapshot.py first.")
+    return json.loads(SITE_CONFIG_PATH.read_text(encoding="utf-8"))
+
+
+def _make_synthetic_site_config(
+    *,
+    model_keys: list[str],
+    prompt_specs: dict[str, dict[str, list[str]]],
+) -> dict:
+    """Build a minimal site_config dict for the resolver's negative tests.
+
+    ``prompt_specs`` maps each prompt_id to a dict with ``per_model_videos``
+    and ``per_model_scores`` keys whose values are the model-key lists that
+    should be considered "covered". The resolver only inspects
+    ``videos_index`` and ``prompts_index`` so we keep this fixture small.
+    """
+    return {
+        "videos_index": {k: {} for k in model_keys},
+        "prompts_index": {
+            pid: {
+                "per_model_videos": {m: {} for m in spec["per_model_videos"]},
+                "per_model_scores": {m: {} for m in spec["per_model_scores"]},
+            }
+            for pid, spec in prompt_specs.items()
+        },
+    }
+
+
+def test_resolve_repo_url_set_returns_exactly_14() -> None:
+    """The canonical audit URL set is exactly 14 entries long."""
+    from tools.site_audit.url_set import resolve_repo_url_set
+
+    urls = resolve_repo_url_set()
+    assert isinstance(urls, list)
+    assert len(urls) == 14, urls
+
+
+def test_resolve_repo_url_set_canonical_ordering() -> None:
+    """First 5 entries are pinned; entry 6 is the populated compare query.
+
+    Entries 7-14 are the per-model pages in alphabetical order.
+    """
+    from tools.site_audit.url_set import resolve_repo_url_set
+
+    urls = resolve_repo_url_set()
+    assert tuple(urls[:5]) == _TOP_LEVEL_PREFIX
+    assert urls[5].startswith("/videos/compare/?prompt_id=")
+    expected_model_urls = [f"/models/{key}/" for key in _PUBLISHED_KEYS_SORTED]
+    assert urls[6:] == expected_model_urls
+
+
+def test_resolve_repo_url_set_uses_valid_prompt_id() -> None:
+    """The populated compare URL's prompt_id has 8/8 video and score coverage."""
+    from tools.site_audit.url_set import resolve_repo_url_set
+
+    urls = resolve_repo_url_set()
+    populated = urls[5]
+    qs = parse_qs(urlsplit(populated).query)
+    assert "prompt_id" in qs and len(qs["prompt_id"]) == 1, populated
+    pid = qs["prompt_id"][0]
+
+    site_config = _load_site_config()
+    assert pid in site_config["prompts_index"], pid
+    entry = site_config["prompts_index"][pid]
+    assert PUBLISHED_MODEL_KEYS.issubset(set(entry["per_model_videos"].keys()))
+    assert PUBLISHED_MODEL_KEYS.issubset(set(entry["per_model_scores"].keys()))
+
+
+def test_resolve_repo_url_set_alphabetical_first_pid() -> None:
+    """Among prompts with full 8/8 coverage, the resolver picks the alphabetical-first pid."""
+    from tools.site_audit.url_set import resolve_repo_url_set
+
+    site_config = _load_site_config()
+    fully_covered = sorted(
+        pid
+        for pid, entry in site_config["prompts_index"].items()
+        if PUBLISHED_MODEL_KEYS.issubset(set(entry["per_model_videos"].keys()))
+        and PUBLISHED_MODEL_KEYS.issubset(set(entry["per_model_scores"].keys()))
+    )
+    assert fully_covered, "expected at least one fully-covered prompt in the live config"
+    expected_pid = fully_covered[0]
+
+    urls = resolve_repo_url_set()
+    qs = parse_qs(urlsplit(urls[5]).query)
+    assert qs["prompt_id"] == [expected_pid]
+
+
+def test_resolve_repo_url_set_models_match_published_keys() -> None:
+    """Entries 7-14 mirror sorted PUBLISHED_MODEL_KEYS exactly."""
+    from tools.site_audit.url_set import resolve_repo_url_set
+
+    urls = resolve_repo_url_set()
+    model_urls = urls[6:]
+    assert len(model_urls) == 8
+    extracted = [u[len("/models/"):-1] for u in model_urls]
+    assert extracted == _PUBLISHED_KEYS_SORTED
+
+
+def test_resolve_repo_url_set_raises_when_no_full_coverage(tmp_path: Path) -> None:
+    """If no prompt has 8/8 video AND score coverage, raise ValueError."""
+    from tools.site_audit.url_set import resolve_repo_url_set
+
+    keys = list(_PUBLISHED_KEYS_SORTED)
+    # All prompts are missing one model on either videos or scores.
+    short_videos = keys[:-1]  # 7 of 8
+    short_scores = keys[1:]   # 7 of 8 (different gap)
+    cfg = _make_synthetic_site_config(
+        model_keys=keys,
+        prompt_specs={
+            "p1": {"per_model_videos": short_videos, "per_model_scores": keys},
+            "p2": {"per_model_videos": keys, "per_model_scores": short_scores},
+        },
+    )
+    cfg_path = tmp_path / "site_config.json"
+    cfg_path.write_text(json.dumps(cfg), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="No prompt"):
+        resolve_repo_url_set(cfg_path)
+
+
+def test_resolve_repo_url_set_raises_when_videos_index_diverges(tmp_path: Path) -> None:
+    """videos_index keys must equal PUBLISHED_MODEL_KEYS exactly."""
+    from tools.site_audit.url_set import resolve_repo_url_set
+
+    keys = list(_PUBLISHED_KEYS_SORTED) + ["impostor-model-9000"]
+    cfg = _make_synthetic_site_config(
+        model_keys=keys,
+        prompt_specs={
+            "p1": {"per_model_videos": keys, "per_model_scores": keys},
+        },
+    )
+    cfg_path = tmp_path / "site_config.json"
+    cfg_path.write_text(json.dumps(cfg), encoding="utf-8")
+
+    with pytest.raises(ValueError):
+        resolve_repo_url_set(cfg_path)
+
+    # And the symmetric case: missing one of the canonical keys.
+    keys_short = _PUBLISHED_KEYS_SORTED[:-1]
+    cfg2 = _make_synthetic_site_config(
+        model_keys=keys_short,
+        prompt_specs={
+            "p1": {
+                "per_model_videos": keys_short,
+                "per_model_scores": keys_short,
+            },
+        },
+    )
+    cfg2_path = tmp_path / "site_config2.json"
+    cfg2_path.write_text(json.dumps(cfg2), encoding="utf-8")
+    with pytest.raises(ValueError):
+        resolve_repo_url_set(cfg2_path)
+
+
+def test_run_audit_url_set_repo_emits_14_records(tmp_path: Path) -> None:
+    """`--url-set repo --dry-run` produces records.json with the canonical 14 URLs."""
+    from tools.site_audit.url_set import resolve_repo_url_set
+
+    out_dir = tmp_path / "out"
+    result = _run(
+        str(RUN_AUDIT_SCRIPT),
+        "--target", "local",
+        "--url-set", "repo",
+        "--out", str(out_dir),
+        "--dry-run",
+    )
+    assert result.returncode == 0, result.stderr + result.stdout
+
+    records = json.loads((out_dir / "records.json").read_text(encoding="utf-8"))
+    assert len(records) == 14
+    expected = resolve_repo_url_set()
+    assert [rec["url"] for rec in records] == expected
+
+
+def test_run_audit_requires_urls_or_url_set(tmp_path: Path) -> None:
+    """Without --urls or --url-set the CLI exits non-zero with a clear error."""
+    out_dir = tmp_path / "out"
+    result = _run(
+        str(RUN_AUDIT_SCRIPT),
+        "--target", "local",
+        "--out", str(out_dir),
+        "--dry-run",
+    )
+    assert result.returncode != 0
+    combined = (result.stderr + result.stdout).lower()
+    assert "--urls" in combined or "url-set" in combined or "url_set" in combined, combined
+
+
+def test_run_audit_urls_and_url_set_mutually_exclusive(tmp_path: Path) -> None:
+    """Passing both --urls and --url-set is rejected with a clear error."""
+    urls_file = _write_urls(tmp_path, ["/"])
+    out_dir = tmp_path / "out"
+    result = _run(
+        str(RUN_AUDIT_SCRIPT),
+        "--target", "local",
+        "--urls", str(urls_file),
+        "--url-set", "repo",
+        "--out", str(out_dir),
+        "--dry-run",
+    )
+    assert result.returncode != 0
+    combined = (result.stderr + result.stdout).lower()
+    assert (
+        "mutually exclusive" in combined
+        or "not allowed with" in combined
+        or "cannot" in combined
+    ), combined

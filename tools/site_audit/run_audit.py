@@ -18,8 +18,14 @@ The Playwright dependency is imported lazily so ``--help`` and
 HTTP server and Playwright entirely and emits a skeleton record per URL,
 which the test suite uses to lock in the CLI surface and schema.
 
+The URL list comes from one of two mutually-exclusive sources: ``--urls
+path/to/urls.txt`` for ad-hoc lists, or ``--url-set repo`` for the
+canonical 14-URL audit set resolved from
+``snapshot/index/site_config.json`` (preferred for round-level audits).
+
 Usage::
 
+    python tools/site_audit/run_audit.py --target local --url-set repo
     python tools/site_audit/run_audit.py --target local --urls urls.txt
     python tools/site_audit/run_audit.py --target fork --urls urls.txt --dry-run
     python -m tools.site_audit.run_audit --help
@@ -74,13 +80,26 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Source to audit: 'local' (serve the repo over localhost) or "
              "'fork' (the published user-fork URL).",
     )
-    parser.add_argument(
+    # --urls and --url-set are mutually exclusive; exactly one must be
+    # provided. We use a mutually-exclusive group with required=True so
+    # argparse renders a clear error on both the missing-both and
+    # both-given misuse paths.
+    source_group = parser.add_mutually_exclusive_group(required=True)
+    source_group.add_argument(
         "--urls",
-        required=True,
         type=Path,
         help="Path to a text file with one relative URL per line (e.g. '/' "
              "or '/about/'). Blank lines and lines starting with '#' are "
-             "ignored.",
+             "ignored. Mutually exclusive with --url-set.",
+    )
+    source_group.add_argument(
+        "--url-set",
+        choices=("repo",),
+        help="Use a built-in canonical URL set instead of --urls. "
+             "'repo' resolves the 14-URL audit set from "
+             "snapshot/index/site_config.json (4 top-level pages + the "
+             "placeholder and populated compare states + the 8 per-model "
+             "pages). Mutually exclusive with --urls.",
     )
     parser.add_argument(
         "--out",
@@ -423,7 +442,17 @@ def run_audit(argv: list[str] | None = None) -> int:
     # Validate viewport early so even dry-run rejects malformed values.
     _parse_viewport(args.viewport)
 
-    urls = _read_urls(args.urls)
+    if args.url_set is not None:
+        # The mutually-exclusive group guarantees args.urls is None here.
+        # Lazy import keeps the resolver close to the call site so module
+        # import remains import-light for tests.
+        if __package__ in (None, ""):
+            from tools.site_audit.url_set import resolve_repo_url_set
+        else:
+            from .url_set import resolve_repo_url_set
+        urls = resolve_repo_url_set()
+    else:
+        urls = _read_urls(args.urls)
     out_dir: Path = args.out if args.out is not None else _default_out_dir(args.target)
     out_dir.mkdir(parents=True, exist_ok=True)
 

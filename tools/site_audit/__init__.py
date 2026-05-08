@@ -145,6 +145,25 @@ def audit_html_file(
     return _impl(html_path, repo_root=repo_root, allow_prefixes=allow_prefixes)
 
 
+def resolve_repo_url_set(*args, **kwargs):
+    """Re-export of :func:`tools.site_audit.url_set.resolve_repo_url_set`.
+
+    Lazy passthrough so ``from tools.site_audit import resolve_repo_url_set``
+    works without forcing the resolver module to load on every package
+    import.
+    """
+    from .url_set import resolve_repo_url_set as _impl
+
+    return _impl(*args, **kwargs)
+
+
+def choose_populated_prompt_id(*args, **kwargs):
+    """Re-export of :func:`tools.site_audit.url_set.choose_populated_prompt_id`."""
+    from .url_set import choose_populated_prompt_id as _impl
+
+    return _impl(*args, **kwargs)
+
+
 __all__ = [
     "AuditRecord",
     "record_to_dict",
@@ -153,4 +172,6 @@ __all__ = [
     "DEFAULT_ALLOW_PREFIXES",
     "STRUCTURAL_REF_ATTRIBUTES",
     "audit_html_file",
+    "resolve_repo_url_set",
+    "choose_populated_prompt_id",
 ]

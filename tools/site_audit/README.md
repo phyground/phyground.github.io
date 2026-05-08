@@ -48,7 +48,14 @@ python -m tools.site_audit.run_audit --help
 | Flag         | Description                                                                      |
 |--------------|----------------------------------------------------------------------------------|
 | `--target`   | `local` (serve the repo over localhost) or `fork` (the user-fork URL).           |
+
+Exactly one of the two URL-source flags below must be supplied; they
+are mutually exclusive. Passing neither, or passing both, is a CLI error.
+
+| Flag         | Description                                                                      |
+|--------------|----------------------------------------------------------------------------------|
 | `--urls`     | Path to a text file with one relative URL per line (e.g. `/`, `/about/`).         |
+| `--url-set`  | Built-in canonical URL set. Currently only `repo` is accepted.                    |
 
 ### Optional flags
 
@@ -65,7 +72,48 @@ The `--target fork` driver prefixes each URL with
 uses `prefix.rstrip("/") + url` so a URL like `/about/` produces exactly
 one slash at the boundary.
 
+### Canonical URL set (preferred)
+
+`--url-set repo` is the canonical and preferred way to invoke an audit.
+It resolves the 14-URL set deterministically from
+`snapshot/index/site_config.json` so the audit cannot drift from the
+live site state:
+
+1. `/`
+2. `/leaderboard/`
+3. `/videos/`
+4. `/about/`
+5. `/videos/compare/` (placeholder compare state)
+6. `/videos/compare/?prompt_id=<chosen_pid>` (populated compare state)
+7-14. `/models/<key>/` for each of the 8 published models, sorted alphabetically.
+
+`<chosen_pid>` is the alphabetically first prompt in
+`site_config["prompts_index"]` whose `per_model_videos` AND
+`per_model_scores` cover all 8 published models. The selection is
+deterministic and stable across rebuilds; if no prompt has full
+coverage the resolver raises `ValueError` rather than silently
+auditing a partially-rendered compare state.
+
+The same resolver is exposed as a debugging tool:
+
+```bash
+python -m tools.site_audit.url_set
+```
+
+which prints the 14 URLs one per line.
+
 ### Example
+
+Preferred (canonical 14-URL audit set):
+
+```bash
+python tools/site_audit/run_audit.py \
+  --target local \
+  --url-set repo \
+  --out .audit_artifacts/round-1/local/
+```
+
+Ad-hoc (custom URL list — useful for spot-checking a single page):
 
 ```bash
 cat > /tmp/urls.txt <<'EOF'
