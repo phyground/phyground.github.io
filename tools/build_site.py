@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import shutil
 import sys
 from dataclasses import dataclass
@@ -115,6 +116,36 @@ def _mirror_static(src: Path, dst: Path) -> int:
     return n
 
 
+HF_URL_RE = re.compile(
+    r"https://huggingface\.co/datasets/juyil/wmbench-public/resolve/main/([^\s'\"<>]+)"
+)
+
+
+def _audit_embedded_urls(rendered_pages: list[Path], manifest_path: Path) -> None:
+    """Parse every rendered HTML / inline-JSON file and confirm every embedded
+    HF URL has a matching `hf_target_path` in the manifest. Raises SystemExit
+    on any miss.
+    """
+    if not manifest_path.is_file():
+        raise SystemExit(f"audit: manifest not found at {manifest_path}")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest_targets = {entry["hf_target_path"] for entry in manifest.get("files", [])}
+    embedded: set[str] = set()
+    for page in rendered_pages:
+        if not page.is_file():
+            continue
+        text = page.read_text(encoding="utf-8")
+        for m in HF_URL_RE.finditer(text):
+            embedded.add(m.group(1))
+    missing = sorted(embedded - manifest_targets)
+    if missing:
+        raise SystemExit(
+            f"audit: {len(missing)} embedded HF URLs missing from manifest "
+            f"({manifest_path.relative_to(REPO_ROOT) if manifest_path.is_relative_to(REPO_ROOT) else manifest_path}). "
+            f"First few: {missing[:5]}"
+        )
+
+
 def render(config_path: Path, *, verbose: bool = True) -> None:
     if not config_path.is_file():
         raise SystemExit(f"config file not found: {config_path}")
@@ -150,6 +181,7 @@ def render(config_path: Path, *, verbose: bool = True) -> None:
     }
 
     pages: list[Page] = list(STATIC_PAGES) + _model_pages(snapshot_ctx["models"])
+    rendered: list[Path] = []
 
     for page in pages:
         out_path = REPO_ROOT / page.out_path
@@ -166,10 +198,19 @@ def render(config_path: Path, *, verbose: bool = True) -> None:
             ctx.update(page.extra_ctx)
         html = template.render(**ctx)
         out_path.write_text(html, encoding="utf-8")
+        rendered.append(out_path)
         if verbose:
             print(f"[build_site] rendered {page.template} -> {page.out_path}")
     if verbose:
         print(f"[build_site] {len(pages)} pages total")
+
+    # Audit: every embedded HF URL must be in the manifest. Skips quietly when
+    # the manifest doesn't exist (e.g. when rendering against the stub config).
+    manifest_path = REPO_ROOT / "snapshot" / "HF_UPLOAD_MANIFEST.json"
+    if manifest_path.is_file():
+        _audit_embedded_urls(rendered, manifest_path)
+        if verbose:
+            print(f"[build_site] HF URL audit: every embedded URL is in manifest.")
 
 
 def main(argv: list[str]) -> int:

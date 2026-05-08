@@ -1,6 +1,6 @@
 # humaneval-100 selection spec
 
-> Status: **specification frozen**, artifact (`snapshot/index/humaneval_100.json`) is currently a stub awaiting prompt-data ingest in a later round. The selection rule below is deterministic and reproducible once prompts are available.
+> Status: **specification frozen and implemented**. The current `snapshot/index/humaneval_100.json` is the live artifact (`n_selected = 100`, the relaxed-gate note is gone). Anyone re-running `tools/build_snapshot.py --select-humaneval-100` against the same `_wmbench_src/` produces a byte-identical artifact.
 
 ## Why a 100-prompt subset?
 
@@ -13,8 +13,8 @@ This file is the rule that produces the 100. Anyone re-running the selection wit
 - `_wmbench_src/data/paperdemo/manifest.csv` — paperdemo selections per law (the curator-approved seed pool)
 - `_wmbench_src/evals/eval_registry.json` — every (model, dataset, subset, evaluator, schema) result on humaneval
 - `_wmbench_src/data/vis_datasets.json` — humaneval dataset entry → `prompts_json` path
-- `_wmbench_src/data/prompts/humaneval/<file>.json` — prompt records, keyed by `prompt_id` (added in a future round)
-- `_wmbench_src/data/scores/<evaluator>/<id>.json` — per-prompt evaluator scores (added on demand)
+- `_wmbench_src/data/prompts/anonymous_humaneval_set.json` — the 250-prompt humaneval set (`prompts[*].video` is the prompt_id; carries `physical_laws`, `dataset`, `prompt`, manifest-level `per_model_scores`, `difficulty.phys_micro_avg`).
+- `_wmbench_src/data/scores/<evaluator>/<id>.json` — per-prompt evaluator scores; the selector picks the newest resolvable `humaneval_set` cov=1.0 file per leaderboard model and reads `results[*].physical` for the gate.
 
 `humaneval-100` is a **set of 100 `prompt_id` values** chosen entirely from these inputs.
 
@@ -144,12 +144,8 @@ with a capacity-constrained allocation rather than a per-law top-N fill.
 2. Run `tools/verify_snapshot.py`. The manifest sha256 must match.
 3. Any change in `selection_inputs.*_sha256` flags the file as out-of-date and forces a rebuild.
 
-## What changes between rounds
+## Settled choices
 
-- **Round 1 (now):** spec frozen; `snapshot/index/humaneval_100.json` is committed as a stub (`prompts: []`, `selection_inputs` filled with the actual sha256 of the four inputs at this moment, `law_quotas` precomputed but `prompts` empty pending Round 2's prompt-data ingest). The build does not crash; downstream pages just see an empty selection.
-- **Round 2:** add `_wmbench_src/data/prompts/humaneval/<file>.json` and the per-evaluator score JSONs, then run `--select-humaneval-100` for real. The selected 100 land in `snapshot/index/humaneval_100.json`; the leaderboard / video gallery start using it as the gate for "video public" vs "scores only".
-
-## Open questions
-
-- Should `score_fill` look at all evaluators or only at one canonical evaluator? Current spec averages across all evaluators with `coverage=1.0`. If we later switch to a single canonical evaluator (e.g. `claude-opus-4.7`), bump `schema_version`.
-- Should we re-select on every wmbench refresh, or pin until manually re-rolled? Current default is **pin** (do not auto-rotate); the build flow re-runs the selection only when `--select-humaneval-100` is passed explicitly.
+- **Score source:** the gate reads `results[*].physical` from the newest resolvable `humaneval_set` cov=1.0 score JSON per of the 8 leaderboard models. Earlier drafts considered re-aggregating from per-evaluator JSONs at selection time; the implementation uses the per-model JSONs directly to keep the gate deterministic and avoid forcing the 33 unresolvable upstream rows to be ingested.
+- **Refresh policy:** the selection is **pinned** until `--select-humaneval-100` is passed explicitly. Plain `tools/build_snapshot.py` reuses the existing committed `humaneval_100.json` so day-to-day rebuilds don't churn the curated set.
+- **Manual overrides:** preserved across rebuilds. Adding a swap means writing the entry into the committed `humaneval_100.json.manual_overrides` array; the next `--select-humaneval-100` run respects it automatically.

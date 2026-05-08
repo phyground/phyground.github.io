@@ -990,14 +990,20 @@ def _has_first_frame(source_dataset: str, stem: str) -> bool:
 def _videos_index(leaderboard: list[dict],
                   paperdemo: list[dict],
                   prompts: list[dict],
-                  models: list[dict]) -> dict[str, dict]:
-    """Build a structured by-model index keyed by every model in `models[]`
-    (so the by-model gallery can iterate the full set even when a model has
-    no paperdemo, humaneval, or leaderboard rows).
+                  models: list[dict],
+                  prompt_scores: dict[str, dict[str, float]] | None = None) -> dict[str, dict]:
+    """Per-model browse index keyed by every model in `models[]`.
+
+    `humaneval` is sourced from `prompt_scores` (the score-JSON table), not
+    the prompt manifest's sparse `per_model_scores`, so every published
+    humaneval model gets its full ~250-prompt coverage.
 
     Output shape per model_key:
       {paperdemo, humaneval, datasets} — each a (possibly empty) list.
     """
+    prompt_scores = prompt_scores or {}
+    prompt_meta = {p.get("video"): p for p in prompts if p.get("video")}
+
     idx: dict[str, dict] = {
         m["key"]: {"paperdemo": [], "humaneval": [], "datasets": []}
         for m in models if m.get("key")
@@ -1006,13 +1012,9 @@ def _videos_index(leaderboard: list[dict],
         if model_key not in idx:
             idx[model_key] = {"paperdemo": [], "humaneval": [], "datasets": []}
         return idx[model_key]
-    # Replace the original walks with the explicit slot accessor.
-    leaderboard_iter = leaderboard
-    paperdemo_iter = paperdemo
-    prompts_iter = prompts
 
     # paperdemo entries.
-    for law_entry in paperdemo_iter:
+    for law_entry in paperdemo:
         for v in law_entry["videos"]:
             _slot(v["model"])["paperdemo"].append({
                 "law": law_entry["law"],
@@ -1021,14 +1023,35 @@ def _videos_index(leaderboard: list[dict],
                 "n_ann": v["n_ann"],
             })
 
-    # humaneval-prompt × per_model_scores → one entry per (model, prompt).
-    for p in prompts_iter:
+    # humaneval entries: one per (model, prompt) from the score-JSON table.
+    # Falls back to manifest scores for prompts the JSONs don't cover.
+    seen: set[tuple[str, str]] = set()
+    for pid, models_to_scores in prompt_scores.items():
+        meta = prompt_meta.get(pid) or {}
+        ds = meta.get("dataset") or ""
+        ff_url = _first_frame_hf_url(ds, pid) if _has_first_frame(ds, pid) else None
+        for model_key, score in models_to_scores.items():
+            seen.add((model_key, pid))
+            _slot(model_key)["humaneval"].append({
+                "prompt_id": pid,
+                "dataset": ds,
+                "prompt": meta.get("prompt") or "",
+                "physical_laws": meta.get("physical_laws") or [],
+                "score": score,
+                "video_url_hf": _video_hf_url(model_key, ds, pid) if ds else f"{HF_BASE}/videos/{model_key}/{pid}.mp4",
+                "first_frame_url": ff_url,
+            })
+    # Manifest-only prompts not covered by the score JSONs (rare, but cheap).
+    for p in prompts:
         pid = p.get("video")
-        ds = p.get("dataset") or ""
         if not pid:
             continue
+        ds = p.get("dataset") or ""
         ff_url = _first_frame_hf_url(ds, pid) if _has_first_frame(ds, pid) else None
         for model_key, score in (p.get("per_model_scores") or {}).items():
+            if (model_key, pid) in seen:
+                continue
+            seen.add((model_key, pid))
             _slot(model_key)["humaneval"].append({
                 "prompt_id": pid,
                 "dataset": ds,
@@ -1040,7 +1063,7 @@ def _videos_index(leaderboard: list[dict],
             })
 
     # Leaderboard slices.
-    for entry in leaderboard_iter:
+    for entry in leaderboard:
         _slot(entry["video_model"])["datasets"].append({
             "dataset": entry["dataset"],
             "subset": entry["subset"],
@@ -1052,10 +1075,9 @@ def _videos_index(leaderboard: list[dict],
             "source_url_snapshot": entry["current"].get("source_url_snapshot"),
         })
 
-    # Sort each list deterministically.
     for k, sub in idx.items():
         sub["paperdemo"].sort(key=lambda v: (v["law"], v["src_filename"]))
-        sub["humaneval"].sort(key=lambda v: (v["prompt_id"], v["dataset"]))
+        sub["humaneval"].sort(key=lambda v: (v["dataset"], v["prompt_id"]))
         sub["datasets"].sort(key=lambda v: (v["dataset"], v["subset"], v["evaluator"], v["schema"]))
     return {k: idx[k] for k in sorted(idx.keys())}
 
@@ -1191,7 +1213,7 @@ def _site_config(catalog: list[dict],
         {"model": v["model"]} for law in paperdemo_grouped for v in law["videos"]
     ])
     datasets = _datasets_summary(vis_datasets)
-    videos_index = _videos_index(leaderboard_entries, paperdemo_grouped, humaneval_prompts, models)
+    videos_index = _videos_index(leaderboard_entries, paperdemo_grouped, humaneval_prompts, models, prompt_scores)
     prompts_index = _prompts_index(humaneval_prompts, prompt_scores)
 
     for m in models:
@@ -1435,8 +1457,47 @@ def build(*, now_iso: str | None = None,
         for r in u.get("rows", []):
             r.pop("_score_relpath", None)
 
-    _write_json(STAGING_DIR / "index" / "leaderboard_unpublished.json",
-                {"count": len(leaderboard_unpublished), "entries": leaderboard_unpublished})
+    # Round-6: every unpublished group gets a durable `status: "retired"`
+    # plus a `retired_reason` derived from where its (unrecoverable) source
+    # path used to live. The retirement is a settled decision per Plan
+    # Evolution Log Round-6: "13 leaderboard groups retired permanently".
+    retired_at = now_iso or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    for entry in leaderboard_unpublished:
+        # Inspect every cov>0 row's source_json prefix to summarise why.
+        prefixes = set()
+        for row in entry.get("rows", []):
+            sj = row.get("source_json") or ""
+            if sj.startswith("/shared/") and "rlvideo" in sj:
+                prefixes.add("/shared/.../rlvideo/...")
+            elif sj.startswith("/"):
+                prefixes.add("absolute non-wmbench path")
+            elif sj.startswith("data/training/cotclaude/"):
+                prefixes.add("data/training/cotclaude/...")
+            elif sj.startswith("tmp/"):
+                prefixes.add("tmp/...")
+            elif sj.startswith("data/scores/"):
+                prefixes.add("data/scores/... (file moved or never created)")
+            else:
+                prefixes.add("unknown")
+        entry["status"] = "retired"
+        entry["retired_at"] = retired_at
+        entry["retired_reason"] = (
+            "Every cov>0 row's source_json points at " + ", ".join(sorted(prefixes))
+            + ". These paths cannot be recovered from the public repo's "
+            + "_wmbench_src/ ingest. The group is retired permanently per "
+            + "Plan Evolution Log Round-6."
+        )
+    _write_json(STAGING_DIR / "index" / "leaderboard_unpublished.json", {
+        "schema_version": "1",
+        "retired_at": retired_at,
+        "count": len(leaderboard_unpublished),
+        "policy": (
+            "Every entry below is permanently retired from the published "
+            "leaderboard. Re-introduction requires a new cov>0 source_json "
+            "to land under _wmbench_src/data/scores/, which today does not exist."
+        ),
+        "entries": leaderboard_unpublished,
+    })
 
     # 6. Run humaneval-100 selection when asked; otherwise reuse the existing
     #    committed selection (so determinism is preserved across builds).

@@ -71,19 +71,21 @@
 <section class="gallery-pane" id="pane-by-model" hidden>
     <nav class="gallery-nav" id="model-nav">
         {% for m in models %}
-        {% set n_repr = m.representative_videos|length %}
-        {% set n_slices = m.leaderboard_slices|length %}
+        {% set vi = videos_index.get(m.key, {}) %}
+        {% set n_total = (vi.get('paperdemo')|length) + (vi.get('humaneval')|length) %}
         <button type="button" class="gallery-nav-item" data-model="{{ m.key }}">
             {{ m.key }}
-            <span class="badge">{{ n_repr if n_repr else (n_slices if n_slices else '0') }}</span>
+            <span class="badge">{{ n_total }}</span>
         </button>
         {% endfor %}
     </nav>
     <div class="gallery-content" id="model-content">
         {% set ns = namespace(first=true) %}
         {% for m in models %}
-        {% set n_repr = m.representative_videos|length %}
-        {% set n_slices = m.leaderboard_slices|length %}
+        {% set vi = videos_index.get(m.key, {}) %}
+        {% set he = vi.get('humaneval') or [] %}
+        {% set pd = vi.get('paperdemo') or [] %}
+        {% set ds_list = vi.get('datasets') or [] %}
         <div class="gallery-section" data-model="{{ m.key }}"{% if not ns.first %} hidden{% endif %}>
             {% set ns.first = false %}
             <h2>{{ m.key }}</h2>
@@ -91,26 +93,80 @@
                 family: {{ m.family }}{% if m.params_b %} · {{ m.params_b }}B params{% endif %}{% if m.fps %} · {{ m.fps }} fps{% endif %}{% if m.frames %} · {{ m.frames }} frames{% endif %}{% if m.resolution %} · {{ m.resolution }}{% endif %}
                 · <a href="{{ rel('models/') }}{{ m.key }}/">model detail</a>
             </p>
-            {% if n_repr %}
+
+            {% if pd %}
+            <h3 style="margin-top:1.25rem;">paperdemo ({{ pd|length }})</h3>
             <div class="video-grid">
-                {% for v in m.representative_videos %}
+                {% for v in pd[:8] %}
                 <figure class="video-card">
-                    <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"
-                           {% if v.first_frame_url %}poster="{{ v.first_frame_url }}"{% endif %}></video>
+                    <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"></video>
                     <figcaption>
-                        <span class="model">{{ (v.law or 'humaneval')|replace('_', ' ') }}{% if v.kind == 'humaneval' %} <span class="badge">humaneval</span>{% endif %}</span>
-                        <span class="meta">{% if v.n_ann is not none %}n_ann={{ v.n_ann }} · {% endif %}{{ v.src_filename }}</span>
+                        <span class="model">{{ v.law|replace('_', ' ') }} <span class="badge">paperdemo</span></span>
+                        <span class="meta">n_ann={{ v.n_ann }} · {{ v.src_filename }}</span>
                     </figcaption>
                 </figure>
                 {% endfor %}
             </div>
-            {% else %}
-            <p style="color:var(--gray-dark);">No representative videos yet — see the leaderboard slices below.</p>
+            {% if pd|length > 8 %}
+            <p style="font-size:0.85rem;color:var(--gray-dark);">+ {{ pd|length - 8 }} more paperdemo cards on the <a href="{{ rel('models/') }}{{ m.key }}/">model detail page</a>.</p>
             {% endif %}
-            {% if n_slices %}
+            {% endif %}
+
+            {# Group humaneval entries by dataset; merge same prompt_id across datasets. #}
+            {% set ds_buckets = namespace(d={}) %}
+            {% for v in he %}
+            {%- if v.dataset not in ds_buckets.d -%}
+            {%- set _ = ds_buckets.d.update({v.dataset: {}}) -%}
+            {%- endif -%}
+            {%- set bucket = ds_buckets.d[v.dataset] -%}
+            {%- if v.prompt_id not in bucket -%}
+            {%- set _ = bucket.update({v.prompt_id: v}) -%}
+            {%- endif -%}
+            {% endfor %}
+
+            {% if ds_buckets.d %}
+            <h3 style="margin-top:1.25rem;">humaneval × source dataset</h3>
+            {# Same-prompt cross-dataset merging: collect each prompt_id's dataset set. #}
+            {% set merge_map = namespace(d={}) %}
+            {% for ds, bucket in ds_buckets.d|dictsort %}
+            {%- for pid, _v in bucket|dictsort -%}
+            {%- if pid not in merge_map.d -%}
+            {%- set _ = merge_map.d.update({pid: []}) -%}
+            {%- endif -%}
+            {%- set _ = merge_map.d[pid].append(ds) -%}
+            {%- endfor -%}
+            {% endfor %}
+
+            {% for ds, bucket in ds_buckets.d|dictsort %}
+            <h4 style="margin-top:1rem;">{{ ds }} <span class="badge">{{ bucket|length }} prompts</span></h4>
+            <div class="video-grid">
+                {% for pid, v in (bucket|dictsort)[:8] %}
+                <figure class="video-card">
+                    <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"
+                           {% if v.first_frame_url %}poster="{{ v.first_frame_url }}"{% endif %}></video>
+                    <figcaption>
+                        <span class="model">
+                            {{ pid }}
+                            {% set merged_ds = merge_map.d.get(pid) or [] %}
+                            {% if merged_ds|length > 1 %}
+                            <span class="badge">also in: {{ merged_ds|reject('equalto', ds)|join(', ') }}</span>
+                            {% endif %}
+                        </span>
+                        <span class="meta">phys_avg={{ '%.2f'|format(v.score) if v.score is not none else '—' }} · <a href="{{ rel('videos/compare/') }}?prompt_id={{ pid }}">compare &rarr;</a></span>
+                    </figcaption>
+                </figure>
+                {% endfor %}
+            </div>
+            {% if bucket|length > 8 %}
+            <p style="font-size:0.85rem;color:var(--gray-dark);">+ {{ bucket|length - 8 }} more {{ ds }} prompts. Open the <a href="{{ rel('videos/compare/') }}">compare page</a> to step through them by prompt_id.</p>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+
+            {% if ds_list %}
             <h3 style="margin-top:1.5rem;">Leaderboard slices</h3>
             <div class="entry-cards">
-                {% for s in m.leaderboard_slices %}
+                {% for s in ds_list %}
                 <a class="entry-card" href="{{ rel('leaderboard/') }}#{{ m.key }}--{{ s.dataset }}--{{ s.subset }}--{{ s.evaluator }}--{{ s.schema }}">
                     <h3 style="font-size:1rem;">{{ s.dataset }} / {{ s.subset }}</h3>
                     <p>eval: {{ s.evaluator }} · schema: {{ s.schema }}<br>
@@ -120,7 +176,7 @@
                 </a>
                 {% endfor %}
             </div>
-            {% elif not n_repr %}
+            {% elif not pd and not he %}
             <p class="placeholder">No published videos or leaderboard rows for this model in the current snapshot. See the <a href="{{ rel('models/') }}{{ m.key }}/">model detail page</a> for catalog metadata.</p>
             {% endif %}
         </div>

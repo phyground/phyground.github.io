@@ -1,7 +1,7 @@
 {
-  "built_at": "2026-05-08T09:30:00Z",
+  "built_at": "2026-05-08T10:00:00Z",
   "files": {
-    "HF_UPLOAD_MANIFEST.json": "6c011cc54ef7358df316311909b9bbc92dbf96d70c0631613dbd45b90e9ef741",
+    "HF_UPLOAD_MANIFEST.json": "41dc0e77edb014d07e1a7d834ef76c85f7df39a83e1276127cb167104be0be39",
     "index/eval_registry.frozen.json": "0d791883c6ec8dec03d1f6db890d6681cdf987a3313e97314d0af83b4ed616fe",
     "index/figs/boundary_interaction.pdf": "52868ec0ae753f308a8029f253e6cf010f9687de03c1f3226956e5324a1bda91",
     "index/figs/boundary_interaction.png": "2fcf5712806e8678a193e162a6ec05572b30c414f635b51e868cc89e72448568",
@@ -230,12 +230,12 @@
     "index/first_frames/video_phy_2/mechanics_95.jpg": "1c19ce0587d0dab93d21560494bca81ca32ebf65ac55adf01f569b8ccbdde9e9",
     "index/first_frames/video_phy_2/mechanics_97.jpg": "658c65383edd51890950d9b579ca2df9026673364954056d9122c8eaf3b378c0",
     "index/first_frames/video_phy_2/mechanics_98.jpg": "0216e3fdc338b00669fe87c89ea7c76248cf5face566f5112c1921ef5b848cb6",
-    "index/humaneval_100.json": "976a870f26e9e683b99803175f83f673a1a1504caa0453816b2bc93b8aa31928",
+    "index/humaneval_100.json": "6bbf5e53e723fa3090e86546107c82e904bc47f70905ad6cddc08edbc8cf6d01",
     "index/humaneval_prompts.json": "bf8c755ba1e70ab2f862f9143d1d39360f7447bc533a43cfa2bada363ede5d01",
-    "index/leaderboard_unpublished.json": "bb8e7716588a8e7347b33a4df8eb435c9b2ddaa3851db1ba338bb1d5ceba62ff",
+    "index/leaderboard_unpublished.json": "a2b7f21b35c1521a0b2d2b1d58dd2fe30a690da7809acb0f3ea5de852136610c",
     "index/model_catalog.frozen.json": "547e6c167aaa1f5e47ad6edac86878d23bc60ecd91eeb56b12f1bb6a07d9f718",
     "index/paperdemo.manifest.csv": "55fe4d712c24c103598c6a3647931ef719dfb551c95c675ad138aee609fadd17",
-    "index/site_config.json": "afb64e55d417dd0109ca86213c358af2a3c5b9a7d33c510344a2b2f97344afe8",
+    "index/site_config.json": "12fc6d6a5ad177622c3d6e0cc92f410754fb61d6b7fd33c66e3c5e0b729976ff",
     "index/vis_datasets.frozen.json": "69e4761736b5865072345b6c8a753c80b109ef76e5284fb90581c206f591e08e",
     "scores/_tmp/eval/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_115959.json": "4aed5837c922e22caaaef0c2919d3fdb70eceeff155752143d4b576035487a0e",
     "scores/_tmp/eval/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194743.json": "df55bdbf0142e75a999495a989e70633a55b2a7dee1300aefb3bb3eeb178ac49",
@@ -331,5 +331,5 @@
     "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260423_112711.json": "092fffd25d99473b5db84827f03ecdf1af6496afadb0a27776020024e4192bc6"
   },
   "schema_version": "1",
-  "snapshot_sha": "704ba6a3c93cb9a7b7062b7751af54945ad8587f376e6c9c43f3142a79d11005"
+  "snapshot_sha": "9501b7d64958203e9bfa71dc82d17b909dab89e7efc0754dcefa55b81bd42ce3"
 }

@@ -42,91 +42,86 @@ def _sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
-def _walk_paperdemo_videos() -> list[tuple[Path, str]]:
-    """Map `_wmbench_src/data/paperdemo/<law>/<file>.mp4` → `paperdemo/<law>/<file>.mp4`.
+HF_PREFIX = "https://huggingface.co/datasets/juyil/wmbench-public/resolve/main/"
 
-    Returns a list of (local_source_path, hf_target_path). The local source
-    files do not exist in this repo (videos are not copied; only the manifest
-    + figs are), so `exists_locally` will be False and the user must source
-    the .mp4s from upstream wmbench before uploading.
+
+def _hf_target_from_url(url: str) -> str | None:
+    """Strip the HF base off a video/img URL the snapshot embeds; return the
+    `<rel>` portion (e.g. `videos/<model>-<dataset>/<stem>.mp4`).
     """
-    out: list[tuple[Path, str]] = []
-    pdroot = WMBENCH_SRC / "data" / "paperdemo"
-    if not pdroot.is_dir():
-        return out
-    # We don't have the videos in repo; emit one entry per row in the manifest.
-    manifest = pdroot / "manifest.csv"
-    if not manifest.is_file():
-        return out
-    import csv
-    with manifest.open("r", encoding="utf-8", newline="") as fh:
-        for row in csv.DictReader(fh):
-            dst = row.get("dst_path", "")    # data/paperdemo/<law>/<file>.mp4
-            if not dst.startswith("data/paperdemo/"):
-                continue
-            local = WMBENCH_SRC / dst
-            target = "paperdemo/" + dst[len("data/paperdemo/"):]
-            out.append((local, target))
-    return out
+    if not isinstance(url, str):
+        return None
+    if not url.startswith(HF_PREFIX):
+        return None
+    return url[len(HF_PREFIX):]
 
 
-def _walk_humaneval_videos(site_config: dict) -> list[tuple[Path, str]]:
-    """For every `videos_index[<model>][humaneval][*].video_url_hf`, infer the
-    HF target path and record an upload entry. Local source path is best-effort
-    (the wmbench tree has them under `data/videos/<model>-<dataset>/<stem>.mp4`).
+def _local_source_for_target(target: str) -> Path:
+    """Map an HF target path back to its expected local source under
+    `_wmbench_src/`. The mapping mirrors the upload layout:
+
+      paperdemo/<law>/<file>.mp4              → _wmbench_src/data/paperdemo/<law>/<file>.mp4
+      videos/<model>-<dataset>/<stem>.mp4     → _wmbench_src/data/videos/<model>-<dataset>/<stem>.mp4
+      prompts/<dataset>/first_frames/<f>.jpg  → _wmbench_src/data/prompts/<dataset>/first_frames/<f>.jpg
     """
-    out: list[tuple[Path, str]] = []
-    for model_key, sub in site_config.get("videos_index", {}).items():
-        for entry in sub.get("humaneval", []):
-            url = entry.get("video_url_hf") or ""
-            stem = entry.get("prompt_id") or ""
-            ds = entry.get("dataset") or ""
-            if not stem or not ds:
-                continue
-            target = f"videos/{model_key}-{ds}/{stem}.mp4"
-            local = WMBENCH_SRC / "data" / "videos" / f"{model_key}-{ds}" / f"{stem}.mp4"
-            out.append((local, target))
-    return out
+    return WMBENCH_SRC / "data" / target
 
 
-def _walk_first_frames(site_config: dict) -> list[tuple[Path, str]]:
-    out: list[tuple[Path, str]] = []
-    for prompt_id, p in site_config.get("prompts_index", {}).items():
-        ff = p.get("first_frame_url")
-        ds = p.get("dataset") or ""
-        if not ff or not ds:
-            continue
-        local = WMBENCH_SRC / "data" / "prompts" / ds / "first_frames" / f"{prompt_id}.jpg"
-        target = f"prompts/{ds}/first_frames/{prompt_id}.jpg"
-        out.append((local, target))
-    return out
+def _collect_targets_from_site_config(site_config: dict) -> set[str]:
+    """Walk every place in `site_config.json` that ever embeds an HF URL and
+    collect every distinct `<rel>` the static site might reference. This is
+    the source of truth for the upload manifest — if a URL appears here, it
+    must appear in the manifest.
 
+    Coverage:
+      - paperdemo[*].videos[*].video_url_hf
+      - featured_comparison.videos[*].video_url_hf
+      - prompts_index[*].first_frame_url
+      - prompts_index[*].per_model_videos.values()
+      - videos_index[*].paperdemo[*].video_url_hf
+      - videos_index[*].humaneval[*].{video_url_hf, first_frame_url}
+      - models[*].representative_videos[*].{video_url_hf, first_frame_url}
+    """
+    targets: set[str] = set()
+    def _add(url: str | None) -> None:
+        rel = _hf_target_from_url(url or "")
+        if rel:
+            targets.add(rel)
 
-def _dedup(entries: list[tuple[Path, str]]) -> list[tuple[Path, str]]:
-    seen = set()
-    out = []
-    for local, target in entries:
-        if target in seen:
-            continue
-        seen.add(target)
-        out.append((local, target))
-    out.sort(key=lambda t: t[1])
-    return out
+    for law in site_config.get("paperdemo", []):
+        for v in law.get("videos", []):
+            _add(v.get("video_url_hf"))
+    for v in (site_config.get("featured_comparison", {}) or {}).get("videos", []):
+        _add(v.get("video_url_hf"))
+    for p in (site_config.get("prompts_index", {}) or {}).values():
+        _add(p.get("first_frame_url"))
+        for u in (p.get("per_model_videos") or {}).values():
+            _add(u)
+    for sub in (site_config.get("videos_index", {}) or {}).values():
+        for v in sub.get("paperdemo", []) + sub.get("humaneval", []):
+            _add(v.get("video_url_hf"))
+            _add(v.get("first_frame_url"))
+    for m in site_config.get("models", []):
+        for v in m.get("representative_videos") or []:
+            _add(v.get("video_url_hf"))
+            _add(v.get("first_frame_url"))
+    return targets
 
 
 def build_manifest(site_config: dict) -> dict:
     """Pure-function variant: takes the parsed site_config and returns the
-    manifest dict. Useful for callers that want to embed the manifest into
-    a larger build without writing it to disk first.
+    manifest dict.
+
+    The manifest is built by walking every place the snapshot embeds an HF
+    URL (see `_collect_targets_from_site_config`) so the manifest matches
+    the URL set the rendered HTML actually references. This is enforced by
+    the audit in `tools/build_snapshot.py`.
     """
-    entries = _dedup(
-        _walk_paperdemo_videos()
-        + _walk_humaneval_videos(site_config)
-        + _walk_first_frames(site_config),
-    )
+    targets = sorted(_collect_targets_from_site_config(site_config))
     manifest_entries = []
     n_present = 0
-    for local, target in entries:
+    for target in targets:
+        local = _local_source_for_target(target)
         exists = local.is_file()
         if exists:
             n_present += 1
@@ -185,22 +180,19 @@ def build(*, out_path: Path) -> dict:
 
 
 def materialize(staging: Path) -> None:
-    """Optionally hard-link / copy every present `local_source` into a single
-    folder mirroring the HF target layout, for one-shot upload via
+    """Hard-link / copy every present `local_source` into a single folder
+    mirroring the HF target layout, for one-shot upload via
     `huggingface-cli upload <repo> hf_staging .`.
     """
     cfg_path = SNAPSHOT_DIR / "index" / "site_config.json"
     if not cfg_path.is_file():
         raise SystemExit("snapshot/index/site_config.json not found; run build_snapshot.py first.")
     site_config = json.loads(cfg_path.read_text(encoding="utf-8"))
-    entries = _dedup(
-        _walk_paperdemo_videos()
-        + _walk_humaneval_videos(site_config)
-        + _walk_first_frames(site_config),
-    )
+    targets = sorted(_collect_targets_from_site_config(site_config))
     import shutil
     n = 0
-    for local, target in entries:
+    for target in targets:
+        local = _local_source_for_target(target)
         if not local.is_file():
             continue
         dst = staging / target

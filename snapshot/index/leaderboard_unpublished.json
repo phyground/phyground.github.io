@@ -5,6 +5,8 @@
       "dataset": "humaneval",
       "evaluator": "qwen-9b",
       "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+      "retired_at": "2026-05-08T10:00:00Z",
+      "retired_reason": "Every cov>0 row's source_json points at /shared/.../rlvideo/.... These paths cannot be recovered from the public repo's _wmbench_src/ ingest. The group is retired permanently per Plan Evolution Log Round-6.",
       "rows": [
         {
           "coverage": 1.0,
@@ -65,6 +67,7 @@
         }
       ],
       "schema": "subq_hint/v1",
+      "status": "retired",
       "subset": "harness_prompts",
       "video_model": "baseline_i2v_1258d20d06f0"
     },
@@ -72,6 +75,8 @@
       "dataset": "humaneval",
       "evaluator": "qwen-9b",
       "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+      "retired_at": "2026-05-08T10:00:00Z",
+      "retired_reason": "Every cov>0 row's source_json points at /shared/.../rlvideo/.... These paths cannot be recovered from the public repo's _wmbench_src/ ingest. The group is retired permanently per Plan Evolution Log Round-6.",
       "rows": [
         {
           "coverage": 1.0,
@@ -132,6 +137,7 @@
         }
       ],
       "schema": "subq_hint/v1",
+      "status": "retired",
       "subset": "harness_prompts",
       "video_model": "baseline_i2v_1fb20a34810f"
     },
@@ -139,6 +145,8 @@
       "dataset": "humaneval",
       "evaluator": "qwen-9b",
       "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+      "retired_at": "2026-05-08T10:00:00Z",
+      "retired_reason": "Every cov>0 row's source_json points at /shared/.../rlvideo/.... These paths cannot be recovered from the public repo's _wmbench_src/ ingest. The group is retired permanently per Plan Evolution Log Round-6.",
       "rows": [
         {
           "coverage": 1.0,
@@ -218,6 +226,7 @@
         }
       ],
       "schema": "subq_hint/v1",
+      "status": "retired",
       "subset": "harness_prompts",
       "video_model": "baseline_i2v_92bad6f89f53"
     },
@@ -225,6 +234,8 @@
       "dataset": "humaneval",
       "evaluator": "qwen-9b",
       "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+      "retired_at": "2026-05-08T10:00:00Z",
+      "retired_reason": "Every cov>0 row's source_json points at /shared/.../rlvideo/.... These paths cannot be recovered from the public repo's _wmbench_src/ ingest. The group is retired permanently per Plan Evolution Log Round-6.",
       "rows": [
         {
           "coverage": 1.0,
@@ -437,6 +448,7 @@
         }
       ],
       "schema": "subq_hint/v1",
+      "status": "retired",
       "subset": "harness_prompts",
       "video_model": "baseline_i2v_d85c358f8627"
     },
@@ -444,6 +456,8 @@
       "dataset": "humaneval",
       "evaluator": "claude-opus-4.7",
       "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+      "retired_at": "2026-05-08T10:00:00Z",
+      "retired_reason": "Every cov>0 row's source_json points at data/training/cotclaude/.... These paths cannot be recovered from the public repo's _wmbench_src/ ingest. The group is retired permanently per Plan Evolution Log Round-6.",
       "rows": [
         {
           "coverage": 1.0,
@@ -466,6 +480,7 @@
         }
       ],
       "schema": "cot/v4",
+      "status": "retired",
       "subset": "humaneval_set",
       "video_model": "cosmos-predict2.5-14b"
     },
@@ -473,6 +488,8 @@
       "dataset": "humaneval",
       "evaluator": "claude-opus-4.7",
       "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+      "retired_at": "2026-05-08T10:00:00Z",
+      "retired_reason": "Every cov>0 row's source_json points at data/training/cotclaude/.... These paths cannot be recovered from the public repo's _wmbench_src/ ingest. The group is retired permanently per Plan Evolution Log Round-6.",
       "rows": [
         {
           "coverage": 1.0,
@@ -495,6 +512,7 @@
         }
       ],
       "schema": "cot/v4",
+      "status": "retired",
       "subset": "humaneval_set",
       "video_model": "cosmos-predict2.5-2b"
     },
@@ -502,6 +520,8 @@
       "dataset": "humaneval",
       "evaluator": "claude-opus-4.7",
       "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+      "retired_at": "2026-05-08T10:00:00Z",
+      "retired_reason": "Every cov>0 row's source_json points at data/training/cotclaude/.... These paths cannot be recovered from the public repo's _wmbench_src/ ingest. The group is retired permanently per Plan Evolution Log Round-6.",
       "rows": [
         {
           "coverage": 1.0,
@@ -524,6 +544,7 @@
         }
       ],
       "schema": "cot/v4",
+      "status": "retired",
       "subset": "humaneval_set",
       "video_model": "ltx-2-19b-dev"
     },
@@ -531,6 +552,8 @@
       "dataset": "humaneval",
       "evaluator": "claude-opus-4.7",
       "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+      "retired_at": "2026-05-08T10:00:00Z",
+      "retired_reason": "Every cov>0 row's source_json points at data/training/cotclaude/.... These paths cannot be recovered from the public repo's _wmbench_src/ ingest. The group is retired permanently per Plan Evolution Log Round-6.",
       "rows": [
         {
           "coverage": 1.0,
@@ -553,6 +576,7 @@
         }
       ],
       "schema": "cot/v4",
+      "status": "retired",
       "subset": "humaneval_set",
       "video_model": "ltx-2.3-22b-dev"
     },
@@ -560,6 +584,8 @@
       "dataset": "humaneval",
       "evaluator": "claude-opus-4.7",
       "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+      "retired_at": "2026-05-08T10:00:00Z",
+      "retired_reason": "Every cov>0 row's source_json points at data/training/cotclaude/.... These paths cannot be recovered from the public repo's _wmbench_src/ ingest. The group is retired permanently per Plan Evolution Log Round-6.",
       "rows": [
         {
           "coverage": 1.0,
@@ -582,6 +608,7 @@
         }
       ],
       "schema": "cot/v4",
+      "status": "retired",
       "subset": "humaneval_set",
       "video_model": "omniweaving"
     },
@@ -589,6 +616,8 @@
       "dataset": "humaneval",
       "evaluator": "claude-opus-4.7",
       "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+      "retired_at": "2026-05-08T10:00:00Z",
+      "retired_reason": "Every cov>0 row's source_json points at data/training/cotclaude/.... These paths cannot be recovered from the public repo's _wmbench_src/ ingest. The group is retired permanently per Plan Evolution Log Round-6.",
       "rows": [
         {
           "coverage": 1.0,
@@ -611,6 +640,7 @@
         }
       ],
       "schema": "cot/v4",
+      "status": "retired",
       "subset": "humaneval_set",
       "video_model": "veo-3.1"
     },
@@ -618,6 +648,8 @@
       "dataset": "humaneval",
       "evaluator": "claude-opus-4.7",
       "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+      "retired_at": "2026-05-08T10:00:00Z",
+      "retired_reason": "Every cov>0 row's source_json points at data/scores/... (file moved or never created). These paths cannot be recovered from the public repo's _wmbench_src/ ingest. The group is retired permanently per Plan Evolution Log Round-6.",
       "rows": [
         {
           "coverage": 1.0,
@@ -659,6 +691,7 @@
         }
       ],
       "schema": "cot_subq/v1",
+      "status": "retired",
       "subset": "humaneval_set",
       "video_model": "veo-3.1"
     },
@@ -666,6 +699,8 @@
       "dataset": "humaneval",
       "evaluator": "claude-opus-4.7",
       "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+      "retired_at": "2026-05-08T10:00:00Z",
+      "retired_reason": "Every cov>0 row's source_json points at data/training/cotclaude/.... These paths cannot be recovered from the public repo's _wmbench_src/ ingest. The group is retired permanently per Plan Evolution Log Round-6.",
       "rows": [
         {
           "coverage": 1.0,
@@ -688,6 +723,7 @@
         }
       ],
       "schema": "cot/v4",
+      "status": "retired",
       "subset": "humaneval_set",
       "video_model": "wan2.2-i2v-a14b"
     },
@@ -695,6 +731,8 @@
       "dataset": "humaneval",
       "evaluator": "claude-opus-4.7",
       "reason": "no valid row's source_json could be resolved into _wmbench_src/",
+      "retired_at": "2026-05-08T10:00:00Z",
+      "retired_reason": "Every cov>0 row's source_json points at data/training/cotclaude/.... These paths cannot be recovered from the public repo's _wmbench_src/ ingest. The group is retired permanently per Plan Evolution Log Round-6.",
       "rows": [
         {
           "coverage": 1.0,
@@ -717,8 +755,12 @@
         }
       ],
       "schema": "cot/v4",
+      "status": "retired",
       "subset": "humaneval_set",
       "video_model": "wan2.2-ti2v-5b"
     }
-  ]
+  ],
+  "policy": "Every entry below is permanently retired from the published leaderboard. Re-introduction requires a new cov>0 source_json to land under _wmbench_src/data/scores/, which today does not exist.",
+  "retired_at": "2026-05-08T10:00:00Z",
+  "schema_version": "1"
 }
