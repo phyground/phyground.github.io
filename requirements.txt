@@ -4,3 +4,6 @@
 # pinned here for them.
 
 Jinja2>=3.1,<4
+
+# Test suite (Round 19+, backfilled contracts).
+pytest>=7,<9
