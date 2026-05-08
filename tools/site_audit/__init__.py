@@ -23,7 +23,7 @@ driver imports Playwright lazily inside the capture path only.
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
-from typing import Any
+from typing import Any, Optional
 
 
 @dataclass
@@ -34,6 +34,12 @@ class AuditRecord:
     and exercised by ``tests/test_site_audit_harness.py``. All fields are
     populated for both real and dry-run captures so downstream tooling can
     treat the schema uniformly.
+
+    ``error`` was introduced in the Round 1 hardening pass: it is ``None``
+    on successful captures and a short ``"<ExceptionClass>: <message>"``
+    string when a per-URL Playwright capture failed. Per-URL failures no
+    longer abort the entire run; the field is always present so downstream
+    consumers can rely on a stable schema.
     """
 
     url: str                      # original relative path from urls.txt
@@ -47,6 +53,7 @@ class AuditRecord:
     screenshot_path: str          # path to the PNG (would-be path in dry-run)
     console_errors: list[dict[str, Any]] = field(default_factory=list)
     failed_requests: list[dict[str, Any]] = field(default_factory=list)
+    error: Optional[str] = None   # exception summary on per-URL failure
 
 
 def record_to_dict(record: AuditRecord) -> dict[str, Any]:

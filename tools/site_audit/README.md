@@ -113,6 +113,34 @@ Each entry in `records.json` is a JSON object with the following keys
 | `screenshot_path`      | string          | Path to the PNG (would-be path in dry-run).                          |
 | `console_errors`       | list[object]    | Each entry has `text` and `location`; empty in dry-run.              |
 | `failed_requests`      | list[object]    | Each entry has `url`, `status`, `failure`; empty in dry-run.         |
+| `error`                | string \| null  | `null` on success; on per-URL capture failure, a short `"<ExcClass>: <msg>"` summary truncated to 500 chars. Always present. |
+
+### Per-URL error isolation
+
+A failing `page.goto()` (or any other exception while capturing a single
+URL) does **not** abort the run. The driver:
+
+- catches the exception, writes a short summary string to the record's
+  `error` field (class name + colon + message, truncated to 500 chars),
+- leaves `final_url` and `http_status` as `null`, `console_error_count`
+  and `failed_request_count` as `0`, and the screenshot path pointing at
+  the would-be PNG even if no PNG was written, and
+- moves on to the next URL.
+
+After every per-URL completion (success or failure) the driver atomically
+rewrites `records.json` (write to `records.json.tmp`, then
+`os.replace`). A mid-run abort therefore still leaves a usable evidence
+file on disk: at most the in-flight URL is missing.
+
+### Repeat runs
+
+Pointing two consecutive runs at the same `--out` is supported. Before
+each run the driver removes every top-level `*.png` file inside `--out`
+(recursing into sub-directories is intentionally avoided so audit logs
+or sibling artifacts under `<out>/logs/` survive). The cleanup count is
+echoed to stderr as `[run_audit] cleaned N stale screenshot(s) from
+<out>`. `records.json` is overwritten by the atomic incremental writes
+described above; no manual cleanup is needed.
 
 ## `--dry-run` mode
 

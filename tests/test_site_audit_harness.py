@@ -29,6 +29,10 @@ STRUCTURAL_AUDIT_SCRIPT = REPO_ROOT / "tools" / "site_audit" / "structural_audit
 
 # Exact per-entry record schema required by the Round 0 contract for
 # task1. Keep this in lockstep with `tools.site_audit.AuditRecord`.
+# ``error`` was added in the Round 1 hardening pass: it is ``None`` for
+# successful captures and a short ``"<ExcClass>: <msg>"`` string for
+# per-URL Playwright failures. The field is always present on the
+# dataclass so downstream tooling can rely on a stable shape.
 REQUIRED_RECORD_KEYS = frozenset({
     "url",
     "prefixed_url",
@@ -41,6 +45,7 @@ REQUIRED_RECORD_KEYS = frozenset({
     "screenshot_path",
     "console_errors",
     "failed_requests",
+    "error",
 })
 
 
@@ -673,3 +678,231 @@ def test_structural_audit_query_only_href_treated_as_fragment(
     assert len(entry["fragments"]) >= 2
     assert any("?foo=1" in f for f in entry["fragments"])
     assert any(f == "#section" for f in entry["fragments"])
+
+
+# ---------------------------------------------------------------------------
+# Round 1 hardening: per-URL error isolation, free-port race fix,
+# stale-PNG cleanup. Tests below exercise the contracts added in this round.
+# ---------------------------------------------------------------------------
+
+
+def test_run_audit_emits_record_per_url_even_on_capture_failure(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A per-URL Playwright failure does not abort the rest of the matrix.
+
+    The driver must:
+      * exit 0 (per-URL failures are not run-fatal),
+      * write one record per URL (3 in this test),
+      * stamp ``error`` on the failing record with a non-empty string,
+      * leave ``error`` as ``None`` on successful records,
+      * remove the ``records.json.tmp`` staging file after the atomic
+        replace at the end of the run.
+    """
+    import importlib
+
+    run_audit_module = importlib.import_module("tools.site_audit.run_audit")
+
+    out_dir = tmp_path / "artifacts"
+    urls_path = _write_urls(tmp_path, ["/", "/about/", "/leaderboard/"])
+
+    call_log: list[str] = []
+
+    def fake_capture_one(url, *, prefix, target, viewport, out_dir):
+        call_log.append(url)
+        if url == "/about/":
+            raise RuntimeError("boom: simulated goto failure")
+        from tools.site_audit import AuditRecord
+
+        return AuditRecord(
+            url=url,
+            prefixed_url=f"{prefix.rstrip('/')}{url}",
+            target=target,
+            final_url=f"{prefix.rstrip('/')}{url}",
+            http_status=200,
+            viewport=viewport,
+            console_error_count=0,
+            failed_request_count=0,
+            screenshot_path=str(out_dir / "fake.png"),
+            console_errors=[],
+            failed_requests=[],
+        )
+
+    # Skip the real HTTP server and Playwright entirely: we patch the
+    # serve helper to a no-op context manager and the per-URL capture
+    # helper to the fake above.
+    from contextlib import contextmanager
+
+    @contextmanager
+    def fake_serve():
+        yield "http://127.0.0.1:0"
+
+    monkeypatch.setattr(run_audit_module, "_serve_repo_root", fake_serve)
+    monkeypatch.setattr(run_audit_module, "_capture_one_url", fake_capture_one)
+
+    rc = run_audit_module.run_audit([
+        "--target", "local",
+        "--urls", str(urls_path),
+        "--out", str(out_dir),
+    ])
+    assert rc == 0
+    assert call_log == ["/", "/about/", "/leaderboard/"]
+
+    records_path = out_dir / "records.json"
+    assert records_path.is_file()
+    records = json.loads(records_path.read_text(encoding="utf-8"))
+    assert len(records) == 3
+
+    by_url = {r["url"]: r for r in records}
+    assert by_url["/"]["error"] is None
+    assert by_url["/leaderboard/"]["error"] is None
+    err = by_url["/about/"]["error"]
+    assert isinstance(err, str) and err, "failing record must carry a non-empty error string"
+    assert "RuntimeError" in err
+    assert "boom" in err
+
+    # Atomic-write staging file must be cleaned up after the run.
+    assert not (out_dir / "records.json.tmp").exists()
+
+
+def test_run_audit_dry_run_records_have_error_field_none(tmp_path: Path) -> None:
+    """Dry-run records always include ``error`` and the value is exactly None."""
+    urls = _write_urls(tmp_path, ["/", "/about/"])
+    out_dir = tmp_path / "artifacts"
+    result = _run(
+        str(RUN_AUDIT_SCRIPT),
+        "--target", "fork",
+        "--urls", str(urls),
+        "--out", str(out_dir),
+        "--dry-run",
+    )
+    assert result.returncode == 0, result.stderr
+    records = json.loads((out_dir / "records.json").read_text(encoding="utf-8"))
+    assert len(records) == 2
+    for rec in records:
+        assert "error" in rec, "error field must be present (not absent)"
+        assert rec["error"] is None
+
+
+def test_run_audit_local_drops_find_free_port_helper() -> None:
+    """The free-port race is closed by binding port 0 directly.
+
+    This test pins the implementation choice: ``_find_free_port`` is
+    removed so callers cannot reintroduce the race. We assert the
+    symbol is gone from the module namespace.
+    """
+    import importlib
+
+    run_audit_module = importlib.import_module("tools.site_audit.run_audit")
+    # The helper is removed; bind happens directly via ThreadingHTTPServer
+    # with port 0. See _serve_repo_root.
+    assert not hasattr(run_audit_module, "_find_free_port"), (
+        "_find_free_port must be removed; bind port 0 directly via "
+        "ThreadingHTTPServer to avoid the close-then-rebind race."
+    )
+
+
+def test_run_audit_cleans_stale_pngs_in_out_dir(
+    tmp_path: Path, capfd: pytest.CaptureFixture[str]
+) -> None:
+    """A rerun deletes top-level *.png files from --out before capturing.
+
+    Non-PNG files (logs, sub-directories) must be preserved.
+    """
+    out_dir = tmp_path / "artifacts"
+    out_dir.mkdir()
+    (out_dir / "old1.png").write_bytes(b"old1")
+    (out_dir / "old2.png").write_bytes(b"old2")
+    (out_dir / "keep.txt").write_bytes(b"keep me")
+    sub = out_dir / "logs"
+    sub.mkdir()
+    (sub / "nested.png").write_bytes(b"nested")  # below top level: must survive
+
+    urls = _write_urls(tmp_path, ["/"])
+    result = _run(
+        str(RUN_AUDIT_SCRIPT),
+        "--target", "fork",
+        "--urls", str(urls),
+        "--out", str(out_dir),
+        "--dry-run",
+    )
+    assert result.returncode == 0, result.stderr
+
+    assert not (out_dir / "old1.png").exists(), "stale top-level *.png must be removed"
+    assert not (out_dir / "old2.png").exists(), "stale top-level *.png must be removed"
+    assert (out_dir / "keep.txt").exists(), "non-PNG files must be preserved"
+    assert (sub / "nested.png").exists(), "nested *.png must NOT be touched"
+
+    # Stderr advertises the cleanup with a count.
+    assert "cleaned" in result.stderr.lower()
+    assert "2" in result.stderr, (
+        f"stderr should mention the cleaned count; got: {result.stderr!r}"
+    )
+
+
+def test_run_audit_partial_records_json_written_after_each_url(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """records.json grows monotonically as each URL completes.
+
+    A mid-run abort must therefore leave a usable evidence file on disk.
+    We verify this by reading records.json from inside the per-URL
+    capture stub: each call sees one more record than the last.
+    """
+    import importlib
+
+    run_audit_module = importlib.import_module("tools.site_audit.run_audit")
+
+    out_dir = tmp_path / "artifacts"
+    urls_path = _write_urls(tmp_path, ["/", "/about/", "/leaderboard/", "/contact/"])
+    records_path = out_dir / "records.json"
+
+    seen_counts: list[int] = []
+
+    def fake_capture_one(url, *, prefix, target, viewport, out_dir):
+        # Read what's on disk BEFORE this call's record is appended.
+        if records_path.is_file():
+            current = json.loads(records_path.read_text(encoding="utf-8"))
+            seen_counts.append(len(current))
+        else:
+            seen_counts.append(0)
+
+        from tools.site_audit import AuditRecord
+
+        return AuditRecord(
+            url=url,
+            prefixed_url=f"{prefix.rstrip('/')}{url}",
+            target=target,
+            final_url=f"{prefix.rstrip('/')}{url}",
+            http_status=200,
+            viewport=viewport,
+            console_error_count=0,
+            failed_request_count=0,
+            screenshot_path=str(out_dir / "fake.png"),
+            console_errors=[],
+            failed_requests=[],
+        )
+
+    from contextlib import contextmanager
+
+    @contextmanager
+    def fake_serve():
+        yield "http://127.0.0.1:0"
+
+    monkeypatch.setattr(run_audit_module, "_serve_repo_root", fake_serve)
+    monkeypatch.setattr(run_audit_module, "_capture_one_url", fake_capture_one)
+
+    rc = run_audit_module.run_audit([
+        "--target", "local",
+        "--urls", str(urls_path),
+        "--out", str(out_dir),
+    ])
+    assert rc == 0
+
+    # Before each call, records.json contained 0, 1, 2, 3 records.
+    assert seen_counts == [0, 1, 2, 3], seen_counts
+
+    # End state: 4 records on disk, no leftover .tmp.
+    final = json.loads(records_path.read_text(encoding="utf-8"))
+    assert len(final) == 4
+    assert not (out_dir / "records.json.tmp").exists()

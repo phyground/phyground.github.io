@@ -28,11 +28,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
-import socket
 import sys
 import threading
-from contextlib import closing, contextmanager
+from contextlib import contextmanager
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Iterator
@@ -159,17 +159,16 @@ def _default_out_dir(target: str) -> Path:
     return REPO_ROOT / ".audit_artifacts" / "current" / target
 
 
-def _find_free_port() -> int:
-    with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as s:
-        s.bind(("127.0.0.1", 0))
-        return s.getsockname()[1]
-
-
 @contextmanager
 def _serve_repo_root() -> Iterator[str]:
-    """Serve REPO_ROOT over a localhost HTTP server; yield the origin."""
-    port = _find_free_port()
+    """Serve REPO_ROOT over a localhost HTTP server; yield the origin.
 
+    Binds on port 0 directly via ``ThreadingHTTPServer`` and reads the
+    actual port from ``server.server_address``. The previous implementation
+    asked the OS for a free port via a throwaway socket and then re-bound
+    a few microseconds later, which left a window for another process to
+    grab the port. Binding once closes that race.
+    """
     handler_root = str(REPO_ROOT)
 
     class _Handler(SimpleHTTPRequestHandler):
@@ -179,7 +178,8 @@ def _serve_repo_root() -> Iterator[str]:
         def log_message(self, format, *args):  # quiet
             pass
 
-    server = ThreadingHTTPServer(("127.0.0.1", port), _Handler)
+    server = ThreadingHTTPServer(("127.0.0.1", 0), _Handler)
+    port = server.server_address[1]
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     try:
@@ -219,6 +219,125 @@ def _skeleton_record(
     )
 
 
+_ERROR_TRUNCATE_CHARS = 500
+
+
+def _format_capture_error(exc: BaseException) -> str:
+    """Produce a stable ``"<ExcClass>: <message>"`` string capped at 500 chars.
+
+    The exact wording is part of the public records contract, so keep this
+    helper deterministic: class name + colon + repr-stripped message,
+    truncated to ``_ERROR_TRUNCATE_CHARS`` so a giant traceback string
+    cannot bloat ``records.json``.
+    """
+    msg = f"{type(exc).__name__}: {exc}"
+    if len(msg) > _ERROR_TRUNCATE_CHARS:
+        msg = msg[:_ERROR_TRUNCATE_CHARS]
+    return msg
+
+
+def _write_records_atomic(records_path: Path, records: list[AuditRecord]) -> None:
+    """Atomically rewrite ``records.json`` so a crash leaves prior contents intact.
+
+    Writes to ``records.json.tmp`` next to the target and then ``os.replace``s
+    it into place; downstream readers therefore see either the previous
+    snapshot or the new one, never a half-written file. Called after every
+    per-URL completion (success or failure) so a mid-run abort still leaves
+    usable evidence on disk.
+    """
+    tmp = records_path.with_name(records_path.name + ".tmp")
+    payload = json.dumps(
+        [record_to_dict(r) for r in records], indent=2, sort_keys=False
+    ) + "\n"
+    tmp.write_text(payload, encoding="utf-8")
+    os.replace(tmp, records_path)
+
+
+def _capture_one_url(
+    url: str,
+    *,
+    prefix: str,
+    target: str,
+    viewport: str,
+    out_dir: Path,
+) -> AuditRecord:
+    """Run Playwright against a single URL and return one ``AuditRecord``.
+
+    Extracted from the per-URL body so the test suite can ``monkeypatch``
+    this helper to simulate failures without touching the public CLI
+    surface. Lazily imports Playwright; importing this module does not
+    pull the browser dependency in.
+    """
+    # Lazy import so --help / --dry-run work without playwright installed.
+    from playwright.sync_api import sync_playwright  # type: ignore
+
+    width, height = _parse_viewport(viewport)
+    prefixed = _join_url(prefix, url)
+
+    console_errors: list[dict[str, object]] = []
+    failed_requests: list[dict[str, object]] = []
+
+    def _on_console(msg, _bucket=console_errors):
+        if msg.type == "error":
+            loc = msg.location or {}
+            _bucket.append({
+                "text": msg.text,
+                "location": {
+                    "url": loc.get("url", ""),
+                    "lineNumber": loc.get("lineNumber", 0),
+                    "columnNumber": loc.get("columnNumber", 0),
+                },
+            })
+
+    def _on_requestfailed(req, _bucket=failed_requests):
+        _bucket.append({
+            "url": req.url,
+            "status": None,
+            "failure": (req.failure or ""),
+        })
+
+    def _on_response(resp, _bucket=failed_requests):
+        if resp.status >= 400:
+            _bucket.append({
+                "url": resp.url,
+                "status": resp.status,
+                "failure": "",
+            })
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        try:
+            context = browser.new_context(viewport={"width": width, "height": height})
+            page = context.new_page()
+            page.on("console", _on_console)
+            page.on("requestfailed", _on_requestfailed)
+            page.on("response", _on_response)
+
+            response = page.goto(prefixed, wait_until="networkidle")
+            http_status = response.status if response is not None else None
+            final_url = page.url
+
+            screenshot_path = out_dir / f"{_slugify(url)}.png"
+            page.screenshot(path=str(screenshot_path), full_page=False)
+            page.close()
+        finally:
+            browser.close()
+
+    return AuditRecord(
+        url=url,
+        prefixed_url=prefixed,
+        target=target,
+        final_url=final_url,
+        http_status=http_status,
+        viewport=viewport,
+        console_error_count=len(console_errors),
+        failed_request_count=len(failed_requests),
+        screenshot_path=str(screenshot_path),
+        console_errors=console_errors,
+        failed_requests=failed_requests,
+    )
+
+
 def _capture_with_playwright(
     *,
     urls: list[str],
@@ -226,78 +345,50 @@ def _capture_with_playwright(
     target: str,
     viewport: str,
     out_dir: Path,
+    records_path: Path,
 ) -> list[AuditRecord]:
-    # Lazy import so --help / --dry-run work without playwright installed.
-    from playwright.sync_api import sync_playwright  # type: ignore
+    """Drive ``_capture_one_url`` over each URL with per-URL error isolation.
 
-    width, height = _parse_viewport(viewport)
+    A failing ``page.goto`` (or any other exception inside
+    ``_capture_one_url``) no longer aborts the run: the failing URL gets
+    a record stamped with ``error="<ExcClass>: <msg>"`` and the loop moves
+    on. ``records.json`` is rewritten atomically after every URL so an
+    external abort still leaves a usable evidence file.
+    """
     records: list[AuditRecord] = []
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch()
+    for url in urls:
+        prefixed = _join_url(prefix, url)
         try:
-            context = browser.new_context(viewport={"width": width, "height": height})
-            for url in urls:
-                prefixed = _join_url(prefix, url)
-                page = context.new_page()
+            record = _capture_one_url(
+                url,
+                prefix=prefix,
+                target=target,
+                viewport=viewport,
+                out_dir=out_dir,
+            )
+        except Exception as exc:  # noqa: BLE001 — per-URL isolation by design
+            err_msg = _format_capture_error(exc)
+            sys.stderr.write(
+                f"[run_audit] capture failed for {url!r}: {err_msg}\n"
+            )
+            record = AuditRecord(
+                url=url,
+                prefixed_url=prefixed,
+                target=target,
+                final_url=None,
+                http_status=None,
+                viewport=viewport,
+                console_error_count=0,
+                failed_request_count=0,
+                screenshot_path=str(out_dir / f"{_slugify(url)}.png"),
+                console_errors=[],
+                failed_requests=[],
+                error=err_msg,
+            )
 
-                console_errors: list[dict[str, object]] = []
-                failed_requests: list[dict[str, object]] = []
-
-                def _on_console(msg, _bucket=console_errors):
-                    if msg.type == "error":
-                        loc = msg.location or {}
-                        _bucket.append({
-                            "text": msg.text,
-                            "location": {
-                                "url": loc.get("url", ""),
-                                "lineNumber": loc.get("lineNumber", 0),
-                                "columnNumber": loc.get("columnNumber", 0),
-                            },
-                        })
-
-                def _on_requestfailed(req, _bucket=failed_requests):
-                    _bucket.append({
-                        "url": req.url,
-                        "status": None,
-                        "failure": (req.failure or ""),
-                    })
-
-                def _on_response(resp, _bucket=failed_requests):
-                    if resp.status >= 400:
-                        _bucket.append({
-                            "url": resp.url,
-                            "status": resp.status,
-                            "failure": "",
-                        })
-
-                page.on("console", _on_console)
-                page.on("requestfailed", _on_requestfailed)
-                page.on("response", _on_response)
-
-                response = page.goto(prefixed, wait_until="networkidle")
-                http_status = response.status if response is not None else None
-                final_url = page.url
-
-                screenshot_path = out_dir / f"{_slugify(url)}.png"
-                page.screenshot(path=str(screenshot_path), full_page=False)
-                page.close()
-
-                records.append(AuditRecord(
-                    url=url,
-                    prefixed_url=prefixed,
-                    target=target,
-                    final_url=final_url,
-                    http_status=http_status,
-                    viewport=viewport,
-                    console_error_count=len(console_errors),
-                    failed_request_count=len(failed_requests),
-                    screenshot_path=str(screenshot_path),
-                    console_errors=console_errors,
-                    failed_requests=failed_requests,
-                ))
-        finally:
-            browser.close()
+        records.append(record)
+        _write_records_atomic(records_path, records)
 
     return records
 
@@ -305,6 +396,24 @@ def _capture_with_playwright(
 # ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
+
+
+def _clean_stale_pngs(out_dir: Path) -> int:
+    """Remove top-level ``*.png`` files from ``out_dir``; return the count.
+
+    A rerun against the same ``--out`` would otherwise leave screenshots
+    from a previous URL set lingering on disk and pollute the audit
+    artifacts. We clean only the top level so subdirectories (e.g. logs)
+    are preserved. Non-PNG files are never touched.
+    """
+    if not out_dir.exists():
+        return 0
+    removed = 0
+    for entry in out_dir.iterdir():
+        if entry.is_file() and entry.suffix == ".png":
+            entry.unlink()
+            removed += 1
+    return removed
 
 
 def run_audit(argv: list[str] | None = None) -> int:
@@ -317,6 +426,16 @@ def run_audit(argv: list[str] | None = None) -> int:
     urls = _read_urls(args.urls)
     out_dir: Path = args.out if args.out is not None else _default_out_dir(args.target)
     out_dir.mkdir(parents=True, exist_ok=True)
+
+    # Wipe stale PNGs from a previous run so the artifacts directory only
+    # ever reflects the current URL matrix. Non-PNG files (audit logs,
+    # any sub-directories) survive.
+    cleaned = _clean_stale_pngs(out_dir)
+    sys.stderr.write(
+        f"[run_audit] cleaned {cleaned} stale screenshot(s) from {out_dir}\n"
+    )
+
+    records_path = out_dir / "records.json"
 
     if args.dry_run:
         # Use a stable placeholder origin for local so prefixed_url still
@@ -336,6 +455,7 @@ def run_audit(argv: list[str] | None = None) -> int:
             )
             for url in urls
         ]
+        _write_records_atomic(records_path, records)
     elif args.target == "local":
         with _serve_repo_root() as origin:
             records = _capture_with_playwright(
@@ -344,6 +464,7 @@ def run_audit(argv: list[str] | None = None) -> int:
                 target="local",
                 viewport=args.viewport,
                 out_dir=out_dir,
+                records_path=records_path,
             )
     else:
         records = _capture_with_playwright(
@@ -352,13 +473,9 @@ def run_audit(argv: list[str] | None = None) -> int:
             target="fork",
             viewport=args.viewport,
             out_dir=out_dir,
+            records_path=records_path,
         )
 
-    records_path = out_dir / "records.json"
-    records_path.write_text(
-        json.dumps([record_to_dict(r) for r in records], indent=2, sort_keys=False) + "\n",
-        encoding="utf-8",
-    )
     sys.stdout.write(
         f"wrote {len(records)} record(s) to {records_path}\n"
     )
