@@ -21,8 +21,10 @@
   "videos_index": {},
   "build_meta": {
     "built_at": null,
-    "registry_sha": null,
-    "manifest_sha": null,
+    "registry_sha256": null,
+    "paperdemo_manifest_sha256": null,
+    "model_catalog_sha256": null,
+    "vis_datasets_sha256": null,
     "snapshot_sha": null
   }
 }

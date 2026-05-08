@@ -1,0 +1,40 @@
+{
+  "datasets": [
+    {
+      "name": "cosmos2.5-2b-video_phy_2",
+      "video_dir": "data/videos/cosmos-predict2.5-2b-video_phy_2",
+      "eval_json": ["data/videos/cosmos-predict2.5-2b-video_phy_2/eval_gemini_20260319_195008.json"],
+      "prompts_json": "data/prompts/video_phy_2/filtered_with_frames_laws.json"
+    },
+    {
+      "name": "cosmos2.5-2b-physics_iq",
+      "video_dir": "data/videos/cosmos-predict2.5-2b-physics_iq",
+      "eval_json": ["data/videos/cosmos-predict2.5-2b-physics_iq/eval_gemini_20260319_203556.json"],
+      "prompts_json": "data/prompts/physics_iq/filtered_by_domain.json"
+    },
+    {
+      "name": "cosmos2.5-2b-wmb",
+      "video_dir": "data/videos/cosmos-predict2.5-2b-wmb",
+      "eval_json": ["data/videos/cosmos-predict2.5-2b-wmb/eval_gemini_20260319_191210.json"],
+      "prompts_json": "data/prompts/wmb/wmb.json"
+    },
+    {
+      "name": "wan2.2-ti2v-5b-video_phy_2",
+      "video_dir": "data/videos/wan2.2-ti2v-5b-video_phy_2",
+      "eval_json": [
+        "data/videos/wan2.2-ti2v-5b-video_phy_2/eval_gemini_20260319_200630.json",
+        "data/videos/wan2.2-ti2v-5b-video_phy_2/eval_qwen_merged_20260317_181955.json"
+      ],
+      "prompts_json": "data/prompts/video_phy_2/filtered_with_frames_laws.json"
+    },
+    {
+      "name": "wan2.2-ti2v-5b-physics_iq",
+      "video_dir": "data/videos/wan2.2-ti2v-5b-physics_iq",
+      "eval_json": [
+        "data/videos/wan2.2-ti2v-5b-physics_iq/eval_gemini_20260319_205040.json",
+        "data/videos/wan2.2-ti2v-5b-physics_iq/eval_qwen_merged_20260317_193429.json"
+      ],
+      "prompts_json": "data/prompts/physics_iq/filtered_by_domain.json"
+    }
+  ]
+}

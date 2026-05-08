@@ -1,0 +1,28 @@
+{
+  "law_quotas": {
+    "boundary_interaction": 8,
+    "buoyancy": 8,
+    "collision": 8,
+    "displacement": 8,
+    "flow_dynamics": 8,
+    "fluid_continuity": 8,
+    "gravity": 8,
+    "impenetrability": 8,
+    "inertia": 8,
+    "material": 7,
+    "momentum": 7,
+    "reflection": 7,
+    "shadow": 7
+  },
+  "manual_overrides": [],
+  "note": "Round 1 stub. Real selection requires _wmbench_src/data/prompts/ which is not ingested yet. See docs/exp-plan/public/humaneval_100.md.",
+  "prompts": [],
+  "schema_version": "1",
+  "selected_at": null,
+  "selection_inputs": {
+    "humaneval_prompts_sha256": null,
+    "model_catalog_sha256": "6c88b41361242b3ed0275c9618f54bca140b42876a0d8bd6f9caf71301b4fb57",
+    "paperdemo_manifest_sha256": "55fe4d712c24c103598c6a3647931ef719dfb551c95c675ad138aee609fadd17",
+    "registry_sha256": "0d791883c6ec8dec03d1f6db890d6681cdf987a3313e97314d0af83b4ed616fe"
+  }
+}

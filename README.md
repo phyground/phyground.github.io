@@ -5,7 +5,7 @@ Public companion site for the **wmbench** physics-grounded video benchmark.
 - **Video Gallery** — browse video-generation model outputs, side-by-side per physical law.
 - **Leaderboard** — slice rankings by evaluator × dataset × subset × scoring schema.
 
-The site is **static** and deployed via GitHub Pages from the repository root. Videos are hosted on HuggingFace at <https://huggingface.co/juyil>; this repo only carries the index/manifest, the rendered HTML, and a small CSS asset.
+The site is **static** and deployed via GitHub Pages from the repository root. Videos are hosted on HuggingFace at <https://huggingface.co/juyil>; this repo only carries the index/manifest, rendered HTML, and a small CSS asset.
 
 ## Architecture
 
@@ -19,40 +19,80 @@ phyground.github.io/                 ← GitHub Pages serves this root, with Jek
 ├── static/css/base.css              ← mirrored from tools/static_src
 │
 ├── tools/                           ← build infrastructure (source of truth)
-│   ├── build_site.py                ← Jinja2 → static HTML
-│   ├── site_config.example.json     ← stub config (used until snapshot exists)
+│   ├── build_snapshot.py            ← _wmbench_src/ → snapshot/
+│   ├── verify_snapshot.py           ← sha256 check vs snapshot/MANIFEST.json
+│   ├── build_site.py                ← Jinja2 + snapshot → static HTML
+│   ├── site_config.example.json     ← stub config (offline preview without a snapshot)
 │   ├── templates/                   ← Jinja2 templates
 │   └── static_src/                  ← CSS/JS source, mirrored to /static
 │
-├── snapshot/                        ← built data (Round 1+); index/manifest in git, media gitignored
-├── _wmbench_src/                    ← hard-copied wmbench source (Round 1+); large media gitignored
-├── docs/exp-plan/public/plan.md     ← implementation plan
+├── _wmbench_src/                    ← hard-copied wmbench source (frozen; no network deps)
+│   ├── PROVENANCE.md                ← wmbench HEAD sha + per-file sha256 at copy time
+│   ├── data/{vis_datasets.json, paperdemo/{manifest.csv, figs/*.pdf}}
+│   ├── evals/{eval_registry.json, eval_types.py}
+│   └── videogen/runner/MODEL_CATALOG.py
+│
+├── snapshot/                        ← deterministic build output, the site's only data source
+│   ├── MANIFEST.json                ← sha256 over every snapshot file
+│   └── index/{site_config.json, eval_registry.frozen.json,
+│              paperdemo.manifest.csv, vis_datasets.frozen.json,
+│              model_catalog.frozen.json, humaneval_100.json}
+│
+├── docs/exp-plan/public/{plan.md, humaneval_100.md}
+├── requirements.txt
 └── LICENSE
 ```
 
-## Build flow
+## Quick start
 
 ```bash
-pip install jinja2
+git clone https://github.com/phyground/phyground.github.io.git
+cd phyground.github.io
+python -m venv .venv && source .venv/bin/activate    # optional
+pip install -r requirements.txt
 
-# Round 0 — render with the stub config (no real wmbench data needed):
-python tools/build_site.py
+# 1. Build the data snapshot from _wmbench_src/.
+python tools/build_snapshot.py
 
-# Round 1+ — once the snapshot builder lands:
-python tools/build_snapshot.py        # reads _wmbench_src/, writes snapshot/
+# 2. Verify the manifest.
+python tools/verify_snapshot.py
+
+# 3. Render HTML against the snapshot.
 python tools/build_site.py --config snapshot/index/site_config.json
 ```
 
-The build is **deterministic** (same config + same templates → byte-identical HTML) and **offline** (no network, no NFS).
+After step 3 the rendered files at the repo root (`index.html`, `leaderboard/index.html`, `videos/index.html`, `about/index.html`, `static/css/base.css`) are exactly what GitHub Pages will serve.
+
+For an offline preview without a snapshot (the renderer reads templates only):
+
+```bash
+python tools/build_site.py                            # uses tools/site_config.example.json
+```
+
+## Determinism
+
+- `tools/build_snapshot.py` produces byte-identical `snapshot/` output for the same `_wmbench_src/` inputs (any timestamp can be pinned via `--now <ISO>`; the default uses UTC `now()` only for `build_meta.built_at`).
+- `tools/build_site.py` produces byte-identical HTML for the same config + templates.
+- `tools/verify_snapshot.py` exits non-zero on any drift between `snapshot/MANIFEST.json` and the actual file tree.
+
+## Refreshing wmbench data
+
+When upstream wmbench files change:
+
+1. Re-copy the affected files into `_wmbench_src/` (preserving paths). The expected layout is documented in `_wmbench_src/PROVENANCE.md`.
+2. Update `_wmbench_src/PROVENANCE.md` (HEAD sha, sha256 per file, copy date).
+3. `python tools/build_snapshot.py && python tools/verify_snapshot.py`.
+4. `python tools/build_site.py --config snapshot/index/site_config.json`.
+5. Commit the diff (the `snapshot/index/*.json` files travel with git so the deployment is reproducible).
 
 ## Deployment
 
-GitHub Pages is configured to serve from the repository root on the default branch:
+GitHub Pages serves the repo root on the default branch:
 
-1. `python tools/build_site.py [--config snapshot/index/site_config.json]`
-2. `git add` the rendered HTML + `static/` + any `snapshot/index/` updates.
-3. `git commit && git push`
-4. GitHub Pages picks up the change at `https://phyground.github.io/`.
+1. Run the four-step Quick Start above on your laptop.
+2. `git add` the rendered HTML, `static/`, `snapshot/index/`, `snapshot/MANIFEST.json`.
+3. `git commit && git push`.
+4. GitHub Pages picks up the change at <https://phyground.github.io/>.
 
 The `.nojekyll` file disables GitHub's automatic Jekyll processing so the rendered HTML is served verbatim.
 
@@ -68,6 +108,8 @@ Plan §5 ("Phase 5 — 静态化") foresaw this; we promoted it to the baseline.
 ## Plan and progress
 
 - Implementation plan: [`docs/exp-plan/public/plan.md`](docs/exp-plan/public/plan.md)
+- humaneval-100 selection spec: [`docs/exp-plan/public/humaneval_100.md`](docs/exp-plan/public/humaneval_100.md)
+- `_wmbench_src/` provenance: [`_wmbench_src/PROVENANCE.md`](_wmbench_src/PROVENANCE.md)
 - RLCR loop state: `.humanize/rlcr/<timestamp>/`
 
 ## License

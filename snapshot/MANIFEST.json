@@ -1,0 +1,12 @@
+{
+  "built_at": "2026-05-08T07:50:00Z",
+  "files": {
+    "index/eval_registry.frozen.json": "0d791883c6ec8dec03d1f6db890d6681cdf987a3313e97314d0af83b4ed616fe",
+    "index/humaneval_100.json": "aec7de55eec3c57e05a99498bdbfb255204aedbdf4b175c0384ea6a9b8c9b2c4",
+    "index/model_catalog.frozen.json": "06abf1fea223ac1f3f8d803c385d3fb4e80f11f1108bc054c71e792c6c8909e8",
+    "index/paperdemo.manifest.csv": "55fe4d712c24c103598c6a3647931ef719dfb551c95c675ad138aee609fadd17",
+    "index/site_config.json": "161746f1b5c16ccfd2dec3a110540fb24526c28e7644211c81e03810d76ac53a",
+    "index/vis_datasets.frozen.json": "69e4761736b5865072345b6c8a753c80b109ef76e5284fb90581c206f591e08e"
+  },
+  "schema_version": "1"
+}

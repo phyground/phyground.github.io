@@ -116,6 +116,19 @@ def render(config_path: Path, *, verbose: bool = True) -> None:
     if verbose:
         print(f"[build_site] mirrored {n_static} file(s) to static/")
 
+    # Pass the full snapshot data model into every template. Templates that
+    # don't consume a key simply ignore it; templates that need real data find
+    # everything they need in `models` / `datasets` / `leaderboard_entries` /
+    # `paperdemo` / `videos_index`. Keys default to safe empty containers when
+    # the config (e.g. site_config.example.json stub) doesn't carry them.
+    snapshot_ctx = {
+        "models": config.get("models", []),
+        "datasets": config.get("datasets", []),
+        "leaderboard_entries": config.get("leaderboard_entries", []),
+        "paperdemo": config.get("paperdemo", []),
+        "videos_index": config.get("videos_index", {}),
+    }
+
     for page in PAGES:
         out_path = REPO_ROOT / page.out_path
         out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -125,6 +138,7 @@ def render(config_path: Path, *, verbose: bool = True) -> None:
             "headline": config["headline"],
             "build_meta": config.get("build_meta", {}),
             "rel": _make_rel(page.out_path),
+            **snapshot_ctx,
         }
         html = template.render(**ctx)
         out_path.write_text(html, encoding="utf-8")
