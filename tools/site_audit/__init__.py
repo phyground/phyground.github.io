@@ -2,15 +2,23 @@
 
 This package provides tooling to capture per-page audit records (console
 errors, failed network requests, screenshots, structural HTML facts) for
-the rendered site. The Round 0 scaffold ships only the runtime audit
-driver (`run_audit.py`) and shared record schema; a sibling
-`structural_audit.py` is added in a subsequent task to inspect the
-on-disk HTML.
+the rendered site. The Round 0 scaffold ships two complementary drivers:
+
+* ``run_audit.py`` — runtime audit via Playwright.
+* ``structural_audit.py`` — pure-Python on-disk HTML/link auditor.
 
 Public API:
-    AuditRecord     -- dataclass describing the per-entry record schema
-                       written to ``records.json`` by ``run_audit``.
-    record_to_dict  -- deterministic dict serialization (used by tests).
+    AuditRecord                -- per-entry record schema written by ``run_audit``.
+    record_to_dict             -- deterministic dict serialization.
+    StructuralAuditResult      -- per-file result of the structural auditor.
+    BrokenRef                  -- one missing relative reference.
+    DEFAULT_ALLOW_PREFIXES     -- URL prefixes treated as absolute (no on-disk check).
+    STRUCTURAL_REF_ATTRIBUTES  -- (tag, attribute) pairs the auditor inspects.
+    audit_html_file            -- audit a single HTML file and return a result.
+
+Both ``tools.site_audit`` and ``tools.site_audit.structural_audit`` are
+pure Python; importing them must not pull in Playwright. The runtime
+driver imports Playwright lazily inside the capture path only.
 """
 from __future__ import annotations
 
@@ -46,4 +54,96 @@ def record_to_dict(record: AuditRecord) -> dict[str, Any]:
     return asdict(record)
 
 
-__all__ = ["AuditRecord", "record_to_dict"]
+# ---------------------------------------------------------------------------
+# Structural auditor public API
+# ---------------------------------------------------------------------------
+
+#: Default URL prefixes that are treated as absolute references and
+#: therefore skipped during the on-disk existence check. Extend with
+#: ``--allow-prefix`` on the CLI or the ``allow_prefixes`` argument of
+#: :func:`audit_html_file`.
+DEFAULT_ALLOW_PREFIXES: tuple[str, ...] = (
+    "http://",
+    "https://",
+    "data:",
+    "mailto:",
+    "javascript:",
+    "#",
+)
+
+
+#: ``(tag, attribute)`` pairs that the structural auditor inspects when
+#: walking an HTML document. Each occurrence becomes one entry in the
+#: per-file ref tally and is classified as ``broken``, ``absolute``, or
+#: ``fragment`` depending on its value.
+STRUCTURAL_REF_ATTRIBUTES: tuple[tuple[str, str], ...] = (
+    ("a", "href"),
+    ("link", "href"),
+    ("script", "src"),
+    ("img", "src"),
+    ("source", "src"),
+    ("video", "src"),
+    ("audio", "src"),
+    ("iframe", "src"),
+)
+
+
+@dataclass
+class BrokenRef:
+    """A relative reference whose resolved on-disk target does not exist."""
+
+    original_href: str
+    resolved_path: str
+    tag: str
+    attribute: str
+
+
+@dataclass
+class StructuralAuditResult:
+    """Per-file output of :func:`audit_html_file`.
+
+    ``file`` is the absolute path of the HTML document that was audited.
+    ``broken`` is the list of missing relative references; ``absolute``
+    holds the raw href values for URLs that matched an allow-prefix;
+    ``fragments`` holds same-document anchors (``#...``) and empty
+    ``href=""`` values, neither of which is checked on disk.
+    """
+
+    file: str
+    broken: list[BrokenRef] = field(default_factory=list)
+    absolute: list[str] = field(default_factory=list)
+    fragments: list[str] = field(default_factory=list)
+    total_refs: int = 0
+
+    @property
+    def broken_refs(self) -> int:
+        return len(self.broken)
+
+
+def audit_html_file(
+    html_path,
+    *,
+    repo_root,
+    allow_prefixes: tuple[str, ...] = DEFAULT_ALLOW_PREFIXES,
+) -> StructuralAuditResult:
+    """Audit a single HTML file. See :mod:`tools.site_audit.structural_audit`.
+
+    The implementation lives in ``structural_audit`` to keep this package
+    ``__init__`` import-light; this thin wrapper exists so callers can
+    ``from tools.site_audit import audit_html_file`` without pulling in
+    the CLI module symbols.
+    """
+    from .structural_audit import audit_html_file as _impl
+
+    return _impl(html_path, repo_root=repo_root, allow_prefixes=allow_prefixes)
+
+
+__all__ = [
+    "AuditRecord",
+    "record_to_dict",
+    "BrokenRef",
+    "StructuralAuditResult",
+    "DEFAULT_ALLOW_PREFIXES",
+    "STRUCTURAL_REF_ATTRIBUTES",
+    "audit_html_file",
+]

@@ -8,10 +8,10 @@ two complementary drivers:
   post-redirect URL, the main-document HTTP status, and a viewport-sized
   PNG screenshot. Supports two sources: a localhost rebuild (`--target
   local`) and the published user-fork URL (`--target fork`).
-- `structural_audit.py` — the structural auditor; see `structural_audit.py`
-  (added in a follow-up task). Reads on-disk HTML produced by
-  `tools/build_site.py` to verify links, asset references, and the
-  expected page set without launching a browser.
+- `structural_audit.py` — the structural auditor. Reads on-disk HTML
+  produced by `tools/build_site.py` (or any other source) to verify
+  links and asset references without launching a browser. See the
+  "Structural audit" section below.
 
 This README documents `run_audit.py`. The two drivers share the
 `AuditRecord` schema exposed at the package level
@@ -130,3 +130,141 @@ Each entry in `records.json` is a JSON object with the following keys
 The pytest suite under `tests/test_site_audit_harness.py` uses this
 mode to lock in the schema; the real capture path is exercised in later
 rounds when Playwright is installed.
+
+## Structural audit
+
+`structural_audit.py` is a pure-Python auditor that walks one or more
+on-disk HTML files, extracts every `href` / `src` reference from a
+fixed set of tag/attribute pairs, and verifies that each *relative*
+reference resolves to an existing file. Absolute URLs and
+same-document anchors are catalogued separately and never trigger a
+disk check.
+
+It is implemented entirely against the standard library
+(`html.parser`, `urllib.parse`, `pathlib`); importing
+`tools.site_audit` or `tools.site_audit.structural_audit` does not
+pull in Playwright.
+
+### Invocation
+
+```bash
+# As a script (works from the repo root):
+python tools/site_audit/structural_audit.py snapshot/index.html
+
+# As a module (uses the package layout):
+python -m tools.site_audit.structural_audit snapshot/about/index.html
+```
+
+Pass one or more HTML file paths positionally; each file must exist on
+disk.
+
+### Resolution rules
+
+- A href starting with `/` resolves against `--repo-root` (default:
+  the repo root containing `tools/`).
+- Any other relative href resolves against the directory of the HTML
+  file that contains it.
+- Query strings and fragments are stripped before the on-disk check;
+  `foo.css?v=2` and `foo.css#section` both resolve to `foo.css`.
+- An empty `href=""` is treated as a self-link and recorded under
+  `fragments`; it is never reported as broken.
+
+### Inspected references
+
+The auditor inspects the following `(tag, attribute)` pairs (also
+exported as `STRUCTURAL_REF_ATTRIBUTES`):
+
+`(a, href)`, `(link, href)`, `(script, src)`, `(img, src)`,
+`(source, src)`, `(video, src)`, `(audio, src)`, `(iframe, src)`.
+
+### Allow-prefix list
+
+Any href starting with one of the following prefixes is treated as an
+absolute reference and is *not* checked on disk (also exported as
+`DEFAULT_ALLOW_PREFIXES`):
+
+```
+http://  https://  data:  mailto:  javascript:  #
+```
+
+Extend the list with one or more `--allow-prefix PREFIX` flags. The
+default prefixes are always included.
+
+### Optional flags
+
+| Flag             | Default                                | Description                                            |
+|------------------|----------------------------------------|--------------------------------------------------------|
+| `--repo-root`    | parent of `tools/`                     | Resolution root for `/`-prefixed paths.                |
+| `--allow-prefix` | (in addition to the defaults)          | Extra prefix to skip on-disk; repeat for more.         |
+| `--report`       | (none; print summary only)             | Write a JSON report to this path.                      |
+
+### JSON report shape
+
+```json
+{
+  "audited": [
+    {
+      "file": "<absolute path to html file>",
+      "broken": [
+        {
+          "original_href": "static/js/missing.js",
+          "resolved_path": "<absolute path on disk>",
+          "tag": "script",
+          "attribute": "src"
+        }
+      ],
+      "absolute": ["https://example.com"],
+      "fragments": ["#main"]
+    }
+  ],
+  "summary": {
+    "total_refs": 12,
+    "broken_refs": 1,
+    "files_audited": 1
+  }
+}
+```
+
+`broken[*].resolved_path` is the *resolved on-disk path* (after
+applying repo-root or file-relative resolution and stripping query /
+fragment), not the raw href; the raw value is preserved as
+`original_href`.
+
+### Exit codes
+
+| Code | Meaning                                                 |
+|------|---------------------------------------------------------|
+| `0`  | Every relative reference resolves on disk.              |
+| `2`  | At least one relative reference is broken.              |
+
+### Python API
+
+For tests and in-process callers, the package exposes:
+
+```python
+from tools.site_audit import (
+    audit_html_file,
+    DEFAULT_ALLOW_PREFIXES,
+    STRUCTURAL_REF_ATTRIBUTES,
+    StructuralAuditResult,
+    BrokenRef,
+)
+
+result = audit_html_file(html_path, repo_root=repo_root)
+# result.file, result.broken, result.absolute, result.fragments,
+# result.total_refs, result.broken_refs
+```
+
+### Known limits
+
+- `srcset` (e.g. `<img srcset="a.png 1x, b.png 2x">`) is a
+  comma-separated candidate list and is **not** inspected in this
+  round; only plain `src` is checked. A future round may add a
+  dedicated parser.
+- The auditor only inspects the `(tag, attribute)` pairs listed
+  above. References tucked inside inline CSS (`style="background:
+  url(...)"`), `<meta>` redirects, or `<object data=...>` are out of
+  scope for this round.
+- The auditor reads HTML as UTF-8 with `errors="replace"` and tolerates
+  malformed markup without raising; truly garbled documents may yield
+  fewer refs than a real browser sees.
