@@ -1314,6 +1314,19 @@ def _site_config(catalog: list[dict],
         # detail page still shows them in a separate section).
         m["leaderboard_slices"] = _model_leaderboard_cards(m["key"], leaderboard_entries)
 
+    # Round 15 (user direction: "没有视频的 这几个不要在 website 显示."): drop
+    # models with zero in-snapshot evidence from the published model set so
+    # /models/<key>/ pages, the by-model gallery, and the model picker only
+    # surface models that actually have something to show. The upstream
+    # MODEL_CATALOG.py is unchanged; future evidence will automatically
+    # un-hide these keys via this same filter.
+    models = [m for m in models if m["representative_videos"] or m["leaderboard_slices"]]
+    rendered_model_keys = {m["key"] for m in models}
+    videos_index = {k: v for k, v in videos_index.items() if k in rendered_model_keys}
+    leaderboard_entries = [
+        e for e in leaderboard_entries if e.get("model_key") in rendered_model_keys
+    ]
+
     n_models = len(models)
     n_eval_combos = len(leaderboard_entries)
     n_annotations = sum(int(v["n_ann"]) for law in paperdemo_grouped for v in law["videos"])

@@ -6,7 +6,7 @@
     <h1>{{ site.title }}</h1>
     <p class="lead">{{ site.description }}</p>
     <div class="hero-actions">
-        {% if site.paper_url %}<a class="btn btn-primary btn-lg" href="{{ site.paper_url }}">Read paper</a>{% endif %}
+        {% if site.paper_url %}<a class="btn btn-primary btn-lg" href="{{ site.paper_url }}">Read paper</a>{% else %}<span class="btn btn-primary btn-lg disabled" aria-disabled="true" title="Paper not yet posted">Paper (coming soon)</span>{% endif %}
         <a class="btn btn-outline btn-lg" href="{{ rel('leaderboard/') }}">View leaderboard</a>
         <a class="btn btn-outline btn-lg" href="{{ rel('videos/') }}">Browse videos</a>
         <a class="btn btn-outline btn-lg" href="{{ site.github_url }}">GitHub</a>
@@ -58,6 +58,11 @@
         <h3>Paper</h3>
         <p>Methodology, scoring schemas, and evaluation details.</p>
     </a>
+    {% else %}
+    <span class="entry-card disabled" aria-disabled="true" title="Paper not yet posted">
+        <h3>Paper (coming soon)</h3>
+        <p>Methodology, scoring schemas, and evaluation details &mdash; preprint pending.</p>
+    </span>
     {% endif %}
     <a class="entry-card" href="{{ rel('about/') }}">
         <h3>About</h3>

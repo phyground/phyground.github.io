@@ -183,6 +183,20 @@ def render(config_path: Path, *, verbose: bool = True) -> None:
     pages: list[Page] = list(STATIC_PAGES) + _model_pages(snapshot_ctx["models"])
     rendered: list[Path] = []
 
+    # Sweep orphan model directories left over from previous renders. The
+    # renderer is the sole writer of `models/<key>/`, so any directory under
+    # models/ whose key is no longer in `snapshot_ctx["models"]` is stale
+    # (e.g. when a model is dropped from the published set per Round 15).
+    rendered_keys = {m["key"] for m in snapshot_ctx["models"]}
+    models_root = REPO_ROOT / "models"
+    if models_root.is_dir():
+        import shutil
+        for child in sorted(models_root.iterdir()):
+            if child.is_dir() and child.name not in rendered_keys:
+                if verbose:
+                    print(f"[build_site] removing orphan model dir {child.relative_to(REPO_ROOT)}")
+                shutil.rmtree(child)
+
     for page in pages:
         out_path = REPO_ROOT / page.out_path
         out_path.parent.mkdir(parents=True, exist_ok=True)

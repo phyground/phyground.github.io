@@ -196,6 +196,14 @@ pre {
 .btn-outline:hover { background: var(--black); color: var(--white); }
 .btn-sm { padding: 0.25rem 0.75rem; font-size: 0.875rem; }
 .btn-lg { padding: 0.75rem 1.5rem; font-size: 1.125rem; }
+.btn.disabled, .btn.disabled:hover {
+    background: var(--white);
+    color: var(--gray-dark);
+    border-color: var(--gray-dark);
+    border-style: dashed;
+    cursor: not-allowed;
+    text-decoration: none;
+}
 
 /* ---------- wmbench-public additions ---------- */
 
@@ -243,6 +251,13 @@ pre {
 .entry-card h3 { font-size: 1.4rem; margin: 0; }
 .entry-card p { color: var(--gray-dark); margin: 0; }
 .entry-card:hover p { color: var(--gray-medium); }
+.entry-card.disabled, .entry-card.disabled:hover {
+    background: var(--white);
+    color: var(--gray-dark);
+    border-style: dashed;
+    cursor: not-allowed;
+}
+.entry-card.disabled p { color: var(--gray-medium); }
 
 table.lb {
     border-collapse: collapse;

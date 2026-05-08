@@ -29,7 +29,7 @@
 
 <h2>Resources</h2>
 <ul>
-    {% if site.paper_url %}<li><a href="{{ site.paper_url }}">Paper (arXiv)</a></li>{% endif %}
+    {% if site.paper_url %}<li><a href="{{ site.paper_url }}">Paper (arXiv)</a></li>{% else %}<li><span aria-disabled="true" style="color:var(--gray-dark);">Paper (coming soon)</span> &mdash; preprint pending</li>{% endif %}
     <li><a href="{{ site.github_url }}">GitHub repository</a> ({{ site.title }})</li>
     <li><a href="{{ site.huggingface_url }}">HuggingFace dataset</a> &mdash; <code>juyil/phygroundwebsitevideo</code> (videos + first frames)</li>
 </ul>

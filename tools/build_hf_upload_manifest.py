@@ -410,17 +410,31 @@ def main(argv: list[str]) -> int:
     parser.add_argument("--out", type=Path, default=SNAPSHOT_DIR / "HF_UPLOAD_MANIFEST.json")
     parser.add_argument("--materialize", type=Path, default=None,
                         help="Copy every locally-present file into <dir>/<hf_target_path>. "
-                             "Refuses a non-empty <dir> unless --clean is passed.")
+                             "Refuses a non-empty <dir> unless --clean is passed. "
+                             "In materialize-only mode, the on-disk manifest is read but "
+                             "not rewritten, so a failed staging attempt leaves "
+                             "snapshot/HF_UPLOAD_MANIFEST.json byte-identical.")
     parser.add_argument("--clean", action="store_true",
                         help="With --materialize, wipe <dir> first so the result is "
                              "canonical (no stale files survive).")
     parser.add_argument("--quiet", action="store_true")
     args = parser.parse_args(argv)
-    build(out_path=args.out)
     if args.materialize:
+        # Materialize-only mode: never rewrite the tracked manifest. Codex
+        # Round-14 review observed that calling `build()` first caused failed
+        # staging attempts to mutate `snapshot/HF_UPLOAD_MANIFEST.json` even
+        # though the preflight aborted. Rebuild the manifest only when the
+        # operator explicitly asks for it (no --materialize).
+        if not args.out.is_file():
+            raise SystemExit(
+                f"[hf_upload_manifest] {args.out.relative_to(REPO_ROOT) if args.out.is_relative_to(REPO_ROOT) else args.out} "
+                f"not found; run `python3 tools/build_snapshot.py --select-humaneval-100` first."
+            )
         materialize(args.materialize, clean=args.clean)
-    elif args.clean:
-        raise SystemExit("--clean requires --materialize.")
+    else:
+        if args.clean:
+            raise SystemExit("--clean requires --materialize.")
+        build(out_path=args.out)
     return 0
 
 
