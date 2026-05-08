@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% set active_page = 'about' %}
+{% block title %}About &mdash; {{ site.title }}{% endblock %}
+{% block content %}
+<h1>About</h1>
+<p>{{ site.description }}</p>
+
+<h2>Method</h2>
+<p>See the paper{% if site.paper_url %} (<a href="{{ site.paper_url }}">link</a>){% endif %} for the full evaluation methodology, scoring schema, and dataset construction.</p>
+
+<h2>Citation</h2>
+<div class="placeholder">
+    BibTeX renders here in Round 3+.
+</div>
+
+<h2>Resources</h2>
+<ul>
+    {% if site.paper_url %}<li><a href="{{ site.paper_url }}">Paper</a></li>{% endif %}
+    {% if site.github_url %}<li><a href="{{ site.github_url }}">GitHub repository</a></li>{% endif %}
+    {% if site.huggingface_url %}<li><a href="{{ site.huggingface_url }}">HuggingFace organization (videos)</a></li>{% endif %}
+</ul>
+
+<h2>License &amp; contact</h2>
+<p>Code: MIT (see <code>LICENSE</code>). Generated videos: license per upstream model. Contact: open an issue on the GitHub repo.</p>
+{% endblock %}

@@ -1,101 +1,75 @@
-# Academic Pages
-**Academic Pages is a GitHub Pages template for personal and professional portfolio-oriented websites.**
+# phyground.github.io
 
-![Academic Pages template example](images/themes/homepage-light.png "Academic Pages template example")
+Public companion site for the **wmbench** physics-grounded video benchmark.
 
-# Getting Started
+- **Video Gallery** — browse video-generation model outputs, side-by-side per physical law.
+- **Leaderboard** — slice rankings by evaluator × dataset × subset × scoring schema.
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Click the "Use this template" button in the top right.
-1. On the "New repository" page, enter your public repository name as "[your GitHub username].github.io", which will also be your website's URL.
-1. Edit site-wide configuration in `_config.yml` and double check that the `url` is the one that you just selected in the previous step and that `repository` reflects the correct path for your repository.
-1. Add your site content, upload any files (like PDFs, .zip files, etc.) to the `files/` directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+The site is **static** and deployed via GitHub Pages from the repository root. Videos are hosted on HuggingFace at <https://huggingface.co/juyil>; this repo only carries the index/manifest, the rendered HTML, and a small CSS asset.
 
-See more info at https://academicpages.github.io/
+## Architecture
 
-### Additional Tutorials
-
-Additional tutorials for working with the Academic Pages template can be found at the following sites:
-- https://jayrobwilliams.com/posts/2020/06/academic-website/
-
-## Running locally
-
-When you are initially working on your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
-
-1. Clone the repository and made updates as detailed above.
-
-### Using a different IDE
-1. Make sure you have ruby-dev, bundler, and nodejs installed
-    
-    On most Linux distributions and [Windows Subsystem Linux](https://learn.microsoft.com/en-us/windows/wsl/about) the command is:
-    ```bash
-    sudo apt install ruby-dev ruby-bundler nodejs
-    ```
-    If you see error `Unable to locate package ruby-bundler`, `Unable to locate package nodejs `, run the following:
-    ```bash
-    sudo apt update && sudo apt upgrade -y
-    ```
-    then try running `sudo apt install ruby-dev ruby-bundler nodejs` again.
-
-    On MacOS the commands are:
-    ```bash
-    brew install ruby
-    brew install node
-    gem install bundler
-    ```
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-
-    If you see file permission error like `Fetching bundler-2.6.3.gem ERROR:  While executing gem (Gem::FilePermissionError) You don't have write permissions for the /var/lib/gems/3.2.0 directory.` or `Bundler::PermissionError: There was an error while trying to write to /usr/local/bin.`
-    Install Gems Locally (Recommended):
-    ```bash
-    bundle config set --local path 'vendor/bundle'
-    ```
-    then try run `bundle install` again. If succeeded, you should see a folder called `vendor` and `.bundle`.
-
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change to Markdown (*.md) and HTML files, while changes to the core template and configuration (i.e., `_config.yml`) will require stopping and restarting Jekyll.
-    You may also try `bundle exec jekyll serve -l -H localhost` to ensure jekyll to use specific dependencies on your own local machine.
-
-If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
-
-## Using Docker
-
-Working from a different OS, or just want to avoid installing dependencies? You can use the provided `Dockerfile` to build a container that will run the site for you if you have [Docker](https://www.docker.com/) installed.
-
-You can build and execute the container by running the following command in the repository:
-
-```bash
-chmod -R 777 .
-docker compose up
+```
+phyground.github.io/                 ← GitHub Pages serves this root, with Jekyll disabled
+├── .nojekyll                        ← disable Jekyll on GitHub Pages
+├── index.html                       ← rendered home page          (BUILT)
+├── leaderboard/index.html           ← leaderboard                 (BUILT)
+├── videos/index.html                ← video gallery               (BUILT)
+├── about/index.html                 ← about / citation            (BUILT)
+├── static/css/base.css              ← mirrored from tools/static_src
+│
+├── tools/                           ← build infrastructure (source of truth)
+│   ├── build_site.py                ← Jinja2 → static HTML
+│   ├── site_config.example.json     ← stub config (used until snapshot exists)
+│   ├── templates/                   ← Jinja2 templates
+│   └── static_src/                  ← CSS/JS source, mirrored to /static
+│
+├── snapshot/                        ← built data (Round 1+); index/manifest in git, media gitignored
+├── _wmbench_src/                    ← hard-copied wmbench source (Round 1+); large media gitignored
+├── docs/exp-plan/public/plan.md     ← implementation plan
+└── LICENSE
 ```
 
-You should now be able to access the website from `localhost:4000`.
+## Build flow
 
-### Using the DevContainer in VS Code
+```bash
+pip install jinja2
 
-If you are using [Visual Studio Code](https://code.visualstudio.com/) you can use the [Dev Container](https://code.visualstudio.com/docs/devcontainers/containers) that comes with this Repository. Normally VS Code detects that a development container configuration is available and asks you if you want to use the container. If this doesn't happen you can manually start the container by **F1->DevContainer: Reopen in Container**. This restarts your VS Code in the container and automatically hosts your academic page locally on http://localhost:4000. All changes will be updated live to that page after a few seconds.
+# Round 0 — render with the stub config (no real wmbench data needed):
+python tools/build_site.py
 
-# Maintenance
+# Round 1+ — once the snapshot builder lands:
+python tools/build_snapshot.py        # reads _wmbench_src/, writes snapshot/
+python tools/build_site.py --config snapshot/index/site_config.json
+```
 
-Bug reports and feature requests to the template should be [submitted via GitHub](https://github.com/academicpages/academicpages.github.io/issues/new/choose). For questions concerning how to style the template, please feel free to start a [new discussion on GitHub](https://github.com/academicpages/academicpages.github.io/discussions).
+The build is **deterministic** (same config + same templates → byte-identical HTML) and **offline** (no network, no NFS).
 
-This repository was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License (see LICENSE.md). It is currently being maintained by [Robert Zupko](https://github.com/rjzupkoii), and additional maintainers would be welcome.
+## Deployment
 
-## Bugfixes and enhancements
+GitHub Pages is configured to serve from the repository root on the default branch:
 
-If you have bugfixes and enhancements that you would like to submit as a pull request, you will need to [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository as opposed to using it as a template. This will also allow you to [synchronize your copy](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) of the template to your fork as well.
+1. `python tools/build_site.py [--config snapshot/index/site_config.json]`
+2. `git add` the rendered HTML + `static/` + any `snapshot/index/` updates.
+3. `git commit && git push`
+4. GitHub Pages picks up the change at `https://phyground.github.io/`.
 
-Unfortunately, one logistical issue with a template theme like Academic Pages that makes it a little tricky to get bug fixes and updates to the core theme. If you use this template and customize it, you will probably get merge conflicts if you attempt to synchronize, although [rebasing](https://git-scm.com/docs/git-rebase) the changes from this template will work along with manually [cherry picking](https://git-scm.com/docs/git-cherry-pick) the relevant commits. If you are not comfortable with the Git command line, you can save your various `.yml` configuration files and Markdown files, delete the repository, and fork it again. 
+The `.nojekyll` file disables GitHub's automatic Jekyll processing so the rendered HTML is served verbatim.
 
----
-<div align="center">
-    
-![pages-build-deployment](https://github.com/academicpages/academicpages.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
-[![GitHub contributors](https://img.shields.io/github/contributors/academicpages/academicpages.github.io.svg)](https://github.com/academicpages/academicpages.github.io/graphs/contributors)
-[![GitHub release](https://img.shields.io/github/v/release/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/releases/latest)
-[![GitHub license](https://img.shields.io/github/license/academicpages/academicpages.github.io?color=blue)](https://github.com/academicpages/academicpages.github.io/blob/master/LICENSE)
+## Why no Flask / Nginx?
 
-[![GitHub stars](https://img.shields.io/github/stars/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io)
-[![GitHub forks](https://img.shields.io/github/forks/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/fork)
-</div>
+The original implementation plan (`docs/exp-plan/public/plan.md`, §4–§7) targeted a Flask + gunicorn + Nginx stack. We pivoted to a static build for two reasons:
+
+- GitHub Pages is the deployment target — it cannot run Python.
+- Videos are heavy and need a CDN; HuggingFace's `juyil` namespace gives us free, durable hosting with direct-download URLs we can embed.
+
+Plan §5 ("Phase 5 — 静态化") foresaw this; we promoted it to the baseline. See `.humanize/rlcr/<round>/goal-tracker.md` for the full plan-evolution log.
+
+## Plan and progress
+
+- Implementation plan: [`docs/exp-plan/public/plan.md`](docs/exp-plan/public/plan.md)
+- RLCR loop state: `.humanize/rlcr/<timestamp>/`
+
+## License
+
+Code: MIT (see `LICENSE`). Generated videos: per upstream model license (HuggingFace dataset cards on `juyil`).

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% set active_page = 'leaderboard' %}
+{% block title %}Leaderboard &mdash; {{ site.title }}{% endblock %}
+{% block content %}
+<h1>Leaderboard</h1>
+<p>Rankings of video generation models on wmbench evaluations. Use the filters to slice by evaluator, dataset, subset, and scoring schema.</p>
+
+<form class="filters" id="lb-filters" onsubmit="return false;">
+    <div class="filter">
+        <label for="f-evaluator">Evaluator</label>
+        <select id="f-evaluator" name="evaluator">
+            <option value="">all</option>
+        </select>
+    </div>
+    <div class="filter">
+        <label for="f-dataset">Dataset</label>
+        <select id="f-dataset" name="dataset">
+            <option value="">all</option>
+        </select>
+    </div>
+    <div class="filter">
+        <label for="f-subset">Subset</label>
+        <select id="f-subset" name="subset">
+            <option value="">all</option>
+        </select>
+    </div>
+    <div class="filter">
+        <label for="f-schema">Schema</label>
+        <select id="f-schema" name="schema">
+            <option value="">all</option>
+        </select>
+    </div>
+</form>
+
+<p class="caveat"><strong>Caveat.</strong> Aggregate scores are <em>domain-pooled</em> by default. Toggle to macro-averaged in a later release; cross-model comparisons differ between the two. See the methodology section in the paper.</p>
+
+<div class="placeholder">
+    Leaderboard table renders here once the snapshot is built (Round 2).
+</div>
+
+<table class="lb" hidden>
+    <thead>
+        <tr>
+            <th>Model</th>
+            <th class="num">gen_avg</th>
+            <th class="num">phys_avg</th>
+            <th class="num">N</th>
+            <th>Coverage</th>
+            <th>Datetime</th>
+            <th>Raw</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+{% endblock %}

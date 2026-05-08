@@ -1,0 +1,20 @@
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-left">
+            <div class="navbar-brand">
+                <a class="brand-link" href="{{ rel('') }}">{{ site.short_title }}</a>
+            </div>
+            <ul class="navbar-menu">
+                <li class="nav-item-wrapper"><a class="nav-link{% if active_page == 'home' %} active{% endif %}" href="{{ rel('') }}">Home</a></li>
+                <li class="nav-item-wrapper"><a class="nav-link{% if active_page == 'leaderboard' %} active{% endif %}" href="{{ rel('leaderboard/') }}">Leaderboard</a></li>
+                <li class="nav-item-wrapper"><a class="nav-link{% if active_page == 'videos' %} active{% endif %}" href="{{ rel('videos/') }}">Video Gallery</a></li>
+                <li class="nav-item-wrapper"><a class="nav-link{% if active_page == 'about' %} active{% endif %}" href="{{ rel('about/') }}">About</a></li>
+            </ul>
+        </div>
+        <div class="navbar-title">{{ site.title }}</div>
+        <div class="navbar-actions">
+            {% if site.paper_url %}<a class="nav-link" href="{{ site.paper_url }}">Paper</a>{% endif %}
+            {% if site.github_url %}<a class="nav-link" href="{{ site.github_url }}">GitHub</a>{% endif %}
+        </div>
+    </div>
+</nav>

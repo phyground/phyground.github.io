@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% set active_page = 'home' %}
+{% block title %}{{ site.title }} &mdash; Video Gallery + Leaderboard{% endblock %}
+{% block content %}
+<section class="hero">
+    <h1>{{ site.title }}</h1>
+    <p class="lead">{{ site.description }}</p>
+    <div class="hero-actions">
+        {% if site.paper_url %}<a class="btn btn-primary btn-lg" href="{{ site.paper_url }}">Read paper</a>{% endif %}
+        {% if site.github_url %}<a class="btn btn-outline btn-lg" href="{{ site.github_url }}">GitHub</a>{% endif %}
+    </div>
+</section>
+
+<section class="headline-numbers">
+    <div class="headline-number"><span class="num">{{ headline.n_models }}</span><span class="label">Video models</span></div>
+    <div class="headline-number"><span class="num">{{ headline.n_prompts }}</span><span class="label">Prompts</span></div>
+    <div class="headline-number"><span class="num">{{ headline.n_annotations }}</span><span class="label">Human annotations</span></div>
+    <div class="headline-number"><span class="num">{{ headline.n_eval_combos }}</span><span class="label">Eval combinations</span></div>
+</section>
+
+<h2>Featured comparison</h2>
+<p>Same prompt, multiple video generators, scored on the same physical law.</p>
+<div class="placeholder">
+    Featured comparison renders here once the snapshot is built (Round 3).
+</div>
+
+<h2>Browse</h2>
+<div class="entry-cards">
+    <a class="entry-card" href="{{ rel('leaderboard/') }}">
+        <h3>Leaderboard</h3>
+        <p>Rank video models by evaluator &times; dataset &times; subset.</p>
+    </a>
+    <a class="entry-card" href="{{ rel('videos/') }}">
+        <h3>Video Gallery</h3>
+        <p>Browse generated videos by physical law or by model.</p>
+    </a>
+    <a class="entry-card" href="{{ rel('about/') }}">
+        <h3>About</h3>
+        <p>Method overview, citation, and contact.</p>
+    </a>
+</div>
+{% endblock %}

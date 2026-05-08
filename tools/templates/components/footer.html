@@ -1,0 +1,35 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer-main">
+            <div class="footer-left">
+                <p>{{ site.title }} &mdash; physics-grounded video benchmark</p>
+                {% if build_meta and build_meta.built_at %}
+                <p style="font-size:0.85rem;color:var(--gray-dark);">Built {{ build_meta.built_at }}{% if build_meta.snapshot_sha %} &middot; snapshot <code>{{ build_meta.snapshot_sha[:8] }}</code>{% endif %}</p>
+                {% endif %}
+            </div>
+            <div class="footer-right">
+                <div class="footer-section">
+                    <span class="footer-heading">Site</span>
+                    <ul class="footer-links">
+                        <li><a href="{{ rel('') }}">Home</a></li>
+                        <li><a href="{{ rel('leaderboard/') }}">Leaderboard</a></li>
+                        <li><a href="{{ rel('videos/') }}">Video Gallery</a></li>
+                        <li><a href="{{ rel('about/') }}">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <span class="footer-heading">Resources</span>
+                    <ul class="footer-links">
+                        {% if site.paper_url %}<li><a href="{{ site.paper_url }}">Paper</a></li>{% endif %}
+                        {% if site.github_url %}<li><a href="{{ site.github_url }}">GitHub</a></li>{% endif %}
+                        {% if site.huggingface_url %}<li><a href="{{ site.huggingface_url }}">HuggingFace</a></li>{% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; {{ site.copyright_year }} {{ site.title }}.</p>
+            <p class="footer-tagline">Physics-grounded video evaluation</p>
+        </div>
+    </div>
+</footer>

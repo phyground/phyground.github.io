@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% set active_page = 'videos' %}
+{% block title %}Video Gallery &mdash; {{ site.title }}{% endblock %}
+{% block content %}
+<h1>Video Gallery</h1>
+<p>Browse generated videos by physical law (default) or by model. Videos play directly from <a href="{{ site.huggingface_url }}">HuggingFace</a>; this site only carries the index.</p>
+
+<div class="placeholder">
+    Video Gallery renders here once the snapshot and HuggingFace video manifest are wired in (Round 3).
+</div>
+{% endblock %}
