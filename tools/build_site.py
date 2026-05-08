@@ -79,6 +79,19 @@ def _load_config(path: Path) -> dict:
         return json.load(fh)
 
 
+def _load_humaneval_leaderboard() -> dict:
+    """Load the paper-aligned human-eval leaderboard JSON if present.
+
+    Produced by `tools/export_humaneval_leaderboard.py`. Returns an empty dict
+    when the file is missing so the template can degrade gracefully.
+    """
+    path = REPO_ROOT / "snapshot" / "index" / "humaneval_leaderboard.json"
+    if not path.is_file():
+        return {}
+    with path.open("r", encoding="utf-8") as fh:
+        return json.load(fh)
+
+
 def _make_rel(out_rel: str):
     """Return a Jinja-callable `rel(target)` that resolves a site-relative URL.
 
@@ -178,6 +191,7 @@ def render(config_path: Path, *, verbose: bool = True) -> None:
         "prompts_index": config.get("prompts_index", {}),
         "featured_comparison": config.get("featured_comparison", {}),
         "humaneval_100_summary": config.get("humaneval_100_summary", {}),
+        "humaneval_leaderboard": _load_humaneval_leaderboard(),
     }
 
     pages: list[Page] = list(STATIC_PAGES) + _model_pages(snapshot_ctx["models"])

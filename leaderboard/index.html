@@ -36,7 +36,16 @@
         
 <h1>Leaderboard</h1>
 <p>Rankings of video generation models on wmbench evaluations.
-Use the filters to slice by evaluator, dataset, subset, and scoring schema; column headers sort.
+The headline table below mirrors the paper's <code>TABLE_leaderboard.tex</code>
+(human evaluation, 250 prompts, 1&ndash;5 scale).
+The slice table further down exposes the underlying automatic-evaluator runs that
+power the per-model and per-dataset detail pages.</p>
+
+
+
+<h2 id="evaluator-slices" style="margin-top:2.5rem;">Automatic evaluator slices</h2>
+<p>Per-(evaluator, dataset, subset, schema) slices from the automatic judges that
+power the per-model detail pages. Use the filters to slice; column headers sort;
 URL query parameters are shareable.</p>
 
 <form class="filters" id="lb-filters" onsubmit="return false;">

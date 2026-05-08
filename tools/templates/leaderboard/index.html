@@ -4,7 +4,64 @@
 {% block content %}
 <h1>Leaderboard</h1>
 <p>Rankings of video generation models on wmbench evaluations.
-Use the filters to slice by evaluator, dataset, subset, and scoring schema; column headers sort.
+The headline table below mirrors the paper's <code>TABLE_leaderboard.tex</code>
+(human evaluation, 250 prompts, 1&ndash;5 scale).
+The slice table further down exposes the underlying automatic-evaluator runs that
+power the per-model and per-dataset detail pages.</p>
+
+{% if humaneval_leaderboard and humaneval_leaderboard.rows %}
+{% set lb = humaneval_leaderboard %}
+<h2 id="paper-leaderboard">Human evaluation (paper)</h2>
+<p class="caveat" style="margin-bottom:0.75rem;">
+    <strong>Source.</strong> Same data as the paper's TABLE_leaderboard
+    (<code>{{ lb.source }}</code>): per-annotator scores &rarr; per-video mean
+    &rarr; per-model mean across {{ lb.n_prompts }} prompts. Overall combines the
+    General and Domain views with equal weight (domain mean is weighted by the
+    number of (video, law) means contributing to each domain).
+    <strong>Bold</strong> marks the best score in each column;
+    <u>underline</u> marks the second-best.
+    <span aria-label="closed-source">&dagger;</span> denotes a closed-source model.
+</p>
+<table class="lb lb-paper" id="lb-paper-table">
+    <thead>
+        <tr>
+            <th rowspan="2" class="lb-paper-model">Model</th>
+            <th colspan="{{ lb.columns.general|length }}" class="lb-paper-group">General Physics &uarr;</th>
+            <th colspan="{{ lb.columns.domain|length }}" class="lb-paper-group">Domain Physics &uarr;</th>
+            <th rowspan="2" class="num">{{ lb.columns.overall.label }} &uarr;</th>
+        </tr>
+        <tr>
+            {% for col in lb.columns.general %}<th class="num">{{ col.label }}</th>{% endfor %}
+            {% for col in lb.columns.domain %}<th class="num">{{ col.label }}</th>{% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in lb.rows %}
+        {% set ordered_cols = lb.columns.general + lb.columns.domain + [lb.columns.overall] %}
+        <tr>
+            <td class="lb-paper-model">
+                <a href="{{ rel('models/') }}{{ row.site_model_key }}/">{{ row.display_name }}</a>{% if row.closed_source %}<sup title="closed-source">&dagger;</sup>{% endif %}
+            </td>
+            {% for col in ordered_cols %}
+            {% set v = row.scores[col.key] %}
+            {% set vstr = '%.2f'|format(v) %}
+            {% set best = '%.2f'|format(lb.best[col.key]) %}
+            {% set second = '%.2f'|format(lb.second[col.key]) if lb.second[col.key] is not none else None %}
+            <td class="num{% if vstr == best %} is-best{% elif second is not none and vstr == second %} is-second{% endif %}">{% if vstr == best %}<strong>{{ vstr }}</strong>{% elif second is not none and vstr == second %}<u>{{ vstr }}</u>{% else %}{{ vstr }}{% endif %}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p style="font-size:0.85rem;color:var(--gray-dark);margin-top:-0.5rem;">
+    {{ lb.rows|length }} models &middot; generated {{ lb.generated_at }} &middot;
+    <a href="{{ rel('snapshot/index/humaneval_leaderboard.json') }}" download>download JSON</a>
+</p>
+{% endif %}
+
+<h2 id="evaluator-slices" style="margin-top:2.5rem;">Automatic evaluator slices</h2>
+<p>Per-(evaluator, dataset, subset, schema) slices from the automatic judges that
+power the per-model detail pages. Use the filters to slice; column headers sort;
 URL query parameters are shareable.</p>
 
 <form class="filters" id="lb-filters" onsubmit="return false;">

@@ -7,6 +7,21 @@
 </style>
 {% endblock %}
 {% block content %}
+{% set law_icons = {
+    'boundary_interaction': '🧱',
+    'buoyancy': '🛟',
+    'collision': '💥',
+    'displacement': '🪣',
+    'flow_dynamics': '🌊',
+    'fluid_continuity': '🚰',
+    'gravity': '🍎',
+    'impenetrability': '🚧',
+    'inertia': '🎱',
+    'material': '🧪',
+    'momentum': '🎳',
+    'reflection': '🪞',
+    'shadow': '🌑'
+} %}
 <h1>Video Gallery</h1>
 <p>
     Browse generated videos by physical law (default) or by model.
@@ -23,6 +38,7 @@
     <nav class="gallery-nav" id="law-nav">
         {% for law_entry in paperdemo %}
         <button type="button" class="gallery-nav-item" data-law="{{ law_entry.law }}">
+            <span class="law-icon" aria-hidden="true">{{ law_icons.get(law_entry.law, '•') }}</span>
             {% if law_entry.fig_png %}<img src="{{ rel(law_entry.fig_png) }}" alt="" class="law-thumb">{% endif %}
             <span>{{ law_entry.law|replace('_', ' ') }}</span>
             <span class="badge">{{ law_entry.videos|length }}</span>
@@ -32,7 +48,7 @@
     <div class="gallery-content" id="law-content">
         {% for law_entry in paperdemo %}
         <div class="gallery-section" data-law="{{ law_entry.law }}"{% if not loop.first %} hidden{% endif %}>
-            <h2>{{ law_entry.law|replace('_', ' ') }}</h2>
+            <h2><span class="law-icon" aria-hidden="true">{{ law_icons.get(law_entry.law, '•') }}</span> {{ law_entry.law|replace('_', ' ') }}</h2>
             <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem;">
                 {% if law_entry.fig_png %}
                 <a href="{{ rel(law_entry.fig_pdf) }}" target="_blank">
@@ -101,7 +117,7 @@
                 <figure class="video-card">
                     <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"></video>
                     <figcaption>
-                        <span class="model">{{ v.law|replace('_', ' ') }} <span class="badge">paperdemo</span></span>
+                        <span class="model"><span class="law-icon" aria-hidden="true">{{ law_icons.get(v.law, '•') }}</span> {{ v.law|replace('_', ' ') }} <span class="badge">paperdemo</span></span>
                         <span class="meta">n_ann={{ v.n_ann }} · {{ v.src_filename }}</span>
                     </figcaption>
                 </figure>

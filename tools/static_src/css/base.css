@@ -273,6 +273,13 @@ table.lb th, table.lb td {
 table.lb th { background: var(--gray-light); font-weight: bold; }
 table.lb tbody tr:hover { background: var(--gray-light); }
 table.lb td.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.lb th.num { text-align: right; }
+
+table.lb-paper th.lb-paper-group { text-align: center; }
+table.lb-paper th.lb-paper-model,
+table.lb-paper td.lb-paper-model { text-align: left; white-space: nowrap; }
+table.lb-paper td.is-best { background: rgba(0, 0, 0, 0.06); }
+table.lb-paper td.is-second { background: rgba(0, 0, 0, 0.025); }
 
 .filters {
     display: flex;
@@ -405,6 +412,12 @@ table.lb td.num { text-align: right; font-variant-numeric: tabular-nums; }
     background: var(--white);
 }
 .gallery-nav-item.active .law-thumb { background: var(--white); }
+.law-icon {
+    display: inline-block;
+    font-size: 1.05em;
+    line-height: 1;
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Twemoji Mozilla", sans-serif;
+}
 
 .lb-permalink {
     margin-left: 0.4rem;
