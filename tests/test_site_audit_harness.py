@@ -56,6 +56,12 @@ REQUIRED_RECORD_KEYS = frozenset({
     "main_scroll_height",
     "chrome_height",
     "main_non_empty",
+    # Round 8: uncaught client-side JS exceptions captured via Playwright's
+    # ``pageerror`` channel, separate from console errors. Always present
+    # in fresh JSON output (default 0 / [] in dry-run + per-URL error
+    # records).
+    "page_error_count",
+    "page_errors",
 })
 
 
@@ -1931,3 +1937,173 @@ class TestStaleRecordsJsonClearing:
         assert not stale_path.exists(), (
             f"stale records.json was retained after a failed run: {stale_path}"
         )
+
+
+# ---------------------------------------------------------------------------
+# Round 8 regression: local server returns 404 for directory-without-index.
+# Matches GitHub Pages production behavior. Without this fix, the runtime
+# audit would record a 200 directory listing when index.html is missing,
+# masking the exact missing-page regression class the audit must catch.
+# ---------------------------------------------------------------------------
+
+
+class TestLocalServerDirectoryHandling:
+    def _start_server(self, monkeypatch, root):
+        """Spin up the auditor's local server with REPO_ROOT pointed at root."""
+        from tools.site_audit import run_audit as run_audit_module
+
+        monkeypatch.setattr(run_audit_module, "REPO_ROOT", root, raising=False)
+        cm = run_audit_module._serve_repo_root()
+        return cm
+
+    def test_local_server_returns_404_for_directory_without_index(
+        self, tmp_path, monkeypatch
+    ):
+        # Tree: <root>/about/  (directory exists, no index.html inside).
+        (tmp_path / "about").mkdir()
+
+        import urllib.request
+        import urllib.error
+
+        cm = self._start_server(monkeypatch, tmp_path)
+        with cm as origin:
+            # GET /about/ -> expect 404.
+            req = urllib.request.Request(f"{origin}/about/")
+            try:
+                urllib.request.urlopen(req, timeout=5)
+                pytest.fail("expected 404, got 200 (server fell back to dir listing)")
+            except urllib.error.HTTPError as exc:
+                assert exc.code == 404, f"expected 404, got {exc.code}"
+
+    def test_local_server_serves_index_html_for_directory_when_present(
+        self, tmp_path, monkeypatch
+    ):
+        # Tree: <root>/about/index.html
+        about = tmp_path / "about"
+        about.mkdir()
+        (about / "index.html").write_text(
+            "<html><body>about page</body></html>", encoding="utf-8"
+        )
+
+        import urllib.request
+
+        cm = self._start_server(monkeypatch, tmp_path)
+        with cm as origin:
+            req = urllib.request.Request(f"{origin}/about/")
+            with urllib.request.urlopen(req, timeout=5) as resp:
+                assert resp.status == 200
+                body = resp.read().decode("utf-8")
+                assert "about page" in body
+
+
+# ---------------------------------------------------------------------------
+# Round 8 regression: Playwright pageerror events MUST be captured in their
+# own field, separate from console_errors. AC-9 mandates "zero uncaught
+# JS/console errors" — these are two distinct signals on Playwright's API.
+# ---------------------------------------------------------------------------
+
+
+class _StubPageError:
+    """Stand-in for Playwright's pageerror event payload (Error-shaped)."""
+
+    def __init__(self, name="TypeError", message="Cannot read properties of undefined", stack=""):
+        self.name = name
+        self.message = message
+        self.stack = stack
+
+
+class TestPageErrorCapture:
+    def _build_handler(self):
+        """Mirror the closure shape of _on_pageerror in run_audit."""
+        page_errors: list[dict[str, object]] = []
+
+        def on_pageerror(exc, _bucket=page_errors):
+            name = getattr(exc, "name", None) or type(exc).__name__
+            message = getattr(exc, "message", None) or str(exc)
+            stack = getattr(exc, "stack", None) or ""
+            _bucket.append({"name": name, "message": message, "stack": stack})
+
+        return page_errors, on_pageerror
+
+    def test_pageerror_event_recorded_into_page_errors_list(self):
+        page_errors, on_pageerror = self._build_handler()
+        on_pageerror(_StubPageError(name="TypeError", message="x is undefined"))
+        on_pageerror(_StubPageError(name="ReferenceError", message="foo is not defined"))
+
+        assert len(page_errors) == 2
+        assert page_errors[0]["name"] == "TypeError"
+        assert page_errors[0]["message"] == "x is undefined"
+        assert page_errors[1]["name"] == "ReferenceError"
+
+    def test_pageerror_handler_normalizes_string_payload(self):
+        page_errors, on_pageerror = self._build_handler()
+        # Some Playwright bindings dispatch a plain string for pageerror.
+        on_pageerror("Plain string exception")
+
+        assert len(page_errors) == 1
+        assert page_errors[0]["name"] == "str"
+        assert page_errors[0]["message"] == "Plain string exception"
+
+
+class TestAuditRecordPageErrorFields:
+    def test_audit_record_default_page_errors_fields(self):
+        from tools.site_audit import AuditRecord, record_to_dict
+
+        rec = AuditRecord(
+            url="/",
+            prefixed_url="http://x",
+            target="local",
+            final_url=None,
+            http_status=None,
+            viewport="1280x800",
+            console_error_count=0,
+            failed_request_count=0,
+            screenshot_path="x.png",
+        )
+        d = record_to_dict(rec)
+        assert d["page_error_count"] == 0
+        assert d["page_errors"] == []
+
+    def test_audit_record_carries_populated_page_errors(self):
+        from tools.site_audit import AuditRecord, record_to_dict
+
+        rec = AuditRecord(
+            url="/",
+            prefixed_url="http://x",
+            target="local",
+            final_url=None,
+            http_status=None,
+            viewport="1280x800",
+            console_error_count=0,
+            failed_request_count=0,
+            screenshot_path="x.png",
+            page_error_count=2,
+            page_errors=[
+                {"name": "TypeError", "message": "x", "stack": ""},
+                {"name": "ReferenceError", "message": "y", "stack": ""},
+            ],
+        )
+        d = record_to_dict(rec)
+        assert d["page_error_count"] == 2
+        assert len(d["page_errors"]) == 2
+
+    def test_dry_run_records_have_page_errors_fields(self, tmp_path):
+        # Reuse the dry-run path used by other harness tests.
+        from tools.site_audit import run_audit as run_audit_module
+
+        urls_file = tmp_path / "urls.txt"
+        urls_file.write_text("/\n/about/\n", encoding="utf-8")
+        out_dir = tmp_path / "out"
+        rc = run_audit_module.run_audit([
+            "--target", "local",
+            "--urls", str(urls_file),
+            "--out", str(out_dir),
+            "--dry-run",
+        ])
+        assert rc == 0
+        records = json.loads((out_dir / "records.json").read_text())
+        for rec in records:
+            assert "page_error_count" in rec
+            assert "page_errors" in rec
+            assert rec["page_error_count"] == 0
+            assert rec["page_errors"] == []

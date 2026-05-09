@@ -66,6 +66,15 @@ class AuditRecord:
     main_scroll_height: Optional[int] = None
     chrome_height: Optional[int] = None
     main_non_empty: Optional[bool] = None
+    # Uncaught client-side JS exceptions that fire ``pageerror`` (separate
+    # from ``console`` events). Round 8 added this field after Codex's
+    # review found that JS-driven pages could throw on load while the
+    # auditor only listened to ``console`` events, leaving
+    # ``console_error_count == 0`` and ``error == None`` even though
+    # the page's client behavior was broken. AC-9's positive test
+    # specifies "zero uncaught JS/console errors" as two separate signals.
+    page_error_count: int = 0
+    page_errors: list[dict[str, Any]] = field(default_factory=list)
 
 
 def record_to_dict(record: AuditRecord) -> dict[str, Any]:

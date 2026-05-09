@@ -197,6 +197,19 @@ def _serve_repo_root() -> Iterator[str]:
         def log_message(self, format, *args):  # quiet
             pass
 
+        def list_directory(self, path):
+            # GitHub Pages and most static hosts 404 a directory URL when
+            # the directory has no index.html (or index.htm fallback). The
+            # stdlib SimpleHTTPRequestHandler's default is to render an
+            # auto-generated HTML directory listing, which would mask the
+            # exact "missing-page" regression class this audit is meant
+            # to catch: a runtime audit against `--target local` would
+            # report a 200 for `/about/` even when `about/index.html`
+            # was never produced by the build. Returning 404 here keeps
+            # the local server's contract aligned with production.
+            self.send_error(404, "No index document for directory")
+            return None
+
     server = ThreadingHTTPServer(("127.0.0.1", 0), _Handler)
     port = server.server_address[1]
     thread = threading.Thread(target=server.serve_forever, daemon=True)
@@ -359,6 +372,16 @@ def _capture_one_url(
 
     console_errors: list[dict[str, object]] = []
     failed_requests: list[dict[str, object]] = []
+    # Uncaught JS exceptions fire ``pageerror``, NOT ``console``. The two
+    # signals are separate in Playwright and in AC-9 ("zero uncaught
+    # JS/console errors"). A page that throws on load -- common on the
+    # JS-driven /videos/, /leaderboard/, /videos/compare/ pages -- would
+    # leave ``console_error_count == 0`` and ``error == None`` if we only
+    # listened on ``console``, silently passing the worst regression class
+    # the audit is meant to catch. We collect them into a parallel list
+    # and surface a paired count so downstream gating can treat them
+    # alongside console errors without conflating the two channels.
+    page_errors: list[dict[str, object]] = []
     # A single Playwright Request can fire BOTH ``requestfailed`` (network-
     # level abort, e.g. ``net::ERR_ABORTED`` on an HF CDN range request) AND
     # ``response`` (4xx/5xx status from the same fetch, e.g. a 401 on the
@@ -383,6 +406,20 @@ def _capture_one_url(
                     "columnNumber": loc.get("columnNumber", 0),
                 },
             })
+
+    def _on_pageerror(exc, _bucket=page_errors):
+        # Playwright passes either an Error-like object (with .name +
+        # .message + .stack) or, in some bindings, a plain string. Normalize
+        # to a stable dict shape so downstream consumers don't have to
+        # introspect the underlying type.
+        name = getattr(exc, "name", None) or type(exc).__name__
+        message = getattr(exc, "message", None) or str(exc)
+        stack = getattr(exc, "stack", None) or ""
+        _bucket.append({
+            "name": name,
+            "message": message,
+            "stack": stack,
+        })
 
     def _on_requestfailed(req, _bucket=failed_requests, _seen=seen_request_ids):
         rid = id(req)
@@ -416,6 +453,7 @@ def _capture_one_url(
             context = browser.new_context(viewport={"width": width, "height": height})
             page = context.new_page()
             page.on("console", _on_console)
+            page.on("pageerror", _on_pageerror)
             page.on("requestfailed", _on_requestfailed)
             page.on("response", _on_response)
 
@@ -472,6 +510,8 @@ def _capture_one_url(
         main_scroll_height=main_scroll_height,
         chrome_height=chrome_height,
         main_non_empty=main_non_empty,
+        page_error_count=len(page_errors),
+        page_errors=page_errors,
     )
 
 
