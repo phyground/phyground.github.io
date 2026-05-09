@@ -265,19 +265,28 @@ def _score_relpath(source_json: str) -> str | None:
 
 
 def _snapshot_score_url(rel_under_wmbench: str) -> str | None:
-    """Map a `_wmbench_src/`-relative score path to its snapshot-relative URL.
+    """Map a `_wmbench_src/`-relative score path to its repo-root-relative URL.
 
-    `data/scores/<...>`     → `scores/<...>`
-    `data/training/<...>`   → `scores/_training/<...>`
-    `tmp/<...>`             → `scores/_tmp/<...>`
+    The score JSONs are copied into `snapshot/scores/...` by
+    :func:`build` (see step 5), so the URL we expose in
+    `site_config.json` must also be prefixed with `snapshot/` — that way
+    the rendered HTML resolves the file under
+    ``<repo_root>/snapshot/scores/...`` regardless of which page (root,
+    `/leaderboard/`, `/models/<key>/`) the link is rendered on, because
+    Jinja's ``rel(...)`` helper just adds the per-page ``../`` depth on
+    top of this stored URL.
+
+    `data/scores/<...>`     → `snapshot/scores/<...>`
+    `data/training/<...>`   → `snapshot/scores/_training/<...>`
+    `tmp/<...>`             → `snapshot/scores/_tmp/<...>`
     Anything else is a programming bug.
     """
     if rel_under_wmbench.startswith("data/scores/"):
-        return rel_under_wmbench[len("data/"):]
+        return "snapshot/" + rel_under_wmbench[len("data/"):]
     if rel_under_wmbench.startswith("data/training/"):
-        return "scores/_training/" + rel_under_wmbench[len("data/training/"):]
+        return "snapshot/scores/_training/" + rel_under_wmbench[len("data/training/"):]
     if rel_under_wmbench.startswith("tmp/"):
-        return "scores/_tmp/" + rel_under_wmbench[len("tmp/"):]
+        return "snapshot/scores/_tmp/" + rel_under_wmbench[len("tmp/"):]
     return None
 
 
@@ -414,8 +423,12 @@ def _group_paperdemo(rows: list[dict]) -> list[dict]:
         videos = sorted(by_law[law], key=lambda v: (v["model"], str(v["video_id"])))
         out.append({
             "law": law,
-            "fig_pdf": f"index/figs/{law}.pdf",
-            "fig_png": f"index/figs/{law}.png",
+            # Paperdemo PDFs and PNGs are copied into `snapshot/index/figs/`
+            # by `build()`, so the URL must be repo-root-relative with the
+            # `snapshot/` prefix; Jinja's `rel(...)` adds the per-page
+            # `../` depth on top.
+            "fig_pdf": f"snapshot/index/figs/{law}.pdf",
+            "fig_png": f"snapshot/index/figs/{law}.png",
             "videos": videos,
             "n_ann_total": sum(int(v["n_ann"]) for v in videos),
         })
@@ -1581,6 +1594,9 @@ def build(*, now_iso: str | None = None,
 
     # 5. Copy referenced score JSONs into snapshot/scores/. The path mapping
     #    follows _snapshot_score_url() so URLs in site_config match.
+    #    `_snapshot_score_url` returns a repo-root-relative URL prefixed with
+    #    `snapshot/`; STAGING_DIR is itself the snapshot/ payload, so we strip
+    #    the leading `snapshot/` before joining onto STAGING_DIR.
     referenced_paths: set[str] = set()
     for entry in leaderboard_entries:
         for row in [entry["current"], *entry["history"]]:
@@ -1592,7 +1608,10 @@ def build(*, now_iso: str | None = None,
         target_url = _snapshot_score_url(rel)
         if not target_url:
             continue
-        dst = STAGING_DIR / target_url
+        assert target_url.startswith("snapshot/"), (
+            f"_snapshot_score_url returned {target_url!r}, expected 'snapshot/...'"
+        )
+        dst = STAGING_DIR / target_url[len("snapshot/"):]
         _copy_file(src, dst)
     # Strip the helper field from the published rows so it does not leak into site_config.
     for entry in leaderboard_entries:

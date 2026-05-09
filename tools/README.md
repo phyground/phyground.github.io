@@ -50,7 +50,7 @@ python tools/build_site.py
 - `headline` — `n_models`, `n_prompts` (from humaneval-100), `n_annotations`, `n_eval_combos`.
 - `models` — flattened MODEL_CATALOG ∪ external models seen in registry/paperdemo, with `params_b` / `fps` / `frames` / `resolution` parsed from MODEL_CATALOG description strings, plus `representative_videos` (up to 9 paperdemo entries per model).
 - `datasets` — coarse summaries derived from `vis_datasets.json`. Round 2 surfaces three concrete datasets (humaneval, video_phy_2, physics_iq); humaneval-derived published prompts come from `humaneval_100`.
-- `leaderboard_entries` — coverage-filtered, deduplicated to newest per `(video_model, dataset, subset, evaluator, schema)`. Coverage-zero rows are kept under `history` but never elevated to `current`. Each row carries a `source_url_snapshot` pointing into `scores/<evaluator>/<basename>.json` when the file is available, and `source_status: "missing"` otherwise.
+- `leaderboard_entries` — coverage-filtered, deduplicated to newest per `(video_model, dataset, subset, evaluator, schema)`. Coverage-zero rows are kept under `history` but never elevated to `current`. Each row carries a `source_url_snapshot` pointing into `snapshot/scores/<evaluator>/<basename>.json` when the file is available, and `source_status: "missing"` otherwise.
 - `paperdemo` — grouped by physical law; each video carries `model`, `video_id`, `n_ann`, `src_filename`, `src_path`, `video_url_hf`.
 - `videos_index` — `"<model>::<dataset>"` and `"<model>::paperdemo:<law>"` keys describing where videos live.
 - `prompts_index` — humaneval prompts keyed by `prompt_id`, used by the `videos/compare` page (read inline as JSON in the rendered HTML).

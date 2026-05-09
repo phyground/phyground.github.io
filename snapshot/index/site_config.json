@@ -5,7 +5,7 @@
     "model_catalog_sha256": "6c88b41361242b3ed0275c9618f54bca140b42876a0d8bd6f9caf71301b4fb57",
     "paperdemo_manifest_sha256": "55fe4d712c24c103598c6a3647931ef719dfb551c95c675ad138aee609fadd17",
     "registry_sha256": "0d791883c6ec8dec03d1f6db890d6681cdf987a3313e97314d0af83b4ed616fe",
-    "snapshot_sha": "092b6337298d0a903ca354c9c96274046cb1502a5571cda4326450c660760e1c",
+    "snapshot_sha": "2af4a7a4abc84e82f0f35227ce0b3b05e1748ffc50771c3173142549da0eac94",
     "vis_datasets_sha256": "69e4761736b5865072345b6c8a753c80b109ef76e5284fb90581c206f591e08e"
   },
   "datasets": [
@@ -136,7 +136,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_111158.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_111158.json",
+        "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_111158.json",
         "subset": "humaneval_set",
         "video_model": "cosmos-predict2.5-14b"
       },
@@ -158,7 +158,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_080552.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_080552.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_080552.json",
           "subset": "humaneval_set",
           "video_model": "cosmos-predict2.5-14b"
         }
@@ -183,7 +183,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_082629.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_082629.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_082629.json",
         "subset": "humaneval_set",
         "video_model": "cosmos-predict2.5-14b"
       },
@@ -205,7 +205,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260424_093948.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260424_093948.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260424_093948.json",
           "subset": "humaneval_set",
           "video_model": "cosmos-predict2.5-14b"
         }
@@ -230,7 +230,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_081719.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_081719.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_081719.json",
         "subset": "humaneval_set",
         "video_model": "cosmos-predict2.5-14b"
       },
@@ -257,7 +257,7 @@
         "schema": "subq_hint/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-14b_20260426_132821.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-14b_20260426_132821.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-14b_20260426_132821.json",
         "subset": "humaneval_set",
         "video_model": "cosmos-predict2.5-14b"
       },
@@ -284,7 +284,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_080609.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_080609.json",
+        "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_080609.json",
         "subset": "humaneval_set",
         "video_model": "cosmos-predict2.5-2b"
       },
@@ -311,7 +311,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260424_091353.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260424_091353.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260424_091353.json",
         "subset": "humaneval_set",
         "video_model": "cosmos-predict2.5-2b"
       },
@@ -333,7 +333,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_074504.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_074504.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_074504.json",
           "subset": "humaneval_set",
           "video_model": "cosmos-predict2.5-2b"
         }
@@ -358,7 +358,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_074504.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_074504.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_074504.json",
         "subset": "humaneval_set",
         "video_model": "cosmos-predict2.5-2b"
       },
@@ -385,7 +385,7 @@
         "schema": "subq_hint/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-2b_20260426_130603.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-2b_20260426_130603.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-2b_20260426_130603.json",
         "subset": "humaneval_set",
         "video_model": "cosmos-predict2.5-2b"
       },
@@ -412,7 +412,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_141416.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_141416.json",
+        "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_141416.json",
         "subset": "humaneval_set",
         "video_model": "ltx-2-19b-dev"
       },
@@ -434,7 +434,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_111518.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_111518.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_111518.json",
           "subset": "humaneval_set",
           "video_model": "ltx-2-19b-dev"
         }
@@ -459,7 +459,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_091348.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_091348.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_091348.json",
         "subset": "humaneval_set",
         "video_model": "ltx-2-19b-dev"
       },
@@ -481,7 +481,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260424_094740.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260424_094740.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260424_094740.json",
           "subset": "humaneval_set",
           "video_model": "ltx-2-19b-dev"
         }
@@ -506,7 +506,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_084927.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_084927.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_084927.json",
         "subset": "humaneval_set",
         "video_model": "ltx-2-19b-dev"
       },
@@ -533,7 +533,7 @@
         "schema": "subq_hint/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2-19b-dev_20260426_142548.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2-19b-dev_20260426_142548.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2-19b-dev_20260426_142548.json",
         "subset": "humaneval_set",
         "video_model": "ltx-2-19b-dev"
       },
@@ -580,7 +580,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_170017.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_170017.json",
+        "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_170017.json",
         "subset": "humaneval_set",
         "video_model": "ltx-2.3-22b-dev"
       },
@@ -602,7 +602,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_140739.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_140739.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_140739.json",
           "subset": "humaneval_set",
           "video_model": "ltx-2.3-22b-dev"
         }
@@ -627,7 +627,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_101908.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_101908.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_101908.json",
         "subset": "humaneval_set",
         "video_model": "ltx-2.3-22b-dev"
       },
@@ -654,7 +654,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_092131.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_092131.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_092131.json",
         "subset": "humaneval_set",
         "video_model": "ltx-2.3-22b-dev"
       },
@@ -681,7 +681,7 @@
         "schema": "subq_hint/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2.3-22b-dev_20260426_144807.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2.3-22b-dev_20260426_144807.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2.3-22b-dev_20260426_144807.json",
         "subset": "humaneval_set",
         "video_model": "ltx-2.3-22b-dev"
       },
@@ -708,7 +708,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_omniweaving_20260423_200215.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_omniweaving_20260423_200215.json",
+        "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_omniweaving_20260423_200215.json",
         "subset": "humaneval_set",
         "video_model": "omniweaving"
       },
@@ -730,7 +730,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_omniweaving_20260423_165733.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_omniweaving_20260423_165733.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_omniweaving_20260423_165733.json",
           "subset": "humaneval_set",
           "video_model": "omniweaving"
         }
@@ -755,7 +755,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_112715.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_112715.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_112715.json",
         "subset": "humaneval_set",
         "video_model": "omniweaving"
       },
@@ -777,7 +777,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_omniweaving_20260424_094238.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_omniweaving_20260424_094238.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_omniweaving_20260424_094238.json",
           "subset": "humaneval_set",
           "video_model": "omniweaving"
         }
@@ -802,7 +802,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_095236.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_095236.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_095236.json",
         "subset": "humaneval_set",
         "video_model": "omniweaving"
       },
@@ -829,7 +829,7 @@
         "schema": "subq_hint/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_omniweaving_20260426_151022.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_omniweaving_20260426_151022.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_omniweaving_20260426_151022.json",
         "subset": "humaneval_set",
         "video_model": "omniweaving"
       },
@@ -856,7 +856,7 @@
         "schema": "cot/v2",
         "source_json": "data/scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_173855.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_173855.json",
+        "source_url_snapshot": "snapshot/scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_173855.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -883,7 +883,7 @@
         "schema": "cot/v3",
         "source_json": "data/scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_174448.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_174448.json",
+        "source_url_snapshot": "snapshot/scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_174448.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -910,7 +910,7 @@
         "schema": "plain/v2",
         "source_json": "data/scores/claude/eval_claude_humaneval_set_veo-3.1_20260421_180750.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/claude/eval_claude_humaneval_set_veo-3.1_20260421_180750.json",
+        "source_url_snapshot": "snapshot/scores/claude/eval_claude_humaneval_set_veo-3.1_20260421_180750.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -932,7 +932,7 @@
           "schema": "plain/v2",
           "source_json": "data/scores/claude/eval_claude_humaneval_set_veo-3.1_20260421_172330.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/claude/eval_claude_humaneval_set_veo-3.1_20260421_172330.json",
+          "source_url_snapshot": "snapshot/scores/claude/eval_claude_humaneval_set_veo-3.1_20260421_172330.json",
           "subset": "humaneval_set",
           "video_model": "veo-3.1"
         }
@@ -957,7 +957,7 @@
         "schema": "cot/v4",
         "source_json": "tmp/eval/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194743.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/_tmp/eval/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194743.json",
+        "source_url_snapshot": "snapshot/scores/_tmp/eval/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194743.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -984,7 +984,7 @@
         "schema": "cot/v4",
         "source_json": "data/scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
+        "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
         "subset": "wb4_resume_remaining",
         "video_model": "veo-3.1"
       },
@@ -1011,7 +1011,7 @@
         "schema": "cot/v4",
         "source_json": "data/scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
+        "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
         "subset": "wb4_retry_incomplete",
         "video_model": "veo-3.1"
       },
@@ -1038,7 +1038,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_230925.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_230925.json",
+        "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_230925.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1060,7 +1060,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_200418.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_200418.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_200418.json",
           "subset": "humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1079,7 +1079,7 @@
           "schema": "cot_subq/v1",
           "source_json": "tmp/eval/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_115959.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/_tmp/eval/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_115959.json",
+          "source_url_snapshot": "snapshot/scores/_tmp/eval/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_115959.json",
           "subset": "humaneval_set",
           "video_model": "veo-3.1"
         }
@@ -1104,7 +1104,7 @@
         "schema": "plain/v2",
         "source_json": "data/scores/gemini/eval_gemini_humaneval_set_veo-3.1_20260421_165652.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/gemini/eval_gemini_humaneval_set_veo-3.1_20260421_165652.json",
+        "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_humaneval_set_veo-3.1_20260421_165652.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1131,7 +1131,7 @@
         "schema": "cot/v4",
         "source_json": "data/scores/ourckpt/eval_qwen27b_local_cotnosubq_humaneval_set_veo-3.1_20260427_084232.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen27b_local_cotnosubq_humaneval_set_veo-3.1_20260427_084232.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_local_cotnosubq_humaneval_set_veo-3.1_20260427_084232.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1158,7 +1158,7 @@
         "schema": "cot_subq/v1",
         "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_fill26_20260506_230214.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_fill26_20260506_230214.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_fill26_20260506_230214.json",
         "subset": "anonymous_humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1180,7 +1180,7 @@
           "schema": "cot_subq/v1",
           "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_shard2of4_20260506_221253.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_shard2of4_20260506_221253.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_shard2of4_20260506_221253.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1199,7 +1199,7 @@
           "schema": "cot_subq/v1",
           "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_20260506_211931.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_20260506_211931.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_20260506_211931.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1218,7 +1218,7 @@
           "schema": "cot_subq/v1",
           "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_shard0of4_20260506_221253.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_shard0of4_20260506_221253.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_shard0of4_20260506_221253.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1237,7 +1237,7 @@
           "schema": "cot_subq/v1",
           "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_shard1of4_20260506_221253.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_shard1of4_20260506_221253.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_shard1of4_20260506_221253.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1256,7 +1256,7 @@
           "schema": "cot_subq/v1",
           "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_shard3of4_20260506_221253.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_shard3of4_20260506_221253.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_shard3of4_20260506_221253.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         }
@@ -1281,7 +1281,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen27b_local_cot-subq_humaneval_set_veo-3.1_20260427_104534.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen27b_local_cot-subq_humaneval_set_veo-3.1_20260427_104534.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_local_cot-subq_humaneval_set_veo-3.1_20260427_104534.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1303,7 +1303,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_121542.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_121542.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_121542.json",
           "subset": "humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1322,7 +1322,7 @@
           "schema": "cot_subq/v1",
           "source_json": "tmp/eval/eval_qwen27b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_115959.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/_tmp/eval/eval_qwen27b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_115959.json",
+          "source_url_snapshot": "snapshot/scores/_tmp/eval/eval_qwen27b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_115959.json",
           "subset": "humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1341,7 +1341,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_veo-3.1_20260424_093608.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_veo-3.1_20260424_093608.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_veo-3.1_20260424_093608.json",
           "subset": "humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1360,7 +1360,7 @@
           "schema": "cot_subq/v1",
           "source_json": "tmp/eval/eval_qwen397b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_120211.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/_tmp/eval/eval_qwen397b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_120211.json",
+          "source_url_snapshot": "snapshot/scores/_tmp/eval/eval_qwen397b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_120211.json",
           "subset": "humaneval_set",
           "video_model": "veo-3.1"
         }
@@ -1385,7 +1385,7 @@
         "schema": "plain/v1",
         "source_json": "data/scores/ourckpt/eval_qwen27b_baseline_humaneval_set_veo-3.1.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen27b_baseline_humaneval_set_veo-3.1.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_baseline_humaneval_set_veo-3.1.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1412,7 +1412,7 @@
         "schema": "subq_hint/v1",
         "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_153230.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_153230.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_153230.json",
         "subset": "anonymous_humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1434,7 +1434,7 @@
           "schema": "subq_hint/v1",
           "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps2_20260507_143747.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps2_20260507_143747.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps2_20260507_143747.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1453,7 +1453,7 @@
           "schema": "subq_hint/v1",
           "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps1_20260507_140242.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps1_20260507_140242.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps1_20260507_140242.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1472,7 +1472,7 @@
           "schema": "subq_hint/v1",
           "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps4_20260506_211117.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps4_20260506_211117.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps4_20260506_211117.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         }
@@ -1497,7 +1497,7 @@
         "schema": "subq_hint/v1",
         "source_json": "data/scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260423_082010.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260423_082010.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260423_082010.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1519,7 +1519,7 @@
           "schema": "subq_hint/v1",
           "source_json": "data/scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260423_080625.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260423_080625.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260423_080625.json",
           "subset": "humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1538,7 +1538,7 @@
           "schema": "subq_hint/v1",
           "source_json": "data/scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260423_080354.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260423_080354.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260423_080354.json",
           "subset": "humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1557,7 +1557,7 @@
           "schema": "subq_hint/v1",
           "source_json": "data/scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260422_152444.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260422_152444.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260422_152444.json",
           "subset": "humaneval_set",
           "video_model": "veo-3.1"
         }
@@ -1582,7 +1582,7 @@
         "schema": "cot/v4",
         "source_json": "data/scores/ourckpt/eval_qwen9b_local_cotnosubq_humaneval_set_veo-3.1_20260427_083553.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_cotnosubq_humaneval_set_veo-3.1_20260427_083553.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_cotnosubq_humaneval_set_veo-3.1_20260427_083553.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1609,7 +1609,7 @@
         "schema": "cot_subq/v1",
         "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen9b_base_cot-subq_humaneval_set_veo-3.1_fps4_20260506_212424.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_base_cot-subq_humaneval_set_veo-3.1_fps4_20260506_212424.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_base_cot-subq_humaneval_set_veo-3.1_fps4_20260506_212424.json",
         "subset": "anonymous_humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1636,7 +1636,7 @@
         "schema": "cot_subq/v1",
         "source_json": "tmp/eval/eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_120334.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/_tmp/eval/eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_120334.json",
+        "source_url_snapshot": "snapshot/scores/_tmp/eval/eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_120334.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1658,7 +1658,7 @@
           "schema": "cot_subq/v1",
           "source_json": "tmp/eval/eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_115934.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/_tmp/eval/eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_115934.json",
+          "source_url_snapshot": "snapshot/scores/_tmp/eval/eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_115934.json",
           "subset": "humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1677,7 +1677,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_102321.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_102321.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_102321.json",
           "subset": "humaneval_set",
           "video_model": "veo-3.1"
         }
@@ -1702,7 +1702,7 @@
         "schema": "plain/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_train_humaneval_set_veo-3.1_20260421_111300.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_train_humaneval_set_veo-3.1_20260421_111300.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_train_humaneval_set_veo-3.1_20260421_111300.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1729,7 +1729,7 @@
         "schema": "plain/v2",
         "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen9b_base_default_humaneval_set_veo-3.1_fps4_20260506_230004.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_base_default_humaneval_set_veo-3.1_fps4_20260506_230004.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_base_default_humaneval_set_veo-3.1_fps4_20260506_230004.json",
         "subset": "anonymous_humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1751,7 +1751,7 @@
           "schema": "plain/v2",
           "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen9b_train_default_humaneval_set_veo-3.1_fps4_20260506_225754.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_train_default_humaneval_set_veo-3.1_fps4_20260506_225754.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_train_default_humaneval_set_veo-3.1_fps4_20260506_225754.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         }
@@ -1776,7 +1776,7 @@
         "schema": "subq_hint/v1",
         "source_json": "/shared/user60/workspace/worldmodel/wmbench/data/scores/ourckpt/eval_qwen9b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_231630.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_231630.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_231630.json",
         "subset": "anonymous_humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1798,7 +1798,7 @@
           "schema": "subq_hint/v1",
           "source_json": "/shared/user60/workspace/worldmodel/wmbench/data/scores/ourckpt/eval_qwen9b_base_subq_human_humaneval_set_veo-3.1_fps2_20260507_220716.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_base_subq_human_humaneval_set_veo-3.1_fps2_20260507_220716.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_base_subq_human_humaneval_set_veo-3.1_fps2_20260507_220716.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1817,7 +1817,7 @@
           "schema": "subq_hint/v1",
           "source_json": "/shared/user60/worldmodel/wmbench/data/scores/ourckpt/eval_qwen9b_base_subq_human_humaneval_set_veo-3.1_fps4_20260506_212412.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_base_subq_human_humaneval_set_veo-3.1_fps4_20260506_212412.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_base_subq_human_humaneval_set_veo-3.1_fps4_20260506_212412.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1836,7 +1836,7 @@
           "schema": "subq_hint/v1",
           "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps8_20260429_124156.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps8_20260429_124156.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps8_20260429_124156.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1855,7 +1855,7 @@
           "schema": "subq_hint/v1",
           "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps4_20260429_124156.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps4_20260429_124156.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps4_20260429_124156.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1874,7 +1874,7 @@
           "schema": "subq_hint/v1",
           "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps2_20260429_124156.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps2_20260429_124156.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps2_20260429_124156.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1893,7 +1893,7 @@
           "schema": "subq_hint/v1",
           "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps8_20260429_122947.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps8_20260429_122947.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps8_20260429_122947.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1912,7 +1912,7 @@
           "schema": "subq_hint/v1",
           "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps4_20260429_122935.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps4_20260429_122935.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps4_20260429_122935.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         },
@@ -1931,7 +1931,7 @@
           "schema": "subq_hint/v1",
           "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps2_20260429_122923.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps2_20260429_122923.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_fps2_20260429_122923.json",
           "subset": "anonymous_humaneval_set",
           "video_model": "veo-3.1"
         }
@@ -1956,7 +1956,7 @@
         "schema": "subq_hint/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_20260422_145559.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_20260422_145559.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_20260422_145559.json",
         "subset": "humaneval_set",
         "video_model": "veo-3.1"
       },
@@ -1978,7 +1978,7 @@
           "schema": "subq_hint/v1",
           "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_20260422_140122.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_20260422_140122.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_20260422_140122.json",
           "subset": "humaneval_set",
           "video_model": "veo-3.1"
         }
@@ -2003,7 +2003,7 @@
         "schema": "subq_hint/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_both_veo-3.1_20260425_125430.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_both_veo-3.1_20260425_125430.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_both_veo-3.1_20260425_125430.json",
         "subset": "subq_human_test_both",
         "video_model": "veo-3.1"
       },
@@ -2030,7 +2030,7 @@
         "schema": "subq_hint/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_model_veo-3.1_20260425_124054.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_model_veo-3.1_20260425_124054.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_model_veo-3.1_20260425_124054.json",
         "subset": "subq_human_test_model",
         "video_model": "veo-3.1"
       },
@@ -2057,7 +2057,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260424_030406.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260424_030406.json",
+        "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260424_030406.json",
         "subset": "humaneval_set",
         "video_model": "wan2.2-i2v-a14b"
       },
@@ -2079,7 +2079,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260424_000406.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260424_000406.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260424_000406.json",
           "subset": "humaneval_set",
           "video_model": "wan2.2-i2v-a14b"
         }
@@ -2104,7 +2104,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_125850.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_125850.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_125850.json",
         "subset": "humaneval_set",
         "video_model": "wan2.2-i2v-a14b"
       },
@@ -2126,7 +2126,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260424_094510.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260424_094510.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260424_094510.json",
           "subset": "humaneval_set",
           "video_model": "wan2.2-i2v-a14b"
         }
@@ -2151,7 +2151,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_105518.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_105518.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_105518.json",
         "subset": "humaneval_set",
         "video_model": "wan2.2-i2v-a14b"
       },
@@ -2178,7 +2178,7 @@
         "schema": "subq_hint/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-i2v-a14b_20260426_153209.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-i2v-a14b_20260426_153209.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-i2v-a14b_20260426_153209.json",
         "subset": "humaneval_set",
         "video_model": "wan2.2-i2v-a14b"
       },
@@ -2205,7 +2205,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_061248.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_061248.json",
+        "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_061248.json",
         "subset": "humaneval_set",
         "video_model": "wan2.2-ti2v-5b"
       },
@@ -2227,7 +2227,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_031432.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_031432.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_031432.json",
           "subset": "humaneval_set",
           "video_model": "wan2.2-ti2v-5b"
         }
@@ -2252,7 +2252,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_081422.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_081422.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_081422.json",
         "subset": "humaneval_set",
         "video_model": "wan2.2-ti2v-5b"
       },
@@ -2274,7 +2274,7 @@
           "schema": "cot_subq/v1",
           "source_json": "data/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260423_134826.json",
           "source_status": "available",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260423_134826.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260423_134826.json",
           "subset": "humaneval_set",
           "video_model": "wan2.2-ti2v-5b"
         }
@@ -2299,7 +2299,7 @@
         "schema": "cot_subq/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260423_112711.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260423_112711.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260423_112711.json",
         "subset": "humaneval_set",
         "video_model": "wan2.2-ti2v-5b"
       },
@@ -2326,7 +2326,7 @@
         "schema": "subq_hint/v1",
         "source_json": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-ti2v-5b_20260426_155402.json",
         "source_status": "available",
-        "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-ti2v-5b_20260426_155402.json",
+        "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-ti2v-5b_20260426_155402.json",
         "subset": "humaneval_set",
         "video_model": "wan2.2-ti2v-5b"
       },
@@ -2355,7 +2355,7 @@
           "n": 250,
           "phys_avg": 2.61,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_111158.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_111158.json",
           "subset": "humaneval_set"
         },
         {
@@ -2366,7 +2366,7 @@
           "n": 116,
           "phys_avg": 4.86,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_082629.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_082629.json",
           "subset": "humaneval_set"
         },
         {
@@ -2377,7 +2377,7 @@
           "n": 250,
           "phys_avg": 4.68,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_081719.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_081719.json",
           "subset": "humaneval_set"
         },
         {
@@ -2388,7 +2388,7 @@
           "n": 250,
           "phys_avg": 2.95,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-14b_20260426_132821.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-14b_20260426_132821.json",
           "subset": "humaneval_set"
         }
       ],
@@ -2514,7 +2514,7 @@
           "n": 250,
           "phys_avg": 2.32,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_080609.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_080609.json",
           "subset": "humaneval_set"
         },
         {
@@ -2525,7 +2525,7 @@
           "n": 42,
           "phys_avg": 4.88,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260424_091353.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260424_091353.json",
           "subset": "humaneval_set"
         },
         {
@@ -2536,7 +2536,7 @@
           "n": 250,
           "phys_avg": 4.64,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_074504.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_074504.json",
           "subset": "humaneval_set"
         },
         {
@@ -2547,7 +2547,7 @@
           "n": 250,
           "phys_avg": 2.81,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-2b_20260426_130603.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-2b_20260426_130603.json",
           "subset": "humaneval_set"
         }
       ],
@@ -2673,7 +2673,7 @@
           "n": 250,
           "phys_avg": 2.65,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_141416.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_141416.json",
           "subset": "humaneval_set"
         },
         {
@@ -2684,7 +2684,7 @@
           "n": 231,
           "phys_avg": 4.9,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_091348.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_091348.json",
           "subset": "humaneval_set"
         },
         {
@@ -2695,7 +2695,7 @@
           "n": 250,
           "phys_avg": 4.69,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_084927.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_084927.json",
           "subset": "humaneval_set"
         },
         {
@@ -2706,7 +2706,7 @@
           "n": 250,
           "phys_avg": 2.61,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2-19b-dev_20260426_142548.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2-19b-dev_20260426_142548.json",
           "subset": "humaneval_set"
         }
       ],
@@ -2832,7 +2832,7 @@
           "n": 250,
           "phys_avg": 2.78,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_170017.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_170017.json",
           "subset": "humaneval_set"
         },
         {
@@ -2843,7 +2843,7 @@
           "n": 250,
           "phys_avg": 4.89,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_101908.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_101908.json",
           "subset": "humaneval_set"
         },
         {
@@ -2854,7 +2854,7 @@
           "n": 250,
           "phys_avg": 4.69,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_092131.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_092131.json",
           "subset": "humaneval_set"
         },
         {
@@ -2865,7 +2865,7 @@
           "n": 250,
           "phys_avg": 2.68,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2.3-22b-dev_20260426_144807.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2.3-22b-dev_20260426_144807.json",
           "subset": "humaneval_set"
         }
       ],
@@ -2991,7 +2991,7 @@
           "n": 250,
           "phys_avg": 2.76,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_omniweaving_20260423_200215.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_omniweaving_20260423_200215.json",
           "subset": "humaneval_set"
         },
         {
@@ -3002,7 +3002,7 @@
           "n": 134,
           "phys_avg": 4.91,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_112715.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_112715.json",
           "subset": "humaneval_set"
         },
         {
@@ -3013,7 +3013,7 @@
           "n": 250,
           "phys_avg": 4.71,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_095236.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_095236.json",
           "subset": "humaneval_set"
         },
         {
@@ -3024,7 +3024,7 @@
           "n": 250,
           "phys_avg": 2.8,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_omniweaving_20260426_151022.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_omniweaving_20260426_151022.json",
           "subset": "humaneval_set"
         }
       ],
@@ -3150,7 +3150,7 @@
           "n": 26,
           "phys_avg": 4.99,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_fill26_20260506_230214.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_fill26_20260506_230214.json",
           "subset": "anonymous_humaneval_set"
         },
         {
@@ -3161,7 +3161,7 @@
           "n": 250,
           "phys_avg": 4.72,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_153230.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_153230.json",
           "subset": "anonymous_humaneval_set"
         },
         {
@@ -3172,7 +3172,7 @@
           "n": 250,
           "phys_avg": 4.77,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_base_cot-subq_humaneval_set_veo-3.1_fps4_20260506_212424.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_base_cot-subq_humaneval_set_veo-3.1_fps4_20260506_212424.json",
           "subset": "anonymous_humaneval_set"
         },
         {
@@ -3183,7 +3183,7 @@
           "n": 250,
           "phys_avg": 4.38,
           "schema": "plain/v2",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_base_default_humaneval_set_veo-3.1_fps4_20260506_230004.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_base_default_humaneval_set_veo-3.1_fps4_20260506_230004.json",
           "subset": "anonymous_humaneval_set"
         },
         {
@@ -3194,7 +3194,7 @@
           "n": 250,
           "phys_avg": 4.52,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_231630.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_231630.json",
           "subset": "anonymous_humaneval_set"
         },
         {
@@ -3205,7 +3205,7 @@
           "n": 2,
           "phys_avg": 3.67,
           "schema": "cot/v2",
-          "source_url_snapshot": "scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_173855.json",
+          "source_url_snapshot": "snapshot/scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_173855.json",
           "subset": "humaneval_set"
         },
         {
@@ -3216,7 +3216,7 @@
           "n": 2,
           "phys_avg": 4.0,
           "schema": "cot/v3",
-          "source_url_snapshot": "scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_174448.json",
+          "source_url_snapshot": "snapshot/scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_174448.json",
           "subset": "humaneval_set"
         },
         {
@@ -3227,7 +3227,7 @@
           "n": 250,
           "phys_avg": 3.15,
           "schema": "plain/v2",
-          "source_url_snapshot": "scores/claude/eval_claude_humaneval_set_veo-3.1_20260421_180750.json",
+          "source_url_snapshot": "snapshot/scores/claude/eval_claude_humaneval_set_veo-3.1_20260421_180750.json",
           "subset": "humaneval_set"
         },
         {
@@ -3238,7 +3238,7 @@
           "n": 1,
           "phys_avg": 1.0,
           "schema": "cot/v4",
-          "source_url_snapshot": "scores/_tmp/eval/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194743.json",
+          "source_url_snapshot": "snapshot/scores/_tmp/eval/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194743.json",
           "subset": "humaneval_set"
         },
         {
@@ -3249,7 +3249,7 @@
           "n": 250,
           "phys_avg": 2.75,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_230925.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_230925.json",
           "subset": "humaneval_set"
         },
         {
@@ -3260,7 +3260,7 @@
           "n": 250,
           "phys_avg": 1.86,
           "schema": "plain/v2",
-          "source_url_snapshot": "scores/gemini/eval_gemini_humaneval_set_veo-3.1_20260421_165652.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_humaneval_set_veo-3.1_20260421_165652.json",
           "subset": "humaneval_set"
         },
         {
@@ -3271,7 +3271,7 @@
           "n": 250,
           "phys_avg": 4.67,
           "schema": "cot/v4",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_local_cotnosubq_humaneval_set_veo-3.1_20260427_084232.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_local_cotnosubq_humaneval_set_veo-3.1_20260427_084232.json",
           "subset": "humaneval_set"
         },
         {
@@ -3282,7 +3282,7 @@
           "n": 250,
           "phys_avg": 4.95,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_local_cot-subq_humaneval_set_veo-3.1_20260427_104534.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_local_cot-subq_humaneval_set_veo-3.1_20260427_104534.json",
           "subset": "humaneval_set"
         },
         {
@@ -3293,7 +3293,7 @@
           "n": 250,
           "phys_avg": 4.46,
           "schema": "plain/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_baseline_humaneval_set_veo-3.1.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_baseline_humaneval_set_veo-3.1.json",
           "subset": "humaneval_set"
         },
         {
@@ -3304,7 +3304,7 @@
           "n": 250,
           "phys_avg": 2.91,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260423_082010.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260423_082010.json",
           "subset": "humaneval_set"
         },
         {
@@ -3315,7 +3315,7 @@
           "n": 250,
           "phys_avg": 4.56,
           "schema": "cot/v4",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_cotnosubq_humaneval_set_veo-3.1_20260427_083553.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_cotnosubq_humaneval_set_veo-3.1_20260427_083553.json",
           "subset": "humaneval_set"
         },
         {
@@ -3326,7 +3326,7 @@
           "n": 1,
           "phys_avg": 5.0,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/_tmp/eval/eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_120334.json",
+          "source_url_snapshot": "snapshot/scores/_tmp/eval/eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_120334.json",
           "subset": "humaneval_set"
         },
         {
@@ -3337,7 +3337,7 @@
           "n": 250,
           "phys_avg": 2.92,
           "schema": "plain/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_train_humaneval_set_veo-3.1_20260421_111300.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_train_humaneval_set_veo-3.1_20260421_111300.json",
           "subset": "humaneval_set"
         },
         {
@@ -3348,7 +3348,7 @@
           "n": 250,
           "phys_avg": 3.02,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_20260422_145559.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_20260422_145559.json",
           "subset": "humaneval_set"
         },
         {
@@ -3359,7 +3359,7 @@
           "n": 25,
           "phys_avg": 3.23,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_both_veo-3.1_20260425_125430.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_both_veo-3.1_20260425_125430.json",
           "subset": "subq_human_test_both"
         },
         {
@@ -3370,7 +3370,7 @@
           "n": 225,
           "phys_avg": 2.89,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_model_veo-3.1_20260425_124054.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_model_veo-3.1_20260425_124054.json",
           "subset": "subq_human_test_model"
         },
         {
@@ -3381,7 +3381,7 @@
           "n": 206,
           "phys_avg": 2.11,
           "schema": "cot/v4",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
           "subset": "wb4_resume_remaining"
         },
         {
@@ -3392,7 +3392,7 @@
           "n": 8,
           "phys_avg": 1.42,
           "schema": "cot/v4",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
           "subset": "wb4_retry_incomplete"
         }
       ],
@@ -3518,7 +3518,7 @@
           "n": 250,
           "phys_avg": 2.61,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260424_030406.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260424_030406.json",
           "subset": "humaneval_set"
         },
         {
@@ -3529,7 +3529,7 @@
           "n": 136,
           "phys_avg": 4.82,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_125850.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_125850.json",
           "subset": "humaneval_set"
         },
         {
@@ -3540,7 +3540,7 @@
           "n": 250,
           "phys_avg": 4.6,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_105518.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_105518.json",
           "subset": "humaneval_set"
         },
         {
@@ -3551,7 +3551,7 @@
           "n": 250,
           "phys_avg": 2.9,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-i2v-a14b_20260426_153209.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-i2v-a14b_20260426_153209.json",
           "subset": "humaneval_set"
         }
       ],
@@ -3677,7 +3677,7 @@
           "n": 250,
           "phys_avg": 2.4,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_061248.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_061248.json",
           "subset": "humaneval_set"
         },
         {
@@ -3688,7 +3688,7 @@
           "n": 183,
           "phys_avg": 4.85,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_081422.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_081422.json",
           "subset": "humaneval_set"
         },
         {
@@ -3699,7 +3699,7 @@
           "n": 250,
           "phys_avg": 4.64,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260423_112711.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260423_112711.json",
           "subset": "humaneval_set"
         },
         {
@@ -3710,7 +3710,7 @@
           "n": 250,
           "phys_avg": 2.76,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-ti2v-5b_20260426_155402.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-ti2v-5b_20260426_155402.json",
           "subset": "humaneval_set"
         }
       ],
@@ -3824,8 +3824,8 @@
   ],
   "paperdemo": [
     {
-      "fig_pdf": "index/figs/boundary_interaction.pdf",
-      "fig_png": "index/figs/boundary_interaction.png",
+      "fig_pdf": "snapshot/index/figs/boundary_interaction.pdf",
+      "fig_png": "snapshot/index/figs/boundary_interaction.png",
       "law": "boundary_interaction",
       "n_ann_total": 12,
       "videos": [
@@ -3872,8 +3872,8 @@
       ]
     },
     {
-      "fig_pdf": "index/figs/buoyancy.pdf",
-      "fig_png": "index/figs/buoyancy.png",
+      "fig_pdf": "snapshot/index/figs/buoyancy.pdf",
+      "fig_png": "snapshot/index/figs/buoyancy.png",
       "law": "buoyancy",
       "n_ann_total": 10,
       "videos": [
@@ -3920,8 +3920,8 @@
       ]
     },
     {
-      "fig_pdf": "index/figs/collision.pdf",
-      "fig_png": "index/figs/collision.png",
+      "fig_pdf": "snapshot/index/figs/collision.pdf",
+      "fig_png": "snapshot/index/figs/collision.png",
       "law": "collision",
       "n_ann_total": 21,
       "videos": [
@@ -3968,8 +3968,8 @@
       ]
     },
     {
-      "fig_pdf": "index/figs/displacement.pdf",
-      "fig_png": "index/figs/displacement.png",
+      "fig_pdf": "snapshot/index/figs/displacement.pdf",
+      "fig_png": "snapshot/index/figs/displacement.png",
       "law": "displacement",
       "n_ann_total": 9,
       "videos": [
@@ -4016,8 +4016,8 @@
       ]
     },
     {
-      "fig_pdf": "index/figs/flow_dynamics.pdf",
-      "fig_png": "index/figs/flow_dynamics.png",
+      "fig_pdf": "snapshot/index/figs/flow_dynamics.pdf",
+      "fig_png": "snapshot/index/figs/flow_dynamics.png",
       "law": "flow_dynamics",
       "n_ann_total": 10,
       "videos": [
@@ -4064,8 +4064,8 @@
       ]
     },
     {
-      "fig_pdf": "index/figs/fluid_continuity.pdf",
-      "fig_png": "index/figs/fluid_continuity.png",
+      "fig_pdf": "snapshot/index/figs/fluid_continuity.pdf",
+      "fig_png": "snapshot/index/figs/fluid_continuity.png",
       "law": "fluid_continuity",
       "n_ann_total": 10,
       "videos": [
@@ -4112,8 +4112,8 @@
       ]
     },
     {
-      "fig_pdf": "index/figs/gravity.pdf",
-      "fig_png": "index/figs/gravity.png",
+      "fig_pdf": "snapshot/index/figs/gravity.pdf",
+      "fig_png": "snapshot/index/figs/gravity.png",
       "law": "gravity",
       "n_ann_total": 15,
       "videos": [
@@ -4160,8 +4160,8 @@
       ]
     },
     {
-      "fig_pdf": "index/figs/impenetrability.pdf",
-      "fig_png": "index/figs/impenetrability.png",
+      "fig_pdf": "snapshot/index/figs/impenetrability.pdf",
+      "fig_png": "snapshot/index/figs/impenetrability.png",
       "law": "impenetrability",
       "n_ann_total": 18,
       "videos": [
@@ -4208,8 +4208,8 @@
       ]
     },
     {
-      "fig_pdf": "index/figs/inertia.pdf",
-      "fig_png": "index/figs/inertia.png",
+      "fig_pdf": "snapshot/index/figs/inertia.pdf",
+      "fig_png": "snapshot/index/figs/inertia.png",
       "law": "inertia",
       "n_ann_total": 10,
       "videos": [
@@ -4256,8 +4256,8 @@
       ]
     },
     {
-      "fig_pdf": "index/figs/material.pdf",
-      "fig_png": "index/figs/material.png",
+      "fig_pdf": "snapshot/index/figs/material.pdf",
+      "fig_png": "snapshot/index/figs/material.png",
       "law": "material",
       "n_ann_total": 16,
       "videos": [
@@ -4304,8 +4304,8 @@
       ]
     },
     {
-      "fig_pdf": "index/figs/momentum.pdf",
-      "fig_png": "index/figs/momentum.png",
+      "fig_pdf": "snapshot/index/figs/momentum.pdf",
+      "fig_png": "snapshot/index/figs/momentum.png",
       "law": "momentum",
       "n_ann_total": 21,
       "videos": [
@@ -4352,8 +4352,8 @@
       ]
     },
     {
-      "fig_pdf": "index/figs/reflection.pdf",
-      "fig_png": "index/figs/reflection.png",
+      "fig_pdf": "snapshot/index/figs/reflection.pdf",
+      "fig_png": "snapshot/index/figs/reflection.png",
       "law": "reflection",
       "n_ann_total": 4,
       "videos": [
@@ -4376,8 +4376,8 @@
       ]
     },
     {
-      "fig_pdf": "index/figs/shadow.pdf",
-      "fig_png": "index/figs/shadow.png",
+      "fig_pdf": "snapshot/index/figs/shadow.pdf",
+      "fig_png": "snapshot/index/figs/shadow.png",
       "law": "shadow",
       "n_ann_total": 7,
       "videos": [
@@ -8460,7 +8460,7 @@
           "n": 250,
           "phys_avg": 2.61,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_111158.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_111158.json",
           "subset": "humaneval_set"
         },
         {
@@ -8470,7 +8470,7 @@
           "n": 116,
           "phys_avg": 4.86,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_082629.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_082629.json",
           "subset": "humaneval_set"
         },
         {
@@ -8480,7 +8480,7 @@
           "n": 250,
           "phys_avg": 4.68,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_081719.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-14b_20260423_081719.json",
           "subset": "humaneval_set"
         },
         {
@@ -8490,7 +8490,7 @@
           "n": 250,
           "phys_avg": 2.95,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-14b_20260426_132821.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-14b_20260426_132821.json",
           "subset": "humaneval_set"
         }
       ],
@@ -9892,7 +9892,7 @@
           "n": 250,
           "phys_avg": 2.32,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_080609.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_080609.json",
           "subset": "humaneval_set"
         },
         {
@@ -9902,7 +9902,7 @@
           "n": 42,
           "phys_avg": 4.88,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260424_091353.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260424_091353.json",
           "subset": "humaneval_set"
         },
         {
@@ -9912,7 +9912,7 @@
           "n": 250,
           "phys_avg": 4.64,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_074504.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_cosmos-predict2.5-2b_20260423_074504.json",
           "subset": "humaneval_set"
         },
         {
@@ -9922,7 +9922,7 @@
           "n": 250,
           "phys_avg": 2.81,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-2b_20260426_130603.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-2b_20260426_130603.json",
           "subset": "humaneval_set"
         }
       ],
@@ -11444,7 +11444,7 @@
           "n": 250,
           "phys_avg": 2.65,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_141416.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_141416.json",
           "subset": "humaneval_set"
         },
         {
@@ -11454,7 +11454,7 @@
           "n": 231,
           "phys_avg": 4.9,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_091348.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_091348.json",
           "subset": "humaneval_set"
         },
         {
@@ -11464,7 +11464,7 @@
           "n": 250,
           "phys_avg": 4.69,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_084927.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2-19b-dev_20260423_084927.json",
           "subset": "humaneval_set"
         },
         {
@@ -11474,7 +11474,7 @@
           "n": 250,
           "phys_avg": 2.61,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2-19b-dev_20260426_142548.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2-19b-dev_20260426_142548.json",
           "subset": "humaneval_set"
         }
       ],
@@ -12936,7 +12936,7 @@
           "n": 250,
           "phys_avg": 2.78,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_170017.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_170017.json",
           "subset": "humaneval_set"
         },
         {
@@ -12946,7 +12946,7 @@
           "n": 250,
           "phys_avg": 4.89,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_101908.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_101908.json",
           "subset": "humaneval_set"
         },
         {
@@ -12956,7 +12956,7 @@
           "n": 250,
           "phys_avg": 4.69,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_092131.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_ltx-2.3-22b-dev_20260423_092131.json",
           "subset": "humaneval_set"
         },
         {
@@ -12966,7 +12966,7 @@
           "n": 250,
           "phys_avg": 2.68,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2.3-22b-dev_20260426_144807.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2.3-22b-dev_20260426_144807.json",
           "subset": "humaneval_set"
         }
       ],
@@ -14350,7 +14350,7 @@
           "n": 250,
           "phys_avg": 2.76,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_omniweaving_20260423_200215.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_omniweaving_20260423_200215.json",
           "subset": "humaneval_set"
         },
         {
@@ -14360,7 +14360,7 @@
           "n": 134,
           "phys_avg": 4.91,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_112715.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_112715.json",
           "subset": "humaneval_set"
         },
         {
@@ -14370,7 +14370,7 @@
           "n": 250,
           "phys_avg": 4.71,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_095236.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_omniweaving_20260423_095236.json",
           "subset": "humaneval_set"
         },
         {
@@ -14380,7 +14380,7 @@
           "n": 250,
           "phys_avg": 2.8,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_omniweaving_20260426_151022.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_omniweaving_20260426_151022.json",
           "subset": "humaneval_set"
         }
       ],
@@ -15764,7 +15764,7 @@
           "n": 26,
           "phys_avg": 4.99,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_fill26_20260506_230214.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_cot-subq_humaneval_set_veo-3.1_fps4_fill26_20260506_230214.json",
           "subset": "anonymous_humaneval_set"
         },
         {
@@ -15774,7 +15774,7 @@
           "n": 250,
           "phys_avg": 4.72,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_153230.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_153230.json",
           "subset": "anonymous_humaneval_set"
         },
         {
@@ -15784,7 +15784,7 @@
           "n": 250,
           "phys_avg": 4.77,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_base_cot-subq_humaneval_set_veo-3.1_fps4_20260506_212424.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_base_cot-subq_humaneval_set_veo-3.1_fps4_20260506_212424.json",
           "subset": "anonymous_humaneval_set"
         },
         {
@@ -15794,7 +15794,7 @@
           "n": 250,
           "phys_avg": 4.38,
           "schema": "plain/v2",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_base_default_humaneval_set_veo-3.1_fps4_20260506_230004.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_base_default_humaneval_set_veo-3.1_fps4_20260506_230004.json",
           "subset": "anonymous_humaneval_set"
         },
         {
@@ -15804,7 +15804,7 @@
           "n": 250,
           "phys_avg": 4.52,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_231630.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_base_subq_human_humaneval_set_veo-3.1_fps8_20260507_231630.json",
           "subset": "anonymous_humaneval_set"
         },
         {
@@ -15814,7 +15814,7 @@
           "n": 2,
           "phys_avg": 3.67,
           "schema": "cot/v2",
-          "source_url_snapshot": "scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_173855.json",
+          "source_url_snapshot": "snapshot/scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_173855.json",
           "subset": "humaneval_set"
         },
         {
@@ -15824,7 +15824,7 @@
           "n": 2,
           "phys_avg": 4.0,
           "schema": "cot/v3",
-          "source_url_snapshot": "scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_174448.json",
+          "source_url_snapshot": "snapshot/scores/claude/eval_claude_cot_humaneval_set_veo-3.1_20260422_174448.json",
           "subset": "humaneval_set"
         },
         {
@@ -15834,7 +15834,7 @@
           "n": 250,
           "phys_avg": 3.15,
           "schema": "plain/v2",
-          "source_url_snapshot": "scores/claude/eval_claude_humaneval_set_veo-3.1_20260421_180750.json",
+          "source_url_snapshot": "snapshot/scores/claude/eval_claude_humaneval_set_veo-3.1_20260421_180750.json",
           "subset": "humaneval_set"
         },
         {
@@ -15844,7 +15844,7 @@
           "n": 1,
           "phys_avg": 1.0,
           "schema": "cot/v4",
-          "source_url_snapshot": "scores/_tmp/eval/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194743.json",
+          "source_url_snapshot": "snapshot/scores/_tmp/eval/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194743.json",
           "subset": "humaneval_set"
         },
         {
@@ -15854,7 +15854,7 @@
           "n": 250,
           "phys_avg": 2.75,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_230925.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_230925.json",
           "subset": "humaneval_set"
         },
         {
@@ -15864,7 +15864,7 @@
           "n": 250,
           "phys_avg": 1.86,
           "schema": "plain/v2",
-          "source_url_snapshot": "scores/gemini/eval_gemini_humaneval_set_veo-3.1_20260421_165652.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_humaneval_set_veo-3.1_20260421_165652.json",
           "subset": "humaneval_set"
         },
         {
@@ -15874,7 +15874,7 @@
           "n": 250,
           "phys_avg": 4.67,
           "schema": "cot/v4",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_local_cotnosubq_humaneval_set_veo-3.1_20260427_084232.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_local_cotnosubq_humaneval_set_veo-3.1_20260427_084232.json",
           "subset": "humaneval_set"
         },
         {
@@ -15884,7 +15884,7 @@
           "n": 250,
           "phys_avg": 4.95,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_local_cot-subq_humaneval_set_veo-3.1_20260427_104534.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_local_cot-subq_humaneval_set_veo-3.1_20260427_104534.json",
           "subset": "humaneval_set"
         },
         {
@@ -15894,7 +15894,7 @@
           "n": 250,
           "phys_avg": 4.46,
           "schema": "plain/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_baseline_humaneval_set_veo-3.1.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_baseline_humaneval_set_veo-3.1.json",
           "subset": "humaneval_set"
         },
         {
@@ -15904,7 +15904,7 @@
           "n": 250,
           "phys_avg": 2.91,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260423_082010.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_local_subq_human_humaneval_set_veo-3.1_20260423_082010.json",
           "subset": "humaneval_set"
         },
         {
@@ -15914,7 +15914,7 @@
           "n": 250,
           "phys_avg": 4.56,
           "schema": "cot/v4",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_cotnosubq_humaneval_set_veo-3.1_20260427_083553.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_cotnosubq_humaneval_set_veo-3.1_20260427_083553.json",
           "subset": "humaneval_set"
         },
         {
@@ -15924,7 +15924,7 @@
           "n": 1,
           "phys_avg": 5.0,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/_tmp/eval/eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_120334.json",
+          "source_url_snapshot": "snapshot/scores/_tmp/eval/eval_qwen9b_vertexai_cot-subq_humaneval_set_veo-3.1_20260423_120334.json",
           "subset": "humaneval_set"
         },
         {
@@ -15934,7 +15934,7 @@
           "n": 250,
           "phys_avg": 2.92,
           "schema": "plain/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_train_humaneval_set_veo-3.1_20260421_111300.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_train_humaneval_set_veo-3.1_20260421_111300.json",
           "subset": "humaneval_set"
         },
         {
@@ -15944,7 +15944,7 @@
           "n": 250,
           "phys_avg": 3.02,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_20260422_145559.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_veo-3.1_20260422_145559.json",
           "subset": "humaneval_set"
         },
         {
@@ -15954,7 +15954,7 @@
           "n": 25,
           "phys_avg": 3.23,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_both_veo-3.1_20260425_125430.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_both_veo-3.1_20260425_125430.json",
           "subset": "subq_human_test_both"
         },
         {
@@ -15964,7 +15964,7 @@
           "n": 225,
           "phys_avg": 2.89,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_model_veo-3.1_20260425_124054.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_subq_human_test_model_veo-3.1_20260425_124054.json",
           "subset": "subq_human_test_model"
         },
         {
@@ -15974,7 +15974,7 @@
           "n": 206,
           "phys_avg": 2.11,
           "schema": "cot/v4",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
           "subset": "wb4_resume_remaining"
         },
         {
@@ -15984,7 +15984,7 @@
           "n": 8,
           "phys_avg": 1.42,
           "schema": "cot/v4",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194922.json",
           "subset": "wb4_retry_incomplete"
         }
       ],
@@ -17362,7 +17362,7 @@
           "n": 250,
           "phys_avg": 2.61,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260424_030406.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260424_030406.json",
           "subset": "humaneval_set"
         },
         {
@@ -17372,7 +17372,7 @@
           "n": 136,
           "phys_avg": 4.82,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_125850.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_125850.json",
           "subset": "humaneval_set"
         },
         {
@@ -17382,7 +17382,7 @@
           "n": 250,
           "phys_avg": 4.6,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_105518.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-i2v-a14b_20260423_105518.json",
           "subset": "humaneval_set"
         },
         {
@@ -17392,7 +17392,7 @@
           "n": 250,
           "phys_avg": 2.9,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-i2v-a14b_20260426_153209.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-i2v-a14b_20260426_153209.json",
           "subset": "humaneval_set"
         }
       ],
@@ -18782,7 +18782,7 @@
           "n": 250,
           "phys_avg": 2.4,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_061248.json",
+          "source_url_snapshot": "snapshot/scores/gemini/eval_gemini_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_061248.json",
           "subset": "humaneval_set"
         },
         {
@@ -18792,7 +18792,7 @@
           "n": 183,
           "phys_avg": 4.85,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_081422.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen27b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260424_081422.json",
           "subset": "humaneval_set"
         },
         {
@@ -18802,7 +18802,7 @@
           "n": 250,
           "phys_avg": 4.64,
           "schema": "cot_subq/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260423_112711.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260423_112711.json",
           "subset": "humaneval_set"
         },
         {
@@ -18812,7 +18812,7 @@
           "n": 250,
           "phys_avg": 2.76,
           "schema": "subq_hint/v1",
-          "source_url_snapshot": "scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-ti2v-5b_20260426_155402.json",
+          "source_url_snapshot": "snapshot/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-ti2v-5b_20260426_155402.json",
           "subset": "humaneval_set"
         }
       ],
