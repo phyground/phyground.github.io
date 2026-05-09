@@ -237,7 +237,7 @@ def _classify(
     # Sandbox to repo_root: a resolved path that escapes the deployed tree
     # (e.g. via ``../../outside.txt``) would 404 in production even when
     # the file happens to exist on the build machine.
-    if _is_outside_root(resolved, repo_root) or not resolved.exists():
+    if _is_outside_root(resolved, repo_root):
         result.broken.append(
             BrokenRef(
                 original_href=value,
@@ -246,6 +246,35 @@ def _classify(
                 attribute=attribute,
             )
         )
+        return
+    if not resolved.exists():
+        result.broken.append(
+            BrokenRef(
+                original_href=value,
+                resolved_path=str(resolved),
+                tag=tag,
+                attribute=attribute,
+            )
+        )
+        return
+    # Directory-style links (`href="about/"`) are served as the directory's
+    # index document by GitHub Pages and Python's stdlib http.server. A bare
+    # directory without `index.html` (or `index.htm` as a fallback) 404s in
+    # production even though the directory itself exists on disk; report it
+    # as broken with the would-be index path so the rendered defect names
+    # the file the build pipeline must produce.
+    if resolved.is_dir():
+        index_html = resolved / "index.html"
+        index_htm = resolved / "index.htm"
+        if not index_html.is_file() and not index_htm.is_file():
+            result.broken.append(
+                BrokenRef(
+                    original_href=value,
+                    resolved_path=str(index_html),
+                    tag=tag,
+                    attribute=attribute,
+                )
+            )
 
 
 # ---------------------------------------------------------------------------

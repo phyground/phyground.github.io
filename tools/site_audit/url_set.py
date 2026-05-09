@@ -72,7 +72,13 @@ _TOP_LEVEL_URLS: tuple[str, ...] = (
     "/videos/compare/",
 )
 
-DEFAULT_SITE_CONFIG_PATH = Path("snapshot/index/site_config.json")
+# Repo root is the parent of the directory that contains ``tools/site_audit``.
+# Anchored to ``__file__`` so the resolver works regardless of the caller's
+# current working directory; the previous cwd-relative default crashed any
+# ``--url-set repo`` invocation launched from a path other than the repo
+# root, which the README documents as a supported entry point.
+_REPO_ROOT: Path = Path(__file__).resolve().parents[2]
+DEFAULT_SITE_CONFIG_PATH: Path = _REPO_ROOT / "snapshot" / "index" / "site_config.json"
 
 
 def _load_site_config(site_config_path: Path | str) -> dict[str, Any]:

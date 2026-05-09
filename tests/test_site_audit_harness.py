@@ -1464,3 +1464,119 @@ def test_audit_record_record_to_dict_includes_geometry_fields() -> None:
     assert d["main_scroll_height"] == 768
     assert d["chrome_height"] == 128
     assert d["main_non_empty"] is True
+
+
+# ---------------------------------------------------------------------------
+# Round 5 regression: directory-style links require a directory index file
+# (index.html or index.htm) to actually be reachable. A bare directory
+# without an index document 404s on GitHub Pages and python http.server.
+# ---------------------------------------------------------------------------
+
+
+class TestStructuralAuditDirectoryIndex:
+    def _write_html(self, root, rel, body):
+        target = root / rel
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(body, encoding="utf-8")
+        return target
+
+    def _audit(self, root, html):
+        from tools.site_audit import audit_html_file
+
+        return audit_html_file(html, repo_root=root)
+
+    def test_directory_link_without_index_html_is_broken(self, tmp_path):
+        html = self._write_html(
+            tmp_path,
+            "index.html",
+            "<!doctype html><html><body><a href='about/'>About</a></body></html>",
+        )
+        # Create the directory but NOT index.html inside it.
+        (tmp_path / "about").mkdir()
+
+        result = self._audit(tmp_path, html)
+
+        assert len(result.broken) == 1, (
+            f"expected 1 broken ref for empty directory, got: {result.broken}"
+        )
+        broken = result.broken[0]
+        assert broken.original_href == "about/"
+        assert broken.tag == "a"
+        assert broken.attribute == "href"
+        # The resolved path names the would-be index file so the defect
+        # report tells the operator which file the build pipeline should
+        # produce.
+        assert broken.resolved_path == str((tmp_path / "about" / "index.html").resolve())
+
+    def test_directory_link_with_index_html_passes(self, tmp_path):
+        html = self._write_html(
+            tmp_path,
+            "index.html",
+            "<!doctype html><html><body><a href='about/'>About</a></body></html>",
+        )
+        self._write_html(tmp_path, "about/index.html", "<html>about</html>")
+
+        result = self._audit(tmp_path, html)
+
+        assert result.broken == []
+
+    def test_directory_link_with_index_htm_fallback_passes(self, tmp_path):
+        html = self._write_html(
+            tmp_path,
+            "index.html",
+            "<!doctype html><html><body><a href='about/'>About</a></body></html>",
+        )
+        self._write_html(tmp_path, "about/index.htm", "<html>about</html>")
+
+        result = self._audit(tmp_path, html)
+
+        assert result.broken == []
+
+    def test_root_relative_directory_link_without_index_html_is_broken(self, tmp_path):
+        # Sibling regression for root-relative directory hrefs that resolve
+        # under repo_root rather than the html file's parent.
+        sub = tmp_path / "models" / "veo-3.1"
+        sub.mkdir(parents=True)
+        html = self._write_html(
+            sub,
+            "index.html",
+            "<!doctype html><html><body><a href='/models/cosmos-predict2.5-14b/'>Other</a></body></html>",
+        )
+        (tmp_path / "models" / "cosmos-predict2.5-14b").mkdir()
+        # Deliberately do NOT create the sibling's index.html.
+
+        result = self._audit(tmp_path, html)
+
+        assert len(result.broken) == 1
+        assert result.broken[0].original_href == "/models/cosmos-predict2.5-14b/"
+        expected = (tmp_path / "models" / "cosmos-predict2.5-14b" / "index.html").resolve()
+        assert result.broken[0].resolved_path == str(expected)
+
+
+# ---------------------------------------------------------------------------
+# Round 5 regression: --url-set repo must work regardless of cwd. The
+# default site_config path is anchored to __file__ so a launch from /tmp
+# (or any other directory) does not crash with FileNotFoundError.
+# ---------------------------------------------------------------------------
+
+
+class TestUrlSetDefaultPath:
+    def test_default_path_is_absolute_and_anchored_to_repo_root(self):
+        from tools.site_audit.url_set import DEFAULT_SITE_CONFIG_PATH
+
+        assert DEFAULT_SITE_CONFIG_PATH.is_absolute(), DEFAULT_SITE_CONFIG_PATH
+        assert DEFAULT_SITE_CONFIG_PATH.name == "site_config.json"
+        assert DEFAULT_SITE_CONFIG_PATH.parent.name == "index"
+        assert DEFAULT_SITE_CONFIG_PATH.parent.parent.name == "snapshot"
+
+    def test_resolve_repo_url_set_works_from_outside_repo(self, tmp_path, monkeypatch):
+        from tools.site_audit.url_set import resolve_repo_url_set
+
+        # Switch cwd to an unrelated directory; the resolver must still
+        # find site_config.json via the __file__-anchored default.
+        monkeypatch.chdir(tmp_path)
+        urls = resolve_repo_url_set()
+
+        assert len(urls) == 14
+        assert urls[0] == "/"
+        assert urls[5].startswith("/videos/compare/?prompt_id=")

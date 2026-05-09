@@ -354,3 +354,14 @@ result = audit_html_file(html_path, repo_root=repo_root)
 - The auditor reads HTML as UTF-8 with `errors="replace"` and tolerates
   malformed markup without raising; truly garbled documents may yield
   fewer refs than a real browser sees.
+
+### Directory-style links
+
+A relative `href` that resolves to an existing directory (the common
+`/about/`, `/leaderboard/`, `/models/<key>/` style routes) is treated as
+**broken** unless `<dir>/index.html` (or `<dir>/index.htm` as a fallback)
+is also present on disk. This matches what GitHub Pages and Python's
+stdlib `http.server` actually serve: a bare directory without an index
+document 404s. The reported `BrokenRef.resolved_path` names the missing
+`index.html` so the defect log tells the operator which file the build
+pipeline must produce.
