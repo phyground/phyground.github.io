@@ -538,11 +538,11 @@ def _bootstrap_playwright_or_raise() -> None:
 
     try:
         with sync_playwright() as p:
+            # Launching and immediately closing is enough to validate the
+            # browser stack: a missing Chromium binary or missing system
+            # libs surfaces here, before the per-URL loop starts.
             browser = p.chromium.launch()
-            try:
-                pass  # launch alone is enough to validate the browser stack
-            finally:
-                browser.close()
+            browser.close()
     except Exception as exc:  # noqa: BLE001 — surface any launch failure
         raise RuntimeError(
             f"Playwright browser launch failed during bootstrap. "

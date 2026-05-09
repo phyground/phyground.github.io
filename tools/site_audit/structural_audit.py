@@ -69,7 +69,6 @@ import sys
 from dataclasses import asdict
 from html.parser import HTMLParser
 from pathlib import Path
-from typing import Iterable
 from urllib.parse import unquote, urlsplit
 
 # Support both `python tools/site_audit/structural_audit.py` and
@@ -148,10 +147,6 @@ def _extract_refs(html_text: str) -> list[tuple[str, str, str]]:
 # ---------------------------------------------------------------------------
 
 
-def _matches_prefix(value: str, prefixes: Iterable[str]) -> bool:
-    return any(value.startswith(p) for p in prefixes)
-
-
 def _resolve_on_disk(
     href: str,
     *,
@@ -171,11 +166,11 @@ def _resolve_on_disk(
     # original (raw) href is preserved in BrokenRef.original_href by the
     # caller — only the on-disk lookup uses the decoded form.
     raw_path = unquote(parts.path or "")
-    # If a relative href is just "?foo" or "#frag" its path is empty;
-    # callers should have classified it as fragment beforehand. We still
-    # guard here so the function never returns html_path itself.
-    if not raw_path:
-        raw_path = ""
+    # A relative href that is just "?foo" or "#frag" parses to an empty
+    # path; callers should have classified it as fragment beforehand. The
+    # joins below still work safely on an empty raw_path because they
+    # resolve to the html file's parent directory rather than html_path
+    # itself.
     if raw_path.startswith("/"):
         rel = raw_path.lstrip("/")
         return (repo_root / rel).resolve()
@@ -183,17 +178,8 @@ def _resolve_on_disk(
 
 
 def _is_outside_root(resolved: Path, repo_root: Path) -> bool:
-    """Return True if ``resolved`` does not lie under ``repo_root``.
-
-    Uses ``Path.relative_to`` (Python 3.9+) wrapped in try/except for
-    portability — ``Path.is_relative_to`` is only 3.9+ and we want to keep
-    the dependency surface minimal.
-    """
-    try:
-        resolved.relative_to(repo_root)
-    except ValueError:
-        return True
-    return False
+    """Return True if ``resolved`` does not lie under ``repo_root``."""
+    return not resolved.is_relative_to(repo_root)
 
 
 # Tags whose attributes are *navigational* — i.e., the browser loads a
@@ -230,7 +216,7 @@ def _classify(
     if value == "":
         result.fragments.append(value)
         return
-    if _matches_prefix(value, allow_prefixes):
+    if value.startswith(tuple(allow_prefixes)):
         # "#..." anchors live on the fragment list, not the absolute one.
         if value.startswith("#"):
             result.fragments.append(value)
