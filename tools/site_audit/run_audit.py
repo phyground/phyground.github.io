@@ -455,6 +455,42 @@ def _capture_one_url(
     )
 
 
+def _bootstrap_playwright_or_raise() -> None:
+    """Validate that Playwright is importable AND a Chromium browser launches.
+
+    Per-URL error isolation should NOT swallow environment-wide failures
+    (Playwright not installed, Chromium not provisioned, missing system
+    libs). Without this guard a missing browser stack raises the same
+    exception on every URL, the per-URL ``try/except`` records 14 errors,
+    and ``run_audit()`` exits 0 — telling CI the audit succeeded when no
+    page was actually tested. This bootstrap check happens once before
+    the per-URL loop; failures propagate as ``RuntimeError`` and
+    surface as a non-zero exit.
+    """
+    try:
+        from playwright.sync_api import sync_playwright  # type: ignore
+    except ImportError as exc:
+        raise RuntimeError(
+            "Playwright is not installed. Run "
+            "`pip install -r requirements-audit.txt` and "
+            "`python -m playwright install chromium`."
+        ) from exc
+
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            try:
+                pass  # launch alone is enough to validate the browser stack
+            finally:
+                browser.close()
+    except Exception as exc:  # noqa: BLE001 — surface any launch failure
+        raise RuntimeError(
+            f"Playwright browser launch failed during bootstrap. "
+            f"Run `python -m playwright install chromium` and ensure system "
+            f"dependencies are present. Underlying error: {exc}"
+        ) from exc
+
+
 def _capture_with_playwright(
     *,
     urls: list[str],
@@ -471,7 +507,15 @@ def _capture_with_playwright(
     a record stamped with ``error="<ExcClass>: <msg>"`` and the loop moves
     on. ``records.json`` is rewritten atomically after every URL so an
     external abort still leaves a usable evidence file.
+
+    A bootstrap check (``_bootstrap_playwright_or_raise``) runs once
+    before the per-URL loop. If Playwright isn't installed or the
+    browser fails to launch, the check raises ``RuntimeError`` and we
+    exit non-zero rather than producing a fake-success run of
+    bootstrap-error records.
     """
+    _bootstrap_playwright_or_raise()
+
     records: list[AuditRecord] = []
 
     for url in urls:

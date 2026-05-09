@@ -1580,3 +1580,148 @@ class TestUrlSetDefaultPath:
         assert len(urls) == 14
         assert urls[0] == "/"
         assert urls[5].startswith("/videos/compare/?prompt_id=")
+
+
+# ---------------------------------------------------------------------------
+# Round 6 regression: navigation-only resolution rules.
+# Directory-index fallback and query-only=fragment classification apply ONLY
+# to navigational tags (<a href>, <iframe src>, <area href>). Asset tags
+# (<img>, <script>, <link>, <source>, <video>, <audio>) do not get those
+# semantics; for them, a directory or query-only URL is a real defect.
+# ---------------------------------------------------------------------------
+
+
+class TestStructuralAuditNavigationOnlyRules:
+    def _audit_with_body(self, root, body):
+        from tools.site_audit import audit_html_file
+
+        html = root / "index.html"
+        html.write_text(
+            f"<!doctype html><html><body>{body}</body></html>",
+            encoding="utf-8",
+        )
+        return audit_html_file(html, repo_root=root)
+
+    def test_directory_link_on_image_src_is_broken_even_with_index_html(self, tmp_path):
+        # Asset tag pointing at a directory: real defect, even if the
+        # directory contains index.html. Browsers do not resolve <img src>
+        # via directory index; they fetch the directory listing or 404.
+        (tmp_path / "icons").mkdir()
+        (tmp_path / "icons" / "index.html").write_text("<html>x</html>")
+
+        result = self._audit_with_body(tmp_path, '<img src="icons/">')
+
+        assert len(result.broken) == 1, f"expected 1 broken, got {result.broken}"
+        broken = result.broken[0]
+        assert broken.original_href == "icons/"
+        assert broken.tag == "img"
+        assert broken.attribute == "src"
+        # For asset tags the resolved_path names the directory itself, not
+        # an index file (no index would help).
+        assert broken.resolved_path == str((tmp_path / "icons").resolve())
+
+    def test_directory_link_on_script_src_is_broken_even_with_index_html(self, tmp_path):
+        (tmp_path / "static" / "js").mkdir(parents=True)
+        (tmp_path / "static" / "js" / "index.html").write_text("<html>x</html>")
+
+        result = self._audit_with_body(tmp_path, '<script src="static/js/"></script>')
+
+        assert len(result.broken) == 1
+        assert result.broken[0].original_href == "static/js/"
+        assert result.broken[0].tag == "script"
+
+    def test_query_only_ref_on_script_src_is_broken(self, tmp_path):
+        # <script src="?v=1"> re-fetches the current document instead of
+        # an asset. The auditor should flag this as broken, not silently
+        # bucket it as a fragment.
+        result = self._audit_with_body(tmp_path, '<script src="?v=1"></script>')
+
+        assert "?v=1" not in result.fragments
+        assert any(b.original_href == "?v=1" and b.tag == "script" for b in result.broken)
+
+    def test_query_only_ref_on_image_src_is_broken(self, tmp_path):
+        result = self._audit_with_body(tmp_path, '<img src="?cachebust">')
+
+        assert "?cachebust" not in result.fragments
+        assert any(b.original_href == "?cachebust" and b.tag == "img" for b in result.broken)
+
+    def test_query_only_ref_on_anchor_href_remains_fragment(self, tmp_path):
+        # Navigational tag: query-only is a same-document self-reference.
+        # Round 4 contract preserved.
+        result = self._audit_with_body(tmp_path, '<a href="?foo=1">Self</a>')
+
+        assert "?foo=1" in result.fragments
+        assert all(b.original_href != "?foo=1" for b in result.broken)
+
+    def test_directory_link_on_anchor_href_with_index_html_remains_passing(self, tmp_path):
+        # Round 5 contract preserved for navigational tags.
+        (tmp_path / "about").mkdir()
+        (tmp_path / "about" / "index.html").write_text("<html>about</html>")
+
+        result = self._audit_with_body(tmp_path, '<a href="about/">About</a>')
+
+        assert result.broken == []
+
+    def test_directory_link_on_iframe_src_uses_index_html_fallback(self, tmp_path):
+        # <iframe> loads a document, so directory-index applies.
+        (tmp_path / "inner").mkdir()
+        (tmp_path / "inner" / "index.html").write_text("<html>inner</html>")
+
+        result = self._audit_with_body(tmp_path, '<iframe src="inner/"></iframe>')
+
+        assert result.broken == []
+
+    def test_directory_link_on_iframe_src_without_index_html_is_broken(self, tmp_path):
+        (tmp_path / "inner").mkdir()
+        # No index.html in inner/.
+
+        result = self._audit_with_body(tmp_path, '<iframe src="inner/"></iframe>')
+
+        assert len(result.broken) == 1
+        # iframe is navigational -> resolved_path names the would-be index.
+        assert result.broken[0].resolved_path == str((tmp_path / "inner" / "index.html").resolve())
+
+
+# ---------------------------------------------------------------------------
+# Round 6 regression: bootstrap failures must surface as a non-zero exit,
+# not as 14 fake-success records pretending the audit ran.
+# ---------------------------------------------------------------------------
+
+
+class TestRunAuditBootstrapExit:
+    def test_bootstrap_failure_exits_nonzero_via_module_call(self, monkeypatch, tmp_path):
+        # Stub the bootstrap helper to simulate Playwright missing.
+        from tools.site_audit import run_audit as run_audit_module
+
+        def fake_bootstrap():
+            raise RuntimeError("Playwright is not installed (test stub)")
+
+        monkeypatch.setattr(
+            run_audit_module, "_bootstrap_playwright_or_raise", fake_bootstrap
+        )
+
+        # Stub the local server so we don't actually try to bind a port.
+        from contextlib import contextmanager
+
+        @contextmanager
+        def fake_serve():
+            yield "http://127.0.0.1:0"
+
+        monkeypatch.setattr(run_audit_module, "_serve_repo_root", fake_serve)
+
+        urls_file = tmp_path / "urls.txt"
+        urls_file.write_text("/\n", encoding="utf-8")
+        out_dir = tmp_path / "out"
+
+        # Build argv like the CLI: --target local --urls <file> --out <dir>.
+        # No --dry-run so the real-capture path runs and triggers the
+        # bootstrap check. The bootstrap RuntimeError must bubble out of
+        # run_audit -- the per-URL try/except inside _capture_with_playwright
+        # must NOT swallow it.
+        with pytest.raises(RuntimeError, match="Playwright is not installed"):
+            run_audit_module.run_audit([
+                "--target", "local",
+                "--urls", str(urls_file),
+                "--out", str(out_dir),
+                "--viewport", "1280x800",
+            ])

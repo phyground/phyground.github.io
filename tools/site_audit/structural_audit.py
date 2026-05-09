@@ -196,6 +196,25 @@ def _is_outside_root(resolved: Path, repo_root: Path) -> bool:
     return False
 
 
+# Tags whose attributes are *navigational* — i.e., the browser loads a
+# document via its directory index when given a path-empty or
+# trailing-slash URL. Asset tags (``<img src=...>``, ``<script src=...>``,
+# ``<link href=...>``, ``<source src=...>``, ``<video src=...>``,
+# ``<audio src=...>``) are NOT navigational: a directory or query-only
+# URL on those tags is a real defect because the browser fetches the
+# wrong bytes (or 404s) instead of resolving an index document.
+_NAVIGATIONAL_REF_PAIRS: frozenset[tuple[str, str]] = frozenset({
+    ("a", "href"),
+    ("iframe", "src"),
+    ("area", "href"),
+})
+
+
+def _is_navigational_link(tag: str, attribute: str) -> bool:
+    """Return True for `(tag, attribute)` pairs that load documents via navigation."""
+    return (tag, attribute) in _NAVIGATIONAL_REF_PAIRS
+
+
 def _classify(
     tag: str,
     attribute: str,
@@ -227,9 +246,14 @@ def _classify(
         result.absolute.append(value)
         return
     # Query-only (``?foo=1``) or fragment-only (``#section``) hrefs have an
-    # empty path; they are self-references and must not trigger a disk
-    # lookup against the HTML's parent directory.
-    if (parts.path or "") == "":
+    # empty path. For navigational links (``<a>`` / ``<iframe>``) those are
+    # legitimate self-references. For asset tags the browser re-fetches the
+    # current document instead of the intended asset, which is a real
+    # defect — fall through to the on-disk check, where the empty path
+    # resolves to the HTML file's parent directory and gets reported as
+    # broken via the directory branch below.
+    nav = _is_navigational_link(tag, attribute)
+    if (parts.path or "") == "" and nav:
         result.fragments.append(value)
         return
 
@@ -258,19 +282,34 @@ def _classify(
         )
         return
     # Directory-style links (`href="about/"`) are served as the directory's
-    # index document by GitHub Pages and Python's stdlib http.server. A bare
-    # directory without `index.html` (or `index.htm` as a fallback) 404s in
-    # production even though the directory itself exists on disk; report it
-    # as broken with the would-be index path so the rendered defect names
-    # the file the build pipeline must produce.
+    # index document by GitHub Pages and Python's stdlib http.server, but ONLY
+    # for navigational tags. For asset tags a directory `src` is a real
+    # defect — the browser fetches the wrong bytes or 404s instead of
+    # resolving an index document. So:
+    # - Navigational + directory + has index.html/.htm => valid (do nothing).
+    # - Navigational + directory + no index.html/.htm   => broken (name the
+    #   would-be index file so the defect points at what the build pipeline
+    #   must produce).
+    # - Asset       + directory                          => broken (name the
+    #   directory itself, since no index document would help).
     if resolved.is_dir():
-        index_html = resolved / "index.html"
-        index_htm = resolved / "index.htm"
-        if not index_html.is_file() and not index_htm.is_file():
+        if nav:
+            index_html = resolved / "index.html"
+            index_htm = resolved / "index.htm"
+            if not index_html.is_file() and not index_htm.is_file():
+                result.broken.append(
+                    BrokenRef(
+                        original_href=value,
+                        resolved_path=str(index_html),
+                        tag=tag,
+                        attribute=attribute,
+                    )
+                )
+        else:
             result.broken.append(
                 BrokenRef(
                     original_href=value,
-                    resolved_path=str(index_html),
+                    resolved_path=str(resolved),
                     tag=tag,
                     attribute=attribute,
                 )
