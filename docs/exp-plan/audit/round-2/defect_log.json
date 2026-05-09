@@ -26,7 +26,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_257.mp4 on page / only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_363875eb2c0e",
@@ -40,7 +41,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_156.mp4 on page / only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_6abd03bc73ea",
@@ -54,7 +56,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0002_perspective-center_trimmed-ball-and-block-fall.mp4 on page / only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_38a33de59636",
@@ -68,7 +71,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0002_perspective-center_trimmed-ball-and-block-fall.mp4 on page / only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_7c6f39f8081e",
@@ -82,7 +86,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_257.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b9cdb213bf8d",
@@ -96,7 +101,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 7zUyKYlCdFU_32_22to164.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_7768c7c9a9d7",
@@ -110,7 +116,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for lighting_359.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_1f4c1c904b08",
@@ -124,7 +131,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_222.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_3890b90b0f2d",
@@ -138,7 +146,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 7zUyKYlCdFU_32_22to164.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_806dfa7c07f2",
@@ -152,7 +161,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for at1CsLu4RIU_53_0to197.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_44fde15adf34",
@@ -166,7 +176,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_156.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_5724c1bb38f0",
@@ -180,7 +191,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 57UqPDirHoU_15_24to135.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_ef6bda6a241b",
@@ -194,7 +206,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0164_perspective-center_trimmed-siphon.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_9d91976aee20",
@@ -208,7 +221,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0143_perspective-center_trimmed-potato-in-water.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d8ebbb35d7e9",
@@ -222,7 +236,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for A3y_x1XMu-4_17_227to407.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_547da8f6aa79",
@@ -236,7 +251,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_380.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_1a56d96f539b",
@@ -250,7 +266,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4oDE9-8h-A8_62_32to212.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_918911a8fd73",
@@ -264,7 +281,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for UsL5HzxP68A_2_76to287.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b0e0fc10590c",
@@ -278,7 +296,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for QfWrBHgD9go_5_0to145.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b56cb5092c38",
@@ -292,7 +311,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0143_perspective-center_trimmed-potato-in-water.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_2535c3c8f87f",
@@ -306,7 +326,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_420.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_eb72763d6403",
@@ -320,7 +341,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 88H1BBqFzXQ_1_118to222.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f9aeeac77256",
@@ -334,7 +356,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_186.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8010ac774631",
@@ -348,7 +371,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 57UqPDirHoU_15_24to135.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_3d0f435b6694",
@@ -362,7 +386,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 6-75qQ0rpE4_10_17to126.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_4288f756e022",
@@ -376,7 +401,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 88H1BBqFzXQ_1_118to222.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_27e18ab7e089",
@@ -390,7 +416,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_157.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_1f06ecca0263",
@@ -404,7 +431,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_290.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_23ee175f15bc",
@@ -418,7 +446,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_223.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b5ff03e284c3",
@@ -432,7 +461,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_411.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_39a0208a58df",
@@ -446,7 +476,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0152_perspective-center_trimmed-roll-in-box.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_1ec5882ce5c1",
@@ -460,7 +491,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_271.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_55ee1d24fd2e",
@@ -474,7 +506,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_33.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_225d17540881",
@@ -488,7 +521,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0197_perspective-center_trimmed-weight-protects-duck.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_48d32c36cce2",
@@ -502,7 +536,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_271.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_51937aa0d299",
@@ -516,7 +551,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for fluid_426.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_21428c621d46",
@@ -530,7 +566,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0035_perspective-center_trimmed-block-domino.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_da9d3f4284e1",
@@ -544,7 +581,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for e8KlPriHwBU_000025_000035.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_10446b24e4b3",
@@ -558,7 +596,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_419.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_ee42ef80c3f5",
@@ -572,7 +611,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_594.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_6c7b0e53c75e",
@@ -586,7 +626,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for lighting_381.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_fab9744c454c",
@@ -600,7 +641,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 1jnsHJ1u3Pk_10_0to149.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_1cfd59d02a7c",
@@ -614,7 +656,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 1jnsHJ1u3Pk_10_0to149.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_1af0dfb25f8d",
@@ -628,7 +671,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_449.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f4d5a45b6760",
@@ -642,7 +686,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0119_perspective-center_trimmed-mirror-ball-rotate.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_ad3285d9d99a",
@@ -656,7 +701,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 2CH9DL5j-XA_13_0to130.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f67f3604d7dc",
@@ -670,7 +716,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4HoslLqqsps_9_0to118.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_505d5d2df70e",
@@ -684,7 +731,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_253.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8111868250c5",
@@ -698,7 +746,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4y1a9bjbxQU_27_0to128.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8aba09d85311",
@@ -712,7 +761,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 03zaIVEqtg8_10_0to155.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b2058a14a621",
@@ -726,7 +776,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 57UqPDirHoU_15_24to135.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_c33b489c161f",
@@ -740,7 +791,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4oDE9-8h-A8_62_32to212.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_1544891bba13",
@@ -754,7 +806,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 2CH9DL5j-XA_13_0to130.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f10b4007dcf6",
@@ -768,7 +821,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_165.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d1d682acd08b",
@@ -782,7 +836,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0002_perspective-center_trimmed-ball-and-block-fall.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_3e3f6bedd4ee",
@@ -796,7 +851,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_156.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_7f7d918c46d3",
@@ -810,7 +866,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for e8KlPriHwBU_000025_000035.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_bed0929918f9",
@@ -824,7 +881,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_261.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d70158017de3",
@@ -838,7 +896,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 6-75qQ0rpE4_10_17to126.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_7a93e4effba5",
@@ -852,7 +911,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0110_perspective-center_trimmed-match.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8c57ccf007c9",
@@ -866,7 +926,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0035_perspective-center_trimmed-block-domino.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_01b6a89914da",
@@ -880,7 +941,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0086_perspective-center_trimmed-liquid-on-duck.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_04de7d0e63cd",
@@ -894,7 +956,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_145.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_823bf3030528",
@@ -908,7 +971,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0047_perspective-center_trimmed-domino-in-juice.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_e4a77f43d542",
@@ -922,7 +986,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_283.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_93df6f542b54",
@@ -936,7 +1001,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for Cj5OoWr0k0E_92_0to279.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_eb711676d1b7",
@@ -950,7 +1016,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_223.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_a7c8cae11b9a",
@@ -964,7 +1031,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0119_perspective-center_trimmed-mirror-ball-rotate.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_a5c5baee5e53",
@@ -978,7 +1046,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for B_e9xjkuVy4_000124_000134.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_cde80789cea4",
@@ -992,7 +1061,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_271.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_ed6ab3d5bdf1",
@@ -1006,7 +1076,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0083_perspective-center_trimmed-light-on-statue.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_9b4c3fd3500f",
@@ -1020,7 +1091,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_222.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_e0f098b3b9d1",
@@ -1034,7 +1106,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 03zaIVEqtg8_10_0to155.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_acb67c1d05c3",
@@ -1048,7 +1121,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 1jnsHJ1u3Pk_10_0to149.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b195857587a2",
@@ -1062,7 +1136,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_145.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_fd5aee38bd0a",
@@ -1076,7 +1151,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0002_perspective-center_trimmed-ball-and-block-fall.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_e3bb044ae856",
@@ -1090,7 +1166,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0083_perspective-center_trimmed-light-on-statue.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_adc83561b197",
@@ -1104,7 +1181,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0110_perspective-center_trimmed-match.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_2b35a4663541",
@@ -1118,7 +1196,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4HoslLqqsps_9_0to118.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d34fea54e382",
@@ -1132,7 +1211,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 57UqPDirHoU_15_24to135.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_0632459376bd",
@@ -1146,7 +1226,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0047_perspective-center_trimmed-domino-in-juice.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_ef830d042d88",
@@ -1160,7 +1241,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 2CH9DL5j-XA_13_0to130.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_9aeced114e65",
@@ -1174,7 +1256,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4y1a9bjbxQU_27_0to128.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b5660f0f67a9",
@@ -1188,7 +1271,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 6-75qQ0rpE4_10_17to126.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_898cd286b6de",
@@ -1202,7 +1286,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0035_perspective-center_trimmed-block-domino.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_ea7754ace896",
@@ -1216,7 +1301,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0029_perspective-center_trimmed-ball-train.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_54b55bcfecc2",
@@ -1230,7 +1316,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_165.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_4c5224b275da",
@@ -1244,7 +1331,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 2CH9DL5j-XA_13_0to130.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_9f59337c1b8f",
@@ -1258,7 +1346,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_261.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_769e6fcc9b4f",
@@ -1272,7 +1361,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4HoslLqqsps_9_0to118.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_965a065832a6",
@@ -1286,7 +1376,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4oDE9-8h-A8_62_32to212.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b231db6433bc",
@@ -1300,7 +1391,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_165.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_be257f594ea2",
@@ -1314,7 +1406,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for Cj5OoWr0k0E_92_0to279.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_870791312708",
@@ -1328,7 +1421,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for e8KlPriHwBU_000025_000035.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_6412a5ac888a",
@@ -1342,7 +1436,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0029_perspective-center_trimmed-ball-train.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_91b950a04a08",
@@ -1356,7 +1451,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_156.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8494384f875e",
@@ -1370,7 +1466,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_222.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_29ad8f0da8be",
@@ -1384,7 +1481,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for B_e9xjkuVy4_000124_000134.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_5c95c2f464c1",
@@ -1398,7 +1496,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_222.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d0fe847dc104",
@@ -1412,7 +1511,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 1jnsHJ1u3Pk_10_0to149.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_004d63bbee1c",
@@ -1426,7 +1526,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4y1a9bjbxQU_27_0to128.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_edabcc2fee48",
@@ -1440,7 +1541,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0119_perspective-center_trimmed-mirror-ball-rotate.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_eb7c3fd738b9",
@@ -1454,7 +1556,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_223.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_e35ad7c69e21",
@@ -1468,7 +1571,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0035_perspective-center_trimmed-block-domino.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b48ceb1adb4d",
@@ -1482,7 +1586,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0083_perspective-center_trimmed-light-on-statue.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_bf7ffdb9e1c4",
@@ -1496,7 +1601,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for B_e9xjkuVy4_000124_000134.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_2deaec471c00",
@@ -1510,7 +1616,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 1jnsHJ1u3Pk_10_0to149.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_a07618a2c30f",
@@ -1524,7 +1631,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0086_perspective-center_trimmed-liquid-on-duck.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d817acfe8e5a",
@@ -1538,7 +1646,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for Cj5OoWr0k0E_92_0to279.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_1c3c17e79567",
@@ -1552,7 +1661,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0086_perspective-center_trimmed-liquid-on-duck.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_93f93306ea09",
@@ -1566,7 +1676,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4oDE9-8h-A8_62_32to212.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_401291fb4029",
@@ -1580,7 +1691,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 6-75qQ0rpE4_10_17to126.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_28e58195fd57",
@@ -1594,7 +1706,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0110_perspective-center_trimmed-match.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_de0db8cd4b1f",
@@ -1608,7 +1721,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 2CH9DL5j-XA_13_0to130.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b8d3c2909aa9",
@@ -1622,7 +1736,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0047_perspective-center_trimmed-domino-in-juice.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_e8fab9657ca5",
@@ -1636,7 +1751,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 6-75qQ0rpE4_10_17to126.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b47fe4b7692e",
@@ -1650,7 +1766,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 57UqPDirHoU_15_24to135.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_fbe60d0556d0",
@@ -1664,7 +1781,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0083_perspective-center_trimmed-light-on-statue.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_91c96ef51af1",
@@ -1678,7 +1796,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4HoslLqqsps_9_0to118.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_117b6e3c1eb7",
@@ -1692,7 +1811,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_283.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_53071d605c68",
@@ -1706,7 +1826,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_261.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_7cb11f33b07a",
@@ -1720,7 +1841,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 03zaIVEqtg8_10_0to155.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_3f6fa258ee93",
@@ -1734,7 +1856,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4y1a9bjbxQU_27_0to128.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_519916d90a16",
@@ -1748,7 +1871,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0035_perspective-center_trimmed-block-domino.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_0f50d995dfaf",
@@ -1762,7 +1886,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 03zaIVEqtg8_10_0to155.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f7b1d17aa1cd",
@@ -1776,7 +1901,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0047_perspective-center_trimmed-domino-in-juice.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_6c4405ac5563",
@@ -1790,7 +1916,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_283.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b4a380e77a78",
@@ -1804,7 +1931,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4oDE9-8h-A8_62_32to212.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_6891c226f3d4",
@@ -1818,7 +1946,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0086_perspective-center_trimmed-liquid-on-duck.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d745c5a5dd8c",
@@ -1832,7 +1961,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for e8KlPriHwBU_000025_000035.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_3bb77a8c776b",
@@ -1846,7 +1976,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0110_perspective-center_trimmed-match.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_aa40df2668a1",
@@ -1860,7 +1991,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_261.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_4a9861ac7776",
@@ -1874,7 +2006,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_223.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_ee2f508c6c6e",
@@ -1888,7 +2021,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_283.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_4b50e5eef1a9",
@@ -1902,7 +2036,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_222.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_0113f099125e",
@@ -1916,7 +2051,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_271.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_74a0fd0144c0",
@@ -1930,7 +2066,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_223.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_4964440a56f3",
@@ -1944,7 +2081,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for B_e9xjkuVy4_000124_000134.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_9acea1fbd6ce",
@@ -1958,7 +2096,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 1jnsHJ1u3Pk_10_0to149.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_243d70504ceb",
@@ -1972,7 +2111,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4HoslLqqsps_9_0to118.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b32ffa67e9ad",
@@ -1986,7 +2126,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_165.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_7f4c2ee40c80",
@@ -2000,7 +2141,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_222.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_3d961e272473",
@@ -2014,7 +2156,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 6-75qQ0rpE4_10_17to126.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_acfe3144fc75",
@@ -2028,7 +2171,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4oDE9-8h-A8_62_32to212.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_aeffb6ff79df",
@@ -2042,7 +2186,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4y1a9bjbxQU_27_0to128.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_34370cbae157",
@@ -2056,7 +2201,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_261.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_14b201db36b0",
@@ -2070,7 +2216,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for Cj5OoWr0k0E_92_0to279.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d27e7b211ec9",
@@ -2084,7 +2231,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for e8KlPriHwBU_000025_000035.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_c718096a7fc4",
@@ -2098,7 +2246,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_156.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b43fb1d82a10",
@@ -2112,7 +2261,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0119_perspective-center_trimmed-mirror-ball-rotate.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_a05795dd9dc1",
@@ -2126,7 +2276,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_156.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_09e829042b9b",
@@ -2140,7 +2291,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_145.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_4bf83c060946",
@@ -2154,7 +2306,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_283.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_c7b7b135e98c",
@@ -2168,7 +2321,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for Cj5OoWr0k0E_92_0to279.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_a5b169912810",
@@ -2182,7 +2336,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_156.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_e577d414c7f5",
@@ -2196,7 +2351,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_261.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_cdfe1dccb895",
@@ -2210,7 +2366,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_223.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_7139de01839e",
@@ -2224,7 +2381,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_283.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_a0e57324ff5c",
@@ -2238,7 +2396,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_271.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_6a148ff34bda",
@@ -2252,7 +2411,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 88H1BBqFzXQ_1_118to222.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f4dde73fd7b6",
@@ -2266,7 +2426,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0002_perspective-center_trimmed-ball-and-block-fall.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_9548be0d57c4",
@@ -2280,7 +2441,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_165.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_23f4c95a62e3",
@@ -2294,7 +2456,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_222.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_9f0053966fe2",
@@ -2308,7 +2471,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0002_perspective-center_trimmed-ball-and-block-fall.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_44ad0f3bf241",
@@ -2322,7 +2486,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for B_e9xjkuVy4_000124_000134.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_fd64afdffbe1",
@@ -2336,7 +2501,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for B_e9xjkuVy4_000124_000134.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8dffe61bd895",
@@ -2350,7 +2516,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0047_perspective-center_trimmed-domino-in-juice.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f88487ee40a9",
@@ -2364,7 +2531,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for B_e9xjkuVy4_000124_000134.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b210c3218faf",
@@ -2378,7 +2546,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0086_perspective-center_trimmed-liquid-on-duck.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_dfdd7e851372",
@@ -2392,7 +2561,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0029_perspective-center_trimmed-ball-train.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_1000d95fc47f",
@@ -2406,7 +2576,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for Cj5OoWr0k0E_92_0to279.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b06488392f28",
@@ -2420,7 +2591,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0047_perspective-center_trimmed-domino-in-juice.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_56f27785c342",
@@ -2434,7 +2606,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4HoslLqqsps_9_0to118.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_93c8978af58e",
@@ -2448,7 +2621,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_157.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_be8c33c4f797",
@@ -2462,7 +2636,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0083_perspective-center_trimmed-light-on-statue.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_c61bd7cc190b",
@@ -2476,7 +2651,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 2CH9DL5j-XA_13_0to130.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_47117f0549b7",
@@ -2490,7 +2666,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4oDE9-8h-A8_62_32to212.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_914c3c9c2daa",
@@ -2504,7 +2681,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 03zaIVEqtg8_10_0to155.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_262ff663d564",
@@ -2518,7 +2696,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for e8KlPriHwBU_000025_000035.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_cf9c7a37d63f",
@@ -2532,7 +2711,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 2CH9DL5j-XA_13_0to130.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_0998f9786a14",
@@ -2546,7 +2726,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0035_perspective-center_trimmed-block-domino.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_6b1f7078f09e",
@@ -2560,7 +2741,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 1jnsHJ1u3Pk_10_0to149.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_53703849c64f",
@@ -2574,7 +2756,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0110_perspective-center_trimmed-match.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b9bb3a4ef50e",
@@ -2588,7 +2771,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0119_perspective-center_trimmed-mirror-ball-rotate.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_695fb418d8e3",
@@ -2602,7 +2786,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4y1a9bjbxQU_27_0to128.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_e1b6e87ca643",
@@ -2616,7 +2801,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_261.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8c7ad110f93d",
@@ -2630,7 +2816,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for fluid_426.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_6c3f3a459957",
@@ -2644,7 +2831,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0035_perspective-center_trimmed-block-domino.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_c8d15ff0e2d0",
@@ -2658,7 +2846,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0083_perspective-center_trimmed-light-on-statue.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_95dbee0e084f",
@@ -2672,7 +2861,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for lighting_381.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_e1e4a9dbd4c7",
@@ -2686,7 +2876,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 1jnsHJ1u3Pk_10_0to149.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_2d87e02c6666",
@@ -2700,7 +2891,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 57UqPDirHoU_15_24to135.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_3a72ea604b9f",
@@ -2714,7 +2906,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_33.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_4465917ed54e",
@@ -2728,7 +2921,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_283.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_cc9a93f22261",
@@ -2742,7 +2936,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0029_perspective-center_trimmed-ball-train.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_a5367d70a5a7",
@@ -2756,7 +2951,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_145.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_5cdc665716b7",
@@ -2770,7 +2966,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for e8KlPriHwBU_000025_000035.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_6a30c33d3b70",
@@ -2784,7 +2981,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 88H1BBqFzXQ_1_118to222.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_ecbe8961ddfc",
@@ -2798,7 +2996,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_165.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_57a9b6b57f89",
@@ -2812,7 +3011,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0161_perspective-center_trimmed-single-cradle.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_15bc5204d7c6",
@@ -2826,7 +3026,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4y1a9bjbxQU_27_0to128.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_ca90209253e7",
@@ -2840,7 +3041,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_165.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_77414485aa82",
@@ -2854,7 +3056,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 6-75qQ0rpE4_10_17to126.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f5ec33af9783",
@@ -2868,7 +3071,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_594.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (3 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8650a2c45145",
@@ -2882,7 +3086,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_271.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_e4c909cd47d6",
@@ -2896,7 +3101,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_283.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_60c6feeb3747",
@@ -2910,7 +3116,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0086_perspective-center_trimmed-liquid-on-duck.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_eb56ce1fd1c1",
@@ -2924,7 +3131,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_271.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_436e6aefa616",
@@ -2938,7 +3146,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_271.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8a60e6af526e",
@@ -2952,7 +3161,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_223.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_5c574ab1fc97",
@@ -2966,7 +3176,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_257.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_2cff5c910fc4",
@@ -2980,7 +3191,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_186.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (3 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_232336e7f3e4",
@@ -2994,7 +3206,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 57UqPDirHoU_15_24to135.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_80fc2111e59a",
@@ -3008,7 +3221,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for e8KlPriHwBU_000025_000035.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b8765399eb04",
@@ -3022,7 +3236,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 7zUyKYlCdFU_32_22to164.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d3d519513b3e",
@@ -3036,7 +3251,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for e8KlPriHwBU_000025_000035.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d97087382fa6",
@@ -3050,7 +3266,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_222.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_9236f65bf039",
@@ -3064,7 +3281,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_223.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_e2c08f7a087b",
@@ -3078,7 +3296,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_156.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_fead8020cf6f",
@@ -3092,7 +3311,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 2CH9DL5j-XA_13_0to130.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_2125d4e9f9e9",
@@ -3106,7 +3326,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for UsL5HzxP68A_2_76to287.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_524cdda23e4f",
@@ -3120,7 +3341,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_156.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f020e6d7222b",
@@ -3134,7 +3356,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for at1CsLu4RIU_53_0to197.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_5a68373f873c",
@@ -3148,7 +3371,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_145.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_440331355587",
@@ -3162,7 +3386,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0164_perspective-center_trimmed-siphon.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_878e09d104ef",
@@ -3176,7 +3401,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_156.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (8 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_42b6d21d161b",
@@ -3190,7 +3416,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for B_e9xjkuVy4_000124_000134.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_0f18e4dfaa6c",
@@ -3204,7 +3431,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 6-75qQ0rpE4_10_17to126.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_841972c929ec",
@@ -3218,7 +3446,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4oDE9-8h-A8_62_32to212.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (6 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8e6d4f7f3a6c",
@@ -3232,7 +3461,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_411.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_463d6211066f",
@@ -3246,7 +3476,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_271.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d9ccd0c22ab5",
@@ -3260,7 +3491,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 57UqPDirHoU_15_24to135.mp4 on page /videos/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8b817adc0983",
@@ -3274,7 +3506,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0002_perspective-center_trimmed-ball-and-block-fall.mp4 on page /videos/compare/?prompt_id=0002_perspective-center_trimmed-ball-and-block-fall only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_a13cef98d432",
@@ -3288,7 +3521,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0002_perspective-center_trimmed-ball-and-block-fall.mp4 on page /videos/compare/?prompt_id=0002_perspective-center_trimmed-ball-and-block-fall only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_ee586c01e0b6",
@@ -3302,7 +3536,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0002_perspective-center_trimmed-ball-and-block-fall.mp4 on page /videos/compare/?prompt_id=0002_perspective-center_trimmed-ball-and-block-fall only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b29b2d03124a",
@@ -3316,7 +3551,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0002_perspective-center_trimmed-ball-and-block-fall.mp4 on page /videos/compare/?prompt_id=0002_perspective-center_trimmed-ball-and-block-fall only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_4e1362aa7eb8",
@@ -3330,7 +3566,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 88H1BBqFzXQ_1_118to222.mp4 on page /models/cosmos-predict2.5-14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_468ffa4893bf",
@@ -3344,7 +3581,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for QfWrBHgD9go_5_0to145.mp4 on page /models/cosmos-predict2.5-14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_4a599ec9b86f",
@@ -3358,7 +3596,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for lighting_381.mp4 on page /models/cosmos-predict2.5-14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_2db14465c76b",
@@ -3372,7 +3611,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_157.mp4 on page /models/cosmos-predict2.5-14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_be436d6d5d87",
@@ -3386,7 +3626,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_33.mp4 on page /models/cosmos-predict2.5-14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_0f3ba17efc95",
@@ -3400,7 +3641,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for UsL5HzxP68A_2_76to287.mp4 on page /models/cosmos-predict2.5-14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_7601eaf651e8",
@@ -3414,7 +3656,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_97.mp4 on page /models/cosmos-predict2.5-14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_83d954dd75a6",
@@ -3428,7 +3671,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_469.mp4 on page /models/cosmos-predict2.5-14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_fa32ae9e4ccd",
@@ -3442,7 +3686,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_268.mp4 on page /models/cosmos-predict2.5-14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_a2f0992248a5",
@@ -3456,7 +3701,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for at1CsLu4RIU_53_0to197.mp4 on page /models/cosmos-predict2.5-2b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (4 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_632f7b303a21",
@@ -3470,7 +3716,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 7zUyKYlCdFU_32_22to164.mp4 on page /models/cosmos-predict2.5-2b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_7054960c6a3a",
@@ -3484,7 +3731,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0164_perspective-center_trimmed-siphon.mp4 on page /models/cosmos-predict2.5-2b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b9dd81411691",
@@ -3498,7 +3746,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_186.mp4 on page /models/cosmos-predict2.5-2b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f070b6581999",
@@ -3512,7 +3761,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_257.mp4 on page /models/cosmos-predict2.5-2b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_b464b1c8599e",
@@ -3526,7 +3776,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_380.mp4 on page /models/cosmos-predict2.5-2b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8358520c1cf5",
@@ -3540,7 +3791,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_420.mp4 on page /models/cosmos-predict2.5-2b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_df9b14b9d829",
@@ -3554,7 +3806,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_411.mp4 on page /models/ltx-2-19b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_0970a653756b",
@@ -3568,7 +3821,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 7zUyKYlCdFU_32_22to164.mp4 on page /models/ltx-2-19b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f79433075d24",
@@ -3582,7 +3836,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_156.mp4 on page /models/ltx-2-19b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_651afdca17e5",
@@ -3596,7 +3851,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_271.mp4 on page /models/ltx-2-19b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_7e7ce8ca5c0c",
@@ -3610,7 +3866,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0143_perspective-center_trimmed-potato-in-water.mp4 on page /models/ltx-2-19b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_4eef84e525c3",
@@ -3624,7 +3881,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_156.mp4 on page /models/ltx-2-19b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_41de9154e9ef",
@@ -3638,7 +3896,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_594.mp4 on page /models/ltx-2-19b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_2595a70c0a4a",
@@ -3652,7 +3911,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_223.mp4 on page /models/ltx-2-19b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_0a46bb3f0de6",
@@ -3666,7 +3926,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0152_perspective-center_trimmed-roll-in-box.mp4 on page /models/ltx-2-19b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_9de7c7caff13",
@@ -3680,7 +3941,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 6-75qQ0rpE4_10_17to126.mp4 on page /models/ltx-2.3-22b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_97d973537650",
@@ -3694,7 +3956,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for e8KlPriHwBU_000025_000035.mp4 on page /models/ltx-2.3-22b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8ffe2dbf1e2c",
@@ -3708,7 +3971,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_223.mp4 on page /models/ltx-2.3-22b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_a3b4fc77a489",
@@ -3722,7 +3986,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_222.mp4 on page /models/ltx-2.3-22b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_dab4eb39bb85",
@@ -3736,7 +4001,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0134_perspective-center_trimmed-paper-fall-water.mp4 on page /models/ltx-2.3-22b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_1fdeb68787ec",
@@ -3750,7 +4016,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_431.mp4 on page /models/ltx-2.3-22b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d0621b638286",
@@ -3764,7 +4031,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_370.mp4 on page /models/ltx-2.3-22b-dev/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_2c63395a879c",
@@ -3778,7 +4046,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for B_e9xjkuVy4_000124_000134.mp4 on page /models/omniweaving/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_dae87daaec97",
@@ -3792,7 +4061,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4HoslLqqsps_9_0to118.mp4 on page /models/omniweaving/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_0f58786d8a94",
@@ -3806,7 +4076,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0161_perspective-center_trimmed-single-cradle.mp4 on page /models/omniweaving/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_14e5d6960210",
@@ -3820,7 +4091,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_293.mp4 on page /models/omniweaving/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_9ff74b191632",
@@ -3834,7 +4106,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_257.mp4 on page /models/omniweaving/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_325fba5507f1",
@@ -3848,7 +4121,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for lighting_359.mp4 on page /models/omniweaving/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_ba60908e02be",
@@ -3862,7 +4136,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for UsL5HzxP68A_2_76to287.mp4 on page /models/omniweaving/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_005204b4b562",
@@ -3876,7 +4151,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for gravity_217.mp4 on page /models/omniweaving/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_acdf295d9e7c",
@@ -3890,7 +4166,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_222.mp4 on page /models/veo-3.1/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_7f4628a81f81",
@@ -3904,7 +4181,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for collision_223.mp4 on page /models/veo-3.1/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_e87dc023d56a",
@@ -3918,7 +4196,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 0035_perspective-center_trimmed-block-domino.mp4 on page /models/veo-3.1/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_11f690239f59",
@@ -3932,7 +4211,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_268.mp4 on page /models/veo-3.1/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f60967d6b48a",
@@ -3946,7 +4226,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for ttTPAWrn110_45_0to227.mp4 on page /models/veo-3.1/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_46e396d538d9",
@@ -3960,7 +4241,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for VJ82LkozoT0_60_0to175.mp4 on page /models/veo-3.1/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_456e02d20ba0",
@@ -3974,7 +4256,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for fluid_83.mp4 on page /models/veo-3.1/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_9a719bf82623",
@@ -3988,7 +4271,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_290.mp4 on page /models/veo-3.1/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_11198f652dd5",
@@ -4002,7 +4286,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for lighting_248.mp4 on page /models/veo-3.1/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_c41c9c57de82",
@@ -4016,7 +4301,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 57UqPDirHoU_15_24to135.mp4 on page /models/wan2.2-i2v-a14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_6eaab8309383",
@@ -4030,7 +4316,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 2CH9DL5j-XA_13_0to130.mp4 on page /models/wan2.2-i2v-a14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f1233a4d3f89",
@@ -4044,7 +4331,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_216.mp4 on page /models/wan2.2-i2v-a14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_a6ecb090ac0d",
@@ -4058,7 +4346,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for fluid_239.mp4 on page /models/wan2.2-i2v-a14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d19de3eee3bd",
@@ -4072,7 +4361,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_290.mp4 on page /models/wan2.2-i2v-a14b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_40b827f6a171",
@@ -4086,7 +4376,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 4oDE9-8h-A8_62_32to212.mp4 on page /models/wan2.2-ti2v-5b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (3 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_74458448f841",
@@ -4100,7 +4391,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for UsL5HzxP68A_2_76to287.mp4 on page /models/wan2.2-ti2v-5b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_d3ff483e823e",
@@ -4114,7 +4406,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 88H1BBqFzXQ_1_118to222.mp4 on page /models/wan2.2-ti2v-5b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_39efd991e4dd",
@@ -4128,7 +4421,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 57UqPDirHoU_15_24to135.mp4 on page /models/wan2.2-ti2v-5b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_f490e5d4aead",
@@ -4142,7 +4436,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for mechanics_449.mp4 on page /models/wan2.2-ti2v-5b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_6f1d7d8a4c70",
@@ -4156,7 +4451,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 6-75qQ0rpE4_10_17to126.mp4 on page /models/wan2.2-ti2v-5b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (2 matching request records); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     },
     {
       "row_id": "defect_8e238e288537",
@@ -4170,7 +4466,8 @@
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
       },
-      "triage": "ACCEPTED_AS_IS"
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "Signed HF CDN media request for 1jnsHJ1u3Pk_10_0to149.mp4 on page /models/wan2.2-ti2v-5b/ only appears as status=None failure=net::ERR_ABORTED in the runtime audit (1 matching request record); the filename is present in snapshot/HF_UPLOAD_MANIFEST.json (8 uploaded targets share that basename), so this is best explained as browser-side stream/range cancellation during navigation rather than a missing asset."
     }
   ]
 }
