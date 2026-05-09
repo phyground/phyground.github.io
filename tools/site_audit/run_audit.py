@@ -359,6 +359,18 @@ def _capture_one_url(
 
     console_errors: list[dict[str, object]] = []
     failed_requests: list[dict[str, object]] = []
+    # A single Playwright Request can fire BOTH ``requestfailed`` (network-
+    # level abort, e.g. ``net::ERR_ABORTED`` on an HF CDN range request) AND
+    # ``response`` (4xx/5xx status from the same fetch, e.g. a 401 on the
+    # initial HF URL). Without dedup these two handlers each append a row
+    # for the same logical failure, doubling ``failed_request_count`` and
+    # over-reporting one broken asset as two failures downstream. Tracking
+    # request identity via ``id(req)`` lets either handler win — whichever
+    # event Playwright dispatches first records the row; the second handler
+    # observes the already-seen id and skips. Distinct ``Request`` objects
+    # for the same URL (e.g., a redirect chain) keep separate rows because
+    # their object identities differ.
+    seen_request_ids: set[int] = set()
 
     def _on_console(msg, _bucket=console_errors):
         if msg.type == "error":
@@ -372,15 +384,23 @@ def _capture_one_url(
                 },
             })
 
-    def _on_requestfailed(req, _bucket=failed_requests):
+    def _on_requestfailed(req, _bucket=failed_requests, _seen=seen_request_ids):
+        rid = id(req)
+        if rid in _seen:
+            return
+        _seen.add(rid)
         _bucket.append({
             "url": req.url,
             "status": None,
             "failure": (req.failure or ""),
         })
 
-    def _on_response(resp, _bucket=failed_requests):
+    def _on_response(resp, _bucket=failed_requests, _seen=seen_request_ids):
         if resp.status >= 400:
+            rid = id(resp.request)
+            if rid in _seen:
+                return
+            _seen.add(rid)
             _bucket.append({
                 "url": resp.url,
                 "status": resp.status,
@@ -607,6 +627,18 @@ def run_audit(argv: list[str] | None = None) -> int:
     )
 
     records_path = out_dir / "records.json"
+    # Eagerly remove any records.json (and its atomic-write tempfile) from a
+    # previous run BEFORE anything that can fail (bootstrap, server bind,
+    # capture). The atomic-write contract from Round 1 still rewrites
+    # records.json after every URL completion, so a healthy run produces
+    # consistent evidence; the eager-remove here closes the failure-mode
+    # gap where a bootstrap or server-bind error aborts the run before any
+    # fresh evidence is written and the directory still contains the
+    # previous run's records.json -- which would look like a successful
+    # current audit. After Round 7 an aborted rerun leaves an empty
+    # artifacts directory rather than masquerading as fresh.
+    records_path.unlink(missing_ok=True)
+    (records_path.parent / f"{records_path.name}.tmp").unlink(missing_ok=True)
 
     if args.dry_run:
         # Use a stable placeholder origin for local so prefixed_url still

@@ -1725,3 +1725,209 @@ class TestRunAuditBootstrapExit:
                 "--out", str(out_dir),
                 "--viewport", "1280x800",
             ])
+
+
+# ---------------------------------------------------------------------------
+# Round 7 regression: failed-request dedup. A single Playwright Request can
+# fire BOTH ``requestfailed`` and ``response`` (with status >= 400) for the
+# same logical failure (HF 401 + ERR_ABORTED on the same fetch). Without
+# dedup these inflate failed_request_count and over-report one broken asset
+# as two failures.
+# ---------------------------------------------------------------------------
+
+
+class _StubRequest:
+    """Minimal stand-in for a Playwright Request used in dedup tests."""
+
+    def __init__(self, url, failure=""):
+        self.url = url
+        self.failure = failure
+
+
+class _StubResponse:
+    """Minimal stand-in for a Playwright Response used in dedup tests."""
+
+    def __init__(self, request, status, url=None):
+        self.request = request
+        self.status = status
+        self.url = url if url is not None else request.url
+
+
+class TestFailedRequestDedup:
+    def _build_handlers(self):
+        """Recreate the closure structure from _capture_one_url for tests.
+
+        The dedup logic lives inside _capture_one_url's local scope, so the
+        cleanest unit test mirrors that same shape: shared list + shared
+        seen-id set, with both handlers reading the same closure.
+        """
+        failed_requests: list[dict[str, object]] = []
+        seen_request_ids: set[int] = set()
+
+        def on_requestfailed(req, _bucket=failed_requests, _seen=seen_request_ids):
+            rid = id(req)
+            if rid in _seen:
+                return
+            _seen.add(rid)
+            _bucket.append({
+                "url": req.url,
+                "status": None,
+                "failure": (req.failure or ""),
+            })
+
+        def on_response(resp, _bucket=failed_requests, _seen=seen_request_ids):
+            if resp.status >= 400:
+                rid = id(resp.request)
+                if rid in _seen:
+                    return
+                _seen.add(rid)
+                _bucket.append({
+                    "url": resp.url,
+                    "status": resp.status,
+                    "failure": "",
+                })
+
+        return failed_requests, on_requestfailed, on_response
+
+    def test_failed_request_dedup_skips_duplicate_request_object(self):
+        """Same Request firing both events records exactly once."""
+        failed, on_failed, on_resp = self._build_handlers()
+
+        req = _StubRequest(
+            "https://huggingface.co/datasets/foo/x.mp4",
+            failure="net::ERR_ABORTED",
+        )
+        # Order 1: response first (4xx), then requestfailed.
+        on_resp(_StubResponse(req, 401))
+        on_failed(req)
+        assert len(failed) == 1, f"expected 1 entry, got {failed}"
+        assert failed[0]["status"] == 401
+        assert failed[0]["url"] == "https://huggingface.co/datasets/foo/x.mp4"
+
+        # Order 2 (separate scenario): requestfailed first, then response.
+        failed2, on_failed2, on_resp2 = self._build_handlers()
+        req2 = _StubRequest(
+            "https://huggingface.co/datasets/foo/y.mp4",
+            failure="net::ERR_ABORTED",
+        )
+        on_failed2(req2)
+        on_resp2(_StubResponse(req2, 401))
+        assert len(failed2) == 1
+        assert failed2[0]["status"] is None
+        assert failed2[0]["failure"] == "net::ERR_ABORTED"
+
+    def test_failed_request_distinct_requests_remain_separate(self):
+        """Two different Request objects (e.g. redirect chain) keep both rows."""
+        failed, on_failed, on_resp = self._build_handlers()
+
+        # Two distinct requests at the same URL: e.g. HF returns a redirect
+        # 302 to the CDN, then the CDN range request aborts. Both legs fail.
+        req_origin = _StubRequest("https://huggingface.co/datasets/foo/x.mp4")
+        req_cdn = _StubRequest(
+            "https://cas-bridge.xethub.hf.co/foo/x.mp4",
+            failure="net::ERR_ABORTED",
+        )
+
+        on_resp(_StubResponse(req_origin, 401))
+        on_failed(req_cdn)
+
+        assert len(failed) == 2, f"expected 2 distinct rows, got {failed}"
+        urls = {entry["url"] for entry in failed}
+        assert urls == {
+            "https://huggingface.co/datasets/foo/x.mp4",
+            "https://cas-bridge.xethub.hf.co/foo/x.mp4",
+        }
+
+
+# ---------------------------------------------------------------------------
+# Round 7 regression: stale records.json must NOT survive a rerun. If a new
+# run aborts before the first per-URL atomic write (bootstrap fails, server
+# bind error, etc.), the artifacts directory must not still contain the
+# previous run's records.json masquerading as fresh evidence.
+# ---------------------------------------------------------------------------
+
+
+class TestStaleRecordsJsonClearing:
+    def test_run_audit_clears_stale_records_json_before_run(self, tmp_path):
+        """Dry-run path replaces a pre-existing records.json with fresh content."""
+        out_dir = tmp_path / "out"
+        out_dir.mkdir()
+        # Plant a stale records.json with content that would be obviously
+        # wrong if it survived.
+        stale_path = out_dir / "records.json"
+        stale_path.write_text(
+            json.dumps([{"url": "/STALE", "stale_marker": True}]),
+            encoding="utf-8",
+        )
+
+        urls_file = tmp_path / "urls.txt"
+        urls_file.write_text("/\n/about/\n", encoding="utf-8")
+
+        from tools.site_audit import run_audit as run_audit_module
+
+        rc = run_audit_module.run_audit([
+            "--target", "local",
+            "--urls", str(urls_file),
+            "--out", str(out_dir),
+            "--dry-run",
+        ])
+        assert rc == 0
+
+        records = json.loads(stale_path.read_text(encoding="utf-8"))
+        assert isinstance(records, list)
+        assert len(records) == 2  # /, /about/
+        assert all("stale_marker" not in r for r in records)
+        urls = {r["url"] for r in records}
+        assert urls == {"/", "/about/"}
+
+    def test_run_audit_clears_stale_records_json_when_bootstrap_fails(
+        self, tmp_path, monkeypatch
+    ):
+        """A real-capture run that aborts at bootstrap removes the stale
+        records.json -- the directory does not retain the previous run's
+        evidence as if the new run succeeded."""
+        out_dir = tmp_path / "out"
+        out_dir.mkdir()
+        stale_path = out_dir / "records.json"
+        stale_path.write_text(
+            json.dumps([{"url": "/STALE", "stale_marker": True}]),
+            encoding="utf-8",
+        )
+
+        urls_file = tmp_path / "urls.txt"
+        urls_file.write_text("/\n", encoding="utf-8")
+
+        from tools.site_audit import run_audit as run_audit_module
+
+        # Stub the bootstrap helper to raise so the run aborts BEFORE any
+        # _write_records_atomic call. The stale records.json must still
+        # have been removed eagerly at the start of run_audit.
+        def fake_bootstrap():
+            raise RuntimeError("Playwright is not installed (test stub)")
+
+        monkeypatch.setattr(
+            run_audit_module, "_bootstrap_playwright_or_raise", fake_bootstrap
+        )
+
+        from contextlib import contextmanager
+
+        @contextmanager
+        def fake_serve():
+            yield "http://127.0.0.1:0"
+
+        monkeypatch.setattr(run_audit_module, "_serve_repo_root", fake_serve)
+
+        with pytest.raises(RuntimeError):
+            run_audit_module.run_audit([
+                "--target", "local",
+                "--urls", str(urls_file),
+                "--out", str(out_dir),
+                "--viewport", "1280x800",
+            ])
+
+        # Stale records.json must be gone. No fresh records.json was written
+        # because bootstrap failed, so absence is the correct outcome --
+        # better than "fresh-looking but actually stale".
+        assert not stale_path.exists(), (
+            f"stale records.json was retained after a failed run: {stale_path}"
+        )
