@@ -1,21 +1,20 @@
 {
-  "schema_version": 2,
-  "generated_for": "round-3 (post-task7 + post-task13 + geometry + dual-source)",
+  "schema_version": 3,
+  "generated_for": "round-4 (source-preserving rebuild; no synthetic 'both' rows)",
   "summary": {
-    "total_rows": 560,
+    "total_rows": 563,
     "by_source": {
-      "local": 304,
-      "both": 3,
-      "fork": 253
+      "local": 307,
+      "fork": 256
     },
     "by_symptom": {
-      "media_unavailable": 560
+      "media_unavailable": 563
     },
     "by_root_cause": {
-      "external": 560
+      "external": 563
     },
     "by_triage": {
-      "ACCEPTED_AS_IS": 560
+      "ACCEPTED_AS_IS": 563
     },
     "repo_owned_open": 0
   },
@@ -3366,10 +3365,10 @@
       "rationale": "browser-side stream/range abort on HF CDN; not a server failure; tools/smoke_test_hf.py reports 3/3 OK so the asset is reachable"
     },
     {
-      "row_id": "defect_5c2a46d4eb4c",
+      "row_id": "defect_a24f6c1c239b",
       "page": "/videos/",
       "viewport": "1280x800",
-      "source": "both",
+      "source": "local",
       "symptom_class": "media_unavailable",
       "root_cause_class": "external",
       "root_cause_path": "https://cas-bridge.xethub.hf.co/xet-bridge-us/69fe903b67a83f8b30de4109/1779a7b07db512b65e3daa1fca93619a79cf30754869c8bb33efd95bf0259a89?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260509%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260509T021617Z&X-Amz-Expires=3600&X-Amz-Signature=7a374d015c5c41f191c0ff4ad268035fdc9e00edf466d8d21c78062657433999&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270047_perspective-center_trimmed-domino-in-juice.mp4%3B+filename%3D%220047_perspective-center_trimmed-domino-in-juice.mp4%22%3B&response-content-type=video%2Fmp4&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1778296577&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3ODI5NjU3N319LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82OWZlOTAzYjY3YTgzZjhiMzBkZTQxMDkvMTc3OWE3YjA3ZGI1MTJiNjVlM2RhYTFmY2E5MzYxOWE3OWNmMzA3NTQ4NjljOGJiMzNlZmQ5NWJmMDI1OWE4OSoifV19&Signature=j0PDmuOdiaXDnOcwENE-Ub5fOgIoTLNMpx%7EM%7E6TviNYeeL-xMXQL6uvV-X4ZOant-Y60E8LtUewPa23QmuxtHW6AtJt3d-hkjgRYIJHMd4y4lw2SzFmeNLr-v3dn18GuQtcPxbwsNLjTD13zhyeAfm24nKhQBr8bKaFO48ofIOzTPG313eyxAYw1LFW-qOtPKs9Z1GBbymP95fz38Oj7nbBRwho7pscnx8cgH4%7EvCS7P8eA6xZH6ovj%7EekDslQRD8kGcD8YFq0VGZ-YwxACWG7DXk5FjOUek-u%7EOmt4ZrPrLVNQZ1zQ35Xxr88r9wLzkXWpe5Jb8z1Yu0yaocH4rvA__&Key-Pair-Id=K2L8F4GPSG1IFC",
@@ -3591,10 +3590,10 @@
       "rationale": "browser-side stream/range abort on HF CDN; not a server failure; tools/smoke_test_hf.py reports 3/3 OK so the asset is reachable"
     },
     {
-      "row_id": "defect_292961abba85",
+      "row_id": "defect_b582a063a66d",
       "page": "/videos/",
       "viewport": "1280x800",
-      "source": "both",
+      "source": "local",
       "symptom_class": "media_unavailable",
       "root_cause_class": "external",
       "root_cause_path": "https://cas-bridge.xethub.hf.co/xet-bridge-us/69fe903b67a83f8b30de4109/a6f3a5853d135f341b7c6e1067bf44d27ad32f7072bf0c4486b4ae5fce703714?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260509%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260509T021617Z&X-Amz-Expires=3600&X-Amz-Signature=33544fb0415d7109aa2197f548d94821d5fffcbdf8a0262f041177ece6365000&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270164_perspective-center_trimmed-siphon.mp4%3B+filename%3D%220164_perspective-center_trimmed-siphon.mp4%22%3B&response-content-type=video%2Fmp4&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1778296577&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3ODI5NjU3N319LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82OWZlOTAzYjY3YTgzZjhiMzBkZTQxMDkvYTZmM2E1ODUzZDEzNWYzNDFiN2M2ZTEwNjdiZjQ0ZDI3YWQzMmY3MDcyYmYwYzQ0ODZiNGFlNWZjZTcwMzcxNCoifV19&Signature=v8uu%7EDPfNnD-dNREzayMpHgSD%7ERpFi0BB1%7EwWfL3QoQDvqebVG9srm9-HWP2vP09clE4B9XdpPMDVux8pKkPDR18XucHKz%7EHt%7E0-IInnwVDUaQA7CIHMSJdV53qZ3Ic4Yrgd5aYoibTkyXsXB-ScNdkTNAVoaXHuEGXb0v-QVufdbrtsUBFi05LgHddWFe4wUfpjEY1Zj8NxQWsuT2TdP7YAqq53-qXytRJkVJZi43CuToJd2wbFjwLTry1ASSuqbCulr5F1B7UQA2Nc540DulZv%7Ed3hVFoc9Y%7EavevPg5p4knbpqF0DBRifJ985ER1j4juQLIEUM7xUFbj3-rqIQw__&Key-Pair-Id=K2L8F4GPSG1IFC",
@@ -3741,10 +3740,10 @@
       "rationale": "browser-side stream/range abort on HF CDN; not a server failure; tools/smoke_test_hf.py reports 3/3 OK so the asset is reachable"
     },
     {
-      "row_id": "defect_a16ac85e8cba",
+      "row_id": "defect_5d773e763550",
       "page": "/models/cosmos-predict2.5-14b/",
       "viewport": "1280x800",
-      "source": "both",
+      "source": "local",
       "symptom_class": "media_unavailable",
       "root_cause_class": "external",
       "root_cause_path": "https://cas-bridge.xethub.hf.co/xet-bridge-us/69fe903b67a83f8b30de4109/a449ca37ee01973443b192ff40c25c6a0d3f642a8723c5ae23e37018b7e3b769?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260509%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260509T021629Z&X-Amz-Expires=3600&X-Amz-Signature=4a0fc824959b0c8176babee601d285a7045b7d02d352577c8579e89cc7c99bb6&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27mechanics_268.mp4%3B+filename%3D%22mechanics_268.mp4%22%3B&response-content-type=video%2Fmp4&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1778296589&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3ODI5NjU4OX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82OWZlOTAzYjY3YTgzZjhiMzBkZTQxMDkvYTQ0OWNhMzdlZTAxOTczNDQzYjE5MmZmNDBjMjVjNmEwZDNmNjQyYTg3MjNjNWFlMjNlMzcwMThiN2UzYjc2OSoifV19&Signature=W0F2udHXDULHqnxuVgZ14%7Eih5ebk50M-L0dJCtEC2XRpeVfUCDEqWmWFAsf1kbi2vXeIAMN-rNxjUuagBmkXJ5P6Zku9AH%7ESwjRE6M5gVjj0N8BellRIIROoiFvoKx4l54fZ-aworRg2kfhywfJVgUjHjKCMu3qxYe13Wk2fFIc9VCFUSYqSfc%7Etm6B6at5IztT0DS5%7ED1IYpMa22MjI-8fF9g81Le3CrSGVR3mEI2fR5Nt4z2uRx-zY5Kxph5D6MiqXg3pYH0%7EPA6sBCxuknEorQL0OAsAE6WruNB1UVeq1bexEqcoCrV02g-aRISJ6wSM3ZWaPHV0q0r9J0mTbVw__&Key-Pair-Id=K2L8F4GPSG1IFC",
@@ -4873,6 +4872,21 @@
       "symptom_class": "media_unavailable",
       "root_cause_class": "external",
       "root_cause_path": "https://cas-bridge.xethub.hf.co/xet-bridge-us/69fe903b67a83f8b30de4109/41427479811a76d3bfe2348c7738b7247fa003dd176c4f33248cbaecbb25dba1?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260509%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260509T021654Z&X-Amz-Expires=3600&X-Amz-Signature=4b9c2c39b6e3b2f10a56bfb8a6e120d73e571e0cec9c6b9c7c87f099c8b2e99a&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27mechanics_420.mp4%3B+filename%3D%22mechanics_420.mp4%22%3B&response-content-type=video%2Fmp4&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1778296614&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3ODI5NjYxNH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82OWZlOTAzYjY3YTgzZjhiMzBkZTQxMDkvNDE0Mjc0Nzk4MTFhNzZkM2JmZTIzNDhjNzczOGI3MjQ3ZmEwMDNkZDE3NmM0ZjMzMjQ4Y2JhZWNiYjI1ZGJhMSoifV19&Signature=lwg0FP3RQwNIFtYzrOGofABhHq%7E447OiR2-q7YpBp9kX4kPJVuEkG1cpo4fZiqXepePJM8X9CgOf-ELCMCDd1rEHRG5IRqbT7n0AGXrZoge7w5I8q-S-gksR%7Ed5ezfLUngxE0pnobuneiC7u3ktyQ12R3rTrcS0HzSu%7ES3RZgmJ2kPly07C4NW1rjnFGBEIpJ-w3y0ydywvePPawSbhSsF8-xKmXL1M-y25OytT-p8brg7YXAApkTBkcfQXd0grUnqzZxr8vKU90AcgGY989s6fbgRhuNLOgNE1xXMg6d8Wpu8HCx5L7YCRbQsX5h5GMTELRTXxizbdzzpa645s44w__&Key-Pair-Id=K2L8F4GPSG1IFC",
+      "evidence": {
+        "kind": "failed_request",
+        "details": "status=None failure=net::ERR_ABORTED"
+      },
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "browser-side stream/range abort on HF CDN; not a server failure; tools/smoke_test_hf.py reports 3/3 OK so the asset is reachable"
+    },
+    {
+      "row_id": "defect_f15903f7b60f",
+      "page": "/videos/",
+      "viewport": "1280x800",
+      "source": "fork",
+      "symptom_class": "media_unavailable",
+      "root_cause_class": "external",
+      "root_cause_path": "https://cas-bridge.xethub.hf.co/xet-bridge-us/69fe903b67a83f8b30de4109/a6f3a5853d135f341b7c6e1067bf44d27ad32f7072bf0c4486b4ae5fce703714?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260509%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260509T021617Z&X-Amz-Expires=3600&X-Amz-Signature=33544fb0415d7109aa2197f548d94821d5fffcbdf8a0262f041177ece6365000&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270164_perspective-center_trimmed-siphon.mp4%3B+filename%3D%220164_perspective-center_trimmed-siphon.mp4%22%3B&response-content-type=video%2Fmp4&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1778296577&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3ODI5NjU3N319LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82OWZlOTAzYjY3YTgzZjhiMzBkZTQxMDkvYTZmM2E1ODUzZDEzNWYzNDFiN2M2ZTEwNjdiZjQ0ZDI3YWQzMmY3MDcyYmYwYzQ0ODZiNGFlNWZjZTcwMzcxNCoifV19&Signature=v8uu%7EDPfNnD-dNREzayMpHgSD%7ERpFi0BB1%7EwWfL3QoQDvqebVG9srm9-HWP2vP09clE4B9XdpPMDVux8pKkPDR18XucHKz%7EHt%7E0-IInnwVDUaQA7CIHMSJdV53qZ3Ic4Yrgd5aYoibTkyXsXB-ScNdkTNAVoaXHuEGXb0v-QVufdbrtsUBFi05LgHddWFe4wUfpjEY1Zj8NxQWsuT2TdP7YAqq53-qXytRJkVJZi43CuToJd2wbFjwLTry1ASSuqbCulr5F1B7UQA2Nc540DulZv%7Ed3hVFoc9Y%7EavevPg5p4knbpqF0DBRifJ985ER1j4juQLIEUM7xUFbj3-rqIQw__&Key-Pair-Id=K2L8F4GPSG1IFC",
       "evidence": {
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
@@ -6876,6 +6890,21 @@
       "rationale": "browser-side stream/range abort on HF CDN; not a server failure; tools/smoke_test_hf.py reports 3/3 OK so the asset is reachable"
     },
     {
+      "row_id": "defect_e521229d2d52",
+      "page": "/videos/",
+      "viewport": "1280x800",
+      "source": "fork",
+      "symptom_class": "media_unavailable",
+      "root_cause_class": "external",
+      "root_cause_path": "https://cas-bridge.xethub.hf.co/xet-bridge-us/69fe903b67a83f8b30de4109/1779a7b07db512b65e3daa1fca93619a79cf30754869c8bb33efd95bf0259a89?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260509%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260509T021617Z&X-Amz-Expires=3600&X-Amz-Signature=7a374d015c5c41f191c0ff4ad268035fdc9e00edf466d8d21c78062657433999&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%270047_perspective-center_trimmed-domino-in-juice.mp4%3B+filename%3D%220047_perspective-center_trimmed-domino-in-juice.mp4%22%3B&response-content-type=video%2Fmp4&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1778296577&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3ODI5NjU3N319LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82OWZlOTAzYjY3YTgzZjhiMzBkZTQxMDkvMTc3OWE3YjA3ZGI1MTJiNjVlM2RhYTFmY2E5MzYxOWE3OWNmMzA3NTQ4NjljOGJiMzNlZmQ5NWJmMDI1OWE4OSoifV19&Signature=j0PDmuOdiaXDnOcwENE-Ub5fOgIoTLNMpx%7EM%7E6TviNYeeL-xMXQL6uvV-X4ZOant-Y60E8LtUewPa23QmuxtHW6AtJt3d-hkjgRYIJHMd4y4lw2SzFmeNLr-v3dn18GuQtcPxbwsNLjTD13zhyeAfm24nKhQBr8bKaFO48ofIOzTPG313eyxAYw1LFW-qOtPKs9Z1GBbymP95fz38Oj7nbBRwho7pscnx8cgH4%7EvCS7P8eA6xZH6ovj%7EekDslQRD8kGcD8YFq0VGZ-YwxACWG7DXk5FjOUek-u%7EOmt4ZrPrLVNQZ1zQ35Xxr88r9wLzkXWpe5Jb8z1Yu0yaocH4rvA__&Key-Pair-Id=K2L8F4GPSG1IFC",
+      "evidence": {
+        "kind": "failed_request",
+        "details": "status=None failure=net::ERR_ABORTED"
+      },
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "browser-side stream/range abort on HF CDN; not a server failure; tools/smoke_test_hf.py reports 3/3 OK so the asset is reachable"
+    },
+    {
       "row_id": "defect_71a978a1842e",
       "page": "/videos/",
       "viewport": "1280x800",
@@ -7618,6 +7647,21 @@
       "symptom_class": "media_unavailable",
       "root_cause_class": "external",
       "root_cause_path": "https://cas-bridge.xethub.hf.co/xet-bridge-us/69fe903b67a83f8b30de4109/36550663d5b94345d066d9df635f5ca9506dac6bccd2276a982b72bf8b8e17d8?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260509%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260509T021706Z&X-Amz-Expires=3600&X-Amz-Signature=c9dff879d2cfdb3373bdf947bcdd53045499b1fd55b555f05eb506f408d81b88&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27UsL5HzxP68A_2_76to287.mp4%3B+filename%3D%22UsL5HzxP68A_2_76to287.mp4%22%3B&response-content-type=video%2Fmp4&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1778296626&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3ODI5NjYyNn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82OWZlOTAzYjY3YTgzZjhiMzBkZTQxMDkvMzY1NTA2NjNkNWI5NDM0NWQwNjZkOWRmNjM1ZjVjYTk1MDZkYWM2YmNjZDIyNzZhOTgyYjcyYmY4YjhlMTdkOCoifV19&Signature=FcY05u5e50N7WZZAHoqmM2Kd7yguQphuaKCzRW-9HmC3hJjEYxnHopiwMsKgI7tsAfzg%7EvuCeULtZ1QsTA5tSau9CYd2Lo4-3XRbejngd2wUgdKD0INGawuTgA0-Fzqdjpib4B6lqgY6hv3FEB0Iv%7EuInSHGo-zazV-UMvF4ofTireQinoDfoRfuq-qUXJ%7EOSctAmGRf68WPdDvgQScNWTAWiLYX5Vp25feCBP0uB5NZhEtdk3V9vZyQDna1k2efJNYwTRQ4VPSFw-tN2wN%7Eudx7sP-cIYLDSEYDsix81NYQ0SpsNjwULiVXaLSiEidYDdWyWLxkxjFKYxe8NpmEVw__&Key-Pair-Id=K2L8F4GPSG1IFC",
+      "evidence": {
+        "kind": "failed_request",
+        "details": "status=None failure=net::ERR_ABORTED"
+      },
+      "triage": "ACCEPTED_AS_IS",
+      "rationale": "browser-side stream/range abort on HF CDN; not a server failure; tools/smoke_test_hf.py reports 3/3 OK so the asset is reachable"
+    },
+    {
+      "row_id": "defect_c626495dd3ee",
+      "page": "/models/cosmos-predict2.5-14b/",
+      "viewport": "1280x800",
+      "source": "fork",
+      "symptom_class": "media_unavailable",
+      "root_cause_class": "external",
+      "root_cause_path": "https://cas-bridge.xethub.hf.co/xet-bridge-us/69fe903b67a83f8b30de4109/a449ca37ee01973443b192ff40c25c6a0d3f642a8723c5ae23e37018b7e3b769?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260509%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260509T021629Z&X-Amz-Expires=3600&X-Amz-Signature=4a0fc824959b0c8176babee601d285a7045b7d02d352577c8579e89cc7c99bb6&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27mechanics_268.mp4%3B+filename%3D%22mechanics_268.mp4%22%3B&response-content-type=video%2Fmp4&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1778296589&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3ODI5NjU4OX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82OWZlOTAzYjY3YTgzZjhiMzBkZTQxMDkvYTQ0OWNhMzdlZTAxOTczNDQzYjE5MmZmNDBjMjVjNmEwZDNmNjQyYTg3MjNjNWFlMjNlMzcwMThiN2UzYjc2OSoifV19&Signature=W0F2udHXDULHqnxuVgZ14%7Eih5ebk50M-L0dJCtEC2XRpeVfUCDEqWmWFAsf1kbi2vXeIAMN-rNxjUuagBmkXJ5P6Zku9AH%7ESwjRE6M5gVjj0N8BellRIIROoiFvoKx4l54fZ-aworRg2kfhywfJVgUjHjKCMu3qxYe13Wk2fFIc9VCFUSYqSfc%7Etm6B6at5IztT0DS5%7ED1IYpMa22MjI-8fF9g81Le3CrSGVR3mEI2fR5Nt4z2uRx-zY5Kxph5D6MiqXg3pYH0%7EPA6sBCxuknEorQL0OAsAE6WruNB1UVeq1bexEqcoCrV02g-aRISJ6wSM3ZWaPHV0q0r9J0mTbVw__&Key-Pair-Id=K2L8F4GPSG1IFC",
       "evidence": {
         "kind": "failed_request",
         "details": "status=None failure=net::ERR_ABORTED"
