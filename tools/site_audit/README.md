@@ -161,7 +161,11 @@ Each entry in `records.json` is a JSON object with the following keys
 | `screenshot_path`      | string          | Path to the PNG (would-be path in dry-run).                          |
 | `console_errors`       | list[object]    | Each entry has `text` and `location`; empty in dry-run.              |
 | `failed_requests`      | list[object]    | Each entry has `url`, `status`, `failure`; empty in dry-run.         |
-| `error`                | string \| null  | `null` on success; on per-URL capture failure, a short `"<ExcClass>: <msg>"` summary truncated to 500 chars. Always present. |
+| `error`                | string \| null  | `null` on success; on per-URL capture failure, a short `"<ExcClass>: <msg>"` summary truncated to 500 chars. On geometry-evaluation failure (capture otherwise succeeded) a short `"geometry: <ExcClass>: <msg>"` note is recorded instead. Always present. |
+| `body_scroll_height`   | int \| null     | `document.body.scrollHeight` measured on the live DOM after `wait_until="networkidle"`. `null` in dry-run and on geometry-eval failure. |
+| `main_scroll_height`   | int \| null     | `document.querySelector('main').scrollHeight`, or `0` if `<main>` is absent. `null` in dry-run and on geometry-eval failure. |
+| `chrome_height`        | int \| null     | Sum of `<header>`, `<footer>`, and any standalone `body > nav` `scrollHeight`. A `<nav>` nested inside the header is not double-counted. `null` in dry-run and on geometry-eval failure. |
+| `main_non_empty`       | bool \| null    | `true` iff `main_scroll_height > 0` AND `body_scroll_height > chrome_height`. `null` in dry-run and on geometry-eval failure. |
 
 ### Per-URL error isolation
 
@@ -189,6 +193,12 @@ or sibling artifacts under `<out>/logs/` survive). The cleanup count is
 echoed to stderr as `[run_audit] cleaned N stale screenshot(s) from
 <out>`. `records.json` is overwritten by the atomic incremental writes
 described above; no manual cleanup is needed.
+
+The four geometry fields (`body_scroll_height`, `main_scroll_height`,
+`chrome_height`, `main_non_empty`) are captured from the live DOM via a
+single `page.evaluate(...)` issued *after* `page.goto(..., wait_until=
+"networkidle")` and the screenshot. So each repeat run measures the
+post-network-idle layout, not a pre-paint snapshot.
 
 ## `--dry-run` mode
 

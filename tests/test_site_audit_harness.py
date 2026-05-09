@@ -46,6 +46,16 @@ REQUIRED_RECORD_KEYS = frozenset({
     "console_errors",
     "failed_requests",
     "error",
+    # Geometry fields stamped from the live DOM after networkidle. They
+    # are ``None`` in dry-run and on geometry-eval failure but the keys
+    # are always present in fresh JSON output. (Existing on-disk
+    # records.json files from earlier rounds may lack them — the schema-
+    # parity assertions below only apply to records emitted by the
+    # current run_audit binary.)
+    "body_scroll_height",
+    "main_scroll_height",
+    "chrome_height",
+    "main_non_empty",
 })
 
 
@@ -1135,3 +1145,322 @@ def test_run_audit_urls_and_url_set_mutually_exclusive(tmp_path: Path) -> None:
         or "not allowed with" in combined
         or "cannot" in combined
     ), combined
+
+
+# ---------------------------------------------------------------------------
+# Main-content geometry fields. Captured from the live DOM after
+# ``wait_until="networkidle"`` and stamped onto every record emitted by the
+# current run_audit binary. Dry-run keeps all four fields ``None``; the real
+# capture path computes them from a single ``page.evaluate(...)`` call. A
+# geometry-eval failure must not abort the per-URL capture — the four fields
+# go to ``None`` and a short note lands in the existing ``error`` field.
+# ---------------------------------------------------------------------------
+
+
+def test_audit_record_has_geometry_fields_with_dry_run_defaults_none(
+    tmp_path: Path,
+) -> None:
+    """Dry-run records carry all four geometry fields with value ``None``."""
+    urls = _write_urls(tmp_path, ["/", "/about/"])
+    out_dir = tmp_path / "artifacts"
+    result = _run(
+        str(RUN_AUDIT_SCRIPT),
+        "--target", "local",
+        "--urls", str(urls),
+        "--out", str(out_dir),
+        "--dry-run",
+    )
+    assert result.returncode == 0, result.stderr
+
+    records = json.loads((out_dir / "records.json").read_text(encoding="utf-8"))
+    assert len(records) == 2
+    for rec in records:
+        for key in (
+            "body_scroll_height",
+            "main_scroll_height",
+            "chrome_height",
+            "main_non_empty",
+        ):
+            assert key in rec, f"dry-run record missing geometry key {key!r}"
+            assert rec[key] is None, (
+                f"dry-run record {rec['url']!r} key {key!r} must be None, "
+                f"got {rec[key]!r}"
+            )
+
+
+def test_capture_one_url_records_geometry_on_real_page(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The CLI wires geometry numbers from ``_capture_one_url`` onto each record.
+
+    We stub ``_capture_one_url`` to return geometry payloads that exercise
+    both branches of ``main_non_empty``. The driver is responsible for
+    forwarding the four fields through to records.json untouched.
+    """
+    import importlib
+
+    run_audit_module = importlib.import_module("tools.site_audit.run_audit")
+
+    out_dir = tmp_path / "artifacts"
+    urls_path = _write_urls(tmp_path, ["/", "/about/"])
+
+    # First URL: body > chrome and main > 0  -> main_non_empty True.
+    # Second URL: main == 0                   -> main_non_empty False.
+    geometry_by_url = {
+        "/": {
+            "body_scroll_height": 2400,
+            "main_scroll_height": 1800,
+            "chrome_height": 600,
+            "main_non_empty": True,
+        },
+        "/about/": {
+            "body_scroll_height": 600,
+            "main_scroll_height": 0,
+            "chrome_height": 600,
+            "main_non_empty": False,
+        },
+    }
+
+    def fake_capture_one(url, *, prefix, target, viewport, out_dir):
+        from tools.site_audit import AuditRecord
+
+        g = geometry_by_url[url]
+        return AuditRecord(
+            url=url,
+            prefixed_url=f"{prefix.rstrip('/')}{url}",
+            target=target,
+            final_url=f"{prefix.rstrip('/')}{url}",
+            http_status=200,
+            viewport=viewport,
+            console_error_count=0,
+            failed_request_count=0,
+            screenshot_path=str(out_dir / "fake.png"),
+            console_errors=[],
+            failed_requests=[],
+            body_scroll_height=g["body_scroll_height"],
+            main_scroll_height=g["main_scroll_height"],
+            chrome_height=g["chrome_height"],
+            main_non_empty=g["main_non_empty"],
+        )
+
+    from contextlib import contextmanager
+
+    @contextmanager
+    def fake_serve():
+        yield "http://127.0.0.1:0"
+
+    monkeypatch.setattr(run_audit_module, "_serve_repo_root", fake_serve)
+    monkeypatch.setattr(run_audit_module, "_capture_one_url", fake_capture_one)
+
+    rc = run_audit_module.run_audit([
+        "--target", "local",
+        "--urls", str(urls_path),
+        "--out", str(out_dir),
+    ])
+    assert rc == 0
+
+    records = json.loads((out_dir / "records.json").read_text(encoding="utf-8"))
+    by_url = {r["url"]: r for r in records}
+    for url, expected in geometry_by_url.items():
+        rec = by_url[url]
+        assert rec["body_scroll_height"] == expected["body_scroll_height"]
+        assert rec["main_scroll_height"] == expected["main_scroll_height"]
+        assert rec["chrome_height"] == expected["chrome_height"]
+        assert rec["main_non_empty"] is expected["main_non_empty"]
+
+
+def test_main_non_empty_computation() -> None:
+    """Pure unit test on the (body, main, chrome) -> main_non_empty formula.
+
+    The contract: True iff ``main_scroll_height > 0`` AND
+    ``body_scroll_height > chrome_height``. ``None`` inputs flip the result
+    to False so callers cannot read a positive signal off a record where
+    geometry was not captured.
+    """
+    from tools.site_audit.run_audit import _compute_main_non_empty
+
+    cases = [
+        # (body, main, chrome, expected)
+        (10, 5, 5, True),     # body > chrome AND main > 0
+        (10, 0, 5, False),    # main == 0
+        (5, 1, 10, False),    # body < chrome
+        (0, 0, 0, False),     # all zero
+        (1280, 800, 200, True),   # realistic full-page case
+        (5, 5, 5, False),     # body == chrome (must be strict)
+        (None, 5, 5, False),  # missing body
+        (5, None, 5, False),  # missing main
+        (5, 5, None, False),  # missing chrome
+    ]
+    for body, main, chrome, expected in cases:
+        got = _compute_main_non_empty(body, main, chrome)
+        assert got is expected, (
+            f"_compute_main_non_empty({body!r}, {main!r}, {chrome!r}) "
+            f"-> {got!r}, expected {expected!r}"
+        )
+
+
+def test_capture_geometry_failure_keeps_record_with_nones(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A geometry-eval failure on one URL must not abort the run.
+
+    The failing URL emits a record with ``body_scroll_height``,
+    ``main_scroll_height``, ``chrome_height``, ``main_non_empty`` all set
+    to ``None``. The other URLs continue to capture geometry normally.
+    Round 1's per-URL error isolation contract still holds.
+    """
+    import importlib
+
+    run_audit_module = importlib.import_module("tools.site_audit.run_audit")
+
+    out_dir = tmp_path / "artifacts"
+    urls_path = _write_urls(tmp_path, ["/", "/broken/", "/last/"])
+
+    def fake_capture_one(url, *, prefix, target, viewport, out_dir):
+        from tools.site_audit import AuditRecord
+
+        if url == "/broken/":
+            # Simulate the path where ``_evaluate_main_geometry`` raised:
+            # the surrounding code stamps ``None`` for all four fields and
+            # records a short note in ``error``.
+            return AuditRecord(
+                url=url,
+                prefixed_url=f"{prefix.rstrip('/')}{url}",
+                target=target,
+                final_url=f"{prefix.rstrip('/')}{url}",
+                http_status=200,
+                viewport=viewport,
+                console_error_count=0,
+                failed_request_count=0,
+                screenshot_path=str(out_dir / "fake.png"),
+                console_errors=[],
+                failed_requests=[],
+                error="geometry: RuntimeError: simulated evaluate failure",
+                body_scroll_height=None,
+                main_scroll_height=None,
+                chrome_height=None,
+                main_non_empty=None,
+            )
+        return AuditRecord(
+            url=url,
+            prefixed_url=f"{prefix.rstrip('/')}{url}",
+            target=target,
+            final_url=f"{prefix.rstrip('/')}{url}",
+            http_status=200,
+            viewport=viewport,
+            console_error_count=0,
+            failed_request_count=0,
+            screenshot_path=str(out_dir / "fake.png"),
+            console_errors=[],
+            failed_requests=[],
+            body_scroll_height=1000,
+            main_scroll_height=800,
+            chrome_height=200,
+            main_non_empty=True,
+        )
+
+    from contextlib import contextmanager
+
+    @contextmanager
+    def fake_serve():
+        yield "http://127.0.0.1:0"
+
+    monkeypatch.setattr(run_audit_module, "_serve_repo_root", fake_serve)
+    monkeypatch.setattr(run_audit_module, "_capture_one_url", fake_capture_one)
+
+    rc = run_audit_module.run_audit([
+        "--target", "local",
+        "--urls", str(urls_path),
+        "--out", str(out_dir),
+    ])
+    assert rc == 0
+
+    records = json.loads((out_dir / "records.json").read_text(encoding="utf-8"))
+    assert len(records) == 3
+    by_url = {r["url"]: r for r in records}
+
+    broken = by_url["/broken/"]
+    for key in (
+        "body_scroll_height",
+        "main_scroll_height",
+        "chrome_height",
+        "main_non_empty",
+    ):
+        assert broken[key] is None, (
+            f"geometry-failure record key {key!r} must be None, got {broken[key]!r}"
+        )
+    assert isinstance(broken["error"], str) and "geometry" in broken["error"]
+
+    for url in ("/", "/last/"):
+        good = by_url[url]
+        assert good["body_scroll_height"] == 1000
+        assert good["main_scroll_height"] == 800
+        assert good["chrome_height"] == 200
+        assert good["main_non_empty"] is True
+        assert good["error"] is None
+
+
+def test_geometry_fields_serialize_in_records_json(tmp_path: Path) -> None:
+    """Every entry in dry-run records.json carries the four geometry keys."""
+    urls = _write_urls(tmp_path, ["/", "/about/", "/leaderboard/"])
+    out_dir = tmp_path / "artifacts"
+    result = _run(
+        str(RUN_AUDIT_SCRIPT),
+        "--target", "fork",
+        "--urls", str(urls),
+        "--out", str(out_dir),
+        "--dry-run",
+    )
+    assert result.returncode == 0, result.stderr
+
+    raw = (out_dir / "records.json").read_text(encoding="utf-8")
+    records = json.loads(raw)
+    assert len(records) == 3
+
+    geom_keys = (
+        "body_scroll_height",
+        "main_scroll_height",
+        "chrome_height",
+        "main_non_empty",
+    )
+    for rec in records:
+        for k in geom_keys:
+            # JSON shape, not just dataclass shape: the key must literally
+            # be present in the serialized object on disk.
+            assert k in rec, (
+                f"records.json entry for {rec['url']!r} missing geometry key {k!r}; "
+                f"got keys {sorted(rec.keys())}"
+            )
+        # Dry-run leaves them all as JSON null.
+        assert rec["body_scroll_height"] is None
+        assert rec["main_scroll_height"] is None
+        assert rec["chrome_height"] is None
+        assert rec["main_non_empty"] is None
+
+
+def test_audit_record_record_to_dict_includes_geometry_fields() -> None:
+    """``record_to_dict`` exposes geometry keys on the serialized output."""
+    from tools.site_audit import AuditRecord, record_to_dict
+
+    rec = AuditRecord(
+        url="/",
+        prefixed_url="http://127.0.0.1:0/",
+        target="local",
+        final_url=None,
+        http_status=None,
+        viewport="1280x800",
+        console_error_count=0,
+        failed_request_count=0,
+        screenshot_path="root.png",
+        console_errors=[],
+        failed_requests=[],
+        body_scroll_height=1024,
+        main_scroll_height=768,
+        chrome_height=128,
+        main_non_empty=True,
+    )
+    d = record_to_dict(rec)
+    assert d["body_scroll_height"] == 1024
+    assert d["main_scroll_height"] == 768
+    assert d["chrome_height"] == 128
+    assert d["main_non_empty"] is True

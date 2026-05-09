@@ -40,6 +40,14 @@ class AuditRecord:
     string when a per-URL Playwright capture failed. Per-URL failures no
     longer abort the entire run; the field is always present so downstream
     consumers can rely on a stable schema.
+
+    The four geometry fields (``body_scroll_height``, ``main_scroll_height``,
+    ``chrome_height``, ``main_non_empty``) were added in the geometry pass
+    so downstream tooling can assert deterministically that the rendered
+    page has non-empty main content. They are populated from a single
+    ``page.evaluate(...)`` after ``wait_until="networkidle"``. All four are
+    ``None`` in dry-run and on geometry-evaluation failure (which still
+    leaves the rest of the record intact).
     """
 
     url: str                      # original relative path from urls.txt
@@ -54,6 +62,10 @@ class AuditRecord:
     console_errors: list[dict[str, Any]] = field(default_factory=list)
     failed_requests: list[dict[str, Any]] = field(default_factory=list)
     error: Optional[str] = None   # exception summary on per-URL failure
+    body_scroll_height: Optional[int] = None
+    main_scroll_height: Optional[int] = None
+    chrome_height: Optional[int] = None
+    main_non_empty: Optional[bool] = None
 
 
 def record_to_dict(record: AuditRecord) -> dict[str, Any]:

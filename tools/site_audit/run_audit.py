@@ -241,6 +241,70 @@ def _skeleton_record(
 _ERROR_TRUNCATE_CHARS = 500
 
 
+# JS evaluated on the live page to capture deterministic main-content
+# geometry. Returns three integer measurements; the Python wrapper computes
+# ``main_non_empty`` from them. The selectors mirror the rendered chrome:
+# ``<header>``, ``<footer>``, and a top-level ``<nav>`` that sits as a
+# direct child of ``<body>`` (so a nav nested inside the header is not
+# double-counted).
+_GEOMETRY_JS = """
+() => {
+    const body = document.body;
+    const main = document.querySelector('main');
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+    const standaloneNav = document.querySelector('body > nav');
+    const headerH = header ? header.scrollHeight : 0;
+    const footerH = footer ? footer.scrollHeight : 0;
+    const navH = (standaloneNav && (!header || !header.contains(standaloneNav))) ? standaloneNav.scrollHeight : 0;
+    return {
+        body_scroll_height: body ? body.scrollHeight : 0,
+        main_scroll_height: main ? main.scrollHeight : 0,
+        chrome_height: headerH + footerH + navH,
+    };
+}
+"""
+
+
+def _compute_main_non_empty(
+    body_scroll_height: int | None,
+    main_scroll_height: int | None,
+    chrome_height: int | None,
+) -> bool:
+    """Pure helper: return True iff the page has non-empty main content.
+
+    The contract from the runtime audit plan is:
+      * ``main_scroll_height`` must be strictly positive (a ``<main>`` with
+        zero scroll height is empty), AND
+      * ``body_scroll_height`` must strictly exceed ``chrome_height`` (the
+        page has at least one pixel of content beyond header/footer/nav).
+
+    Any ``None`` input flips the result to ``False`` so callers cannot
+    accidentally read a positive signal off a record where geometry was
+    not captured.
+    """
+    if body_scroll_height is None or main_scroll_height is None or chrome_height is None:
+        return False
+    return main_scroll_height > 0 and body_scroll_height > chrome_height
+
+
+def _evaluate_main_geometry(page) -> dict[str, int]:
+    """Run the geometry JS against ``page`` and return the three integers.
+
+    Split out as a private helper so tests can monkeypatch the inner
+    Playwright call without faking the entire ``_capture_one_url`` body.
+    The returned dict has exactly the three keys ``body_scroll_height``,
+    ``main_scroll_height``, ``chrome_height``; the wrapper composes
+    ``main_non_empty`` afterwards.
+    """
+    raw = page.evaluate(_GEOMETRY_JS)
+    return {
+        "body_scroll_height": int(raw["body_scroll_height"]),
+        "main_scroll_height": int(raw["main_scroll_height"]),
+        "chrome_height": int(raw["chrome_height"]),
+    }
+
+
 def _format_capture_error(exc: BaseException) -> str:
     """Produce a stable ``"<ExcClass>: <message>"`` string capped at 500 chars.
 
@@ -323,6 +387,9 @@ def _capture_one_url(
                 "failure": "",
             })
 
+    geometry: dict[str, int] | None = None
+    geometry_error: str | None = None
+
     with sync_playwright() as p:
         browser = p.chromium.launch()
         try:
@@ -338,9 +405,35 @@ def _capture_one_url(
 
             screenshot_path = out_dir / f"{_slugify(url)}.png"
             page.screenshot(path=str(screenshot_path), full_page=False)
+
+            # Capture deterministic main-content geometry. A failure in the
+            # evaluate call must not abort the per-URL capture: we record
+            # the four geometry fields as ``None`` and append a short note
+            # to ``error`` so downstream tooling can see what happened.
+            try:
+                geometry = _evaluate_main_geometry(page)
+            except Exception as geom_exc:  # noqa: BLE001 - geometry isolation by design
+                geometry = None
+                geometry_error = (
+                    "geometry: " + _format_capture_error(geom_exc)
+                )
+
             page.close()
         finally:
             browser.close()
+
+    if geometry is not None:
+        body_scroll_height: int | None = geometry["body_scroll_height"]
+        main_scroll_height: int | None = geometry["main_scroll_height"]
+        chrome_height: int | None = geometry["chrome_height"]
+        main_non_empty: bool | None = _compute_main_non_empty(
+            body_scroll_height, main_scroll_height, chrome_height
+        )
+    else:
+        body_scroll_height = None
+        main_scroll_height = None
+        chrome_height = None
+        main_non_empty = None
 
     return AuditRecord(
         url=url,
@@ -354,6 +447,11 @@ def _capture_one_url(
         screenshot_path=str(screenshot_path),
         console_errors=console_errors,
         failed_requests=failed_requests,
+        error=geometry_error,
+        body_scroll_height=body_scroll_height,
+        main_scroll_height=main_scroll_height,
+        chrome_height=chrome_height,
+        main_non_empty=main_non_empty,
     )
 
 
