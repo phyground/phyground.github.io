@@ -46,16 +46,16 @@
         var qs = p.toString();
         var newUrl = window.location.pathname + (qs ? '?' + qs : '');
         window.history.replaceState(null, '', newUrl);
-        // Filter rows.
+        // Filter rows. Track user expand state on row.dataset.expanded so it
+        // survives a filter-out → filter-in round trip.
         dataRows.forEach(function (r) {
             var keep = FIELDS.every(function (field) {
                 return !filters[field] || r.dataset[field] === filters[field];
             });
             r.classList.toggle('hidden', !keep);
-            // Hide the matching detail row too.
             var detail = r.nextElementSibling;
             if (detail && detail.classList.contains('lb-detail')) {
-                detail.hidden = !keep || detail.hidden;
+                detail.hidden = !keep || r.dataset.expanded !== '1';
             }
         });
     }
@@ -94,10 +94,12 @@
             return 0;
         });
         var tbody = table.tBodies[0];
+        var frag = document.createDocumentFragment();
         pairs.forEach(function (p) {
-            tbody.appendChild(p.row);
-            if (p.detail) tbody.appendChild(p.detail);
+            frag.appendChild(p.row);
+            if (p.detail) frag.appendChild(p.detail);
         });
+        tbody.appendChild(frag);
         // aria-sort indicator.
         for (var i = 0; i < ths.length; i++) ths[i].removeAttribute('aria-sort');
         ths[idx].setAttribute('aria-sort', dir === 1 ? 'ascending' : 'descending');
@@ -111,7 +113,8 @@
         })(i);
     }
 
-    // Expand rows.
+    // Expand rows. Persist state on row.dataset.expanded so applyFilters can
+    // restore it after a filter-out → filter-in cycle.
     table.addEventListener('click', function (ev) {
         var btn = ev.target.closest('.lb-expand');
         if (!btn) return;
@@ -119,9 +122,10 @@
         if (!row) return;
         var detail = row.nextElementSibling;
         if (!detail || !detail.classList.contains('lb-detail')) return;
-        var open = detail.hidden === false;
-        detail.hidden = open;
-        btn.setAttribute('aria-expanded', String(!open));
-        btn.textContent = open ? ('+' + (row.dataset.historyLen || '?')) : '−';
+        var newOpen = row.dataset.expanded !== '1';
+        row.dataset.expanded = newOpen ? '1' : '0';
+        detail.hidden = !newOpen;
+        btn.setAttribute('aria-expanded', String(newOpen));
+        btn.textContent = newOpen ? '−' : ('+' + (row.dataset.historyLen || '?'));
     });
 })();

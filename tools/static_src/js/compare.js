@@ -102,11 +102,15 @@
                 html += '</ul></details>';
             }
             block.innerHTML = html;
-            var view = document.getElementById('compare-view');
             view.insertBefore(block, document.getElementById('compare-videos'));
         }
 
-        function card(model, score, videoUrl, extra, posterUrl) {
+        function card(opts) {
+            var model = opts.model;
+            var score = opts.score;
+            var videoUrl = opts.videoUrl;
+            var extra = opts.extra;
+            var posterUrl = opts.posterUrl;
             var fig = document.createElement('figure');
             fig.className = 'video-card';
             var inner = '';
@@ -130,14 +134,17 @@
             return fig;
         }
 
+        // Batch card inserts so #compare-videos reflows once.
+        var frag = document.createDocumentFragment();
+
         // Reference card: prompt's first_frame as a "real source" tile.
         if (firstFrame) {
-            grid.appendChild(card('first frame', undefined, null, 'reference', firstFrame));
+            frag.appendChild(card({ model: 'first frame', extra: 'reference', posterUrl: firstFrame }));
         }
 
         // Find a paperdemo video URL for a given model.
         function pdUrlFor(model) {
-            var hit = pdVids.filter(function (v) { return v.model === model; })[0];
+            var hit = pdVids.find(function (v) { return v.model === model; });
             return hit ? hit.video_url_hf : null;
         }
 
@@ -145,15 +152,21 @@
             // Prefer paperdemo URL when this prompt is curated; otherwise use the
             // per-(model,prompt) HF URL the snapshot precomputed.
             var url = pdUrlFor(m) || perModelVideos[m] || null;
-            grid.appendChild(card(m, pms[m], url, null, firstFrame));
+            frag.appendChild(card({ model: m, score: pms[m], videoUrl: url, posterUrl: firstFrame }));
         });
 
         // Any paperdemo videos for models not in per_model_scores: show too.
         pdVids.forEach(function (pv) {
             if (modelKeys.indexOf(pv.model) === -1) {
-                grid.appendChild(card(pv.model, undefined, pv.video_url_hf, 'paperdemo n_ann=' + pv.n_ann, firstFrame));
+                frag.appendChild(card({
+                    model: pv.model,
+                    videoUrl: pv.video_url_hf,
+                    extra: 'paperdemo n_ann=' + pv.n_ann,
+                    posterUrl: firstFrame,
+                }));
             }
         });
+        grid.appendChild(frag);
 
         view.hidden = false;
         empty.hidden = true;
