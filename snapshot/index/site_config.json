@@ -1,11 +1,11 @@
 {
   "build_meta": {
-    "built_at": "2026-05-10T19:39:43Z",
+    "built_at": "2026-05-08T15:00:00Z",
     "humaneval_prompts_sha256": "bf8c755ba1e70ab2f862f9143d1d39360f7447bc533a43cfa2bada363ede5d01",
     "model_catalog_sha256": "6c88b41361242b3ed0275c9618f54bca140b42876a0d8bd6f9caf71301b4fb57",
     "paperdemo_manifest_sha256": "6fe03fb70443d1d13b53902ac4746a57b594b0f4e52ca7e7121300c7b41d6c91",
     "registry_sha256": "0d791883c6ec8dec03d1f6db890d6681cdf987a3313e97314d0af83b4ed616fe",
-    "snapshot_sha": "d7f9f09a47922b4f509c2dd5857e136829a03174089727ac6a8e45e6fbd22258",
+    "snapshot_sha": "e0b7b87c1c90e66a968ec53e02b78144a5cb887be28ddba4f2afca1d5c1d7e44",
     "vis_datasets_sha256": "69e4761736b5865072345b6c8a753c80b109ef76e5284fb90581c206f591e08e"
   },
   "datasets": [
@@ -154,7 +154,7 @@
     },
     "n_selected": 100,
     "note": null,
-    "selected_at": "2026-05-10T18:29:20Z"
+    "selected_at": "2026-05-08T15:00:00Z"
   },
   "leaderboard_entries": [
     {
@@ -2511,25 +2511,25 @@
         },
         {
           "dataset": "openvid",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/UsL5HzxP68A_2_76to287.jpg",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/VJ82LkozoT0_60_0to175.jpg",
           "kind": "humaneval",
-          "law": "buoyancy",
+          "law": "reflection",
           "n_ann": null,
-          "prompt_id": "UsL5HzxP68A_2_76to287",
-          "score": 4.25,
-          "src_filename": "UsL5HzxP68A_2_76to287.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/UsL5HzxP68A_2_76to287.mp4"
+          "prompt_id": "VJ82LkozoT0_60_0to175",
+          "score": 2.6667,
+          "src_filename": "VJ82LkozoT0_60_0to175.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/VJ82LkozoT0_60_0to175.mp4"
         },
         {
           "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_469.jpg",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_507.jpg",
           "kind": "humaneval",
           "law": "gravity",
           "n_ann": null,
-          "prompt_id": "mechanics_469",
-          "score": 4.0,
-          "src_filename": "mechanics_469.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/mechanics_469.mp4"
+          "prompt_id": "mechanics_507",
+          "score": 3.0,
+          "src_filename": "mechanics_507.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/mechanics_507.mp4"
         }
       ],
       "resolution": null,
@@ -2944,14 +2944,14 @@
         },
         {
           "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_370.jpg",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_411.jpg",
           "kind": "humaneval",
-          "law": "gravity",
+          "law": "collision",
           "n_ann": null,
-          "prompt_id": "mechanics_370",
-          "score": 2.25,
-          "src_filename": "mechanics_370.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/mechanics_370.mp4"
+          "prompt_id": "mechanics_411",
+          "score": 1.75,
+          "src_filename": "mechanics_411.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/mechanics_411.mp4"
         },
         {
           "dataset": "openvid",
@@ -2966,47 +2966,47 @@
         },
         {
           "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_223.jpg",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_261.jpg",
           "kind": "humaneval",
           "law": "collision",
           "n_ann": null,
-          "prompt_id": "collision_223",
+          "prompt_id": "collision_261",
+          "score": 3.0,
+          "src_filename": "collision_261.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/collision_261.mp4"
+        },
+        {
+          "dataset": "openvid",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/xDxQMZjHR4s_3_18to227.jpg",
+          "kind": "humaneval",
+          "law": "reflection",
+          "n_ann": null,
+          "prompt_id": "xDxQMZjHR4s_3_18to227",
           "score": 2.5,
-          "src_filename": "collision_223.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/collision_223.mp4"
+          "src_filename": "xDxQMZjHR4s_3_18to227.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/xDxQMZjHR4s_3_18to227.mp4"
         },
         {
           "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_98.jpg",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_436.jpg",
+          "kind": "humaneval",
+          "law": "collision",
+          "n_ann": null,
+          "prompt_id": "collision_436",
+          "score": 2.5,
+          "src_filename": "collision_436.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/collision_436.mp4"
+        },
+        {
+          "dataset": "video_phy_2",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/fluid_239.jpg",
           "kind": "humaneval",
           "law": "material",
           "n_ann": null,
-          "prompt_id": "mechanics_98",
-          "score": 1.6667,
-          "src_filename": "mechanics_98.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/mechanics_98.mp4"
-        },
-        {
-          "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_431.jpg",
-          "kind": "humaneval",
-          "law": "collision",
-          "n_ann": null,
-          "prompt_id": "collision_431",
-          "score": 3.25,
-          "src_filename": "collision_431.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/collision_431.mp4"
-        },
-        {
-          "dataset": "wmb",
-          "first_frame_url": null,
-          "kind": "humaneval",
-          "law": "inertia",
-          "n_ann": null,
-          "prompt_id": "e8KlPriHwBU_000025_000035",
-          "score": 2.5,
-          "src_filename": "e8KlPriHwBU_000025_000035.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/e8KlPriHwBU_000025_000035.mp4"
+          "prompt_id": "fluid_239",
+          "score": 2.6667,
+          "src_filename": "fluid_239.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/fluid_239.mp4"
         }
       ],
       "resolution": null,
@@ -3102,59 +3102,37 @@
           "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/4y1a9bjbxQU_27_0to128.mp4"
         },
         {
-          "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/gravity_217.jpg",
+          "dataset": "openvid",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/at1CsLu4RIU_53_0to197.jpg",
           "kind": "humaneval",
-          "law": "buoyancy",
+          "law": "displacement",
           "n_ann": null,
-          "prompt_id": "gravity_217",
-          "score": 3.3333,
-          "src_filename": "gravity_217.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/gravity_217.mp4"
-        },
-        {
-          "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/fluid_405.jpg",
-          "kind": "humaneval",
-          "law": "fluid_continuity",
-          "n_ann": null,
-          "prompt_id": "fluid_405",
+          "prompt_id": "at1CsLu4RIU_53_0to197",
           "score": 2.6667,
-          "src_filename": "fluid_405.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/fluid_405.mp4"
+          "src_filename": "at1CsLu4RIU_53_0to197.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/at1CsLu4RIU_53_0to197.mp4"
         },
         {
-          "dataset": "wmb",
-          "first_frame_url": null,
+          "dataset": "openvid",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/xDxQMZjHR4s_3_18to227.jpg",
           "kind": "humaneval",
-          "law": "material",
+          "law": "reflection",
           "n_ann": null,
-          "prompt_id": "B_e9xjkuVy4_000124_000134",
-          "score": 2.75,
-          "src_filename": "B_e9xjkuVy4_000124_000134.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/B_e9xjkuVy4_000124_000134.mp4"
-        },
-        {
-          "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_257.jpg",
-          "kind": "humaneval",
-          "law": "gravity",
-          "n_ann": null,
-          "prompt_id": "mechanics_257",
-          "score": 1.6667,
-          "src_filename": "mechanics_257.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/mechanics_257.mp4"
+          "prompt_id": "xDxQMZjHR4s_3_18to227",
+          "score": 2.5,
+          "src_filename": "xDxQMZjHR4s_3_18to227.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/xDxQMZjHR4s_3_18to227.mp4"
         },
         {
           "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_293.jpg",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_419.jpg",
           "kind": "humaneval",
-          "law": "gravity",
+          "law": "collision",
           "n_ann": null,
-          "prompt_id": "mechanics_293",
-          "score": 2.75,
-          "src_filename": "mechanics_293.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/mechanics_293.mp4"
+          "prompt_id": "mechanics_419",
+          "score": 2.25,
+          "src_filename": "mechanics_419.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/mechanics_419.mp4"
         },
         {
           "dataset": "openvid",
@@ -3166,6 +3144,28 @@
           "score": 2.0,
           "src_filename": "UsL5HzxP68A_2_76to287.mp4",
           "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/UsL5HzxP68A_2_76to287.mp4"
+        },
+        {
+          "dataset": "video_phy_2",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/lighting_359.jpg",
+          "kind": "humaneval",
+          "law": "fluid_continuity",
+          "n_ann": null,
+          "prompt_id": "lighting_359",
+          "score": 3.6667,
+          "src_filename": "lighting_359.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/lighting_359.mp4"
+        },
+        {
+          "dataset": "openvid",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/7_O1YdVAWSU_14_0to102.jpg",
+          "kind": "humaneval",
+          "law": "displacement",
+          "n_ann": null,
+          "prompt_id": "7_O1YdVAWSU_14_0to102",
+          "score": 3.25,
+          "src_filename": "7_O1YdVAWSU_14_0to102.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/7_O1YdVAWSU_14_0to102.mp4"
         }
       ],
       "resolution": null,
@@ -3459,26 +3459,26 @@
           "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/mechanics_290.mp4"
         },
         {
-          "dataset": "openvid",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/ttTPAWrn110_45_0to227.jpg",
+          "dataset": "video_phy_2",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_211.jpg",
           "kind": "humaneval",
-          "law": "buoyancy",
+          "law": "collision",
           "n_ann": null,
-          "prompt_id": "ttTPAWrn110_45_0to227",
+          "prompt_id": "mechanics_211",
           "score": 5.0,
-          "src_filename": "ttTPAWrn110_45_0to227.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/ttTPAWrn110_45_0to227.mp4"
+          "src_filename": "mechanics_211.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/mechanics_211.mp4"
         },
         {
           "dataset": "openvid",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/VJ82LkozoT0_60_0to175.jpg",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/at1CsLu4RIU_53_0to197.jpg",
           "kind": "humaneval",
-          "law": "reflection",
+          "law": "displacement",
           "n_ann": null,
-          "prompt_id": "VJ82LkozoT0_60_0to175",
+          "prompt_id": "at1CsLu4RIU_53_0to197",
           "score": 5.0,
-          "src_filename": "VJ82LkozoT0_60_0to175.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/VJ82LkozoT0_60_0to175.mp4"
+          "src_filename": "at1CsLu4RIU_53_0to197.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/at1CsLu4RIU_53_0to197.mp4"
         },
         {
           "dataset": "video_phy_2",
@@ -3493,6 +3493,17 @@
         },
         {
           "dataset": "video_phy_2",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_261.jpg",
+          "kind": "humaneval",
+          "law": "collision",
+          "n_ann": null,
+          "prompt_id": "collision_261",
+          "score": 5.0,
+          "src_filename": "collision_261.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/collision_261.mp4"
+        },
+        {
+          "dataset": "video_phy_2",
           "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_223.jpg",
           "kind": "humaneval",
           "law": "collision",
@@ -3504,25 +3515,14 @@
         },
         {
           "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_222.jpg",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/gravity_90.jpg",
           "kind": "humaneval",
           "law": "gravity",
           "n_ann": null,
-          "prompt_id": "collision_222",
+          "prompt_id": "gravity_90",
           "score": 5.0,
-          "src_filename": "collision_222.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/collision_222.mp4"
-        },
-        {
-          "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_268.jpg",
-          "kind": "humaneval",
-          "law": "gravity",
-          "n_ann": null,
-          "prompt_id": "mechanics_268",
-          "score": 4.5,
-          "src_filename": "mechanics_268.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/mechanics_268.mp4"
+          "src_filename": "gravity_90.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/gravity_90.mp4"
         },
         {
           "dataset": "video_phy_2",
@@ -3629,70 +3629,70 @@
           "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/2CH9DL5j-XA_13_0to130.mp4"
         },
         {
-          "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_290.jpg",
+          "dataset": "physics_iq",
+          "first_frame_url": null,
           "kind": "humaneval",
-          "law": "gravity",
+          "law": "inertia",
           "n_ann": null,
-          "prompt_id": "mechanics_290",
-          "score": 2.3333,
-          "src_filename": "mechanics_290.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/mechanics_290.mp4"
-        },
-        {
-          "dataset": "openvid",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/4HoslLqqsps_9_0to118.jpg",
-          "kind": "humaneval",
-          "law": "displacement",
-          "n_ann": null,
-          "prompt_id": "4HoslLqqsps_9_0to118",
-          "score": 2.5,
-          "src_filename": "4HoslLqqsps_9_0to118.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/4HoslLqqsps_9_0to118.mp4"
+          "prompt_id": "0197_perspective-center_trimmed-weight-protects-duck",
+          "score": 3.25,
+          "src_filename": "0197_perspective-center_trimmed-weight-protects-duck.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/0197_perspective-center_trimmed-weight-protects-duck.mp4"
         },
         {
           "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/fluid_239.jpg",
-          "kind": "humaneval",
-          "law": "material",
-          "n_ann": null,
-          "prompt_id": "fluid_239",
-          "score": 4.0,
-          "src_filename": "fluid_239.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/fluid_239.mp4"
-        },
-        {
-          "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_216.jpg",
-          "kind": "humaneval",
-          "law": "gravity",
-          "n_ann": null,
-          "prompt_id": "mechanics_216",
-          "score": 2.5,
-          "src_filename": "mechanics_216.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/mechanics_216.mp4"
-        },
-        {
-          "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_257.jpg",
-          "kind": "humaneval",
-          "law": "gravity",
-          "n_ann": null,
-          "prompt_id": "mechanics_257",
-          "score": 2.3333,
-          "src_filename": "mechanics_257.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/mechanics_257.mp4"
-        },
-        {
-          "dataset": "video_phy_2",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_211.jpg",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_156.jpg",
           "kind": "humaneval",
           "law": "collision",
           "n_ann": null,
-          "prompt_id": "mechanics_211",
-          "score": 2.0,
-          "src_filename": "mechanics_211.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/mechanics_211.mp4"
+          "prompt_id": "collision_156",
+          "score": 2.6667,
+          "src_filename": "collision_156.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/collision_156.mp4"
+        },
+        {
+          "dataset": "wmb",
+          "first_frame_url": null,
+          "kind": "humaneval",
+          "law": "flow_dynamics",
+          "n_ann": null,
+          "prompt_id": "Cj5OoWr0k0E_92_0to279",
+          "score": 3.5,
+          "src_filename": "Cj5OoWr0k0E_92_0to279.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/Cj5OoWr0k0E_92_0to279.mp4"
+        },
+        {
+          "dataset": "video_phy_2",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_145.jpg",
+          "kind": "humaneval",
+          "law": "collision",
+          "n_ann": null,
+          "prompt_id": "collision_145",
+          "score": 2.75,
+          "src_filename": "collision_145.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/collision_145.mp4"
+        },
+        {
+          "dataset": "openvid",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/QfWrBHgD9go_5_0to145.jpg",
+          "kind": "humaneval",
+          "law": "flow_dynamics",
+          "n_ann": null,
+          "prompt_id": "QfWrBHgD9go_5_0to145",
+          "score": 2.25,
+          "src_filename": "QfWrBHgD9go_5_0to145.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/QfWrBHgD9go_5_0to145.mp4"
+        },
+        {
+          "dataset": "video_phy_2",
+          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/fluid_553.jpg",
+          "kind": "humaneval",
+          "law": "flow_dynamics",
+          "n_ann": null,
+          "prompt_id": "fluid_553",
+          "score": 3.0,
+          "src_filename": "fluid_553.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/fluid_553.mp4"
         }
       ],
       "resolution": null,
@@ -5852,60 +5852,6 @@
         "youtube_url": "https://www.youtube.com/watch?v=I5BdJ04K1Vg&t=0s"
       }
     },
-    "Pmq00R5zrEo_9_0to107": {
-      "dataset": "openvid",
-      "difficulty": {
-        "n_models": 6,
-        "phys_micro_avg": 2.792
-      },
-      "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/Pmq00R5zrEo_9_0to107.jpg",
-      "per_model_scores": {
-        "cosmos-predict2.5-14b": 3.5,
-        "cosmos-predict2.5-2b": 2.75,
-        "ltx-2-19b-dev": 4.0,
-        "ltx-2.3-22b-dev": 3.75,
-        "omniweaving": 2.5,
-        "veo-3.1": 5.0,
-        "wan2.2-i2v-a14b": 3.5,
-        "wan2.2-ti2v-5b": 3.75
-      },
-      "per_model_videos": {
-        "cosmos-predict2.5-14b": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/Pmq00R5zrEo_9_0to107.mp4",
-        "cosmos-predict2.5-2b": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-2b/Pmq00R5zrEo_9_0to107.mp4",
-        "ltx-2-19b-dev": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2-19b-dev/Pmq00R5zrEo_9_0to107.mp4",
-        "ltx-2.3-22b-dev": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/Pmq00R5zrEo_9_0to107.mp4",
-        "omniweaving": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/Pmq00R5zrEo_9_0to107.mp4",
-        "veo-3.1": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/Pmq00R5zrEo_9_0to107.mp4",
-        "wan2.2-i2v-a14b": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/Pmq00R5zrEo_9_0to107.mp4",
-        "wan2.2-ti2v-5b": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-ti2v-5b/Pmq00R5zrEo_9_0to107.mp4"
-      },
-      "physical_laws": [
-        "flow_dynamics",
-        "inertia",
-        "boundary_interaction",
-        "shadow"
-      ],
-      "prompt": "A powerful waterfall cascades down a moss-covered cliff, the rushing water flowing continuously over jagged rocks and churning into a drifting mist. In the foreground, a blue car drives from left to right across a stone bridge.",
-      "prompt_id": "Pmq00R5zrEo_9_0to107",
-      "realvideo": {
-        "caption": "The video captures a car driving over a bridge with a waterfall in the background. The car is blue and is moving from left to right. The bridge is made of stone and has a black railing. The waterfall is cascading down the side of a cliff, creating a misty effect. The cliff is covered in green moss and rocks. The sky is clear and blue, suggesting it's a sunny day. The overall style of the video is a combination of nature and man-made structures, with a focus on the car's journey over the bridge.",
-        "domain": "fluid",
-        "expected_outcome": [
-          "The water continuously falls downward over the cliff under the influence of gravity.",
-          "The flowing water breaks, splashes, and becomes turbulent as it interacts with the jagged rocks.",
-          "A drifting mist or spray is continuously generated where the cascading water impacts the rocks or the pool below.",
-          "The blue car maintains a consistent horizontal motion from the left side of the screen to the right across the bridge.",
-          "The fluid motion of the waterfall in the background continues independently of the car's motion in the foreground."
-        ],
-        "source_law": "flow",
-        "time_range": {
-          "end_s": 107,
-          "start_s": 0
-        },
-        "youtube_id": "Pmq00R5zrEo",
-        "youtube_url": "https://www.youtube.com/watch?v=Pmq00R5zrEo&t=0s"
-      }
-    },
     "QfWrBHgD9go_5_0to145": {
       "dataset": "openvid",
       "difficulty": {
@@ -6118,6 +6064,34 @@
         "youtube_id": "VJ82LkozoT0",
         "youtube_url": "https://www.youtube.com/watch?v=VJ82LkozoT0&t=0s"
       }
+    },
+    "WgrxxdVBEGc_50_64to186": {
+      "dataset": "wmb",
+      "difficulty": {
+        "n_models": 6,
+        "phys_micro_avg": 2.875
+      },
+      "first_frame_url": null,
+      "per_model_scores": {
+        "cosmos-predict2.5-14b": 2.5,
+        "cosmos-predict2.5-2b": 3.25,
+        "ltx-2-19b-dev": 3.75,
+        "ltx-2.3-22b-dev": 4.0,
+        "omniweaving": 3.75,
+        "veo-3.1": 5.0,
+        "wan2.2-i2v-a14b": 3.5,
+        "wan2.2-ti2v-5b": 3.25
+      },
+      "per_model_videos": {},
+      "physical_laws": [
+        "displacement",
+        "flow_dynamics",
+        "fluid_continuity",
+        "boundary_interaction"
+      ],
+      "prompt": "Water is dispensed into plastic bottles on a rotary filling machine. The bottles are filled with water.",
+      "prompt_id": "WgrxxdVBEGc_50_64to186",
+      "realvideo": null
     },
     "at1CsLu4RIU_53_0to197": {
       "dataset": "openvid",
@@ -8763,20 +8737,6 @@
         },
         {
           "dataset": "openvid",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/Pmq00R5zrEo_9_0to107.jpg",
-          "physical_laws": [
-            "flow_dynamics",
-            "inertia",
-            "boundary_interaction",
-            "shadow"
-          ],
-          "prompt": "A powerful waterfall cascades down a moss-covered cliff, the rushing water flowing continuously over jagged rocks and churning into a drifting mist. In the foreground, a blue car drives from left to right across a stone bridge.",
-          "prompt_id": "Pmq00R5zrEo_9_0to107",
-          "score": 3.5,
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/Pmq00R5zrEo_9_0to107.mp4"
-        },
-        {
-          "dataset": "openvid",
           "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/QfWrBHgD9go_5_0to145.jpg",
           "physical_laws": [
             "flow_dynamics",
@@ -10198,20 +10158,6 @@
           "prompt_id": "I5BdJ04K1Vg_2_0to102",
           "score": 3.5,
           "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-2b/I5BdJ04K1Vg_2_0to102.mp4"
-        },
-        {
-          "dataset": "openvid",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/Pmq00R5zrEo_9_0to107.jpg",
-          "physical_laws": [
-            "flow_dynamics",
-            "inertia",
-            "boundary_interaction",
-            "shadow"
-          ],
-          "prompt": "A powerful waterfall cascades down a moss-covered cliff, the rushing water flowing continuously over jagged rocks and churning into a drifting mist. In the foreground, a blue car drives from left to right across a stone bridge.",
-          "prompt_id": "Pmq00R5zrEo_9_0to107",
-          "score": 2.75,
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-2b/Pmq00R5zrEo_9_0to107.mp4"
         },
         {
           "dataset": "openvid",
@@ -11753,20 +11699,6 @@
         },
         {
           "dataset": "openvid",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/Pmq00R5zrEo_9_0to107.jpg",
-          "physical_laws": [
-            "flow_dynamics",
-            "inertia",
-            "boundary_interaction",
-            "shadow"
-          ],
-          "prompt": "A powerful waterfall cascades down a moss-covered cliff, the rushing water flowing continuously over jagged rocks and churning into a drifting mist. In the foreground, a blue car drives from left to right across a stone bridge.",
-          "prompt_id": "Pmq00R5zrEo_9_0to107",
-          "score": 4.0,
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2-19b-dev/Pmq00R5zrEo_9_0to107.mp4"
-        },
-        {
-          "dataset": "openvid",
           "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/QfWrBHgD9go_5_0to145.jpg",
           "physical_laws": [
             "flow_dynamics",
@@ -13245,20 +13177,6 @@
         },
         {
           "dataset": "openvid",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/Pmq00R5zrEo_9_0to107.jpg",
-          "physical_laws": [
-            "flow_dynamics",
-            "inertia",
-            "boundary_interaction",
-            "shadow"
-          ],
-          "prompt": "A powerful waterfall cascades down a moss-covered cliff, the rushing water flowing continuously over jagged rocks and churning into a drifting mist. In the foreground, a blue car drives from left to right across a stone bridge.",
-          "prompt_id": "Pmq00R5zrEo_9_0to107",
-          "score": 3.75,
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/Pmq00R5zrEo_9_0to107.mp4"
-        },
-        {
-          "dataset": "openvid",
           "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/QfWrBHgD9go_5_0to145.jpg",
           "physical_laws": [
             "flow_dynamics",
@@ -14662,20 +14580,6 @@
           "prompt_id": "I5BdJ04K1Vg_2_0to102",
           "score": 3.0,
           "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/I5BdJ04K1Vg_2_0to102.mp4"
-        },
-        {
-          "dataset": "openvid",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/Pmq00R5zrEo_9_0to107.jpg",
-          "physical_laws": [
-            "flow_dynamics",
-            "inertia",
-            "boundary_interaction",
-            "shadow"
-          ],
-          "prompt": "A powerful waterfall cascades down a moss-covered cliff, the rushing water flowing continuously over jagged rocks and churning into a drifting mist. In the foreground, a blue car drives from left to right across a stone bridge.",
-          "prompt_id": "Pmq00R5zrEo_9_0to107",
-          "score": 2.5,
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/Pmq00R5zrEo_9_0to107.mp4"
         },
         {
           "dataset": "openvid",
@@ -16275,20 +16179,6 @@
         },
         {
           "dataset": "openvid",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/Pmq00R5zrEo_9_0to107.jpg",
-          "physical_laws": [
-            "flow_dynamics",
-            "inertia",
-            "boundary_interaction",
-            "shadow"
-          ],
-          "prompt": "A powerful waterfall cascades down a moss-covered cliff, the rushing water flowing continuously over jagged rocks and churning into a drifting mist. In the foreground, a blue car drives from left to right across a stone bridge.",
-          "prompt_id": "Pmq00R5zrEo_9_0to107",
-          "score": 5.0,
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/Pmq00R5zrEo_9_0to107.mp4"
-        },
-        {
-          "dataset": "openvid",
           "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/QfWrBHgD9go_5_0to145.jpg",
           "physical_laws": [
             "flow_dynamics",
@@ -17680,20 +17570,6 @@
           "prompt_id": "I5BdJ04K1Vg_2_0to102",
           "score": 3.0,
           "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/I5BdJ04K1Vg_2_0to102.mp4"
-        },
-        {
-          "dataset": "openvid",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/Pmq00R5zrEo_9_0to107.jpg",
-          "physical_laws": [
-            "flow_dynamics",
-            "inertia",
-            "boundary_interaction",
-            "shadow"
-          ],
-          "prompt": "A powerful waterfall cascades down a moss-covered cliff, the rushing water flowing continuously over jagged rocks and churning into a drifting mist. In the foreground, a blue car drives from left to right across a stone bridge.",
-          "prompt_id": "Pmq00R5zrEo_9_0to107",
-          "score": 3.5,
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/Pmq00R5zrEo_9_0to107.mp4"
         },
         {
           "dataset": "openvid",
@@ -19100,20 +18976,6 @@
           "prompt_id": "I5BdJ04K1Vg_2_0to102",
           "score": 2.5,
           "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-ti2v-5b/I5BdJ04K1Vg_2_0to102.mp4"
-        },
-        {
-          "dataset": "openvid",
-          "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/Pmq00R5zrEo_9_0to107.jpg",
-          "physical_laws": [
-            "flow_dynamics",
-            "inertia",
-            "boundary_interaction",
-            "shadow"
-          ],
-          "prompt": "A powerful waterfall cascades down a moss-covered cliff, the rushing water flowing continuously over jagged rocks and churning into a drifting mist. In the foreground, a blue car drives from left to right across a stone bridge.",
-          "prompt_id": "Pmq00R5zrEo_9_0to107",
-          "score": 3.75,
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-ti2v-5b/Pmq00R5zrEo_9_0to107.mp4"
         },
         {
           "dataset": "openvid",

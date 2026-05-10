@@ -4,7 +4,7 @@
       "exists_locally": true,
       "hf_target_path": "README.md",
       "local_source": "(synthesized in build_hf_upload_manifest.py)",
-      "sha256": "cbcaeb3cbfcb144c454c1ee1b86afbac4aad1d59fbddfa15f579c452bfd6e6b9"
+      "sha256": "db7011ec0a016f7970466318511cb5b1a6e60705d6c49b519eab9664775f6e71"
     },
     {
       "exists_locally": true,
@@ -95,12 +95,6 @@
       "hf_target_path": "first_images/I5BdJ04K1Vg_2_0to102.jpg",
       "local_source": "_wmbench_src/data/prompts/openvid/first_frames/I5BdJ04K1Vg_2_0to102.jpg",
       "sha256": "2ad3a9370d759d8407155e0bf4a18c074224bc83afa978e91fb6587f01c053e8"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "first_images/Pmq00R5zrEo_9_0to107.jpg",
-      "local_source": "_wmbench_src/data/prompts/openvid/first_frames/Pmq00R5zrEo_9_0to107.jpg",
-      "sha256": "194571c43c6bb2d7f4309c2ecaa74eb37fa6c8eaa0bc2b391523b10f4190d3b5"
     },
     {
       "exists_locally": true,
@@ -689,12 +683,6 @@
       "hf_target_path": "videos/cosmos-predict2.5-14b/I5BdJ04K1Vg_2_0to102.mp4",
       "local_source": "_wmbench_src/data/videos/cosmos-predict2.5-14b/I5BdJ04K1Vg_2_0to102.mp4",
       "sha256": "6cfa274426d2e76dc9050b90def66011b945434d3769578bf27c723f76951986"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/cosmos-predict2.5-14b/Pmq00R5zrEo_9_0to107.mp4",
-      "local_source": "_wmbench_src/data/videos/cosmos-predict2.5-14b/Pmq00R5zrEo_9_0to107.mp4",
-      "sha256": "62f92e2dc698f9cb839cd450245cbcecda69a2a013bdc134f88354117c8c4ac7"
     },
     {
       "exists_locally": true,
@@ -1292,12 +1280,6 @@
     },
     {
       "exists_locally": true,
-      "hf_target_path": "videos/cosmos-predict2.5-2b/Pmq00R5zrEo_9_0to107.mp4",
-      "local_source": "_wmbench_src/data/videos/cosmos-predict2.5-2b/Pmq00R5zrEo_9_0to107.mp4",
-      "sha256": "06b4deabc496b8651bbb210ad0b3923b90962b5a1a761e136d239f90c3b192b1"
-    },
-    {
-      "exists_locally": true,
       "hf_target_path": "videos/cosmos-predict2.5-2b/QfWrBHgD9go_5_0to145.mp4",
       "local_source": "_wmbench_src/data/videos/cosmos-predict2.5-2b/QfWrBHgD9go_5_0to145.mp4",
       "sha256": "13d5c2decfc1172d5486827d29991727fb274bc69a1ecc26dd9aded8cd5d63ea"
@@ -1889,12 +1871,6 @@
       "hf_target_path": "videos/ltx-2-19b-dev/I5BdJ04K1Vg_2_0to102.mp4",
       "local_source": "_wmbench_src/data/videos/ltx-2-19b-dev/I5BdJ04K1Vg_2_0to102.mp4",
       "sha256": "d857b29a489554586c4843978abd8335126426dc1143b1d4b73843215cf08dd0"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/ltx-2-19b-dev/Pmq00R5zrEo_9_0to107.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2-19b-dev/Pmq00R5zrEo_9_0to107.mp4",
-      "sha256": "f05394ca3b299ae5499759a7eb06dd9b263f228bdd205ff3b723f337c1bb4d24"
     },
     {
       "exists_locally": true,
@@ -2492,12 +2468,6 @@
     },
     {
       "exists_locally": true,
-      "hf_target_path": "videos/ltx-2.3-22b-dev/Pmq00R5zrEo_9_0to107.mp4",
-      "local_source": "_wmbench_src/data/videos/ltx-2.3-22b-dev/Pmq00R5zrEo_9_0to107.mp4",
-      "sha256": "95ffae354c743ec80201f91952649d51f0037d0d3b94e9e82e22478f49461a22"
-    },
-    {
-      "exists_locally": true,
       "hf_target_path": "videos/ltx-2.3-22b-dev/QfWrBHgD9go_5_0to145.mp4",
       "local_source": "_wmbench_src/data/videos/ltx-2.3-22b-dev/QfWrBHgD9go_5_0to145.mp4",
       "sha256": "af0f056394ef7f048ad85c2987dca60fe5ee2beb0821908b7d7b26116e8a3e3a"
@@ -3089,12 +3059,6 @@
       "hf_target_path": "videos/omniweaving/I5BdJ04K1Vg_2_0to102.mp4",
       "local_source": "_wmbench_src/data/videos/omniweaving/I5BdJ04K1Vg_2_0to102.mp4",
       "sha256": "e0fab16bc76d0985040eec79a98455f9b1bde94a8b05d98f37e97375e71ee3b2"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/omniweaving/Pmq00R5zrEo_9_0to107.mp4",
-      "local_source": "_wmbench_src/data/videos/omniweaving/Pmq00R5zrEo_9_0to107.mp4",
-      "sha256": "720115599d4916efd17cd497c2b7820a718ba9a1c866ddb2ee74c2ea18bb8a0b"
     },
     {
       "exists_locally": true,
@@ -3692,12 +3656,6 @@
     },
     {
       "exists_locally": true,
-      "hf_target_path": "videos/veo-3.1/Pmq00R5zrEo_9_0to107.mp4",
-      "local_source": "_wmbench_src/data/videos/veo-3.1/Pmq00R5zrEo_9_0to107.mp4",
-      "sha256": "4b035c84cc9ee12eb89d7f1fde4d6708045416990c728afb42bf374607191fe5"
-    },
-    {
-      "exists_locally": true,
       "hf_target_path": "videos/veo-3.1/QfWrBHgD9go_5_0to145.mp4",
       "local_source": "_wmbench_src/data/videos/veo-3.1/QfWrBHgD9go_5_0to145.mp4",
       "sha256": "4e1fd83aaf0e40e4d33aa326d982fc4fcbfd353174e0a0bb684a0def9b073eb6"
@@ -4289,12 +4247,6 @@
       "hf_target_path": "videos/wan2.2-i2v-a14b/I5BdJ04K1Vg_2_0to102.mp4",
       "local_source": "_wmbench_src/data/videos/wan2.2-i2v-a14b/I5BdJ04K1Vg_2_0to102.mp4",
       "sha256": "9288ffaf391ecc4dcf69f2030c77e9176ba99e616e6282ff8fe1e4cc8e2443b1"
-    },
-    {
-      "exists_locally": true,
-      "hf_target_path": "videos/wan2.2-i2v-a14b/Pmq00R5zrEo_9_0to107.mp4",
-      "local_source": "_wmbench_src/data/videos/wan2.2-i2v-a14b/Pmq00R5zrEo_9_0to107.mp4",
-      "sha256": "e3345ac64abc2e1d0073562cc5c1d1213daeb42d4ca1a58c576c21e9ff35b1e1"
     },
     {
       "exists_locally": true,
@@ -4892,12 +4844,6 @@
     },
     {
       "exists_locally": true,
-      "hf_target_path": "videos/wan2.2-ti2v-5b/Pmq00R5zrEo_9_0to107.mp4",
-      "local_source": "_wmbench_src/data/videos/wan2.2-ti2v-5b/Pmq00R5zrEo_9_0to107.mp4",
-      "sha256": "6ae3d66144a65e699bcc72dbdd160ca36016e39cd8c40d8710a3406e8825d527"
-    },
-    {
-      "exists_locally": true,
       "hf_target_path": "videos/wan2.2-ti2v-5b/QfWrBHgD9go_5_0to145.mp4",
       "local_source": "_wmbench_src/data/videos/wan2.2-ti2v-5b/QfWrBHgD9go_5_0to145.mp4",
       "sha256": "7742430ad72d953d028c42fc66747dcf6b6080f0d0e4855ba8325e37065b8e58"
@@ -5309,7 +5255,7 @@
   "hf_repo_type": "dataset",
   "hf_url_base": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main",
   "n_missing_locally": 0,
-  "n_present_locally": 884,
-  "n_total_files": 884,
+  "n_present_locally": 875,
+  "n_total_files": 875,
   "schema_version": "1"
 }

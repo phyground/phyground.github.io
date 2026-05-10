@@ -41,7 +41,7 @@
     "inertia": 10,
     "material": 16,
     "momentum": 21,
-    "reflection": 4,
+    "reflection": 10,
     "shadow": 7
   },
   "law_quotas": {
@@ -131,9 +131,9 @@
     },
     "reflection": {
       "available_for_law": 17,
-      "fill": 6,
+      "fill": 3,
       "quota": 7,
-      "seeds": 1
+      "seeds": 4
     },
     "shadow": {
       "available_for_law": 30,
@@ -225,16 +225,6 @@
     },
     {
       "law": "buoyancy",
-      "prompt_id": "0047_perspective-center_trimmed-domino-in-juice",
-      "score_components": {
-        "coverage_norm": 0.5,
-        "mid_difficulty_norm": 0.9512,
-        "variance_norm": 0.3228
-      },
-      "source": "score_fill"
-    },
-    {
-      "law": "buoyancy",
       "prompt_id": "0134_perspective-center_trimmed-paper-fall-water",
       "score_components": {
         "coverage_norm": 0.5,
@@ -290,6 +280,16 @@
         "coverage_norm": 0.5,
         "mid_difficulty_norm": 0.7073,
         "variance_norm": 0.3868
+      },
+      "source": "score_fill"
+    },
+    {
+      "law": "buoyancy",
+      "prompt_id": "gravity_90",
+      "score_components": {
+        "coverage_norm": 0.5,
+        "mid_difficulty_norm": 0.6098,
+        "variance_norm": 0.1788
       },
       "source": "score_fill"
     },
@@ -385,11 +385,11 @@
     },
     {
       "law": "displacement",
-      "prompt_id": "0086_perspective-center_trimmed-liquid-on-duck",
+      "prompt_id": "0047_perspective-center_trimmed-domino-in-juice",
       "score_components": {
         "coverage_norm": 0.5,
-        "mid_difficulty_norm": 0.8049,
-        "variance_norm": 0.3345
+        "mid_difficulty_norm": 0.9512,
+        "variance_norm": 0.3228
       },
       "source": "score_fill"
     },
@@ -415,6 +415,16 @@
     },
     {
       "law": "displacement",
+      "prompt_id": "7_O1YdVAWSU_14_0to102",
+      "score_components": {
+        "coverage_norm": 0.5,
+        "mid_difficulty_norm": 0.9512,
+        "variance_norm": 0.4356
+      },
+      "source": "score_fill"
+    },
+    {
+      "law": "displacement",
       "prompt_id": "A3y_x1XMu-4_17_227to407",
       "score_components": {
         "coverage_norm": 0.5,
@@ -435,21 +445,21 @@
     },
     {
       "law": "displacement",
-      "prompt_id": "Sl3C5JMaCTo_22_0to159",
+      "prompt_id": "fluid_83",
       "score_components": {
         "coverage_norm": 0.5,
-        "mid_difficulty_norm": 0.9024,
-        "variance_norm": 0.3627
+        "mid_difficulty_norm": 0.8293,
+        "variance_norm": 0.348
       },
       "source": "score_fill"
     },
     {
-      "law": "displacement",
-      "prompt_id": "fluid_409",
+      "law": "flow_dynamics",
+      "prompt_id": "0086_perspective-center_trimmed-liquid-on-duck",
       "score_components": {
         "coverage_norm": 0.5,
-        "mid_difficulty_norm": 1.0,
-        "variance_norm": 0.4004
+        "mid_difficulty_norm": 0.8049,
+        "variance_norm": 0.3345
       },
       "source": "score_fill"
     },
@@ -465,16 +475,6 @@
     },
     {
       "law": "flow_dynamics",
-      "prompt_id": "7_O1YdVAWSU_14_0to102",
-      "score_components": {
-        "coverage_norm": 0.5,
-        "mid_difficulty_norm": 0.9512,
-        "variance_norm": 0.4356
-      },
-      "source": "score_fill"
-    },
-    {
-      "law": "flow_dynamics",
       "prompt_id": "88H1BBqFzXQ_1_118to222",
       "score_components": {
         "coverage_norm": 0.5,
@@ -482,16 +482,6 @@
         "variance_norm": 0.4568
       },
       "source": "paperdemo_seed"
-    },
-    {
-      "law": "flow_dynamics",
-      "prompt_id": "Pmq00R5zrEo_9_0to107",
-      "score_components": {
-        "coverage_norm": 0.5,
-        "mid_difficulty_norm": 0.5366,
-        "variance_norm": 0.221
-      },
-      "source": "score_fill"
     },
     {
       "law": "flow_dynamics",
@@ -510,6 +500,16 @@
         "coverage_norm": 0.5,
         "mid_difficulty_norm": 0.7398,
         "variance_norm": 0.2624
+      },
+      "source": "score_fill"
+    },
+    {
+      "law": "flow_dynamics",
+      "prompt_id": "fluid_553",
+      "score_components": {
+        "coverage_norm": 0.5,
+        "mid_difficulty_norm": 0.9675,
+        "variance_norm": 0.4035
       },
       "source": "score_fill"
     },
@@ -535,16 +535,6 @@
     },
     {
       "law": "fluid_continuity",
-      "prompt_id": "0110_perspective-center_trimmed-match",
-      "score_components": {
-        "coverage_norm": 0.5,
-        "mid_difficulty_norm": 0.9512,
-        "variance_norm": 0.5955
-      },
-      "source": "score_fill"
-    },
-    {
-      "law": "fluid_continuity",
       "prompt_id": "6-75qQ0rpE4_10_17to126",
       "score_components": {
         "coverage_norm": 0.5,
@@ -565,31 +555,41 @@
     },
     {
       "law": "fluid_continuity",
-      "prompt_id": "fluid_553",
+      "prompt_id": "Cj5OoWr0k0E_92_0to279",
       "score_components": {
         "coverage_norm": 0.5,
-        "mid_difficulty_norm": 0.9675,
-        "variance_norm": 0.4035
+        "mid_difficulty_norm": 0.9756,
+        "variance_norm": 0.2634
       },
       "source": "score_fill"
     },
     {
       "law": "fluid_continuity",
-      "prompt_id": "fluid_83",
+      "prompt_id": "Sl3C5JMaCTo_22_0to159",
       "score_components": {
         "coverage_norm": 0.5,
-        "mid_difficulty_norm": 0.8293,
-        "variance_norm": 0.348
+        "mid_difficulty_norm": 0.9024,
+        "variance_norm": 0.3627
       },
       "source": "score_fill"
     },
     {
       "law": "fluid_continuity",
-      "prompt_id": "gravity_90",
+      "prompt_id": "WgrxxdVBEGc_50_64to186",
       "score_components": {
         "coverage_norm": 0.5,
-        "mid_difficulty_norm": 0.6098,
-        "variance_norm": 0.1788
+        "mid_difficulty_norm": 0.5122,
+        "variance_norm": 0.184
+      },
+      "source": "score_fill"
+    },
+    {
+      "law": "fluid_continuity",
+      "prompt_id": "fluid_409",
+      "score_components": {
+        "coverage_norm": 0.5,
+        "mid_difficulty_norm": 1.0,
+        "variance_norm": 0.4004
       },
       "source": "score_fill"
     },
@@ -1011,7 +1011,17 @@
         "mid_difficulty_norm": 0.8537,
         "variance_norm": 0.9248
       },
-      "source": "score_fill"
+      "source": "paperdemo_seed"
+    },
+    {
+      "law": "reflection",
+      "prompt_id": "0110_perspective-center_trimmed-match",
+      "score_components": {
+        "coverage_norm": 0.5,
+        "mid_difficulty_norm": 0.9512,
+        "variance_norm": 0.5955
+      },
+      "source": "paperdemo_seed"
     },
     {
       "law": "reflection",
@@ -1031,17 +1041,7 @@
         "mid_difficulty_norm": 0.8049,
         "variance_norm": 0.3586
       },
-      "source": "score_fill"
-    },
-    {
-      "law": "reflection",
-      "prompt_id": "Cj5OoWr0k0E_92_0to279",
-      "score_components": {
-        "coverage_norm": 0.5,
-        "mid_difficulty_norm": 0.9756,
-        "variance_norm": 0.2634
-      },
-      "source": "score_fill"
+      "source": "paperdemo_seed"
     },
     {
       "law": "reflection",
@@ -1145,9 +1145,29 @@
     }
   ],
   "schema_version": "1",
-  "selected_at": "2026-05-10T18:29:20Z",
+  "selected_at": "2026-05-08T15:00:00Z",
   "selection_inputs": {
     "humaneval_prompts_sha256": "bf8c755ba1e70ab2f862f9143d1d39360f7447bc533a43cfa2bada363ede5d01",
+    "humaneval_score_jsons": {
+      "cosmos-predict2.5-14b": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-14b_20260426_132821.json",
+      "cosmos-predict2.5-2b": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-2b_20260426_130603.json",
+      "ltx-2-19b-dev": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2-19b-dev_20260426_142548.json",
+      "ltx-2.3-22b-dev": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2.3-22b-dev_20260426_144807.json",
+      "omniweaving": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_omniweaving_20260426_151022.json",
+      "veo-3.1": "data/scores/ourckpt/eval_qwen27b_local_cot-subq_humaneval_set_veo-3.1_20260427_104534.json",
+      "wan2.2-i2v-a14b": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-i2v-a14b_20260426_153209.json",
+      "wan2.2-ti2v-5b": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-ti2v-5b_20260426_155402.json"
+    },
+    "humaneval_score_jsons_sha256": {
+      "cosmos-predict2.5-14b": "b6f1e883fd2e6054b338bb101a0d6e9af285e7ff1aa2831f6eb99f310de34e59",
+      "cosmos-predict2.5-2b": "f13ece751c37210998da8c81e5cefdbc3c72acaf4cf6f5c8d3b0798f582fbea6",
+      "ltx-2-19b-dev": "218ae775c7a90ca0c73a69f0c42bd835b2f38731168b096e679e9c6abc3d4934",
+      "ltx-2.3-22b-dev": "d2be8931ba37e4e480b3f34561b31ed6035a1eb3b7ff5ed310ba3077707be7b9",
+      "omniweaving": "b82c76205037a5c704336bf13dc8a637ad67f9a8d9efe48171932d77b6ca9c33",
+      "veo-3.1": "cd90dcf792d1cb1430b41b395455184751cf3ab0727e7e428f8c05c541b19be4",
+      "wan2.2-i2v-a14b": "881b575392142f86d03037af3de795980a69f9f9664ae0390071eeaf6c1b7921",
+      "wan2.2-ti2v-5b": "fdf5025eb1b5431af64a3f5389516df54c96effe6d211fd8b770782d612bd8b9"
+    },
     "model_catalog_sha256": "6c88b41361242b3ed0275c9618f54bca140b42876a0d8bd6f9caf71301b4fb57",
     "paperdemo_manifest_sha256": "6fe03fb70443d1d13b53902ac4746a57b594b0f4e52ca7e7121300c7b41d6c91",
     "registry_sha256": "0d791883c6ec8dec03d1f6db890d6681cdf987a3313e97314d0af83b4ed616fe"

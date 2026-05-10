@@ -359,6 +359,17 @@ table.lb-paper td.is-second { background: rgba(0, 0, 0, 0.025); }
 }
 .video-card .model { font-weight: bold; }
 .video-card .meta { color: var(--gray-dark); font-size: 0.8rem; }
+.video-card .prompt-text {
+    margin: 0.35rem 0 0;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: var(--gray-dark);
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .video-card figcaption.figcaption-inline {
     display: flex;
     flex-direction: row;

@@ -55,4 +55,55 @@
 </p>
 {% endif %}
 
+{% if phyjudge_leaderboard and phyjudge_leaderboard.rows %}
+{% set pj = phyjudge_leaderboard %}
+<h2 id="phyjudge-leaderboard" style="margin-top:2.5rem;">PhyJudge-9B (auto-eval)</h2>
+<p class="caveat" style="margin-bottom:0.75rem;">
+    <strong>Method.</strong> Per-video scores from
+    <a href="{{ pj.judge_url }}">PhyJudge-9B</a>
+    (Qwen3.5-9B finetune, sub-question + human prompt) &rarr; per-model mean
+    across {{ pj.n_prompts }} prompts. Overall combines the General and Domain
+    views with equal weight (domain mean is weighted by the number of (video, law)
+    scores contributing to each domain).
+    <strong>Bold</strong> marks the best score in each column;
+    <u>underline</u> marks the second-best.
+    <span aria-label="closed-source">&dagger;</span> denotes a closed-source model.
+</p>
+<table class="lb lb-paper" id="lb-phyjudge-table">
+    <thead>
+        <tr>
+            <th rowspan="2" class="lb-paper-model">Model</th>
+            <th colspan="{{ pj.columns.general|length }}" class="lb-paper-group">General Physics &uarr;</th>
+            <th colspan="{{ pj.columns.domain|length }}" class="lb-paper-group">Domain Physics &uarr;</th>
+            <th rowspan="2" class="num">{{ pj.columns.overall.label }} &uarr;</th>
+        </tr>
+        <tr>
+            {% for col in pj.columns.general %}<th class="num">{{ col.label }}</th>{% endfor %}
+            {% for col in pj.columns.domain %}<th class="num">{{ col.label }}</th>{% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in pj.rows %}
+        {% set ordered_cols = pj.columns.general + pj.columns.domain + [pj.columns.overall] %}
+        <tr>
+            <td class="lb-paper-model">
+                <a href="{{ rel('models/') }}{{ row.site_model_key }}/">{{ row.display_name }}</a>{% if row.closed_source %}<sup title="closed-source">&dagger;</sup>{% endif %}
+            </td>
+            {% for col in ordered_cols %}
+            {% set v = row.scores[col.key] %}
+            {% set vstr = '%.2f'|format(v) %}
+            {% set best = '%.2f'|format(pj.best[col.key]) %}
+            {% set second = '%.2f'|format(pj.second[col.key]) if pj.second[col.key] is not none else None %}
+            <td class="num{% if vstr == best %} is-best{% elif second is not none and vstr == second %} is-second{% endif %}">{% if vstr == best %}<strong>{{ vstr }}</strong>{% elif second is not none and vstr == second %}<u>{{ vstr }}</u>{% else %}{{ vstr }}{% endif %}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p style="font-size:0.85rem;color:var(--gray-dark);margin-top:-0.5rem;">
+    {{ pj.rows|length }} models &middot; generated {{ pj.generated_at }} &middot;
+    <a href="{{ rel('snapshot/index/phyjudge_leaderboard.json') }}" download>download JSON</a>
+</p>
+{% endif %}
+
 {% endblock %}

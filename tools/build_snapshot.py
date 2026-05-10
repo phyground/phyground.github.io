@@ -1497,6 +1497,7 @@ def build(*, now_iso: str | None = None,
         "data/vis_datasets.json": WMBENCH_SRC / "data" / "vis_datasets.json",
         "data/paperdemo/manifest.csv": WMBENCH_SRC / "data" / "paperdemo" / "manifest.csv",
         "data/humaneval_leaderboard.json": WMBENCH_SRC / "data" / "humaneval_leaderboard.json",
+        "data/phyjudge_leaderboard.json": WMBENCH_SRC / "data" / "phyjudge_leaderboard.json",
         "videogen/runner/MODEL_CATALOG.py": WMBENCH_SRC / "videogen" / "runner" / "MODEL_CATALOG.py",
     }
     optional_paths = {
@@ -1718,6 +1719,10 @@ def build(*, now_iso: str | None = None,
     _copy_file(
         src_paths["data/humaneval_leaderboard.json"],
         STAGING_DIR / "index" / "humaneval_leaderboard.json",
+    )
+    _copy_file(
+        src_paths["data/phyjudge_leaderboard.json"],
+        STAGING_DIR / "index" / "phyjudge_leaderboard.json",
     )
 
     # 8. MANIFEST.json — single-pass: compute snapshot_sha, patch site_config,

@@ -85,7 +85,6 @@
         var metaParts = [];
         if (model) metaParts.push('model: ' + model);
         if (law) metaParts.push('law: ' + law.replace(/_/g, ' '));
-        if (p && p.dataset) metaParts.push('source: ' + p.dataset);
         if (p && p.physical_laws && p.physical_laws.length) metaParts.push('laws: ' + p.physical_laws.join(', '));
         modalMeta.textContent = metaParts.join(' · ');
 

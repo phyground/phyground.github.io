@@ -49,6 +49,7 @@
             <div class="video-grid">
                 {% for v in law_entry.videos %}
                 {% set stem = v.src_filename.rsplit('.', 1)[0] %}
+                {% set prompt_obj = prompts_index.get(stem) %}
                 <figure class="video-card video-card-clickable"
                         data-prompt-id="{{ stem }}"
                         data-model="{{ v.model }}"
@@ -60,6 +61,9 @@
                     <figcaption>
                         <span class="model"><a href="{{ rel('models/') }}{{ v.model }}/">{{ v.model }}</a></span>
                         <span class="meta"><button type="button" class="btn btn-sm video-card-info" aria-label="Open details">details</button></span>
+                        {% if prompt_obj and prompt_obj.prompt %}
+                        <p class="prompt-text" title="{{ prompt_obj.prompt }}">{{ prompt_obj.prompt }}</p>
+                        {% endif %}
                     </figcaption>
                 </figure>
                 {% endfor %}
@@ -96,10 +100,15 @@
             <h3 style="margin-top:1.25rem;">paperdemo ({{ pd|length }})</h3>
             <div class="video-grid">
                 {% for v in pd[:8] %}
+                {% set p_stem = v.src_filename.rsplit('.', 1)[0] %}
+                {% set p_prompt = prompts_index.get(p_stem) %}
                 <figure class="video-card">
                     <video data-src="{{ v.video_url_hf }}" controls muted loop preload="none"></video>
                     <figcaption>
                         <span class="model"><span class="law-icon" aria-hidden="true">{{ law_icons.get(v.law, '•') }}</span> {{ v.law|replace('_', ' ') }} <span class="badge">paperdemo</span></span>
+                        {% if p_prompt and p_prompt.prompt %}
+                        <p class="prompt-text" title="{{ p_prompt.prompt }}">{{ p_prompt.prompt }}</p>
+                        {% endif %}
                     </figcaption>
                 </figure>
                 {% endfor %}
@@ -109,71 +118,8 @@
             {% endif %}
             {% endif %}
 
-            {# Group humaneval entries by dataset; merge same prompt_id across datasets. #}
-            {% set ds_buckets = namespace(d={}) %}
-            {% for v in he %}
-            {%- if v.dataset not in ds_buckets.d -%}
-            {%- set _ = ds_buckets.d.update({v.dataset: {}}) -%}
-            {%- endif -%}
-            {%- set bucket = ds_buckets.d[v.dataset] -%}
-            {%- if v.prompt_id not in bucket -%}
-            {%- set _ = bucket.update({v.prompt_id: v}) -%}
-            {%- endif -%}
-            {% endfor %}
-
-            {% if ds_buckets.d %}
-            <h3 style="margin-top:1.25rem;">By source dataset</h3>
-            {# Same-prompt cross-dataset merging: collect each prompt_id's dataset set. #}
-            {% set merge_map = namespace(d={}) %}
-            {% for ds, bucket in ds_buckets.d|dictsort %}
-            {%- for pid, _v in bucket|dictsort -%}
-            {%- if pid not in merge_map.d -%}
-            {%- set _ = merge_map.d.update({pid: []}) -%}
-            {%- endif -%}
-            {%- set _ = merge_map.d[pid].append(ds) -%}
-            {%- endfor -%}
-            {% endfor %}
-
-            {% for ds, bucket in ds_buckets.d|dictsort %}
-            <h4 style="margin-top:1rem;">{{ ds }} <span class="badge">{{ bucket|length }} prompts</span></h4>
-            <div class="video-grid">
-                {% for pid, v in (bucket|dictsort)[:8] %}
-                <figure class="video-card">
-                    <video data-src="{{ v.video_url_hf }}" controls muted loop preload="none"
-                           {% if v.first_frame_url %}poster="{{ v.first_frame_url }}"{% endif %}></video>
-                    <figcaption>
-                        <span class="model">
-                            {{ ds }} #{{ loop.index }}
-                            {% set merged_ds = merge_map.d.get(pid) or [] %}
-                            {% if merged_ds|length > 1 %}
-                            <span class="badge">also in: {{ merged_ds|reject('equalto', ds)|join(', ') }}</span>
-                            {% endif %}
-                        </span>
-                        <span class="meta">phys_avg={{ '%.2f'|format(v.score) if v.score is not none else '—' }} · <a href="{{ rel('videos/compare/') }}?prompt_id={{ pid }}">compare &rarr;</a></span>
-                    </figcaption>
-                </figure>
-                {% endfor %}
-            </div>
-            {% if bucket|length > 8 %}
-            <p style="font-size:0.85rem;color:var(--gray-dark);">+ {{ bucket|length - 8 }} more {{ ds }} prompts. Open the <a href="{{ rel('videos/compare/') }}">compare page</a> to step through them by prompt_id.</p>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-
-            {% if ds_list %}
-            <h3 style="margin-top:1.5rem;">Leaderboard slices</h3>
-            <div class="entry-cards">
-                {% for s in ds_list %}
-                <a class="entry-card" href="{{ rel('leaderboard/') }}#{{ m.key }}--{{ s.dataset }}--{{ s.subset }}--{{ s.evaluator }}--{{ s.schema }}">
-                    <h3 style="font-size:1rem;">{{ s.evaluator }} · {{ s.schema }}</h3>
-                    <p>gen_avg: {{ '%.2f'|format(s.gen_avg) if s.gen_avg is not none else '—' }} ·
-                       phys_avg: {{ '%.2f'|format(s.phys_avg) if s.phys_avg is not none else '—' }} ·
-                       N: {{ s.n if s.n is not none else '—' }}</p>
-                </a>
-                {% endfor %}
-            </div>
-            {% elif not pd and not he %}
-            <p class="placeholder">No published videos or leaderboard rows for this model in the current snapshot. See the <a href="{{ rel('models/') }}{{ m.key }}/">model detail page</a> for catalog metadata.</p>
+            {% if not pd %}
+            <p class="placeholder">No published videos for this model in the current snapshot. See the <a href="{{ rel('models/') }}{{ m.key }}/">model detail page</a> for catalog metadata.</p>
             {% endif %}
         </div>
         {% endfor %}
