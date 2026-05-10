@@ -1383,77 +1383,62 @@ def _site_config(catalog: list[dict],
     if n_prompts == 0:
         n_prompts = len(humaneval_prompts)
 
-    # Featured comparison: pick a law, surface a paperdemo "reference" tile
-    # (highest-n_ann row in the law), then 3-4 distinct model outputs. We pull
-    # additional model outputs from the humaneval pool for the same law when
-    # paperdemo alone doesn't yield enough unique models.
-    def _build_featured(law: str, law_videos: list[dict]) -> list[dict]:
-        seen: set[str] = set()
-        picked: list[dict] = []
-        if law_videos:
-            ref = max(law_videos, key=lambda v: (v.get("n_ann") or 0, v.get("model") or ""))
-            picked.append({**ref, "_role": "reference"})
-            seen.add(ref["model"])
-        # Paperdemo distinct-model outputs first.
-        for v in sorted(law_videos, key=lambda v: (v.get("model") or "", v.get("video_id") or 0)):
-            if len(picked) >= 5:
-                break
-            if v["model"] in seen:
-                continue
-            seen.add(v["model"])
-            picked.append({**v, "_role": "model_output"})
-        # If we still need more distinct models, pull from humaneval prompts
-        # whose physical_laws covers the chosen law.
-        if len(picked) < 5:
-            humaneval_for_law = []
-            for p in humaneval_prompts:
-                if law not in (p.get("physical_laws") or []):
-                    continue
-                pid = p.get("video")
-                ds = p.get("dataset") or ""
-                if not pid:
-                    continue
-                for model_key, score in (p.get("per_model_scores") or {}).items():
-                    if model_key in seen:
-                        continue
-                    # Same allowlist + on-disk gate the rest of the snapshot
-                    # uses. Without this the homepage fallback can leak HF
-                    # URLs for models outside `_HF_PUBLISHED_MODELS`
-                    # (cogvideox1.5-5b-i2v, hunyuanvideo-i2v, etc.) — those
-                    # would 404 on the published `juyil/phygroundwebsitevideo`
-                    # dataset.
-                    if not _video_exists_locally(model_key, pid):
-                        continue
-                    humaneval_for_law.append({
-                        "model": model_key,
-                        "video_id": None,
-                        "n_ann": None,
-                        "src_filename": f"{pid}.mp4",
-                        "src_path": f"data/videos/{model_key}/{pid}.mp4",
-                        "video_url_hf": _video_hf_url(model_key, ds, pid),
-                        "_role": "model_output",
-                        "_humaneval_prompt_id": pid,
-                        "_humaneval_score": score,
-                    })
-            humaneval_for_law.sort(key=lambda v: (v["model"], v["src_filename"]))
-            for v in humaneval_for_law:
-                if len(picked) >= 5:
-                    break
-                if v["model"] in seen:
-                    continue
-                seen.add(v["model"])
-                picked.append(v)
-        return picked
+    # Featured comparison: pick one prompt covered by all rendered models and
+    # surface one tile per model. Preference order: `collision_156` if it has
+    # full coverage (it's the paperdemo-anchored Round-1 reference), otherwise
+    # the fully-covered prompt with the largest score spread (most informative
+    # apples-to-apples comparison), tie-broken by prompt_id for determinism.
+    def _build_featured_same_prompt() -> dict:
+        rendered_keys = {m["key"] for m in models}
 
-    featured_law_name = "collision"
-    featured_videos: list[dict] = []
-    for law_entry in paperdemo_grouped:
-        if law_entry["law"] == featured_law_name:
-            featured_videos = _build_featured(featured_law_name, law_entry["videos"])
-            break
-    if not featured_videos and paperdemo_grouped:
-        featured_law_name = paperdemo_grouped[0]["law"]
-        featured_videos = _build_featured(featured_law_name, paperdemo_grouped[0]["videos"])
+        def is_fully_covered(p: dict) -> bool:
+            return rendered_keys.issubset(set((p.get("per_model_videos") or {}).keys()))
+
+        candidates = [(pid, p) for pid, p in prompts_index.items() if is_fully_covered(p)]
+        if not candidates:
+            return {"law": None, "prompt_id": None, "prompt": "", "physical_laws": [], "videos": []}
+
+        preferred_pid = "collision_156"
+        chosen = next(((pid, p) for pid, p in candidates if pid == preferred_pid), None)
+        if chosen is None:
+            def spread(p: dict) -> float:
+                scores = list((p.get("per_model_scores") or {}).values())
+                return (max(scores) - min(scores)) if scores else 0.0
+            chosen = sorted(candidates, key=lambda kv: (-spread(kv[1]), kv[0]))[0]
+
+        pid, p = chosen
+        pms = p.get("per_model_videos") or {}
+        score_map = p.get("per_model_scores") or {}
+        ds = p.get("dataset") or ""
+        videos: list[dict] = []
+        for m in models:
+            mk = m["key"]
+            url = pms.get(mk)
+            if not url:
+                continue
+            videos.append({
+                "model": mk,
+                "video_url_hf": url,
+                "src_filename": f"{pid}.mp4",
+                "src_path": f"data/videos/{mk}/{pid}.mp4",
+                "_role": "model_output",
+                "_humaneval_prompt_id": pid,
+                "_humaneval_score": score_map.get(mk),
+                "_humaneval_dataset": ds,
+            })
+        laws = list(p.get("physical_laws") or [])
+        return {
+            "law": laws[0] if laws else None,
+            "prompt_id": pid,
+            "prompt": p.get("prompt", ""),
+            "physical_laws": laws,
+            "first_frame_url": p.get("first_frame_url"),
+            "videos": videos,
+        }
+
+    featured_comparison_payload = _build_featured_same_prompt()
+    featured_law_name = featured_comparison_payload.get("law")
+    featured_videos = featured_comparison_payload.get("videos") or []
 
     huggingface_dataset_url = HF_BASE.replace("/resolve/main", "")
     # Per Round-5 user choice "Hide until paper is posted": no fallback to the
@@ -1478,10 +1463,7 @@ def _site_config(catalog: list[dict],
             "n_annotations": n_annotations,
             "n_eval_combos": n_eval_combos,
         },
-        "featured_comparison": {
-            "law": featured_law_name,
-            "videos": featured_videos,
-        },
+        "featured_comparison": featured_comparison_payload,
         "models": models,
         "datasets": datasets,
         "leaderboard_entries": leaderboard_entries,

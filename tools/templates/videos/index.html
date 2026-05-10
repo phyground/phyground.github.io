@@ -48,10 +48,6 @@
         {% for law_entry in paperdemo %}
         <div class="gallery-section" data-law="{{ law_entry.law }}"{% if not loop.first %} hidden{% endif %}>
             <h2><span class="law-icon" aria-hidden="true">{{ law_icons.get(law_entry.law, '•') }}</span> {{ law_entry.law|replace('_', ' ') }}</h2>
-            <p style="font-size:0.9rem;color:var(--gray-dark);margin-bottom:1rem;">
-                {{ law_entry.videos|length }} curated videos · {{ law_entry.n_ann_total }} human annotations
-                {% if law_entry.fig_pdf %}· <a href="{{ rel(law_entry.fig_pdf) }}" target="_blank">PDF illustration</a>{% endif %}
-            </p>
             <div class="video-grid">
                 {% for v in law_entry.videos %}
                 {% set stem = v.src_filename.rsplit('.', 1)[0] %}

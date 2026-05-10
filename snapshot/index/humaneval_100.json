@@ -1145,7 +1145,7 @@
     }
   ],
   "schema_version": "1",
-  "selected_at": "2026-05-08T15:00:00Z",
+  "selected_at": "2026-05-10T18:29:20Z",
   "selection_inputs": {
     "humaneval_prompts_sha256": "bf8c755ba1e70ab2f862f9143d1d39360f7447bc533a43cfa2bada363ede5d01",
     "humaneval_score_jsons": {

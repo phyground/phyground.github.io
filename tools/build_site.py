@@ -23,6 +23,7 @@ import re
 import shutil
 import sys
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 
 try:
@@ -211,6 +212,13 @@ def render(config_path: Path, *, verbose: bool = True) -> None:
                     print(f"[build_site] removing orphan model dir {child.relative_to(REPO_ROOT)}")
                 shutil.rmtree(child)
 
+    # Derive rendered_at from the snapshot's deterministic build_meta.built_at
+    # so two consecutive renders against the same snapshot are byte-identical.
+    # Fall back to wall-clock time only when the config carries no built_at.
+    rendered_at = (
+        config.get("build_meta", {}).get("built_at")
+        or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    )
     for page in pages:
         out_path = REPO_ROOT / page.out_path
         out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -219,6 +227,7 @@ def render(config_path: Path, *, verbose: bool = True) -> None:
             "site": config["site"],
             "headline": config["headline"],
             "build_meta": config.get("build_meta", {}),
+            "rendered_at": rendered_at,
             "rel": _make_rel(page.out_path),
             **snapshot_ctx,
         }

@@ -22,24 +22,148 @@
 </section>
 
 {% if featured_comparison and featured_comparison.videos %}
-<h2>Featured comparison &mdash; {{ featured_comparison.law|replace('_', ' ') }}</h2>
-<p>One physical law, several video generators side-by-side. The reference tile is the curator-blessed paperdemo annotation; the others are independent generations of related prompts.</p>
+<h2>Featured comparison &mdash; one prompt, {{ featured_comparison.videos|length }} models</h2>
+{% if featured_comparison.prompt %}
+<p style="margin-top:0.25rem;"><em>&ldquo;{{ featured_comparison.prompt }}&rdquo;</em></p>
+{% endif %}
+{% if featured_comparison.physical_laws %}
+<p style="margin-top:0.25rem;font-size:0.85rem;color:var(--gray-dark);">
+    Physical laws:
+    {% for law in featured_comparison.physical_laws %}<span class="badge">{{ law|replace('_', ' ') }}</span>{% if not loop.last %} {% endif %}{% endfor %}
+</p>
+{% endif %}
 <div class="video-grid">
     {% for v in featured_comparison.videos %}
-    <figure class="video-card{% if v._role == 'reference' %} video-card-ref{% endif %}">
+    <figure class="video-card">
         <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"></video>
         <figcaption>
-            <span class="model">
-                {{ v.model }}
-                {% if v._role == 'reference' %}<span class="badge">reference</span>{% endif %}
-            </span>
+            <span class="model"><a href="{{ rel('models/') }}{{ v.model }}/">{{ v.model }}</a></span>
+            {% if v._humaneval_score is not none %}
+            <span class="meta">phys_avg: {{ '%.2f'|format(v._humaneval_score) }}</span>
+            {% endif %}
         </figcaption>
     </figure>
     {% endfor %}
 </div>
 <p style="margin-top:0.5rem;">
-    <a class="btn btn-outline btn-sm" href="{{ rel('videos/') }}?law={{ featured_comparison.law }}">All {{ featured_comparison.law|replace('_', ' ') }} videos &rarr;</a>
+    {% if featured_comparison.prompt_id %}
+    <a class="btn btn-outline btn-sm" href="{{ rel('videos/compare/') }}?prompt_id={{ featured_comparison.prompt_id }}">Open in compare view &rarr;</a>
+    {% endif %}
+    {% if featured_comparison.law %}
+    <a class="btn btn-outline btn-sm" href="{{ rel('videos/') }}?law={{ featured_comparison.law }}">More {{ featured_comparison.law|replace('_', ' ') }} videos &rarr;</a>
+    {% endif %}
 </p>
+{% endif %}
+
+{% set law_icons = {
+    'boundary_interaction': '🧱',
+    'buoyancy': '🛟',
+    'collision': '💥',
+    'displacement': '🪣',
+    'flow_dynamics': '🌊',
+    'fluid_continuity': '🚰',
+    'gravity': '🍎',
+    'impenetrability': '🚧',
+    'inertia': '🎱',
+    'material': '🧪',
+    'momentum': '🎳',
+    'reflection': '🪞',
+    'shadow': '🌑'
+} %}
+{% set sp = namespace(items=[]) %}
+{% for law_entry in paperdemo %}
+{%- for v in law_entry.videos -%}
+{%- set _ = sp.items.append({'law': law_entry.law, 'model': v.model, 'url': v.video_url_hf, 'icon': law_icons.get(law_entry.law, '•')}) -%}
+{%- endfor -%}
+{% endfor %}
+{% if sp.items %}
+<section id="random-sample">
+    <h2 style="display:flex;align-items:baseline;gap:0.75rem;flex-wrap:wrap;">
+        Sample
+        <span style="font-size:0.85rem;font-weight:normal;color:var(--gray-dark);">random picks across laws &amp; models &mdash; reload or shuffle for more</span>
+        <button type="button" class="btn btn-outline btn-sm" id="sample-shuffle" style="margin-left:auto;">Shuffle</button>
+    </h2>
+    <div class="video-grid" id="sample-grid"></div>
+</section>
+<script id="sample-pool-data" type="application/json">{{ sp.items|tojson }}</script>
+<script>
+(function () {
+    'use strict';
+    var grid = document.getElementById('sample-grid');
+    var btn = document.getElementById('sample-shuffle');
+    var poolEl = document.getElementById('sample-pool-data');
+    if (!grid || !poolEl) return;
+    var pool;
+    try { pool = JSON.parse(poolEl.textContent); } catch (e) { return; }
+    if (!pool.length) return;
+
+    var GALLERY_BASE = {{ rel('videos/')|tojson }};
+    var MODELS_BASE = {{ rel('models/')|tojson }};
+    var N = 6;
+
+    function shuffled(arr) {
+        var a = arr.slice();
+        for (var i = a.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+        return a;
+    }
+
+    function pickDiverse(items, n) {
+        var sh = shuffled(items);
+        var picked = [];
+        var laws = {}, models = {};
+        // Pass 1: distinct law AND distinct model.
+        for (var i = 0; i < sh.length && picked.length < n; i++) {
+            var v = sh[i];
+            if (laws[v.law] || models[v.model]) continue;
+            picked.push(v); laws[v.law] = true; models[v.model] = true;
+        }
+        // Pass 2: distinct law (model may repeat).
+        for (var i = 0; i < sh.length && picked.length < n; i++) {
+            var v = sh[i];
+            if (picked.indexOf(v) >= 0 || laws[v.law]) continue;
+            picked.push(v); laws[v.law] = true; models[v.model] = true;
+        }
+        // Pass 3: fill remaining slots from anywhere.
+        for (var i = 0; i < sh.length && picked.length < n; i++) {
+            var v = sh[i];
+            if (picked.indexOf(v) >= 0) continue;
+            picked.push(v);
+        }
+        return picked;
+    }
+
+    function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+    }
+
+    function render() {
+        var picks = pickDiverse(pool, N);
+        grid.innerHTML = picks.map(function (v) {
+            var lawLabel = v.law.replace(/_/g, ' ');
+            return '<figure class="video-card">' +
+                '<video src="' + escapeHtml(v.url) + '" controls muted loop preload="metadata"></video>' +
+                '<figcaption>' +
+                    '<span class="model">' +
+                        '<a href="' + escapeHtml(GALLERY_BASE) + '?law=' + encodeURIComponent(v.law) + '">' +
+                            '<span class="law-icon" aria-hidden="true">' + escapeHtml(v.icon) + '</span> ' +
+                            escapeHtml(lawLabel) +
+                        '</a>' +
+                    '</span>' +
+                    '<span class="meta"><a href="' + escapeHtml(MODELS_BASE) + encodeURIComponent(v.model) + '/">' + escapeHtml(v.model) + '</a></span>' +
+                '</figcaption>' +
+                '</figure>';
+        }).join('');
+    }
+
+    if (btn) btn.addEventListener('click', render);
+    render();
+})();
+</script>
 {% endif %}
 
 <h2>Browse</h2>

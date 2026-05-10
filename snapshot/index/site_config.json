@@ -1,11 +1,11 @@
 {
   "build_meta": {
-    "built_at": "2026-05-08T15:00:00Z",
+    "built_at": "2026-05-10T18:29:20Z",
     "humaneval_prompts_sha256": "bf8c755ba1e70ab2f862f9143d1d39360f7447bc533a43cfa2bada363ede5d01",
     "model_catalog_sha256": "6c88b41361242b3ed0275c9618f54bca140b42876a0d8bd6f9caf71301b4fb57",
     "paperdemo_manifest_sha256": "55fe4d712c24c103598c6a3647931ef719dfb551c95c675ad138aee609fadd17",
     "registry_sha256": "0d791883c6ec8dec03d1f6db890d6681cdf987a3313e97314d0af83b4ed616fe",
-    "snapshot_sha": "2af4a7a4abc84e82f0f35227ce0b3b05e1748ffc50771c3173142549da0eac94",
+    "snapshot_sha": "8346b7bdae1f89dfeec3546b9f12627eff94ad07130963d2361d2d975cfe69f7",
     "vis_datasets_sha256": "69e4761736b5865072345b6c8a753c80b109ef76e5284fb90581c206f591e08e"
   },
   "datasets": [
@@ -23,58 +23,95 @@
     }
   ],
   "featured_comparison": {
+    "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_156.jpg",
     "law": "collision",
+    "physical_laws": [
+      "collision",
+      "impenetrability",
+      "momentum"
+    ],
+    "prompt": "A player hits the ball off the side of the mallet, resulting in an unexpected trajectory.",
+    "prompt_id": "collision_156",
     "videos": [
       {
-        "_role": "reference",
-        "model": "ltx-2-19b-dev",
-        "n_ann": 8,
+        "_humaneval_dataset": "video_phy_2",
+        "_humaneval_prompt_id": "collision_156",
+        "_humaneval_score": 2.3333,
+        "_role": "model_output",
+        "model": "cosmos-predict2.5-14b",
         "src_filename": "collision_156.mp4",
-        "src_path": "data/paperdemo/collision/ltx-2-19b-dev__collision_156.mp4",
-        "video_id": 2,
+        "src_path": "data/videos/cosmos-predict2.5-14b/collision_156.mp4",
+        "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/collision_156.mp4"
+      },
+      {
+        "_humaneval_dataset": "video_phy_2",
+        "_humaneval_prompt_id": "collision_156",
+        "_humaneval_score": 2.3333,
+        "_role": "model_output",
+        "model": "cosmos-predict2.5-2b",
+        "src_filename": "collision_156.mp4",
+        "src_path": "data/videos/cosmos-predict2.5-2b/collision_156.mp4",
+        "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-2b/collision_156.mp4"
+      },
+      {
+        "_humaneval_dataset": "video_phy_2",
+        "_humaneval_prompt_id": "collision_156",
+        "_humaneval_score": 1.0,
+        "_role": "model_output",
+        "model": "ltx-2-19b-dev",
+        "src_filename": "collision_156.mp4",
+        "src_path": "data/videos/ltx-2-19b-dev/collision_156.mp4",
         "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2-19b-dev/collision_156.mp4"
       },
       {
+        "_humaneval_dataset": "video_phy_2",
+        "_humaneval_prompt_id": "collision_156",
+        "_humaneval_score": 3.6667,
         "_role": "model_output",
-        "model": "cosmos-predict2.5-2b",
-        "n_ann": 3,
-        "src_filename": "mechanics_257.mp4",
-        "src_path": "data/paperdemo/collision/cosmos-predict2.5-2b__mechanics_257.mp4",
-        "video_id": 255,
-        "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-2b/mechanics_257.mp4"
+        "model": "ltx-2.3-22b-dev",
+        "src_filename": "collision_156.mp4",
+        "src_path": "data/videos/ltx-2.3-22b-dev/collision_156.mp4",
+        "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/collision_156.mp4"
       },
       {
-        "_humaneval_prompt_id": "0002_perspective-center_trimmed-ball-and-block-fall",
-        "_humaneval_score": 3.75,
+        "_humaneval_dataset": "video_phy_2",
+        "_humaneval_prompt_id": "collision_156",
+        "_humaneval_score": 3.6667,
         "_role": "model_output",
-        "model": "cosmos-predict2.5-14b",
-        "n_ann": null,
-        "src_filename": "0002_perspective-center_trimmed-ball-and-block-fall.mp4",
-        "src_path": "data/videos/cosmos-predict2.5-14b/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
-        "video_id": null,
-        "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/0002_perspective-center_trimmed-ball-and-block-fall.mp4"
+        "model": "omniweaving",
+        "src_filename": "collision_156.mp4",
+        "src_path": "data/videos/omniweaving/collision_156.mp4",
+        "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/collision_156.mp4"
       },
       {
-        "_humaneval_prompt_id": "0002_perspective-center_trimmed-ball-and-block-fall",
-        "_humaneval_score": 2.5,
+        "_humaneval_dataset": "video_phy_2",
+        "_humaneval_prompt_id": "collision_156",
+        "_humaneval_score": 5.0,
         "_role": "model_output",
         "model": "veo-3.1",
-        "n_ann": null,
-        "src_filename": "0002_perspective-center_trimmed-ball-and-block-fall.mp4",
-        "src_path": "data/videos/veo-3.1/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
-        "video_id": null,
-        "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/0002_perspective-center_trimmed-ball-and-block-fall.mp4"
+        "src_filename": "collision_156.mp4",
+        "src_path": "data/videos/veo-3.1/collision_156.mp4",
+        "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/collision_156.mp4"
       },
       {
-        "_humaneval_prompt_id": "0002_perspective-center_trimmed-ball-and-block-fall",
-        "_humaneval_score": 3.5,
+        "_humaneval_dataset": "video_phy_2",
+        "_humaneval_prompt_id": "collision_156",
+        "_humaneval_score": 2.6667,
         "_role": "model_output",
         "model": "wan2.2-i2v-a14b",
-        "n_ann": null,
-        "src_filename": "0002_perspective-center_trimmed-ball-and-block-fall.mp4",
-        "src_path": "data/videos/wan2.2-i2v-a14b/0002_perspective-center_trimmed-ball-and-block-fall.mp4",
-        "video_id": null,
-        "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/0002_perspective-center_trimmed-ball-and-block-fall.mp4"
+        "src_filename": "collision_156.mp4",
+        "src_path": "data/videos/wan2.2-i2v-a14b/collision_156.mp4",
+        "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/collision_156.mp4"
+      },
+      {
+        "_humaneval_dataset": "video_phy_2",
+        "_humaneval_prompt_id": "collision_156",
+        "_humaneval_score": 2.3333,
+        "_role": "model_output",
+        "model": "wan2.2-ti2v-5b",
+        "src_filename": "collision_156.mp4",
+        "src_path": "data/videos/wan2.2-ti2v-5b/collision_156.mp4",
+        "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-ti2v-5b/collision_156.mp4"
       }
     ]
   },
@@ -117,7 +154,7 @@
     },
     "n_selected": 100,
     "note": null,
-    "selected_at": "2026-05-08T15:00:00Z"
+    "selected_at": "2026-05-10T18:29:20Z"
   },
   "leaderboard_entries": [
     {

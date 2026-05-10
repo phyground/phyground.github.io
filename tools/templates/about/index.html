@@ -24,8 +24,8 @@
 <p>All content (code, generated videos, hand-curated annotations): CC-BY-4.0.</p>
 <p>Questions / corrections: open an issue on the GitHub repo, or contact the corresponding author listed in the paper.</p>
 
-{% if build_meta and build_meta.built_at %}
+{% if rendered_at %}
 <h2>Build provenance</h2>
-<p style="font-size:0.9rem;color:var(--gray-dark);">Built <code>{{ build_meta.built_at }}</code></p>
+<p style="font-size:0.9rem;color:var(--gray-dark);">Built <code>{{ rendered_at }}</code></p>
 {% endif %}
 {% endblock %}
