@@ -359,6 +359,39 @@ table.lb-paper td.is-second { background: rgba(0, 0, 0, 0.025); }
 }
 .video-card .model { font-weight: bold; }
 .video-card .meta { color: var(--gray-dark); font-size: 0.8rem; }
+.video-card figcaption.figcaption-inline {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    min-width: 0;
+}
+.video-card figcaption.figcaption-inline > .model,
+.video-card figcaption.figcaption-inline > .meta {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.video-card figcaption.figcaption-inline > .model {
+    flex: 1 1 auto;
+}
+.video-card figcaption.figcaption-inline > .meta {
+    flex: 0 1 auto;
+    font-size: 0.78rem;
+    text-align: right;
+}
+.video-card figcaption.figcaption-inline > .model a,
+.video-card figcaption.figcaption-inline > .meta a {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 /* ---------- gallery tabs + nav ---------- */
 .gallery-tabs {

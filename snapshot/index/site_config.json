@@ -8484,6 +8484,7 @@
     "huggingface_dataset_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo",
     "huggingface_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo",
     "paper_url": "",
+    "phyjudge_url": "https://huggingface.co/NU-World-Model-Embodied-AI/phyjudge-9B",
     "short_title": "phyground",
     "title": "phyground"
   },

@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ site.title }}{% endblock %}</title>
     <meta name="description" content="{{ site.description }}">
+    <link rel="icon" href="{{ rel('static/img/favicon.ico') }}" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ rel('static/img/favicon-32.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ rel('static/img/phyground-192.png') }}">
+    <link rel="apple-touch-icon" sizes="512x512" href="{{ rel('static/img/phyground-512.png') }}">
     <link rel="stylesheet" href="{{ rel('static/css/base.css') }}">
     {% block head_extra %}{% endblock %}
 </head>

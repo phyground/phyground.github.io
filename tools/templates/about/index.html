@@ -17,7 +17,8 @@
 <ul>
     {% if site.paper_url %}<li><a href="{{ site.paper_url }}">Paper (arXiv)</a></li>{% else %}<li><span aria-disabled="true" style="color:var(--gray-dark);">Paper (coming soon)</span></li>{% endif %}
     <li><a href="{{ site.github_url }}">GitHub repository</a></li>
-    <li><a href="{{ site.huggingface_url }}">HuggingFace dataset</a> &mdash; videos and first frames</li>
+    <li><a href="{{ site.huggingface_url }}">Dataset</a> &mdash; videos and first frames on HuggingFace</li>
+    {% if site.phyjudge_url %}<li><a href="{{ site.phyjudge_url }}">Model</a> &mdash; PhyJudge-9B evaluator weights on HuggingFace</li>{% endif %}
 </ul>
 
 <h2>License &amp; contact</h2>

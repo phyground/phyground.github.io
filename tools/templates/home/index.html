@@ -7,18 +7,11 @@
     <p class="lead">{{ site.description }}</p>
     <div class="hero-actions">
         {% if site.paper_url %}<a class="btn btn-primary btn-lg" href="{{ site.paper_url }}">Read paper</a>{% else %}<span class="btn btn-primary btn-lg disabled" aria-disabled="true" title="Paper not yet posted">Paper (coming soon)</span>{% endif %}
-        <a class="btn btn-outline btn-lg" href="{{ rel('leaderboard/') }}">View leaderboard</a>
-        <a class="btn btn-outline btn-lg" href="{{ rel('videos/') }}">Browse videos</a>
+        <a class="btn btn-outline btn-lg" href="{{ rel('leaderboard/') }}">Leaderboard</a>
         <a class="btn btn-outline btn-lg" href="{{ site.github_url }}">GitHub</a>
-        <a class="btn btn-outline btn-lg" href="{{ site.huggingface_url }}">HuggingFace</a>
+        <a class="btn btn-outline btn-lg" href="{{ site.huggingface_url }}">Dataset</a>
+        {% if site.phyjudge_url %}<a class="btn btn-outline btn-lg" href="{{ site.phyjudge_url }}">Model</a>{% endif %}
     </div>
-</section>
-
-<section class="headline-numbers">
-    <div class="headline-number"><span class="num">{{ headline.n_models }}</span><span class="label">Video models</span></div>
-    <div class="headline-number"><span class="num">{{ headline.n_prompts }}</span><span class="label">Published prompts</span></div>
-    <div class="headline-number"><span class="num">{{ headline.n_annotations }}</span><span class="label">Human annotations</span></div>
-    <div class="headline-number"><span class="num">{{ headline.n_eval_combos }}</span><span class="label">Evaluator&times;dataset combos</span></div>
 </section>
 
 {% if featured_comparison and featured_comparison.videos %}
@@ -36,10 +29,10 @@
     {% for v in featured_comparison.videos %}
     <figure class="video-card">
         <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"></video>
-        <figcaption>
+        <figcaption class="figcaption-inline">
             <span class="model"><a href="{{ rel('models/') }}{{ v.model }}/">{{ v.model }}</a></span>
             {% if v._humaneval_score is not none %}
-            <span class="meta">phys_avg: {{ '%.2f'|format(v._humaneval_score) }}</span>
+            <span class="meta">Score: {{ '%.2f'|format(v._humaneval_score) }}</span>
             {% endif %}
         </figcaption>
     </figure>
@@ -147,7 +140,7 @@
             var lawLabel = v.law.replace(/_/g, ' ');
             return '<figure class="video-card">' +
                 '<video src="' + escapeHtml(v.url) + '" controls muted loop preload="metadata"></video>' +
-                '<figcaption>' +
+                '<figcaption class="figcaption-inline">' +
                     '<span class="model">' +
                         '<a href="' + escapeHtml(GALLERY_BASE) + '?law=' + encodeURIComponent(v.law) + '">' +
                             '<span class="law-icon" aria-hidden="true">' + escapeHtml(v.icon) + '</span> ' +

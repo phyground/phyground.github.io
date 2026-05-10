@@ -1455,6 +1455,7 @@ def _site_config(catalog: list[dict],
             "github_url": "https://github.com/NU-World-Model-Embodied-AI/PhyGround",
             "huggingface_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo",
             "huggingface_dataset_url": huggingface_dataset_url,
+            "phyjudge_url": "https://huggingface.co/NU-World-Model-Embodied-AI/phyjudge-9B",
             "copyright_year": 2026,
         },
         "headline": {

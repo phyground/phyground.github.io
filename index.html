@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>phyground &mdash; Video Gallery + Leaderboard</title>
     <meta name="description" content="A physics-grounded benchmark for video generation. Browse model outputs by physical law, compare side-by-side, and explore evaluator-by-dataset leaderboards.">
+    <link rel="icon" href="static/img/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="static/img/phyground-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="static/img/phyground-512.png">
     <link rel="stylesheet" href="static/css/base.css">
     
 </head>
@@ -39,18 +43,11 @@
     <p class="lead">A physics-grounded benchmark for video generation. Browse model outputs by physical law, compare side-by-side, and explore evaluator-by-dataset leaderboards.</p>
     <div class="hero-actions">
         <span class="btn btn-primary btn-lg disabled" aria-disabled="true" title="Paper not yet posted">Paper (coming soon)</span>
-        <a class="btn btn-outline btn-lg" href="leaderboard/">View leaderboard</a>
-        <a class="btn btn-outline btn-lg" href="videos/">Browse videos</a>
+        <a class="btn btn-outline btn-lg" href="leaderboard/">Leaderboard</a>
         <a class="btn btn-outline btn-lg" href="https://github.com/NU-World-Model-Embodied-AI/PhyGround">GitHub</a>
-        <a class="btn btn-outline btn-lg" href="https://huggingface.co/datasets/juyil/phygroundwebsitevideo">HuggingFace</a>
+        <a class="btn btn-outline btn-lg" href="https://huggingface.co/datasets/juyil/phygroundwebsitevideo">Dataset</a>
+        <a class="btn btn-outline btn-lg" href="https://huggingface.co/NU-World-Model-Embodied-AI/phyjudge-9B">Model</a>
     </div>
-</section>
-
-<section class="headline-numbers">
-    <div class="headline-number"><span class="num">8</span><span class="label">Video models</span></div>
-    <div class="headline-number"><span class="num">100</span><span class="label">Published prompts</span></div>
-    <div class="headline-number"><span class="num">163</span><span class="label">Human annotations</span></div>
-    <div class="headline-number"><span class="num">51</span><span class="label">Evaluator&times;dataset combos</span></div>
 </section>
 
 
@@ -68,80 +65,80 @@
     
     <figure class="video-card">
         <video src="https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/collision_156.mp4" controls muted loop preload="metadata"></video>
-        <figcaption>
+        <figcaption class="figcaption-inline">
             <span class="model"><a href="models/cosmos-predict2.5-14b/">cosmos-predict2.5-14b</a></span>
             
-            <span class="meta">phys_avg: 2.33</span>
+            <span class="meta">Score: 2.33</span>
             
         </figcaption>
     </figure>
     
     <figure class="video-card">
         <video src="https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-2b/collision_156.mp4" controls muted loop preload="metadata"></video>
-        <figcaption>
+        <figcaption class="figcaption-inline">
             <span class="model"><a href="models/cosmos-predict2.5-2b/">cosmos-predict2.5-2b</a></span>
             
-            <span class="meta">phys_avg: 2.33</span>
+            <span class="meta">Score: 2.33</span>
             
         </figcaption>
     </figure>
     
     <figure class="video-card">
         <video src="https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2-19b-dev/collision_156.mp4" controls muted loop preload="metadata"></video>
-        <figcaption>
+        <figcaption class="figcaption-inline">
             <span class="model"><a href="models/ltx-2-19b-dev/">ltx-2-19b-dev</a></span>
             
-            <span class="meta">phys_avg: 1.00</span>
+            <span class="meta">Score: 1.00</span>
             
         </figcaption>
     </figure>
     
     <figure class="video-card">
         <video src="https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2.3-22b-dev/collision_156.mp4" controls muted loop preload="metadata"></video>
-        <figcaption>
+        <figcaption class="figcaption-inline">
             <span class="model"><a href="models/ltx-2.3-22b-dev/">ltx-2.3-22b-dev</a></span>
             
-            <span class="meta">phys_avg: 3.67</span>
+            <span class="meta">Score: 3.67</span>
             
         </figcaption>
     </figure>
     
     <figure class="video-card">
         <video src="https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/omniweaving/collision_156.mp4" controls muted loop preload="metadata"></video>
-        <figcaption>
+        <figcaption class="figcaption-inline">
             <span class="model"><a href="models/omniweaving/">omniweaving</a></span>
             
-            <span class="meta">phys_avg: 3.67</span>
+            <span class="meta">Score: 3.67</span>
             
         </figcaption>
     </figure>
     
     <figure class="video-card">
         <video src="https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/veo-3.1/collision_156.mp4" controls muted loop preload="metadata"></video>
-        <figcaption>
+        <figcaption class="figcaption-inline">
             <span class="model"><a href="models/veo-3.1/">veo-3.1</a></span>
             
-            <span class="meta">phys_avg: 5.00</span>
+            <span class="meta">Score: 5.00</span>
             
         </figcaption>
     </figure>
     
     <figure class="video-card">
         <video src="https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-i2v-a14b/collision_156.mp4" controls muted loop preload="metadata"></video>
-        <figcaption>
+        <figcaption class="figcaption-inline">
             <span class="model"><a href="models/wan2.2-i2v-a14b/">wan2.2-i2v-a14b</a></span>
             
-            <span class="meta">phys_avg: 2.67</span>
+            <span class="meta">Score: 2.67</span>
             
         </figcaption>
     </figure>
     
     <figure class="video-card">
         <video src="https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/wan2.2-ti2v-5b/collision_156.mp4" controls muted loop preload="metadata"></video>
-        <figcaption>
+        <figcaption class="figcaption-inline">
             <span class="model"><a href="models/wan2.2-ti2v-5b/">wan2.2-ti2v-5b</a></span>
             
-            <span class="meta">phys_avg: 2.33</span>
+            <span class="meta">Score: 2.33</span>
             
         </figcaption>
     </figure>
@@ -231,7 +228,7 @@
             var lawLabel = v.law.replace(/_/g, ' ');
             return '<figure class="video-card">' +
                 '<video src="' + escapeHtml(v.url) + '" controls muted loop preload="metadata"></video>' +
-                '<figcaption>' +
+                '<figcaption class="figcaption-inline">' +
                     '<span class="model">' +
                         '<a href="' + escapeHtml(GALLERY_BASE) + '?law=' + encodeURIComponent(v.law) + '">' +
                             '<span class="law-icon" aria-hidden="true">' + escapeHtml(v.icon) + '</span> ' +
@@ -298,7 +295,8 @@
                     <ul class="footer-links">
                         
                         <li><a href="https://github.com/NU-World-Model-Embodied-AI/PhyGround">GitHub</a></li>
-                        <li><a href="https://huggingface.co/datasets/juyil/phygroundwebsitevideo">HuggingFace</a></li>
+                        <li><a href="https://huggingface.co/datasets/juyil/phygroundwebsitevideo">Dataset</a></li>
+                        <li><a href="https://huggingface.co/NU-World-Model-Embodied-AI/phyjudge-9B">Model</a></li>
                     </ul>
                 </div>
             </div>
