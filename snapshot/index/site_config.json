@@ -8443,7 +8443,7 @@
   "site": {
     "copyright_year": 2026,
     "description": "A physics-grounded benchmark for video generation. Browse model outputs by physical law, compare side-by-side, and explore evaluator-by-dataset leaderboards.",
-    "github_url": "https://github.com/phyground/phyground.github.io",
+    "github_url": "https://github.com/NU-World-Model-Embodied-AI/PhyGround",
     "huggingface_dataset_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo",
     "huggingface_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo",
     "paper_url": "",

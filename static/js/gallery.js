@@ -81,7 +81,7 @@
         var law = card.dataset.law;
         var p = prompts[pid] || null;
 
-        modalTitle.textContent = (p && p.prompt_id) || pid || 'Video detail';
+        modalTitle.textContent = 'Video detail';
         var metaParts = [];
         if (model) metaParts.push('model: ' + model);
         if (law) metaParts.push('law: ' + law.replace(/_/g, ' '));
@@ -111,7 +111,7 @@
 
         var compareHref = '../compare/?prompt_id=' + encodeURIComponent(pid || '');
         modalLink.innerHTML = pid
-            ? 'Open <a href="' + escapeHtml(compareHref) + '">compare view for ' + escapeHtml(pid) + '</a>.'
+            ? 'Open the <a href="' + escapeHtml(compareHref) + '">compare view</a>.'
             : '';
 
         if (typeof modal.showModal === 'function') modal.showModal();

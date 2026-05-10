@@ -20,13 +20,11 @@
 {% set my_entries = leaderboard_entries | selectattr('video_model', 'equalto', model.key) | list %}
 {% if my_entries %}
 <table class="lb">
-    <thead><tr><th>Dataset</th><th>Subset</th><th>Evaluator</th><th>Schema</th><th class="num">N</th><th class="num">gen_avg</th><th class="num">phys_avg</th><th class="num">coverage</th><th>datetime</th><th>raw</th></tr></thead>
+    <thead><tr><th>Evaluator</th><th>Schema</th><th class="num">N</th><th class="num">gen_avg</th><th class="num">phys_avg</th><th class="num">coverage</th><th>datetime</th><th>raw</th></tr></thead>
     <tbody>
         {% for e in my_entries %}
         {% set c = e.current %}
         <tr>
-            <td>{{ e.dataset }}</td>
-            <td>{{ e.subset }}</td>
             <td>{{ e.evaluator }}</td>
             <td>{{ e.schema }}</td>
             <td class="num">{{ c.n if c.n is not none else '—' }}</td>
@@ -51,14 +49,14 @@
         <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"
                {% if v.first_frame_url %}poster="{{ v.first_frame_url }}"{% endif %}></video>
         <figcaption>
-            <span class="model">{{ (v.law or 'humaneval')|replace('_', ' ') }}{% if v.kind == 'humaneval' %} <span class="badge">humaneval</span>{% endif %}</span>
+            <span class="model">{{ (v.law or 'video')|replace('_', ' ') }}</span>
             {% if v.score is not none %}<span class="meta">phys_avg={{ '%.2f'|format(v.score) }}</span>{% endif %}
         </figcaption>
     </figure>
     {% endfor %}
 </div>
 {% elif my_entries %}
-<p style="color:var(--gray-dark);">No paperdemo videos and no humaneval prompts scored this model. See the published leaderboard slices above for the evaluation context.</p>
+<p style="color:var(--gray-dark);">No paperdemo videos and no scored prompts for this model. See the published leaderboard slices above for the evaluation context.</p>
 {% else %}
 <div class="placeholder">
     <p><strong>No public videos yet for this model.</strong></p>

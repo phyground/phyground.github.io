@@ -48,6 +48,7 @@ code {
     background: var(--gray-light);
     padding: 0.2em 0.4em;
     border: 1px solid var(--border);
+    border-radius: 3px;
 }
 
 pre {
@@ -55,6 +56,7 @@ pre {
     background: var(--gray-light);
     padding: 1rem;
     border: 1px solid var(--border);
+    border-radius: 4px;
     overflow-x: auto;
     margin-bottom: 1rem;
 }
@@ -210,6 +212,7 @@ pre {
 
 .hero {
     border: 1px solid var(--black);
+    border-radius: 8px;
     padding: 3rem 2rem;
     margin: 2rem 0;
     text-align: center;
@@ -226,6 +229,7 @@ pre {
 }
 .headline-number {
     border: 1px solid var(--black);
+    border-radius: 6px;
     padding: 1.25rem;
     text-align: center;
 }
@@ -240,6 +244,7 @@ pre {
 }
 .entry-card {
     border: 1px solid var(--black);
+    border-radius: 6px;
     padding: 1.5rem;
     text-decoration: none;
     color: var(--black);
@@ -288,6 +293,7 @@ table.lb-paper td.is-second { background: rgba(0, 0, 0, 0.025); }
     flex-wrap: wrap;
     align-items: flex-end;
     border: 1px solid var(--border);
+    border-radius: 6px;
     padding: 1rem;
     margin-bottom: 1rem;
     background: var(--gray-light);
@@ -296,6 +302,7 @@ table.lb-paper td.is-second { background: rgba(0, 0, 0, 0.025); }
 .filters label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-dark); }
 .filters select, .filters input[type="text"] {
     border: 1px solid var(--black);
+    border-radius: 4px;
     padding: 0.4rem 0.5rem;
     background: var(--white);
     font-family: 'Times New Roman', Times, serif;
@@ -312,6 +319,7 @@ table.lb-paper td.is-second { background: rgba(0, 0, 0, 0.025); }
 
 .placeholder {
     border: 1px dashed var(--gray-medium);
+    border-radius: 6px;
     padding: 2.5rem;
     text-align: center;
     color: var(--gray-dark);
@@ -327,11 +335,13 @@ table.lb-paper td.is-second { background: rgba(0, 0, 0, 0.025); }
 }
 .video-card {
     border: 1px solid var(--border);
+    border-radius: 6px;
     margin: 0;
     padding: 0;
     background: var(--white);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 .video-card video {
     width: 100%;
@@ -355,6 +365,8 @@ table.lb-paper td.is-second { background: rgba(0, 0, 0, 0.025); }
     display: flex;
     gap: 0;
     border: 1px solid var(--black);
+    border-radius: 4px;
+    overflow: hidden;
     width: fit-content;
     margin: 1rem 0;
 }
@@ -379,6 +391,7 @@ table.lb-paper td.is-second { background: rgba(0, 0, 0, 0.025); }
     margin: 1rem 0;
     padding: 0.75rem;
     border: 1px solid var(--border);
+    border-radius: 6px;
     background: var(--gray-light);
 }
 .gallery-nav-item {
@@ -386,6 +399,7 @@ table.lb-paper td.is-second { background: rgba(0, 0, 0, 0.025); }
     background: var(--white);
     color: var(--black);
     border: 1px solid var(--black);
+    border-radius: 4px;
     cursor: pointer;
     font-family: 'Times New Roman', Times, serif;
     font-size: 0.9rem;
@@ -410,6 +424,7 @@ table.lb-paper td.is-second { background: rgba(0, 0, 0, 0.025); }
     height: 32px;
     object-fit: cover;
     border: 1px solid var(--border);
+    border-radius: 3px;
     background: var(--white);
 }
 .gallery-nav-item.active .law-thumb { background: var(--white); }
@@ -431,6 +446,7 @@ table.lb-paper td.is-second { background: rgba(0, 0, 0, 0.025); }
 /* ---------- modal (by-law detail panel) ---------- */
 .modal {
     border: 1px solid var(--black);
+    border-radius: 8px;
     background: var(--white);
     color: var(--black);
     padding: 1.5rem;
@@ -446,10 +462,12 @@ table.lb-paper td.is-second { background: rgba(0, 0, 0, 0.025); }
     font-size: 1.25rem;
     background: var(--white);
     border: 1px solid var(--black);
+    border-radius: 4px;
     cursor: pointer;
 }
 .video-card-ref {
     border: 2px solid var(--black);
+    border-radius: 6px;
     box-shadow: 2px 2px 0 var(--gray-medium);
 }
 

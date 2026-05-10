@@ -31,12 +31,13 @@
     // Populate the picker.
     var picker = document.getElementById('prompt-picker');
     var ids = Object.keys(prompts).sort();
-    ids.forEach(function (id) {
+    ids.forEach(function (id, idx) {
         var p = prompts[id];
         var opt = document.createElement('option');
         opt.value = id;
         var laws = (p.physical_laws || []).join(',');
-        opt.textContent = id + (laws ? ' [' + laws + ']' : '');
+        var ds = p.dataset ? p.dataset + ' ' : '';
+        opt.textContent = ds + 'prompt #' + (idx + 1) + (laws ? ' [' + laws + ']' : '');
         picker.appendChild(opt);
     });
 
@@ -55,7 +56,9 @@
             return;
         }
         var p = prompts[id];
-        document.getElementById('compare-title').textContent = id;
+        document.getElementById('compare-title').textContent = p.dataset
+            ? 'Compare — ' + p.dataset
+            : 'Compare';
         var meta = [];
         if (p.dataset) meta.push('dataset: ' + p.dataset);
         if (p.physical_laws && p.physical_laws.length) meta.push('laws: ' + p.physical_laws.join(', '));

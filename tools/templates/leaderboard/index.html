@@ -3,16 +3,14 @@
 {% block title %}Leaderboard &mdash; {{ site.title }}{% endblock %}
 {% block content %}
 <h1>Leaderboard</h1>
-<p>Rankings of video generation models on wmbench evaluations.
-The table below mirrors the paper's <code>TABLE_leaderboard.tex</code>
+<p>Rankings of video generation models on wmbench evaluations
 (human evaluation, 250 prompts, 1&ndash;5 scale).</p>
 
 {% if humaneval_leaderboard and humaneval_leaderboard.rows %}
 {% set lb = humaneval_leaderboard %}
 <h2 id="paper-leaderboard">Human evaluation (paper)</h2>
 <p class="caveat" style="margin-bottom:0.75rem;">
-    <strong>Source.</strong> Same data as the paper's TABLE_leaderboard
-    (<code>{{ lb.source }}</code>): per-annotator scores &rarr; per-video mean
+    <strong>Method.</strong> Per-annotator scores &rarr; per-video mean
     &rarr; per-model mean across {{ lb.n_prompts }} prompts. Overall combines the
     General and Domain views with equal weight (domain mean is weighted by the
     number of (video, law) means contributing to each domain).

@@ -39,7 +39,6 @@
         {% for law_entry in paperdemo %}
         <button type="button" class="gallery-nav-item" data-law="{{ law_entry.law }}">
             <span class="law-icon" aria-hidden="true">{{ law_icons.get(law_entry.law, '•') }}</span>
-            {% if law_entry.fig_png %}<img src="{{ rel(law_entry.fig_png) }}" alt="" class="law-thumb">{% endif %}
             <span>{{ law_entry.law|replace('_', ' ') }}</span>
             <span class="badge">{{ law_entry.videos|length }}</span>
         </button>
@@ -49,18 +48,10 @@
         {% for law_entry in paperdemo %}
         <div class="gallery-section" data-law="{{ law_entry.law }}"{% if not loop.first %} hidden{% endif %}>
             <h2><span class="law-icon" aria-hidden="true">{{ law_icons.get(law_entry.law, '•') }}</span> {{ law_entry.law|replace('_', ' ') }}</h2>
-            <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem;">
-                {% if law_entry.fig_png %}
-                <a href="{{ rel(law_entry.fig_pdf) }}" target="_blank">
-                    <img src="{{ rel(law_entry.fig_png) }}" alt="{{ law_entry.law }} illustration" style="max-width:280px;border:1px solid var(--border);">
-                </a>
-                {% endif %}
-                <p style="font-size:0.9rem;color:var(--gray-dark);">
-                    {{ law_entry.videos|length }} curated videos · {{ law_entry.n_ann_total }} human annotations<br>
-                    <a href="{{ rel(law_entry.fig_pdf) }}" target="_blank">PDF illustration</a> ·
-                    <a href="{{ rel(law_entry.fig_png) }}" target="_blank">PNG thumbnail</a>
-                </p>
-            </div>
+            <p style="font-size:0.9rem;color:var(--gray-dark);margin-bottom:1rem;">
+                {{ law_entry.videos|length }} curated videos · {{ law_entry.n_ann_total }} human annotations
+                {% if law_entry.fig_pdf %}· <a href="{{ rel(law_entry.fig_pdf) }}" target="_blank">PDF illustration</a>{% endif %}
+            </p>
             <div class="video-grid">
                 {% for v in law_entry.videos %}
                 {% set stem = v.src_filename.rsplit('.', 1)[0] %}
@@ -140,7 +131,7 @@
             {% endfor %}
 
             {% if ds_buckets.d %}
-            <h3 style="margin-top:1.25rem;">humaneval × source dataset</h3>
+            <h3 style="margin-top:1.25rem;">By source dataset</h3>
             {# Same-prompt cross-dataset merging: collect each prompt_id's dataset set. #}
             {% set merge_map = namespace(d={}) %}
             {% for ds, bucket in ds_buckets.d|dictsort %}
@@ -161,7 +152,7 @@
                            {% if v.first_frame_url %}poster="{{ v.first_frame_url }}"{% endif %}></video>
                     <figcaption>
                         <span class="model">
-                            {{ pid }}
+                            {{ ds }} #{{ loop.index }}
                             {% set merged_ds = merge_map.d.get(pid) or [] %}
                             {% if merged_ds|length > 1 %}
                             <span class="badge">also in: {{ merged_ds|reject('equalto', ds)|join(', ') }}</span>
@@ -183,9 +174,8 @@
             <div class="entry-cards">
                 {% for s in ds_list %}
                 <a class="entry-card" href="{{ rel('leaderboard/') }}#{{ m.key }}--{{ s.dataset }}--{{ s.subset }}--{{ s.evaluator }}--{{ s.schema }}">
-                    <h3 style="font-size:1rem;">{{ s.dataset }} / {{ s.subset }}</h3>
-                    <p>eval: {{ s.evaluator }} · schema: {{ s.schema }}<br>
-                       gen_avg: {{ '%.2f'|format(s.gen_avg) if s.gen_avg is not none else '—' }} ·
+                    <h3 style="font-size:1rem;">{{ s.evaluator }} · {{ s.schema }}</h3>
+                    <p>gen_avg: {{ '%.2f'|format(s.gen_avg) if s.gen_avg is not none else '—' }} ·
                        phys_avg: {{ '%.2f'|format(s.phys_avg) if s.phys_avg is not none else '—' }} ·
                        N: {{ s.n if s.n is not none else '—' }}</p>
                 </a>
