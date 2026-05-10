@@ -2378,7 +2378,7 @@
   "leaderboard_unpublished_count": 13,
   "models": [
     {
-      "display_name": "Cosmos-Predict2.5-14B — Image2World, 93f @ 16fps (~5.8s)",
+      "display_name": "Cosmos-Predict2.5-14B \u2014 Image2World, 93f @ 16fps (~5.8s)",
       "family": "Cosmos",
       "fps": 16,
       "frames": 93,
@@ -2537,7 +2537,7 @@
       "wrapper_module": "videogen.models.cosmos_inference"
     },
     {
-      "display_name": "Cosmos-Predict2.5-2B — Image2World, 93f @ 16fps (~5.8s)",
+      "display_name": "Cosmos-Predict2.5-2B \u2014 Image2World, 93f @ 16fps (~5.8s)",
       "family": "Cosmos",
       "fps": 16,
       "frames": 93,
@@ -2696,7 +2696,7 @@
       "wrapper_module": "videogen.models.cosmos_inference"
     },
     {
-      "display_name": "LTX-2 19B Dev (full precision) — ti2v + audio (~80GB VRAM)",
+      "display_name": "LTX-2 19B Dev (full precision) \u2014 ti2v + audio (~80GB VRAM)",
       "family": "LTX-Video",
       "fps": null,
       "frames": null,
@@ -3541,7 +3541,7 @@
       "wrapper_module": null
     },
     {
-      "display_name": "Wan2.2-I2V-A14B — i2v 480P/720P, 81f @ 16fps, MoE 14B active (diffusers)",
+      "display_name": "Wan2.2-I2V-A14B \u2014 i2v 480P/720P, 81f @ 16fps, MoE 14B active (diffusers)",
       "family": "Wan",
       "fps": 16,
       "frames": 81,
@@ -3700,7 +3700,7 @@
       "wrapper_module": "videogen.models.wan_inference"
     },
     {
-      "display_name": "Wan2.2-TI2V-5B — ti2v 704×1280, 81f @ 16fps (diffusers)",
+      "display_name": "Wan2.2-TI2V-5B \u2014 ti2v 704\u00d71280, 81f @ 16fps (diffusers)",
       "family": "Wan",
       "fps": 16,
       "frames": 81,
@@ -4493,6 +4493,7 @@
         "phys_micro_avg": 2.964
       },
       "first_frame_url": null,
+      "order_index": 237,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.75,
         "cosmos-predict2.5-2b": 3.0,
@@ -4530,6 +4531,7 @@
         "phys_micro_avg": 2.286
       },
       "first_frame_url": null,
+      "order_index": 140,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.5,
         "cosmos-predict2.5-2b": 3.25,
@@ -4567,6 +4569,7 @@
         "phys_micro_avg": 1.857
       },
       "first_frame_url": null,
+      "order_index": 75,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 1.75,
         "cosmos-predict2.5-2b": 1.5,
@@ -4604,6 +4607,7 @@
         "phys_micro_avg": 2.406
       },
       "first_frame_url": null,
+      "order_index": 152,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.0,
         "cosmos-predict2.5-2b": 2.75,
@@ -4638,6 +4642,7 @@
       "dataset": "physics_iq",
       "difficulty": {},
       "first_frame_url": null,
+      "order_index": 242,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 1.0,
         "cosmos-predict2.5-2b": 1.5,
@@ -4670,6 +4675,7 @@
       "dataset": "physics_iq",
       "difficulty": {},
       "first_frame_url": null,
+      "order_index": 243,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.25,
         "cosmos-predict2.5-2b": 3.75,
@@ -4707,6 +4713,7 @@
         "phys_micro_avg": 2.458
       },
       "first_frame_url": null,
+      "order_index": 154,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.75,
         "cosmos-predict2.5-2b": 1.75,
@@ -4741,6 +4748,7 @@
       "dataset": "physics_iq",
       "difficulty": {},
       "first_frame_url": null,
+      "order_index": 245,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.3333,
         "cosmos-predict2.5-2b": 2.6667,
@@ -4774,6 +4782,7 @@
       "dataset": "physics_iq",
       "difficulty": {},
       "first_frame_url": null,
+      "order_index": 246,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.0,
         "cosmos-predict2.5-2b": 1.6667,
@@ -4807,6 +4816,7 @@
       "dataset": "physics_iq",
       "difficulty": {},
       "first_frame_url": null,
+      "order_index": 248,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.6667,
         "cosmos-predict2.5-2b": 2.3333,
@@ -4843,6 +4853,7 @@
         "phys_micro_avg": 2.219
       },
       "first_frame_url": null,
+      "order_index": 130,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.75,
         "cosmos-predict2.5-2b": 3.75,
@@ -4880,6 +4891,7 @@
         "phys_micro_avg": 1.99
       },
       "first_frame_url": null,
+      "order_index": 83,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.0,
         "cosmos-predict2.5-2b": 1.75,
@@ -4917,6 +4929,7 @@
         "phys_micro_avg": 2.156
       },
       "first_frame_url": null,
+      "order_index": 128,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.5,
         "cosmos-predict2.5-2b": 3.0,
@@ -4954,6 +4967,7 @@
         "phys_micro_avg": 2.464
       },
       "first_frame_url": null,
+      "order_index": 155,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.75,
         "cosmos-predict2.5-2b": 1.75,
@@ -4991,6 +5005,7 @@
         "phys_micro_avg": 2.292
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/03zaIVEqtg8_10_0to155.jpg",
+      "order_index": 141,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.5,
         "cosmos-predict2.5-2b": 2.75,
@@ -5044,6 +5059,7 @@
         "phys_micro_avg": 1.875
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/1jnsHJ1u3Pk_10_0to149.jpg",
+      "order_index": 76,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.5,
         "cosmos-predict2.5-2b": 3.25,
@@ -5096,6 +5112,7 @@
         "phys_micro_avg": 2.667
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/2CH9DL5j-XA_13_0to130.jpg",
+      "order_index": 191,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.0,
         "cosmos-predict2.5-2b": 4.5,
@@ -5148,6 +5165,7 @@
         "phys_micro_avg": 2.5
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/4HoslLqqsps_9_0to118.jpg",
+      "order_index": 157,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 4.0,
         "cosmos-predict2.5-2b": 3.25,
@@ -5201,6 +5219,7 @@
         "phys_micro_avg": 1.25
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/4oDE9-8h-A8_62_32to212.jpg",
+      "order_index": 21,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.5,
         "cosmos-predict2.5-2b": 1.75,
@@ -5254,6 +5273,7 @@
         "phys_micro_avg": 2.667
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/4y1a9bjbxQU_27_0to128.jpg",
+      "order_index": 193,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.6667,
         "cosmos-predict2.5-2b": 4.0,
@@ -5306,6 +5326,7 @@
         "phys_micro_avg": 2.25
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/57UqPDirHoU_15_24to135.jpg",
+      "order_index": 135,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.75,
         "cosmos-predict2.5-2b": 3.0,
@@ -5359,6 +5380,7 @@
         "phys_micro_avg": 2.875
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/6-75qQ0rpE4_10_17to126.jpg",
+      "order_index": 232,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 4.0,
         "cosmos-predict2.5-2b": 2.75,
@@ -5413,6 +5435,7 @@
         "phys_micro_avg": 2.875
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/7_O1YdVAWSU_14_0to102.jpg",
+      "order_index": 233,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.25,
         "cosmos-predict2.5-2b": 2.0,
@@ -5467,6 +5490,7 @@
         "phys_micro_avg": 1.667
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/7zUyKYlCdFU_32_22to164.jpg",
+      "order_index": 54,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.3333,
         "cosmos-predict2.5-2b": 1.6667,
@@ -5520,6 +5544,7 @@
         "phys_micro_avg": 1.56
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/88H1BBqFzXQ_1_118to222.jpg",
+      "order_index": 46,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.25,
         "cosmos-predict2.5-2b": 2.0,
@@ -5573,6 +5598,7 @@
         "phys_micro_avg": 2.75
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/A3y_x1XMu-4_17_227to407.jpg",
+      "order_index": 207,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.5,
         "cosmos-predict2.5-2b": 2.25,
@@ -5626,6 +5652,7 @@
         "phys_micro_avg": 1.25
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/AupVdYKP3bo_5_0to165.jpg",
+      "order_index": 22,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.75,
         "cosmos-predict2.5-2b": 3.0,
@@ -5680,6 +5707,7 @@
         "phys_micro_avg": 2.036
       },
       "first_frame_url": null,
+      "order_index": 118,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.0,
         "cosmos-predict2.5-2b": 3.0,
@@ -5717,6 +5745,7 @@
         "phys_micro_avg": 1.375
       },
       "first_frame_url": null,
+      "order_index": 35,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.0,
         "cosmos-predict2.5-2b": 3.25,
@@ -5754,6 +5783,7 @@
         "phys_micro_avg": 2.75
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/HaWe0Af_0hg_6_0to222.jpg",
+      "order_index": 208,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.5,
         "cosmos-predict2.5-2b": 3.25,
@@ -5808,6 +5838,7 @@
         "phys_micro_avg": 2.389
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/I5BdJ04K1Vg_2_0to102.jpg",
+      "order_index": 151,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.0,
         "cosmos-predict2.5-2b": 3.5,
@@ -5859,6 +5890,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/QfWrBHgD9go_5_0to145.jpg",
+      "order_index": 90,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.25,
         "cosmos-predict2.5-2b": 1.5,
@@ -5913,6 +5945,7 @@
         "phys_micro_avg": 2.125
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/Sl3C5JMaCTo_22_0to159.jpg",
+      "order_index": 123,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.25,
         "cosmos-predict2.5-2b": 2.5,
@@ -5966,6 +5999,7 @@
         "phys_micro_avg": 2.821
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/UsL5HzxP68A_2_76to287.jpg",
+      "order_index": 224,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 4.25,
         "cosmos-predict2.5-2b": 3.75,
@@ -6019,6 +6053,7 @@
         "phys_micro_avg": 2.714
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/VJ82LkozoT0_60_0to175.jpg",
+      "order_index": 203,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.6667,
         "cosmos-predict2.5-2b": 4.3333,
@@ -6072,6 +6107,7 @@
         "phys_micro_avg": 2.875
       },
       "first_frame_url": null,
+      "order_index": 231,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.5,
         "cosmos-predict2.5-2b": 3.25,
@@ -6100,6 +6136,7 @@
         "phys_micro_avg": 1.667
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/at1CsLu4RIU_53_0to197.jpg",
+      "order_index": 55,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.0,
         "cosmos-predict2.5-2b": 3.3333,
@@ -6153,6 +6190,7 @@
         "phys_micro_avg": 2.312
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_145.jpg",
+      "order_index": 142,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.5,
         "cosmos-predict2.5-2b": 2.5,
@@ -6190,6 +6228,7 @@
         "phys_micro_avg": 1.417
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_156.jpg",
+      "order_index": 1,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.3333,
         "cosmos-predict2.5-2b": 2.3333,
@@ -6226,6 +6265,7 @@
         "phys_micro_avg": 2.25
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_165.jpg",
+      "order_index": 86,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.0,
         "cosmos-predict2.5-2b": 3.0,
@@ -6262,6 +6302,7 @@
         "phys_micro_avg": 2.688
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_222.jpg",
+      "order_index": 107,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.25,
         "cosmos-predict2.5-2b": 2.25,
@@ -6299,6 +6340,7 @@
         "phys_micro_avg": 2.25
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_223.jpg",
+      "order_index": 7,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.0,
         "cosmos-predict2.5-2b": 2.25,
@@ -6336,6 +6378,7 @@
         "phys_micro_avg": 2.5
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_261.jpg",
+      "order_index": 156,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.75,
         "cosmos-predict2.5-2b": 1.75,
@@ -6373,6 +6416,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_271.jpg",
+      "order_index": 43,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.5,
         "cosmos-predict2.5-2b": 4.0,
@@ -6410,6 +6454,7 @@
         "phys_micro_avg": 2.438
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_283.jpg",
+      "order_index": 9,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.0,
         "cosmos-predict2.5-2b": 3.0,
@@ -6447,6 +6492,7 @@
         "phys_micro_avg": 1.938
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_307.jpg",
+      "order_index": 20,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.0,
         "cosmos-predict2.5-2b": 2.25,
@@ -6484,6 +6530,7 @@
         "phys_micro_avg": 2.833
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_32.jpg",
+      "order_index": 10,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.75,
         "cosmos-predict2.5-2b": 2.0,
@@ -6521,6 +6568,7 @@
         "phys_micro_avg": 2.833
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_331.jpg",
+      "order_index": 110,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.0,
         "cosmos-predict2.5-2b": 1.3333,
@@ -6557,6 +6605,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_363.jpg",
+      "order_index": 88,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.5,
         "cosmos-predict2.5-2b": 3.0,
@@ -6594,6 +6643,7 @@
         "phys_micro_avg": 2.667
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_380.jpg",
+      "order_index": 33,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 1.6667,
         "cosmos-predict2.5-2b": 1.0,
@@ -6630,6 +6680,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_431.jpg",
+      "order_index": 115,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.0,
         "cosmos-predict2.5-2b": 2.5,
@@ -6667,6 +6718,7 @@
         "phys_micro_avg": 2.625
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_436.jpg",
+      "order_index": 13,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.25,
         "cosmos-predict2.5-2b": 3.25,
@@ -6704,6 +6756,7 @@
         "phys_micro_avg": 1.917
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_443.jpg",
+      "order_index": 31,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.6667,
         "cosmos-predict2.5-2b": 1.3333,
@@ -6740,6 +6793,7 @@
         "phys_micro_avg": 1.75
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_583.jpg",
+      "order_index": 17,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.0,
         "cosmos-predict2.5-2b": 1.6667,
@@ -6776,6 +6830,7 @@
         "phys_micro_avg": 1.917
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/collision_594.jpg",
+      "order_index": 82,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.0,
         "cosmos-predict2.5-2b": 2.0,
@@ -6813,6 +6868,7 @@
         "phys_micro_avg": 2.762
       },
       "first_frame_url": null,
+      "order_index": 221,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 1.75,
         "cosmos-predict2.5-2b": 2.0,
@@ -6850,6 +6906,7 @@
         "phys_micro_avg": 1.667
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/fluid_239.jpg",
+      "order_index": 56,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.0,
         "cosmos-predict2.5-2b": 2.6667,
@@ -6886,6 +6943,7 @@
         "phys_micro_avg": 1.667
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/fluid_405.jpg",
+      "order_index": 57,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.6667,
         "cosmos-predict2.5-2b": 3.0,
@@ -6922,6 +6980,7 @@
         "phys_micro_avg": 1.75
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/fluid_409.jpg",
+      "order_index": 63,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.5,
         "cosmos-predict2.5-2b": 3.0,
@@ -6959,6 +7018,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/fluid_426.jpg",
+      "order_index": 91,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.6667,
         "cosmos-predict2.5-2b": 4.0,
@@ -6995,6 +7055,7 @@
         "phys_micro_avg": 2.833
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/fluid_553.jpg",
+      "order_index": 225,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.6667,
         "cosmos-predict2.5-2b": 3.0,
@@ -7031,6 +7092,7 @@
         "phys_micro_avg": 2.75
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/fluid_75.jpg",
+      "order_index": 210,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.5,
         "cosmos-predict2.5-2b": 2.75,
@@ -7068,6 +7130,7 @@
         "phys_micro_avg": 2.75
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/fluid_83.jpg",
+      "order_index": 211,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 4.0,
         "cosmos-predict2.5-2b": 3.5,
@@ -7105,6 +7168,7 @@
         "phys_micro_avg": 2.167
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/gravity_217.jpg",
+      "order_index": 6,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.6667,
         "cosmos-predict2.5-2b": 2.6667,
@@ -7141,6 +7205,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/gravity_36.jpg",
+      "order_index": 112,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 4.0,
         "cosmos-predict2.5-2b": 4.0,
@@ -7174,6 +7239,7 @@
       "dataset": "video_phy_2",
       "difficulty": {},
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/gravity_90.jpg",
+      "order_index": 250,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.3333,
         "cosmos-predict2.5-2b": 3.3333,
@@ -7210,6 +7276,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/hardness_288.jpg",
+      "order_index": 92,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.0,
         "cosmos-predict2.5-2b": 4.0,
@@ -7245,6 +7312,7 @@
         "phys_micro_avg": 2.5
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/lighting_248.jpg",
+      "order_index": 181,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 4.0,
         "cosmos-predict2.5-2b": 2.6667,
@@ -7281,6 +7349,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/lighting_359.jpg",
+      "order_index": 111,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.6667,
         "cosmos-predict2.5-2b": 3.6667,
@@ -7317,6 +7386,7 @@
         "phys_micro_avg": 1.5
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/lighting_381.jpg",
+      "order_index": 44,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 4.0,
         "cosmos-predict2.5-2b": 4.25,
@@ -7354,6 +7424,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_157.jpg",
+      "order_index": 94,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.3333,
         "cosmos-predict2.5-2b": 2.0,
@@ -7390,6 +7461,7 @@
         "phys_micro_avg": 2.5
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_186.jpg",
+      "order_index": 163,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.25,
         "cosmos-predict2.5-2b": 1.75,
@@ -7427,6 +7499,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_192.jpg",
+      "order_index": 98,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 4.0,
         "cosmos-predict2.5-2b": 2.3333,
@@ -7463,6 +7536,7 @@
         "phys_micro_avg": 1.75
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_193.jpg",
+      "order_index": 65,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.5,
         "cosmos-predict2.5-2b": 2.0,
@@ -7500,6 +7574,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_211.jpg",
+      "order_index": 100,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.5,
         "cosmos-predict2.5-2b": 3.0,
@@ -7537,6 +7612,7 @@
         "phys_micro_avg": 2.5
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_216.jpg",
+      "order_index": 164,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 4.5,
         "cosmos-predict2.5-2b": 3.25,
@@ -7574,6 +7650,7 @@
         "phys_micro_avg": 2.333
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_242.jpg",
+      "order_index": 147,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 1.6667,
         "cosmos-predict2.5-2b": 3.3333,
@@ -7610,6 +7687,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_253.jpg",
+      "order_index": 101,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.25,
         "cosmos-predict2.5-2b": 3.0,
@@ -7647,6 +7725,7 @@
         "phys_micro_avg": 1.333
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_257.jpg",
+      "order_index": 32,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.3333,
         "cosmos-predict2.5-2b": 2.3333,
@@ -7683,6 +7762,7 @@
         "phys_micro_avg": 2.5
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_268.jpg",
+      "order_index": 167,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.75,
         "cosmos-predict2.5-2b": 2.75,
@@ -7720,6 +7800,7 @@
         "phys_micro_avg": 2.5
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_290.jpg",
+      "order_index": 172,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.0,
         "cosmos-predict2.5-2b": 2.3333,
@@ -7756,6 +7837,7 @@
         "phys_micro_avg": 2.875
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_293.jpg",
+      "order_index": 234,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.5,
         "cosmos-predict2.5-2b": 3.5,
@@ -7793,6 +7875,7 @@
         "phys_micro_avg": 2.333
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_325.jpg",
+      "order_index": 148,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.3333,
         "cosmos-predict2.5-2b": 2.0,
@@ -7829,6 +7912,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_33.jpg",
+      "order_index": 102,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.6667,
         "cosmos-predict2.5-2b": 4.0,
@@ -7865,6 +7949,7 @@
         "phys_micro_avg": 2.5
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_370.jpg",
+      "order_index": 173,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.0,
         "cosmos-predict2.5-2b": 2.0,
@@ -7902,6 +7987,7 @@
         "phys_micro_avg": 1.25
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_411.jpg",
+      "order_index": 23,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.5,
         "cosmos-predict2.5-2b": 3.75,
@@ -7939,6 +8025,7 @@
         "phys_micro_avg": 2.5
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_413.jpg",
+      "order_index": 175,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.5,
         "cosmos-predict2.5-2b": 2.0,
@@ -7976,6 +8063,7 @@
         "phys_micro_avg": 2.375
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_419.jpg",
+      "order_index": 150,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.25,
         "cosmos-predict2.5-2b": 1.75,
@@ -8013,6 +8101,7 @@
         "phys_micro_avg": 2.75
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_42.jpg",
+      "order_index": 215,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.0,
         "cosmos-predict2.5-2b": 1.5,
@@ -8048,6 +8137,7 @@
         "phys_micro_avg": 1.625
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_420.jpg",
+      "order_index": 51,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.25,
         "cosmos-predict2.5-2b": 2.0,
@@ -8085,6 +8175,7 @@
         "phys_micro_avg": 1.833
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_438.jpg",
+      "order_index": 72,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.6667,
         "cosmos-predict2.5-2b": 2.3333,
@@ -8121,6 +8212,7 @@
         "phys_micro_avg": 2.0
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_449.jpg",
+      "order_index": 103,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.5,
         "cosmos-predict2.5-2b": 4.25,
@@ -8158,6 +8250,7 @@
         "phys_micro_avg": 1.833
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_469.jpg",
+      "order_index": 73,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 4.0,
         "cosmos-predict2.5-2b": 2.3333,
@@ -8194,6 +8287,7 @@
         "phys_micro_avg": 1.75
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_507.jpg",
+      "order_index": 68,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.0,
         "cosmos-predict2.5-2b": 3.5,
@@ -8229,6 +8323,7 @@
         "phys_micro_avg": 2.75
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_81.jpg",
+      "order_index": 218,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 4.25,
         "cosmos-predict2.5-2b": 2.0,
@@ -8266,6 +8361,7 @@
         "phys_micro_avg": 2.75
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_87.jpg",
+      "order_index": 219,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.25,
         "cosmos-predict2.5-2b": 2.75,
@@ -8303,6 +8399,7 @@
         "phys_micro_avg": 2.5
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_97.jpg",
+      "order_index": 180,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.5,
         "cosmos-predict2.5-2b": 2.5,
@@ -8340,6 +8437,7 @@
         "phys_micro_avg": 2.333
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/mechanics_98.jpg",
+      "order_index": 149,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 3.6667,
         "cosmos-predict2.5-2b": 2.3333,
@@ -8376,6 +8474,7 @@
         "phys_micro_avg": 2.286
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/ttTPAWrn110_45_0to227.jpg",
+      "order_index": 139,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 1.75,
         "cosmos-predict2.5-2b": 3.0,
@@ -8430,6 +8529,7 @@
         "phys_micro_avg": 2.75
       },
       "first_frame_url": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/first_images/xDxQMZjHR4s_3_18to227.jpg",
+      "order_index": 209,
       "per_model_scores": {
         "cosmos-predict2.5-14b": 2.5,
         "cosmos-predict2.5-2b": 4.0,

@@ -968,7 +968,7 @@ def _prompts_index(prompts: list[dict],
     openvid_db = _read_openvid_db()
     prompt_scores = prompt_scores or {}
     out: dict[str, dict] = {}
-    for p in prompts:
+    for idx, p in enumerate(prompts, start=1):
         pid = p.get("video")
         ds = p.get("dataset") or ""
         if not pid:
@@ -991,6 +991,7 @@ def _prompts_index(prompts: list[dict],
         rv = _openvid_realvideo_meta(pid, openvid_db) if ds == "openvid" else None
         out[pid] = {
             "prompt_id": pid,
+            "order_index": idx,
             "dataset": ds,
             "prompt": p.get("prompt"),
             "physical_laws": p.get("physical_laws") or [],
