@@ -1,11 +1,11 @@
 {
   "build_meta": {
-    "built_at": "2026-05-08T15:00:00Z",
+    "built_at": "2026-05-10T19:54:00Z",
     "humaneval_prompts_sha256": "bf8c755ba1e70ab2f862f9143d1d39360f7447bc533a43cfa2bada363ede5d01",
     "model_catalog_sha256": "6c88b41361242b3ed0275c9618f54bca140b42876a0d8bd6f9caf71301b4fb57",
-    "paperdemo_manifest_sha256": "6fe03fb70443d1d13b53902ac4746a57b594b0f4e52ca7e7121300c7b41d6c91",
+    "paperdemo_manifest_sha256": "c6883077ca7a026c9f7471d17c4f8acdd56e1a1615edb03c414074dcc220a19f",
     "registry_sha256": "0d791883c6ec8dec03d1f6db890d6681cdf987a3313e97314d0af83b4ed616fe",
-    "snapshot_sha": "e0b7b87c1c90e66a968ec53e02b78144a5cb887be28ddba4f2afca1d5c1d7e44",
+    "snapshot_sha": "914533b6908de43733df11915f1378798cefb30bdfb3cb7340e3b7137e52f1e3",
     "vis_datasets_sha256": "69e4761736b5865072345b6c8a753c80b109ef76e5284fb90581c206f591e08e"
   },
   "datasets": [
@@ -2484,8 +2484,8 @@
           "n_ann": 2,
           "prompt_id": null,
           "score": null,
-          "src_filename": "0083_perspective-center_trimmed-light-on-statue.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/0083_perspective-center_trimmed-light-on-statue.mp4"
+          "src_filename": "VJ82LkozoT0_60_0to175.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/VJ82LkozoT0_60_0to175.mp4"
         },
         {
           "dataset": null,
@@ -2495,8 +2495,8 @@
           "n_ann": 1,
           "prompt_id": null,
           "score": null,
-          "src_filename": "lighting_381.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/lighting_381.mp4"
+          "src_filename": "xDxQMZjHR4s_3_18to227.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/xDxQMZjHR4s_3_18to227.mp4"
         },
         {
           "dataset": "video_phy_2",
@@ -4397,10 +4397,10 @@
         {
           "model": "cosmos-predict2.5-14b",
           "n_ann": 2,
-          "src_filename": "0083_perspective-center_trimmed-light-on-statue.mp4",
-          "src_path": "data/paperdemo/reflection/cosmos-predict2.5-14b__0083_perspective-center_trimmed-light-on-statue.mp4",
+          "src_filename": "VJ82LkozoT0_60_0to175.mp4",
+          "src_path": "data/paperdemo/reflection/cosmos-predict2.5-14b__VJ82LkozoT0_60_0to175.mp4",
           "video_id": 3001,
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/0083_perspective-center_trimmed-light-on-statue.mp4"
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/VJ82LkozoT0_60_0to175.mp4"
         },
         {
           "model": "cosmos-predict2.5-2b",
@@ -4445,10 +4445,10 @@
         {
           "model": "cosmos-predict2.5-14b",
           "n_ann": 1,
-          "src_filename": "lighting_381.mp4",
-          "src_path": "data/paperdemo/shadow/cosmos-predict2.5-14b__lighting_381.mp4",
+          "src_filename": "xDxQMZjHR4s_3_18to227.mp4",
+          "src_path": "data/paperdemo/shadow/cosmos-predict2.5-14b__xDxQMZjHR4s_3_18to227.mp4",
           "video_id": 350,
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/lighting_381.mp4"
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/xDxQMZjHR4s_3_18to227.mp4"
         },
         {
           "model": "cosmos-predict2.5-2b",
@@ -4469,10 +4469,10 @@
         {
           "model": "ltx-2-19b-dev",
           "n_ann": 2,
-          "src_filename": "e8KlPriHwBU_000025_000035.mp4",
-          "src_path": "data/paperdemo/shadow/ltx-2-19b-dev__e8KlPriHwBU_000025_000035.mp4",
+          "src_filename": "xDxQMZjHR4s_3_18to227.mp4",
+          "src_path": "data/paperdemo/shadow/ltx-2-19b-dev__xDxQMZjHR4s_3_18to227.mp4",
           "video_id": 1762,
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2-19b-dev/e8KlPriHwBU_000025_000035.mp4"
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2-19b-dev/xDxQMZjHR4s_3_18to227.mp4"
         },
         {
           "model": "wan2.2-i2v-a14b",
@@ -9900,14 +9900,14 @@
         {
           "law": "reflection",
           "n_ann": 2,
-          "src_filename": "0083_perspective-center_trimmed-light-on-statue.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/0083_perspective-center_trimmed-light-on-statue.mp4"
+          "src_filename": "VJ82LkozoT0_60_0to175.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/VJ82LkozoT0_60_0to175.mp4"
         },
         {
           "law": "shadow",
           "n_ann": 1,
-          "src_filename": "lighting_381.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/lighting_381.mp4"
+          "src_filename": "xDxQMZjHR4s_3_18to227.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/cosmos-predict2.5-14b/xDxQMZjHR4s_3_18to227.mp4"
         }
       ]
     },
@@ -12922,8 +12922,8 @@
         {
           "law": "shadow",
           "n_ann": 2,
-          "src_filename": "e8KlPriHwBU_000025_000035.mp4",
-          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2-19b-dev/e8KlPriHwBU_000025_000035.mp4"
+          "src_filename": "xDxQMZjHR4s_3_18to227.mp4",
+          "video_url_hf": "https://huggingface.co/datasets/juyil/phygroundwebsitevideo/resolve/main/videos/ltx-2-19b-dev/xDxQMZjHR4s_3_18to227.mp4"
         }
       ]
     },

@@ -50,8 +50,7 @@
     </tbody>
 </table>
 <p style="font-size:0.85rem;color:var(--gray-dark);margin-top:-0.5rem;">
-    {{ lb.rows|length }} models &middot; generated {{ lb.generated_at }} &middot;
-    <a href="{{ rel('snapshot/index/humaneval_leaderboard.json') }}" download>download JSON</a>
+    {{ lb.rows|length }} models &middot; generated {{ lb.generated_at }}
 </p>
 {% endif %}
 
@@ -101,8 +100,7 @@
     </tbody>
 </table>
 <p style="font-size:0.85rem;color:var(--gray-dark);margin-top:-0.5rem;">
-    {{ pj.rows|length }} models &middot; generated {{ pj.generated_at }} &middot;
-    <a href="{{ rel('snapshot/index/phyjudge_leaderboard.json') }}" download>download JSON</a>
+    {{ pj.rows|length }} models &middot; generated {{ pj.generated_at }}
 </p>
 {% endif %}
 
