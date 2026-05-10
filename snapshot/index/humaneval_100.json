@@ -1148,28 +1148,8 @@
   "selected_at": "2026-05-10T18:29:20Z",
   "selection_inputs": {
     "humaneval_prompts_sha256": "bf8c755ba1e70ab2f862f9143d1d39360f7447bc533a43cfa2bada363ede5d01",
-    "humaneval_score_jsons": {
-      "cosmos-predict2.5-14b": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-14b_20260426_132821.json",
-      "cosmos-predict2.5-2b": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-2b_20260426_130603.json",
-      "ltx-2-19b-dev": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2-19b-dev_20260426_142548.json",
-      "ltx-2.3-22b-dev": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2.3-22b-dev_20260426_144807.json",
-      "omniweaving": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_omniweaving_20260426_151022.json",
-      "veo-3.1": "data/scores/ourckpt/eval_qwen27b_local_cot-subq_humaneval_set_veo-3.1_20260427_104534.json",
-      "wan2.2-i2v-a14b": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-i2v-a14b_20260426_153209.json",
-      "wan2.2-ti2v-5b": "data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-ti2v-5b_20260426_155402.json"
-    },
-    "humaneval_score_jsons_sha256": {
-      "cosmos-predict2.5-14b": "b6f1e883fd2e6054b338bb101a0d6e9af285e7ff1aa2831f6eb99f310de34e59",
-      "cosmos-predict2.5-2b": "f13ece751c37210998da8c81e5cefdbc3c72acaf4cf6f5c8d3b0798f582fbea6",
-      "ltx-2-19b-dev": "218ae775c7a90ca0c73a69f0c42bd835b2f38731168b096e679e9c6abc3d4934",
-      "ltx-2.3-22b-dev": "d2be8931ba37e4e480b3f34561b31ed6035a1eb3b7ff5ed310ba3077707be7b9",
-      "omniweaving": "b82c76205037a5c704336bf13dc8a637ad67f9a8d9efe48171932d77b6ca9c33",
-      "veo-3.1": "cd90dcf792d1cb1430b41b395455184751cf3ab0727e7e428f8c05c541b19be4",
-      "wan2.2-i2v-a14b": "881b575392142f86d03037af3de795980a69f9f9664ae0390071eeaf6c1b7921",
-      "wan2.2-ti2v-5b": "fdf5025eb1b5431af64a3f5389516df54c96effe6d211fd8b770782d612bd8b9"
-    },
     "model_catalog_sha256": "6c88b41361242b3ed0275c9618f54bca140b42876a0d8bd6f9caf71301b4fb57",
-    "paperdemo_manifest_sha256": "55fe4d712c24c103598c6a3647931ef719dfb551c95c675ad138aee609fadd17",
+    "paperdemo_manifest_sha256": "6fe03fb70443d1d13b53902ac4746a57b594b0f4e52ca7e7121300c7b41d6c91",
     "registry_sha256": "0d791883c6ec8dec03d1f6db890d6681cdf987a3313e97314d0af83b4ed616fe"
   }
 }

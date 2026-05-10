@@ -21,7 +21,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DB = REPO_ROOT.parent / "wmbench" / "evals" / "human_eval" / "human_eval_filtered.db"
-DEFAULT_OUT = REPO_ROOT / "snapshot" / "index" / "humaneval_leaderboard.json"
+DEFAULT_OUT = REPO_ROOT / "_wmbench_src" / "data" / "humaneval_leaderboard.json"
 
 COMPARISON_DATASETS = {
     "wan2.2-ti2v-5b", "ltx-2-19b-dev", "cosmos-predict2.5-2b",

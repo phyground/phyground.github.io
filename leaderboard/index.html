@@ -44,6 +44,439 @@
 
 
 
+<h2 id="paper-leaderboard">Human evaluation (paper)</h2>
+<p class="caveat" style="margin-bottom:0.75rem;">
+    <strong>Method.</strong> Per-annotator scores &rarr; per-video mean
+    &rarr; per-model mean across 250 prompts. Overall combines the
+    General and Domain views with equal weight (domain mean is weighted by the
+    number of (video, law) means contributing to each domain).
+    <strong>Bold</strong> marks the best score in each column;
+    <u>underline</u> marks the second-best.
+    <span aria-label="closed-source">&dagger;</span> denotes a closed-source model.
+</p>
+<table class="lb lb-paper" id="lb-paper-table">
+    <thead>
+        <tr>
+            <th rowspan="2" class="lb-paper-model">Model</th>
+            <th colspan="3" class="lb-paper-group">General Physics &uarr;</th>
+            <th colspan="3" class="lb-paper-group">Domain Physics &uarr;</th>
+            <th rowspan="2" class="num">Overall &uarr;</th>
+        </tr>
+        <tr>
+            <th class="num">SA</th><th class="num">PTV</th><th class="num">Persist.</th>
+            <th class="num">Solid-Body</th><th class="num">Fluid</th><th class="num">Optical</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        
+        <tr>
+            <td class="lb-paper-model">
+                <a href="../models/wan2.2-i2v-a14b/">Wan2.2-27B-A14B</a>
+            </td>
+            
+            
+            
+            
+            
+            <td class="num is-second"><u>3.10</u></td>
+            
+            
+            
+            
+            
+            <td class="num is-best"><strong>3.37</strong></td>
+            
+            
+            
+            
+            
+            <td class="num is-best"><strong>3.50</strong></td>
+            
+            
+            
+            
+            
+            <td class="num is-best"><strong>3.23</strong></td>
+            
+            
+            
+            
+            
+            <td class="num">3.18</td>
+            
+            
+            
+            
+            
+            <td class="num is-second"><u>3.55</u></td>
+            
+            
+            
+            
+            
+            <td class="num is-best"><strong>3.28</strong></td>
+            
+        </tr>
+        
+        
+        <tr>
+            <td class="lb-paper-model">
+                <a href="../models/veo-3.1/">Veo-3.1</a><sup title="closed-source">&dagger;</sup>
+            </td>
+            
+            
+            
+            
+            
+            <td class="num is-best"><strong>3.26</strong></td>
+            
+            
+            
+            
+            
+            <td class="num is-second"><u>3.29</u></td>
+            
+            
+            
+            
+            
+            <td class="num is-second"><u>3.42</u></td>
+            
+            
+            
+            
+            
+            <td class="num is-second"><u>3.12</u></td>
+            
+            
+            
+            
+            
+            <td class="num is-best"><strong>3.65</strong></td>
+            
+            
+            
+            
+            
+            <td class="num is-best"><strong>3.69</strong></td>
+            
+            
+            
+            
+            
+            <td class="num is-best"><strong>3.28</strong></td>
+            
+        </tr>
+        
+        
+        <tr>
+            <td class="lb-paper-model">
+                <a href="../models/omniweaving/">OmniWeaving</a>
+            </td>
+            
+            
+            
+            
+            
+            <td class="num">2.97</td>
+            
+            
+            
+            
+            
+            <td class="num">3.17</td>
+            
+            
+            
+            
+            
+            <td class="num">3.34</td>
+            
+            
+            
+            
+            
+            <td class="num">2.98</td>
+            
+            
+            
+            
+            
+            <td class="num is-second"><u>3.26</u></td>
+            
+            
+            
+            
+            
+            <td class="num">3.22</td>
+            
+            
+            
+            
+            
+            <td class="num is-second"><u>3.10</u></td>
+            
+        </tr>
+        
+        
+        <tr>
+            <td class="lb-paper-model">
+                <a href="../models/cosmos-predict2.5-14b/">Cosmos-14B</a>
+            </td>
+            
+            
+            
+            
+            
+            <td class="num">2.66</td>
+            
+            
+            
+            
+            
+            <td class="num">2.98</td>
+            
+            
+            
+            
+            
+            <td class="num">3.20</td>
+            
+            
+            
+            
+            
+            <td class="num">2.81</td>
+            
+            
+            
+            
+            
+            <td class="num">2.98</td>
+            
+            
+            
+            
+            
+            <td class="num">3.38</td>
+            
+            
+            
+            
+            
+            <td class="num">2.91</td>
+            
+        </tr>
+        
+        
+        <tr>
+            <td class="lb-paper-model">
+                <a href="../models/ltx-2.3-22b-dev/">LTX-2.3-22B</a>
+            </td>
+            
+            
+            
+            
+            
+            <td class="num">2.58</td>
+            
+            
+            
+            
+            
+            <td class="num">2.74</td>
+            
+            
+            
+            
+            
+            <td class="num">2.72</td>
+            
+            
+            
+            
+            
+            <td class="num">2.62</td>
+            
+            
+            
+            
+            
+            <td class="num">3.07</td>
+            
+            
+            
+            
+            
+            <td class="num">2.98</td>
+            
+            
+            
+            
+            
+            <td class="num">2.69</td>
+            
+        </tr>
+        
+        
+        <tr>
+            <td class="lb-paper-model">
+                <a href="../models/wan2.2-ti2v-5b/">Wan2.2-TI2V-5B</a>
+            </td>
+            
+            
+            
+            
+            
+            <td class="num">2.44</td>
+            
+            
+            
+            
+            
+            <td class="num">2.68</td>
+            
+            
+            
+            
+            
+            <td class="num">2.78</td>
+            
+            
+            
+            
+            
+            <td class="num">2.58</td>
+            
+            
+            
+            
+            
+            <td class="num">2.71</td>
+            
+            
+            
+            
+            
+            <td class="num">2.99</td>
+            
+            
+            
+            
+            
+            <td class="num">2.63</td>
+            
+        </tr>
+        
+        
+        <tr>
+            <td class="lb-paper-model">
+                <a href="../models/cosmos-predict2.5-2b/">Cosmos-2B</a>
+            </td>
+            
+            
+            
+            
+            
+            <td class="num">2.33</td>
+            
+            
+            
+            
+            
+            <td class="num">2.56</td>
+            
+            
+            
+            
+            
+            <td class="num">2.77</td>
+            
+            
+            
+            
+            
+            <td class="num">2.53</td>
+            
+            
+            
+            
+            
+            <td class="num">2.77</td>
+            
+            
+            
+            
+            
+            <td class="num">3.35</td>
+            
+            
+            
+            
+            
+            <td class="num">2.58</td>
+            
+        </tr>
+        
+        
+        <tr>
+            <td class="lb-paper-model">
+                <a href="../models/ltx-2-19b-dev/">LTX-2-19B</a>
+            </td>
+            
+            
+            
+            
+            
+            <td class="num">2.56</td>
+            
+            
+            
+            
+            
+            <td class="num">2.64</td>
+            
+            
+            
+            
+            
+            <td class="num">2.48</td>
+            
+            
+            
+            
+            
+            <td class="num">2.46</td>
+            
+            
+            
+            
+            
+            <td class="num">3.04</td>
+            
+            
+            
+            
+            
+            <td class="num">2.78</td>
+            
+            
+            
+            
+            
+            <td class="num">2.56</td>
+            
+        </tr>
+        
+    </tbody>
+</table>
+<p style="font-size:0.85rem;color:var(--gray-dark);margin-top:-0.5rem;">
+    8 models &middot; generated 2026-05-10T19:38:22+00:00 &middot;
+    <a href="../snapshot/index/humaneval_leaderboard.json" download>download JSON</a>
+</p>
+
+
 
     </div>
 </main>
@@ -53,7 +486,7 @@
             <div class="footer-left">
                 <p>phyground &mdash; physics-grounded video benchmark</p>
                 
-                <p style="font-size:0.85rem;color:var(--gray-dark);">Built 2026-05-10T18:29:20Z</p>
+                <p style="font-size:0.85rem;color:var(--gray-dark);">Built 2026-05-10T19:39:43Z</p>
                 
             </div>
             <div class="footer-right">

@@ -81,14 +81,21 @@ def _load_config(path: Path) -> dict:
 
 
 def _load_humaneval_leaderboard() -> dict:
-    """Load the paper-aligned human-eval leaderboard JSON if present.
+    """Load the paper-aligned human-eval leaderboard JSON.
 
-    Produced by `tools/export_humaneval_leaderboard.py`. Returns an empty dict
-    when the file is missing so the template can degrade gracefully.
+    The file is a hard build input — copied into snapshot/index/ by
+    `tools/build_snapshot.py` from the git-tracked
+    `_wmbench_src/data/humaneval_leaderboard.json`. A missing file means the
+    snapshot is broken (e.g. an old graceful-degrade path silently dropped it),
+    so we fail loudly rather than render an empty leaderboard table.
     """
     path = REPO_ROOT / "snapshot" / "index" / "humaneval_leaderboard.json"
     if not path.is_file():
-        return {}
+        raise SystemExit(
+            f"[build_site] humaneval_leaderboard.json missing at {path}. "
+            f"Run `python3 tools/build_snapshot.py` (which copies the file from "
+            f"`_wmbench_src/data/humaneval_leaderboard.json` into staging)."
+        )
     with path.open("r", encoding="utf-8") as fh:
         return json.load(fh)
 

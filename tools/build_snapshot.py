@@ -1496,6 +1496,7 @@ def build(*, now_iso: str | None = None,
         "evals/eval_types.py": WMBENCH_SRC / "evals" / "eval_types.py",
         "data/vis_datasets.json": WMBENCH_SRC / "data" / "vis_datasets.json",
         "data/paperdemo/manifest.csv": WMBENCH_SRC / "data" / "paperdemo" / "manifest.csv",
+        "data/humaneval_leaderboard.json": WMBENCH_SRC / "data" / "humaneval_leaderboard.json",
         "videogen/runner/MODEL_CATALOG.py": WMBENCH_SRC / "videogen" / "runner" / "MODEL_CATALOG.py",
     }
     optional_paths = {
@@ -1708,6 +1709,16 @@ def build(*, now_iso: str | None = None,
         leaderboard_unpublished, prompt_scores, build_meta,
     )
     _write_json(STAGING_DIR / "index" / "site_config.json", site_config)
+
+    # 7b. humaneval_leaderboard.json — copied from the git-tracked input INTO
+    #     staging so the atomic swap at step 10 doesn't wipe it. The JSON is
+    #     regenerated from the human-eval DB by
+    #     `tools/export_humaneval_leaderboard.py` as an out-of-band step and
+    #     committed to git; the build itself never touches the DB.
+    _copy_file(
+        src_paths["data/humaneval_leaderboard.json"],
+        STAGING_DIR / "index" / "humaneval_leaderboard.json",
+    )
 
     # 8. MANIFEST.json — single-pass: compute snapshot_sha, patch site_config,
     #    then write manifest. Do this in two steps so site_config.snapshot_sha

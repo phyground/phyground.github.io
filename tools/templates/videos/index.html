@@ -25,8 +25,6 @@
 <h1>Video Gallery</h1>
 <p>
     Browse generated videos by physical law (default) or by model.
-    Videos play directly from <a href="{{ site.huggingface_url }}">HuggingFace</a>;
-    this site only carries the index.
 </p>
 
 <div class="gallery-tabs" role="tablist">
@@ -74,11 +72,8 @@
 <section class="gallery-pane" id="pane-by-model" hidden>
     <nav class="gallery-nav" id="model-nav">
         {% for m in models %}
-        {% set vi = videos_index.get(m.key, {}) %}
-        {% set n_total = (vi.get('paperdemo')|length) + (vi.get('humaneval')|length) %}
         <button type="button" class="gallery-nav-item" data-model="{{ m.key }}">
             {{ m.key }}
-            <span class="badge">{{ n_total }}</span>
         </button>
         {% endfor %}
     </nav>
