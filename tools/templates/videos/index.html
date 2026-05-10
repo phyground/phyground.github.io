@@ -74,7 +74,7 @@
                     <video data-src="{{ v.video_url_hf }}" controls muted loop preload="none"></video>
                     <figcaption>
                         <span class="model"><a href="{{ rel('models/') }}{{ v.model }}/">{{ v.model }}</a></span>
-                        <span class="meta">n_ann={{ v.n_ann }} · {{ v.src_filename }} · <button type="button" class="btn btn-sm video-card-info" aria-label="Open details">details</button></span>
+                        <span class="meta"><button type="button" class="btn btn-sm video-card-info" aria-label="Open details">details</button></span>
                     </figcaption>
                 </figure>
                 {% endfor %}
@@ -118,7 +118,6 @@
                     <video data-src="{{ v.video_url_hf }}" controls muted loop preload="none"></video>
                     <figcaption>
                         <span class="model"><span class="law-icon" aria-hidden="true">{{ law_icons.get(v.law, '•') }}</span> {{ v.law|replace('_', ' ') }} <span class="badge">paperdemo</span></span>
-                        <span class="meta">n_ann={{ v.n_ann }} · {{ v.src_filename }}</span>
                     </figcaption>
                 </figure>
                 {% endfor %}

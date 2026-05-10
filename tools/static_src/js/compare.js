@@ -161,7 +161,7 @@
                 frag.appendChild(card({
                     model: pv.model,
                     videoUrl: pv.video_url_hf,
-                    extra: 'paperdemo n_ann=' + pv.n_ann,
+                    extra: 'paperdemo',
                     posterUrl: firstFrame,
                 }));
             }

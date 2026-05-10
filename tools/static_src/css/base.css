@@ -185,6 +185,7 @@ pre {
     background: var(--white);
     color: var(--black);
     border: 1px solid var(--black);
+    border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
     font-family: 'Times New Roman', Times, serif;

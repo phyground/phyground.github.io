@@ -52,11 +52,7 @@
                {% if v.first_frame_url %}poster="{{ v.first_frame_url }}"{% endif %}></video>
         <figcaption>
             <span class="model">{{ (v.law or 'humaneval')|replace('_', ' ') }}{% if v.kind == 'humaneval' %} <span class="badge">humaneval</span>{% endif %}</span>
-            <span class="meta">
-                {% if v.n_ann is not none %}n_ann={{ v.n_ann }} · {% endif %}
-                {% if v.score is not none %}phys_avg={{ '%.2f'|format(v.score) }} · {% endif %}
-                {{ v.src_filename }}
-            </span>
+            {% if v.score is not none %}<span class="meta">phys_avg={{ '%.2f'|format(v.score) }}</span>{% endif %}
         </figcaption>
     </figure>
     {% endfor %}
