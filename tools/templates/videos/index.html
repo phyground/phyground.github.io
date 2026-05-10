@@ -71,7 +71,7 @@
                         data-n-ann="{{ v.n_ann }}"
                         data-src-filename="{{ v.src_filename }}"
                         data-video-url="{{ v.video_url_hf }}">
-                    <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"></video>
+                    <video data-src="{{ v.video_url_hf }}" controls muted loop preload="none"></video>
                     <figcaption>
                         <span class="model"><a href="{{ rel('models/') }}{{ v.model }}/">{{ v.model }}</a></span>
                         <span class="meta">n_ann={{ v.n_ann }} · {{ v.src_filename }} · <button type="button" class="btn btn-sm video-card-info" aria-label="Open details">details</button></span>
@@ -115,7 +115,7 @@
             <div class="video-grid">
                 {% for v in pd[:8] %}
                 <figure class="video-card">
-                    <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"></video>
+                    <video data-src="{{ v.video_url_hf }}" controls muted loop preload="none"></video>
                     <figcaption>
                         <span class="model"><span class="law-icon" aria-hidden="true">{{ law_icons.get(v.law, '•') }}</span> {{ v.law|replace('_', ' ') }} <span class="badge">paperdemo</span></span>
                         <span class="meta">n_ann={{ v.n_ann }} · {{ v.src_filename }}</span>
@@ -158,7 +158,7 @@
             <div class="video-grid">
                 {% for pid, v in (bucket|dictsort)[:8] %}
                 <figure class="video-card">
-                    <video src="{{ v.video_url_hf }}" controls muted loop preload="metadata"
+                    <video data-src="{{ v.video_url_hf }}" controls muted loop preload="none"
                            {% if v.first_frame_url %}poster="{{ v.first_frame_url }}"{% endif %}></video>
                     <figcaption>
                         <span class="model">

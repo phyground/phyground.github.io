@@ -179,6 +179,42 @@
     </div>
 </footer>
 
+<script>
+// Lazy-hydrate <video data-src="..."> when the card scrolls into view.
+// Lets pages embed hundreds of off-screen videos without firing hundreds
+// of HF metadata requests on first paint.
+(function () {
+    'use strict';
+    function hydrate(v) {
+        var url = v.getAttribute('data-src');
+        if (!url) return;
+        v.preload = 'metadata';
+        v.src = url;
+        v.removeAttribute('data-src');
+    }
+    function init() {
+        var vids = document.querySelectorAll('video[data-src]');
+        if (!vids.length) return;
+        if (!('IntersectionObserver' in window)) {
+            vids.forEach(hydrate);
+            return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (!e.isIntersecting) return;
+                hydrate(e.target);
+                io.unobserve(e.target);
+            });
+        }, { rootMargin: '300px 0px' });
+        vids.forEach(function (v) { io.observe(v); });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
 
 </body>
 </html>

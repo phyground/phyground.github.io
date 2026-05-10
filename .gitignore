@@ -38,3 +38,4 @@ hf_staging/
 
 # --- Site-audit artifacts (per-run captures, not shared) ---
 .audit_artifacts/
+vm-web/

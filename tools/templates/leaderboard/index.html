@@ -4,10 +4,8 @@
 {% block content %}
 <h1>Leaderboard</h1>
 <p>Rankings of video generation models on wmbench evaluations.
-The headline table below mirrors the paper's <code>TABLE_leaderboard.tex</code>
-(human evaluation, 250 prompts, 1&ndash;5 scale).
-The slice table further down exposes the underlying automatic-evaluator runs that
-power the per-model and per-dataset detail pages.</p>
+The table below mirrors the paper's <code>TABLE_leaderboard.tex</code>
+(human evaluation, 250 prompts, 1&ndash;5 scale).</p>
 
 {% if humaneval_leaderboard and humaneval_leaderboard.rows %}
 {% set lb = humaneval_leaderboard %}
@@ -59,109 +57,4 @@ power the per-model and per-dataset detail pages.</p>
 </p>
 {% endif %}
 
-<h2 id="evaluator-slices" style="margin-top:2.5rem;">Automatic evaluator slices</h2>
-<p>Per-(evaluator, dataset, subset, schema) slices from the automatic judges that
-power the per-model detail pages. Use the filters to slice; column headers sort;
-URL query parameters are shareable.</p>
-
-<form class="filters" id="lb-filters" onsubmit="return false;">
-    <div class="filter">
-        <label for="f-evaluator">Evaluator</label>
-        <select id="f-evaluator" name="evaluator"><option value="">all</option></select>
-    </div>
-    <div class="filter">
-        <label for="f-dataset">Dataset</label>
-        <select id="f-dataset" name="dataset"><option value="">all</option></select>
-    </div>
-    <div class="filter">
-        <label for="f-subset">Subset</label>
-        <select id="f-subset" name="subset"><option value="">all</option></select>
-    </div>
-    <div class="filter">
-        <label for="f-schema">Schema</label>
-        <select id="f-schema" name="schema"><option value="">all</option></select>
-    </div>
-</form>
-
-<p class="caveat"><strong>Caveat.</strong> Aggregate scores below are <em>domain-pooled</em>: <code>gen_avg</code> and <code>phys_avg</code> are means over per-prompt scores, not first-aggregated-per-law-then-averaged. Macro-averaging across laws produces different numbers; we ship the domain-pooled view because it matches the upstream registry. See the paper's methodology section.</p>
-
-<table class="lb" id="lb-table">
-    <thead>
-        <tr>
-            <th data-sort="key" data-type="str">Model</th>
-            <th data-sort="dataset" data-type="str">Dataset</th>
-            <th data-sort="subset" data-type="str">Subset</th>
-            <th data-sort="evaluator" data-type="str">Evaluator</th>
-            <th data-sort="schema" data-type="str">Schema</th>
-            <th data-sort="n" data-type="num" class="num">N</th>
-            <th data-sort="gen_avg" data-type="num" class="num">gen_avg</th>
-            <th data-sort="phys_avg" data-type="num" class="num">phys_avg</th>
-            <th data-sort="coverage" data-type="num" class="num">coverage</th>
-            <th data-sort="datetime" data-type="str">datetime</th>
-            <th>Raw</th>
-            <th aria-label="expand"></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for entry in leaderboard_entries %}
-        {% set c = entry.current %}
-        {% set anchor = entry.video_model ~ '--' ~ entry.dataset ~ '--' ~ entry.subset ~ '--' ~ entry.evaluator ~ '--' ~ entry.schema %}
-        <tr class="lb-row" id="{{ anchor }}"
-            data-key="{{ entry.video_model }}"
-            data-dataset="{{ entry.dataset }}"
-            data-subset="{{ entry.subset }}"
-            data-evaluator="{{ entry.evaluator }}"
-            data-schema="{{ entry.schema }}"
-            data-history-len="{{ entry.history|length }}">
-            <td><a href="{{ rel('models/') }}{{ entry.video_model }}/">{{ entry.video_model }}</a></td>
-            <td>{{ entry.dataset }}</td>
-            <td>{{ entry.subset }}</td>
-            <td>{{ entry.evaluator }}</td>
-            <td>{{ entry.schema }}</td>
-            <td class="num" data-val="{{ c.n if c.n is not none else 0 }}">{{ c.n if c.n is not none else '—' }}</td>
-            <td class="num" data-val="{{ c.gen_avg if c.gen_avg is not none else -1 }}">{{ '%.2f'|format(c.gen_avg) if c.gen_avg is not none else '—' }}</td>
-            <td class="num" data-val="{{ c.phys_avg if c.phys_avg is not none else -1 }}">{{ '%.2f'|format(c.phys_avg) if c.phys_avg is not none else '—' }}</td>
-            <td class="num" data-val="{{ c.coverage if c.coverage is not none else 0 }}">{{ '%.2f'|format(c.coverage) if c.coverage is not none else '—' }}</td>
-            <td>{{ c.datetime or '—' }}</td>
-            <td><a href="{{ rel(c.source_url_snapshot) }}" download>JSON</a></td>
-            <td>
-                <a class="btn btn-sm" href="{{ rel('videos/') }}?model={{ entry.video_model }}">Videos</a>
-                {% if entry.history %}<button type="button" class="btn btn-sm lb-expand" aria-expanded="false">+{{ entry.history|length }}</button>{% endif %}
-                <a class="lb-permalink" href="#{{ anchor }}" title="Permalink to this row" aria-label="Permalink">¶</a>
-            </td>
-        </tr>
-        {% if entry.history %}
-        <tr class="lb-detail" hidden>
-            <td colspan="12">
-                <div style="padding:0.5rem 1rem;">
-                    <strong>Older runs ({{ entry.history|length }}):</strong>
-                    <table class="lb" style="margin:0.5rem 0;">
-                        <thead><tr><th>datetime</th><th class="num">n</th><th class="num">gen_avg</th><th class="num">phys_avg</th><th class="num">coverage</th><th>notes</th><th>raw</th></tr></thead>
-                        <tbody>
-                        {% for h in entry.history %}
-                        <tr>
-                            <td>{{ h.datetime or '—' }}</td>
-                            <td class="num">{{ h.n if h.n is not none else '—' }}</td>
-                            <td class="num">{{ '%.2f'|format(h.gen_avg) if h.gen_avg is not none else '—' }}</td>
-                            <td class="num">{{ '%.2f'|format(h.phys_avg) if h.phys_avg is not none else '—' }}</td>
-                            <td class="num">{{ '%.2f'|format(h.coverage) if h.coverage is not none else '—' }}</td>
-                            <td>{{ h.notes or '' }}</td>
-                            <td>{% if h.source_url_snapshot %}<a href="{{ rel(h.source_url_snapshot) }}" download>JSON</a>{% else %}—{% endif %}</td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </td>
-        </tr>
-        {% endif %}
-        {% endfor %}
-    </tbody>
-</table>
-
-<p style="font-size:0.85rem;color:var(--gray-dark);margin-top:1rem;">
-    {{ leaderboard_entries|length }} entries · sortable columns · share this page's URL with filter query params to share a slice.
-</p>
-
-<script src="{{ rel('static/js/leaderboard.js') }}"></script>
 {% endblock %}
