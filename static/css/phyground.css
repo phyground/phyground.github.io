@@ -319,6 +319,17 @@
   border-radius: 4px;
 }
 
+.stage-badge {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.05rem 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: #dbeafe;
+  color: #1e40af;
+  border-radius: 4px;
+}
+
 .leaderboard-legend {
   margin-top: 0.8rem;
   color: #6b7280;

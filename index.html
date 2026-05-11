@@ -147,33 +147,27 @@
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item has-text-centered">
   <video autoplay controls muted loop playsinline>
-    <source src="static/videos/veo-3.1/collision_156.mp4" type="video/mp4">
-  </video>
-  <p class="video-caption">Veo-3.1</p>
-</div>
-<div class="item has-text-centered">
-  <video autoplay controls muted loop playsinline>
-    <source src="static/videos/cosmos-predict2.5-14b/collision_156.mp4" type="video/mp4">
-  </video>
-  <p class="video-caption">Cosmos-14B</p>
-</div>
-<div class="item has-text-centered">
-  <video autoplay controls muted loop playsinline>
     <source src="static/videos/wan2.2-i2v-a14b/collision_156.mp4" type="video/mp4">
   </video>
   <p class="video-caption">Wan2.2-27B-A14B</p>
 </div>
 <div class="item has-text-centered">
   <video autoplay controls muted loop playsinline>
-    <source src="static/videos/cosmos-predict2.5-2b/collision_156.mp4" type="video/mp4">
+    <source src="static/videos/veo-3.1/collision_156.mp4" type="video/mp4">
   </video>
-  <p class="video-caption">Cosmos-2B</p>
+  <p class="video-caption">Veo-3.1</p>
 </div>
 <div class="item has-text-centered">
   <video autoplay controls muted loop playsinline>
     <source src="static/videos/omniweaving/collision_156.mp4" type="video/mp4">
   </video>
   <p class="video-caption">OmniWeaving</p>
+</div>
+<div class="item has-text-centered">
+  <video autoplay controls muted loop playsinline>
+    <source src="static/videos/cosmos-predict2.5-14b/collision_156.mp4" type="video/mp4">
+  </video>
+  <p class="video-caption">Cosmos-14B</p>
 </div>
 <div class="item has-text-centered">
   <video autoplay controls muted loop playsinline>
@@ -189,21 +183,27 @@
 </div>
 <div class="item has-text-centered">
   <video autoplay controls muted loop playsinline>
+    <source src="static/videos/cosmos-predict2.5-2b/collision_156.mp4" type="video/mp4">
+  </video>
+  <p class="video-caption">Cosmos-2B</p>
+</div>
+<div class="item has-text-centered">
+  <video autoplay controls muted loop playsinline>
     <source src="static/videos/ltx-2-19b-dev/collision_156.mp4" type="video/mp4">
   </video>
   <p class="video-caption">LTX-2-19B</p>
 </div>
       </div>
-      <p class="featured-caption has-text-centered">Same prompt, same starting frame, ordered by overall PhyJudge-9B leaderboard rank (left to right: highest to lowest).</p>
+      <p class="featured-caption has-text-centered">Same prompt, same starting frame, ordered by overall human-evaluation rank (left to right: highest to lowest).</p>
     </div>
   </div>
 </section>
 
 <section class="section leaderboard-section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">PhyJudge-9B Leaderboard</h2>
+    <h2 class="title is-3 has-text-centered">Human Evaluation Leaderboard</h2>
     <p class="has-text-centered leaderboard-intro">
-      All eleven evaluated models, scored by PhyJudge-9B on the full 250-prompt benchmark.
+      Eight modern video generation models, scored by 459 human annotators on the full 250-prompt benchmark.
     </p>
     <div class="leaderboard-wrap">
 <table class="leaderboard">
@@ -227,130 +227,97 @@
 <tbody>
 <tr>
 <td class="rank-col">1</td>
-<td class="model-col"><span class="model-name">Veo-3.1</span> <span class="closed-badge" title="Closed source">closed</span></td>
-<td class="cell-best">3.03</td>
-<td class="cell-best">3.10</td>
-<td>3.11</td>
-<td class="cell-best">2.90</td>
-<td class="cell-best">3.33</td>
-<td class="cell-best">3.70</td>
-<td class="cell-best">3.05</td>
+<td class="model-col"><span class="model-name">Wan2.2-27B-A14B</span></td>
+<td class="cell-second">3.10</td>
+<td class="cell-best">3.37</td>
+<td class="cell-best">3.50</td>
+<td class="cell-best">3.23</td>
+<td>3.18</td>
+<td class="cell-second">3.55</td>
+<td class="cell-best">3.28</td>
 </tr>
 <tr>
 <td class="rank-col">2</td>
-<td class="model-col"><span class="model-name">Cosmos-14B</span></td>
-<td class="cell-second">2.79</td>
-<td>2.96</td>
+<td class="model-col"><span class="model-name">Veo-3.1</span> <span class="closed-badge" title="Closed source">closed</span></td>
 <td class="cell-best">3.26</td>
-<td class="cell-best">2.90</td>
-<td>3.14</td>
-<td>3.09</td>
-<td class="cell-second">2.97</td>
+<td class="cell-second">3.29</td>
+<td class="cell-second">3.42</td>
+<td class="cell-second">3.12</td>
+<td class="cell-best">3.65</td>
+<td class="cell-best">3.69</td>
+<td class="cell-best">3.28</td>
 </tr>
 <tr>
 <td class="rank-col">3</td>
-<td class="model-col"><span class="model-name">Wan2.2-27B-A14B</span></td>
-<td>2.78</td>
+<td class="model-col"><span class="model-name">OmniWeaving</span></td>
 <td>2.97</td>
-<td>3.08</td>
-<td>2.84</td>
-<td>3.04</td>
-<td>3.36</td>
-<td>2.92</td>
+<td>3.17</td>
+<td>3.34</td>
+<td>2.98</td>
+<td class="cell-second">3.26</td>
+<td>3.22</td>
+<td class="cell-second">3.10</td>
 </tr>
 <tr>
 <td class="rank-col">4</td>
-<td class="model-col"><span class="model-name">HunyuanVideo-I2V</span></td>
-<td>2.61</td>
-<td class="cell-second">2.98</td>
-<td class="cell-second">3.15</td>
-<td class="cell-second">2.85</td>
-<td>3.12</td>
-<td>2.94</td>
-<td>2.90</td>
+<td class="model-col"><span class="model-name">Cosmos-14B</span></td>
+<td>2.66</td>
+<td>2.98</td>
+<td>3.20</td>
+<td>2.81</td>
+<td>2.98</td>
+<td>3.38</td>
+<td>2.91</td>
 </tr>
 <tr>
 <td class="rank-col">5</td>
-<td class="model-col"><span class="model-name">Cosmos-2B</span></td>
-<td>2.60</td>
-<td>2.73</td>
-<td>3.07</td>
+<td class="model-col"><span class="model-name">LTX-2.3-22B</span> <span class="stage-badge" title="Single-stage generation">(1 stage)</span></td>
+<td>2.58</td>
+<td>2.74</td>
 <td>2.72</td>
-<td>2.92</td>
-<td class="cell-second">3.57</td>
-<td>2.80</td>
+<td>2.62</td>
+<td>3.07</td>
+<td>2.98</td>
+<td>2.69</td>
 </tr>
 <tr>
 <td class="rank-col">6</td>
-<td class="model-col"><span class="model-name">OmniWeaving</span></td>
+<td class="model-col"><span class="model-name">Wan2.2-TI2V-5B</span></td>
+<td>2.44</td>
 <td>2.68</td>
-<td>2.73</td>
-<td>2.92</td>
+<td>2.78</td>
+<td>2.58</td>
 <td>2.71</td>
 <td>2.99</td>
-<td>3.13</td>
-<td>2.78</td>
+<td>2.63</td>
 </tr>
 <tr>
 <td class="rank-col">7</td>
-<td class="model-col"><span class="model-name">LTX-2-19B-Distilled-FP8</span></td>
-<td>2.64</td>
-<td>2.70</td>
-<td>2.88</td>
-<td>2.70</td>
-<td class="cell-second">3.19</td>
-<td>2.87</td>
-<td>2.76</td>
+<td class="model-col"><span class="model-name">Cosmos-2B</span></td>
+<td>2.33</td>
+<td>2.56</td>
+<td>2.77</td>
+<td>2.53</td>
+<td>2.77</td>
+<td>3.35</td>
+<td>2.58</td>
 </tr>
 <tr>
 <td class="rank-col">8</td>
-<td class="model-col"><span class="model-name">LTX-2.3-22B</span></td>
-<td>2.63</td>
-<td>2.79</td>
-<td>2.91</td>
-<td>2.55</td>
-<td>3.02</td>
-<td>3.21</td>
-<td>2.72</td>
-</tr>
-<tr>
-<td class="rank-col">9</td>
-<td class="model-col"><span class="model-name">Wan2.2-TI2V-5B</span></td>
+<td class="model-col"><span class="model-name">LTX-2-19B</span> <span class="stage-badge" title="Single-stage generation">(1 stage)</span></td>
+<td>2.56</td>
+<td>2.64</td>
 <td>2.48</td>
-<td>2.70</td>
-<td>2.76</td>
-<td>2.61</td>
-<td>3.01</td>
-<td>3.45</td>
-<td>2.68</td>
-</tr>
-<tr>
-<td class="rank-col">10</td>
-<td class="model-col"><span class="model-name">LTX-2-19B</span></td>
-<td>2.50</td>
-<td>2.62</td>
-<td>2.79</td>
-<td>2.49</td>
-<td>3.01</td>
-<td>3.09</td>
-<td>2.62</td>
-</tr>
-<tr>
-<td class="rank-col">11</td>
-<td class="model-col"><span class="model-name">CogVideoX1.5-5B-I2V</span></td>
-<td>2.43</td>
-<td>2.58</td>
-<td>2.60</td>
-<td>2.47</td>
-<td>2.85</td>
-<td>2.85</td>
-<td>2.54</td>
+<td>2.46</td>
+<td>3.04</td>
+<td>2.78</td>
+<td>2.56</td>
 </tr>
 </tbody>
 </table>
 <p class="leaderboard-legend">
-Scores: 1–5 scale (higher is better). <strong>250</strong> prompts. 
-<span class="cell-best legend-swatch">■</span>&nbsp;best&nbsp;&nbsp; 
+Scores: 1–5 scale (higher is better). <strong>250</strong> prompts.
+<span class="cell-best legend-swatch">■</span>&nbsp;best&nbsp;&nbsp;
 <span class="cell-second legend-swatch">■</span>&nbsp;second.
 </p>
 </div>
