@@ -1,0 +1,352 @@
+/* Phyground-specific additions on top of openvla's index.css */
+
+/* ---------- Hero ---------- */
+.hero-logo {
+  height: 1.6em;
+  vertical-align: -0.25em;
+  margin-right: 0.35em;
+}
+
+.publication-title {
+  font-size: 3.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.publication-subtitle {
+  color: #4a5568;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+
+.publication-authors {
+  margin-bottom: 0.6rem;
+}
+
+.publication-links {
+  margin-top: 1.4rem;
+}
+
+.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
+/* ---------- Teaser ---------- */
+.teaser img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.teaser-caption {
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+  color: #4a5568;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* ---------- Featured carousel section ---------- */
+.featured-section {
+  background: #f7f9fc;
+}
+
+.featured-prompt {
+  font-style: italic;
+  font-size: 1.05rem;
+  margin: 0.5rem auto 0.25rem auto;
+  max-width: 720px;
+}
+
+.featured-laws {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.featured-caption {
+  margin-top: 1rem;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.results-carousel .item .video-caption {
+  margin: 0.4rem 0 0.2rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.results-carousel .item video {
+  max-height: 360px;
+  background: #000;
+}
+
+/* ---------- Per-law section ---------- */
+.per-law-section {
+  padding-top: 3rem;
+}
+
+.per-law-intro {
+  color: #4a5568;
+  margin-bottom: 2.2rem;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.law-block {
+  margin-top: 2.4rem;
+  border-left: 4px solid var(--law-color, #e5e7eb);
+  padding-left: 1.2rem;
+}
+
+.law-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.4rem !important;
+}
+
+.law-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.law-prompt {
+  color: #4b5563;
+  font-style: italic;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.law-row {
+  background: #f9fafb;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0.6rem;
+}
+
+.law-row .column {
+  padding: 0.6rem;
+}
+
+.law-row video {
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
+  background: #000;
+}
+
+.model-tag {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.model-tag.best-tag {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.model-tag.worst-tag {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.rank-pill {
+  font-size: 0.7rem;
+  background: rgba(0, 0, 0, 0.12);
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* Per-law accent color via CSS variable */
+.law-collision           { --law-color: #ef4444; }
+.law-momentum            { --law-color: #f59e0b; }
+.law-gravity             { --law-color: #d97706; }
+.law-impenetrability     { --law-color: #b45309; }
+.law-material            { --law-color: #6d28d9; }
+.law-inertia             { --law-color: #be185d; }
+.law-boundary_interaction{ --law-color: #92400e; }
+.law-flow_dynamics       { --law-color: #0ea5e9; }
+.law-shadow              { --law-color: #475569; }
+.law-fluid_continuity    { --law-color: #14b8a6; }
+.law-displacement        { --law-color: #2563eb; }
+.law-buoyancy            { --law-color: #0891b2; }
+.law-reflection          { --law-color: #7c3aed; }
+
+/* ---------- Method ---------- */
+.method-section .title.is-4 {
+  margin-top: 1.6rem;
+}
+
+/* ---------- Leaderboard ---------- */
+.leaderboard-section {
+  background: #fafbfc;
+}
+
+.leaderboard-intro {
+  color: #4a5568;
+  margin-bottom: 1.6rem;
+}
+
+.leaderboard-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.leaderboard {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.92rem;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.leaderboard thead th {
+  font-weight: 600;
+  padding: 0.55rem 0.7rem;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.leaderboard tbody td {
+  padding: 0.55rem 0.7rem;
+  text-align: center;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.leaderboard tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.leaderboard tbody tr:nth-child(even) td {
+  background: #fbfcfd;
+}
+
+.leaderboard .rank-col {
+  width: 2.5rem;
+  font-variant-numeric: tabular-nums;
+  color: #6b7280;
+}
+
+.leaderboard .model-col {
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.leaderboard .group-row th {
+  background: #f3f4f6;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #374151;
+}
+
+.leaderboard .group-general  { background: #eef2ff !important; color: #3730a3 !important; }
+.leaderboard .group-domain   { background: #ecfeff !important; color: #155e75 !important; }
+.leaderboard .group-overall  { background: #fefce8 !important; color: #854d0e !important; }
+
+.leaderboard .sub-row th {
+  background: #f9fafb;
+  font-size: 0.78rem;
+  color: #4b5563;
+}
+
+.leaderboard .col-general    { color: #3730a3; }
+.leaderboard .col-solidbody  { color: #92400e; }
+.leaderboard .col-fluid      { color: #155e75; }
+.leaderboard .col-optical    { color: #6d28d9; }
+
+.leaderboard tbody td.cell-best {
+  background: #fef3c7 !important;
+  color: #854d0e;
+  font-weight: 700;
+}
+
+.leaderboard tbody td.cell-second {
+  background: #f1f5f9 !important;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.closed-badge {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.05rem 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 4px;
+}
+
+.leaderboard-legend {
+  margin-top: 0.8rem;
+  color: #6b7280;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  vertical-align: -0.05em;
+  border-radius: 3px;
+  margin-right: 0.15em;
+  text-indent: -9999em;
+  overflow: hidden;
+}
+
+.legend-swatch.cell-best   { background: #fef3c7; }
+.legend-swatch.cell-second { background: #f1f5f9; }
+
+/* ---------- BibTeX ---------- */
+.bibtex {
+  background: #f5f5f7;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: #f8fafc;
+  padding: 2rem 1.5rem;
+}
+
+.footer-credit {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 768px) {
+  .publication-title { font-size: 2.4rem; }
+  .publication-subtitle { font-size: 1.1rem; }
+  .leaderboard { font-size: 0.82rem; }
+  .law-row .column { padding: 0.4rem; }
+}

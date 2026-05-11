@@ -10,47 +10,25 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one in-flight deployment; let an in-progress run finish so a
-# half-published site is never left behind.
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: pip
-          cache-dependency-path: requirements.txt
-
-      - name: Install build dependencies
-        run: pip install -r requirements.txt
-
-      # build_snapshot.py is intentionally skipped: it consumes _wmbench_src/data/
-      # videos which are not in git. The committed snapshot/index/ is the source
-      # of truth in CI.
-      - name: Render static site
-        run: python tools/build_site.py --config snapshot/index/site_config.json
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

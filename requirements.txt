@@ -1,9 +1,0 @@
-# Build dependencies for tools/build_site.py.
-# tools/build_snapshot.py and tools/verify_snapshot.py use only the Python
-# standard library (ast, csv, hashlib, json, pathlib), so nothing extra is
-# pinned here for them.
-
-Jinja2>=3.1,<4
-
-# Test suite (Round 19+, backfilled contracts).
-pytest>=7,<9

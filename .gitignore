@@ -1,41 +1,8 @@
-# --- Python builder ---
-__pycache__/
-*.pyc
-*.pyo
-.venv/
-venv/
-.pytest_cache/
-
 # --- IDEs and OS ---
 .vscode/
 .idea/
 .DS_Store
 
-# --- RLCR / humanize state (per-run, not shared) ---
-.humanize/
-
-# --- Snapshot media (large videos / figures live on HuggingFace, not in git) ---
-# Whitelist the small index/manifest files so metadata history is preserved.
-snapshot/media/
-snapshot/scores/
-snapshot.staging/
-snapshot.prev*/
-!snapshot/index/
-!snapshot/index/**
-!snapshot/MANIFEST.json
-
-# --- Hard-copied wmbench source: large media not in git ---
-_wmbench_src/data/videos/
-_wmbench_src/data/paperdemo/**/*.mp4
-_wmbench_src/data/paperdemo/**/*.jpg
-
 # --- Common temp ---
 *.log
 *.tmp
-
-# HF upload staging tree (huge, transient).
-hf_staging/
-
-# --- Site-audit artifacts (per-run captures, not shared) ---
-.audit_artifacts/
-vm-web/
