@@ -25,7 +25,7 @@
 {% if featured_comparison.physical_laws %}
 <p style="margin-top:0.25rem;font-size:0.85rem;color:var(--gray-dark);">
     Physical laws:
-    {% for law in featured_comparison.physical_laws %}<span class="badge">{{ law|replace('_', ' ') }}</span>{% if not loop.last %} {% endif %}{% endfor %}
+    {% for law in featured_comparison.physical_laws %}<span class="badge" data-law="{{ law }}">{{ law|replace('_', ' ') }}</span>{% if not loop.last %} {% endif %}{% endfor %}
 </p>
 {% endif %}
 <div class="video-grid">
