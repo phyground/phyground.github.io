@@ -10,9 +10,12 @@
     "_wmbench_src/data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2.3-22b-dev_20260426_144807.json",
     "_wmbench_src/data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_wan2.2-ti2v-5b_20260426_155402.json",
     "_wmbench_src/data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cosmos-predict2.5-2b_20260426_130603.json",
-    "_wmbench_src/data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2-19b-dev_20260426_142548.json"
+    "_wmbench_src/data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2-19b-dev_20260426_142548.json",
+    "_wmbench_src/data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_hunyuanvideo-i2v_20260510_154334.json",
+    "_wmbench_src/data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_ltx-2-19b-distilled-fp8_20260510_152903.json",
+    "_wmbench_src/data/scores/ourckpt/eval_qwen9b_local_subq_human_humaneval_set_cogvideox1.5-5b-i2v_20260510_201927.json"
   ],
-  "generated_at": "2026-05-10T19:48:53+00:00",
+  "generated_at": "2026-05-11T15:34:24+00:00",
   "n_prompts": 250,
   "scale": "1-5, higher is better",
   "aggregation": "per-video judge scores → per-model mean across videos. Overall = 0.5 * mean(SA, PTV, Persist.) + 0.5 * weighted_mean(Solid-Body, Fluid, Optical) where domain weights = number of (video, law) scores contributing to each domain.",
@@ -61,10 +64,10 @@
   },
   "second": {
     "SA": 2.79,
-    "PTV": 2.97,
-    "persistence": 3.11,
-    "Solid-Body": 2.84,
-    "Fluid": 3.14,
+    "PTV": 2.98,
+    "persistence": 3.15,
+    "Solid-Body": 2.85,
+    "Fluid": 3.19,
     "Optical": 3.57,
     "Overall": 2.97
   },
@@ -119,6 +122,22 @@
     },
     {
       "rank": 4,
+      "model_key": "hunyuanvideo-i2v",
+      "site_model_key": "hunyuanvideo-i2v",
+      "display_name": "HunyuanVideo-I2V",
+      "closed_source": false,
+      "scores": {
+        "SA": 2.61,
+        "PTV": 2.98,
+        "persistence": 3.15,
+        "Solid-Body": 2.85,
+        "Fluid": 3.12,
+        "Optical": 2.94,
+        "Overall": 2.9
+      }
+    },
+    {
+      "rank": 5,
       "model_key": "cosmos-2b",
       "site_model_key": "cosmos-predict2.5-2b",
       "display_name": "Cosmos-2B",
@@ -134,7 +153,7 @@
       }
     },
     {
-      "rank": 5,
+      "rank": 6,
       "model_key": "omniweaving",
       "site_model_key": "omniweaving",
       "display_name": "OmniWeaving",
@@ -150,7 +169,23 @@
       }
     },
     {
-      "rank": 6,
+      "rank": 7,
+      "model_key": "ltx-2-19b-distilled-fp8",
+      "site_model_key": "ltx-2-19b-distilled-fp8",
+      "display_name": "LTX-2-19B-Distilled-FP8",
+      "closed_source": false,
+      "scores": {
+        "SA": 2.64,
+        "PTV": 2.7,
+        "persistence": 2.88,
+        "Solid-Body": 2.7,
+        "Fluid": 3.19,
+        "Optical": 2.87,
+        "Overall": 2.76
+      }
+    },
+    {
+      "rank": 8,
       "model_key": "ltx-2.3-22b-dev",
       "site_model_key": "ltx-2.3-22b-dev",
       "display_name": "LTX-2.3-22B",
@@ -166,7 +201,7 @@
       }
     },
     {
-      "rank": 7,
+      "rank": 9,
       "model_key": "wan2.2-ti2v-5b",
       "site_model_key": "wan2.2-ti2v-5b",
       "display_name": "Wan2.2-TI2V-5B",
@@ -182,7 +217,7 @@
       }
     },
     {
-      "rank": 8,
+      "rank": 10,
       "model_key": "ltx-2-19b-dev",
       "site_model_key": "ltx-2-19b-dev",
       "display_name": "LTX-2-19B",
@@ -195,6 +230,22 @@
         "Fluid": 3.01,
         "Optical": 3.09,
         "Overall": 2.62
+      }
+    },
+    {
+      "rank": 11,
+      "model_key": "cogvideox1.5-5b-i2v",
+      "site_model_key": "cogvideox1.5-5b-i2v",
+      "display_name": "CogVideoX1.5-5B-I2V",
+      "closed_source": false,
+      "scores": {
+        "SA": 2.43,
+        "PTV": 2.58,
+        "persistence": 2.6,
+        "Solid-Body": 2.47,
+        "Fluid": 2.85,
+        "Optical": 2.85,
+        "Overall": 2.54
       }
     }
   ]

@@ -39,6 +39,9 @@ VIDEO_MODELS = [
     "wan2.2-ti2v-5b",
     "cosmos-predict2.5-2b",
     "ltx-2-19b-dev",
+    "hunyuanvideo-i2v",
+    "ltx-2-19b-distilled-fp8",
+    "cogvideox1.5-5b-i2v",
 ]
 
 MODEL_DISPLAY = {
@@ -50,6 +53,9 @@ MODEL_DISPLAY = {
     "wan2.2-ti2v-5b": "Wan2.2-TI2V-5B",
     "cosmos-predict2.5-2b": "Cosmos-2B",
     "ltx-2-19b-dev": "LTX-2-19B",
+    "hunyuanvideo-i2v": "HunyuanVideo-I2V",
+    "ltx-2-19b-distilled-fp8": "LTX-2-19B-Distilled-FP8",
+    "cogvideox1.5-5b-i2v": "CogVideoX1.5-5B-I2V",
 }
 
 # Paper-short keys (kept aligned with humaneval_leaderboard.json's `model_key`).
@@ -62,6 +68,9 @@ SITE_TO_PAPER_KEY = {
     "wan2.2-ti2v-5b": "wan2.2-ti2v-5b",
     "cosmos-predict2.5-2b": "cosmos-2b",
     "ltx-2-19b-dev": "ltx-2-19b-dev",
+    "hunyuanvideo-i2v": "hunyuanvideo-i2v",
+    "ltx-2-19b-distilled-fp8": "ltx-2-19b-distilled-fp8",
+    "cogvideox1.5-5b-i2v": "cogvideox1.5-5b-i2v",
 }
 
 CLOSED_SOURCE_MODELS = {"veo-3.1"}
