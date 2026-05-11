@@ -28,16 +28,28 @@
         });
     });
 
-    // Populate the picker.
+    // Populate the picker. Exclude video_phy_2 prompts and use the source
+    // (humaneval_prompts.json) 1-250 order via each entry's order_index, so
+    // the dropdown isn't visually clumped by the 4 datasets.
     var picker = document.getElementById('prompt-picker');
-    var ids = Object.keys(prompts).sort();
-    ids.forEach(function (id, idx) {
+    var ids = Object.keys(prompts).filter(function (id) {
+        return (prompts[id] || {}).dataset !== 'video_phy_2';
+    });
+    ids.sort(function (a, b) {
+        var oa = prompts[a].order_index;
+        var ob = prompts[b].order_index;
+        if (typeof oa === 'number' && typeof ob === 'number') return oa - ob;
+        if (typeof oa === 'number') return -1;
+        if (typeof ob === 'number') return 1;
+        return a < b ? -1 : a > b ? 1 : 0;
+    });
+    ids.forEach(function (id) {
         var p = prompts[id];
         var opt = document.createElement('option');
         opt.value = id;
         var laws = (p.physical_laws || []).join(',');
-        var ds = p.dataset ? p.dataset + ' ' : '';
-        opt.textContent = ds + 'prompt #' + (idx + 1) + (laws ? ' [' + laws + ']' : '');
+        var n = typeof p.order_index === 'number' ? p.order_index : '?';
+        opt.textContent = 'prompt #' + n + (laws ? ' [' + laws + ']' : '');
         picker.appendChild(opt);
     });
 

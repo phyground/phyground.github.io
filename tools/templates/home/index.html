@@ -3,7 +3,10 @@
 {% block title %}{{ site.title }} &mdash; Video Gallery + Leaderboard{% endblock %}
 {% block content %}
 <section class="hero">
-    <h1>{{ site.title }}</h1>
+    <h1 class="hero-title">
+        <img class="hero-logo" src="{{ rel('static/img/phyground-logo.png') }}" alt="{{ site.title }} logo">
+        <span>{{ site.title }}</span>
+    </h1>
     <p class="lead">{{ site.description }}</p>
     <div class="hero-actions">
         {% if site.paper_url %}<a class="btn btn-primary btn-lg" href="{{ site.paper_url }}">Read paper</a>{% else %}<span class="btn btn-primary btn-lg disabled" aria-disabled="true" title="Paper not yet posted">Paper (coming soon)</span>{% endif %}

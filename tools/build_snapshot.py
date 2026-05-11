@@ -1449,8 +1449,8 @@ def _site_config(catalog: list[dict],
 
     return {
         "site": {
-            "title": "phyground",
-            "short_title": "phyground",
+            "title": "Phyground",
+            "short_title": "Phyground",
             "description": "A physics-grounded benchmark for video generation. Browse model outputs by physical law, compare side-by-side, and explore evaluator-by-dataset leaderboards.",
             "paper_url": paper_url,
             "github_url": "https://github.com/NU-World-Model-Embodied-AI/PhyGround",
