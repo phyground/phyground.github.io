@@ -1,6 +1,25 @@
 /* Phyground-specific additions on top of openvla's index.css */
 
 /* ---------- Hero ---------- */
+.hero-card {
+  background:
+    radial-gradient(120% 140% at 100% 100%,
+      rgba(24, 119, 242, 0.045) 0%,
+      rgba(247, 235, 221, 0.10) 35%,
+      #F1F4F7 75%);
+  border: 1px solid #DCE6F5;
+  border-radius: 14px;
+  padding: 2.4rem 2.4rem 2rem 2.4rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
+}
+
+@media (max-width: 768px) {
+  .hero-card {
+    padding: 1.6rem 1.2rem 1.4rem 1.2rem;
+    border-radius: 10px;
+  }
+}
+
 .hero-logo {
   height: 1.6em;
   vertical-align: -0.25em;
@@ -190,14 +209,15 @@
 .law-reflection          { --law-color: #7c3aed; }
 
 /* ---------- Method ---------- */
+.method-section {
+  background: #fafbfc;
+}
+
 .method-section .title.is-4 {
   margin-top: 1.6rem;
 }
 
 /* ---------- Leaderboard ---------- */
-.leaderboard-section {
-  background: #fafbfc;
-}
 
 .leaderboard-intro {
   color: #4a5568;
