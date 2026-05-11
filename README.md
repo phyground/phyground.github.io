@@ -8,7 +8,7 @@ VLM judge.
 
 - Paper: coming soon
 - Code: <https://github.com/NU-World-Model-Embodied-AI/PhyGround>
-- Dataset: <https://huggingface.co/datasets/juyil/phygroundwebsitevideo>
+- Dataset: <https://huggingface.co/datasets/NU-World-Model-Embodied-AI/phyground>
 - Judge model: <https://huggingface.co/NU-World-Model-Embodied-AI/phyjudge-9B>
 
 ## Local preview
