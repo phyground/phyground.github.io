@@ -665,10 +665,10 @@ table.lb th {
 }
 table.lb th.num { background: #eef2ff; }
 table.lb-paper th.lb-paper-group {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
-    color: var(--white);
-    border-color: #4338ca;
-    letter-spacing: 0.5px;
+    background: #eef2ff;
+    color: #312e81;
+    border-color: #c7d2fe;
+    letter-spacing: 0.3px;
 }
 table.lb th[data-sort]:hover { background: #c7d2fe; }
 
