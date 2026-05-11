@@ -5,7 +5,7 @@ Public companion site for the **wmbench** physics-grounded video benchmark.
 - **Video Gallery** — browse video-generation model outputs, side-by-side per physical law.
 - **Leaderboard** — slice rankings by evaluator × dataset × subset × scoring schema.
 
-The site is **static** and deployed via GitHub Pages from the repository root. Videos are hosted on HuggingFace at <https://huggingface.co/datasets/juyil/phygroundwebsitevideo>; this repo only carries the index/manifest, rendered HTML, and a small CSS asset.
+The site is **static** and deployed via GitHub Pages from the repository root. Videos are hosted on HuggingFace; this repo only carries the index/manifest, rendered HTML, and a small CSS asset.
 
 ## Architecture
 
@@ -96,15 +96,6 @@ GitHub Pages serves the repo root on the default branch:
 
 The `.nojekyll` file disables GitHub's automatic Jekyll processing so the rendered HTML is served verbatim.
 
-## Why no Flask / Nginx?
-
-The original implementation plan (`docs/exp-plan/public/plan.md`, §4–§7) targeted a Flask + gunicorn + Nginx stack. We pivoted to a static build for two reasons:
-
-- GitHub Pages is the deployment target — it cannot run Python.
-- Videos are heavy and need a CDN; HuggingFace's `juyil` namespace gives us free, durable hosting with direct-download URLs we can embed.
-
-Plan §5 ("Phase 5 — 静态化") foresaw this; we promoted it to the baseline. See `.humanize/rlcr/<round>/goal-tracker.md` for the full plan-evolution log.
-
 ## Plan and progress
 
 - Implementation plan: [`docs/exp-plan/public/plan.md`](docs/exp-plan/public/plan.md)
@@ -114,4 +105,4 @@ Plan §5 ("Phase 5 — 静态化") foresaw this; we promoted it to the baseline.
 
 ## License
 
-Code: MIT (see `LICENSE`). Generated videos: per upstream model license (HuggingFace dataset cards on `juyil`).
+Code: MIT (see `LICENSE`). Generated videos: per upstream model license.
