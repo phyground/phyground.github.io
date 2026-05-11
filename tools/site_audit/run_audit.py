@@ -6,7 +6,7 @@ Two source modes are supported:
   * ``--target local``  serves the repo root over a localhost HTTP server
     on a free port and prefixes each URL in ``--urls`` with that origin.
   * ``--target fork``   prefixes each URL with the user-fork origin
-    ``https://lukelin-web.github.io/phyground.github.io``.
+    ``https://phyground.github.io``.
 
 For every URL the driver records console errors, failed network requests,
 the post-redirect URL, the main-document HTTP status, and writes a
@@ -53,7 +53,7 @@ else:
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-FORK_PREFIX = "https://lukelin-web.github.io/phyground.github.io"
+FORK_PREFIX = "https://phyground.github.io"
 DEFAULT_VIEWPORT = "1280x800"
 VALID_TARGETS = ("local", "fork")
 VIEWPORT_RE = re.compile(r"^(\d+)x(\d+)$")

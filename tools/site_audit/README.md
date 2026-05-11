@@ -68,7 +68,7 @@ are mutually exclusive. Passing neither, or passing both, is a CLI error.
 The `--target local` driver binds a free port via `http.server` and
 serves the repo root, then prefixes each URL with `http://127.0.0.1:<port>`.
 The `--target fork` driver prefixes each URL with
-`https://lukelin-web.github.io/phyground.github.io`. URL joining always
+`https://phyground.github.io`. URL joining always
 uses `prefix.rstrip("/") + url` so a URL like `/about/` produces exactly
 one slash at the boundary.
 

@@ -177,8 +177,8 @@ def test_run_audit_dry_run_fork_uses_fork_prefix(tmp_path: Path) -> None:
     assert all(rec["target"] == "fork" for rec in records)
     # prefix.rstrip("/") + url, exactly.
     expected_prefixed = [
-        "https://lukelin-web.github.io/phyground.github.io/",
-        "https://lukelin-web.github.io/phyground.github.io/about/",
+        "https://phyground.github.io/",
+        "https://phyground.github.io/about/",
     ]
     assert [rec["prefixed_url"] for rec in records] == expected_prefixed
     for rec in records:

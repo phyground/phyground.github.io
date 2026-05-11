@@ -2,7 +2,7 @@
 
 ## Goal Description
 
-Walk through every published page of the phyground.github.io site (rendered locally and on the user-fork deployment at https://lukelin-web.github.io/phyground.github.io/), identify display defects with both visual and structural checks, classify each by symptom and root cause, and fix the repo-owned defects in the source of truth (Jinja2 templates under `tools/templates/`, asset sources under `tools/static_src/`, snapshot/build logic under `tools/build_*.py`, or `snapshot/index/site_config.json` upstream). The audit uses Playwright with Chromium for screenshots and console capture, plus a structural HTML/link auditor for static checks. Subagents may parallelize independent page-class audits. Existing pytest contracts (snapshot, materialize, determinism) must remain green; new regression tests are added when a fix exposes a contract gap.
+Walk through every published page of the phyground.github.io site (rendered locally and on the user-fork deployment at https://phyground.github.io/), identify display defects with both visual and structural checks, classify each by symptom and root cause, and fix the repo-owned defects in the source of truth (Jinja2 templates under `tools/templates/`, asset sources under `tools/static_src/`, snapshot/build logic under `tools/build_*.py`, or `snapshot/index/site_config.json` upstream). The audit uses Playwright with Chromium for screenshots and console capture, plus a structural HTML/link auditor for static checks. Subagents may parallelize independent page-class audits. Existing pytest contracts (snapshot, materialize, determinism) must remain green; new regression tests are added when a fix exposes a contract gap.
 
 In parallel with the repair work, stage the videos and first-frame images that the fixed site references into the existing `hf_staging/` directory by feeding `tools/stage_hf_assets.py` from the local source tree at `/shared/user60/workspace/worldmodel/wmbench/data`. After every repair cycle that changes the referenced video set, regenerate `snapshot/HF_UPLOAD_MANIFEST.json`, re-stage from the local source, and then materialize `hf_staging/` canonically via `tools/build_hf_upload_manifest.py --materialize hf_staging/ --clean` so the staging tree always matches the current snapshot exactly. When repairs are finalized, run the same canonical materialize step one final time, then upload the staging tree to the existing dataset repo `juyil/phygroundwebsitevideo` on HuggingFace and verify with `tools/smoke_test_hf.py`.
 
@@ -338,6 +338,6 @@ All originally pending decisions were resolved by the user during plan generatio
 
 --- Original Design Draft Start ---
 
-1. 去https://lukelin-web.github.io/phyground.github.io/ 每个网页读一读, 用 playwright, chrome screenshot.让codex起截图软件可视化看. 把无法显示的部分修一修. 
+1. 去https://phyground.github.io/ 每个网页读一读, 用 playwright, chrome screenshot.让codex起截图软件可视化看. 把无法显示的部分修一修. 
 2. 可以并行的地方, 多开几个 subagent.
 --- Original Design Draft End ---
