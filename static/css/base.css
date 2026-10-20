@@ -678,3 +678,8 @@ h2#phyjudge-leaderboard {
     border-left: 4px solid #7c3aed;
     padding-left: 0.6rem;
 }
+
+/* ---------- explainer video (home) ---------- */
+.explainer { margin: 2rem 0; }
+.explainer-video { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 8px; background: var(--black); }
+.explainer-caption { margin-top: 0.5rem; font-size: 0.9rem; color: var(--gray-dark); }
