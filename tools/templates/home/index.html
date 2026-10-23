@@ -9,7 +9,7 @@
     </h1>
     <p class="lead">{{ site.description }}</p>
     <div class="hero-actions">
-        {% if site.paper_url %}<a class="btn btn-primary btn-lg" href="{{ site.paper_url }}">Read paper</a>{% else %}<span class="btn btn-primary btn-lg disabled" aria-disabled="true" title="Paper not yet posted">Paper (coming soon)</span>{% endif %}
+        {% if site.paper_url %}<a class="btn btn-primary btn-lg" href="{{ site.paper_url }}">Paper</a>{% else %}<span class="btn btn-primary btn-lg disabled" aria-disabled="true" title="Paper not yet posted">Paper (coming soon)</span>{% endif %}
         <a class="btn btn-outline btn-lg" href="{{ rel('leaderboard/') }}">Leaderboard</a>
         <a class="btn btn-outline btn-lg" href="{{ site.github_url }}">GitHub</a>
         <a class="btn btn-outline btn-lg" href="{{ site.huggingface_url }}">Dataset</a>
