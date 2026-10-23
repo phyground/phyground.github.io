@@ -237,7 +237,7 @@
     "index/model_catalog.frozen.json": "547e6c167aaa1f5e47ad6edac86878d23bc60ecd91eeb56b12f1bb6a07d9f718",
     "index/paperdemo.manifest.csv": "c6883077ca7a026c9f7471d17c4f8acdd56e1a1615edb03c414074dcc220a19f",
     "index/phyjudge_leaderboard.json": "aee5fbcd23ef756bc27f9ae6d5b14b7ea0bc9a640027eae739ceb7a32cf12f59",
-    "index/site_config.json": "f4dc4a23e83e511f67708f23796ac89eceb0730a13546773d7237c4a4be5b8ff",
+    "index/site_config.json": "38eba8a6f2ec11a6a330ca00d7a669b72493cee927266ff69a187658555376e2",
     "index/vis_datasets.frozen.json": "69e4761736b5865072345b6c8a753c80b109ef76e5284fb90581c206f591e08e",
     "scores/_tmp/eval/eval_gemini_cot-subq_humaneval_set_veo-3.1_20260423_115959.json": "4aed5837c922e22caaaef0c2919d3fdb70eceeff155752143d4b576035487a0e",
     "scores/_tmp/eval/eval_gemini_cotnosubq_humaneval_set_veo-3.1_20260426_194743.json": "df55bdbf0142e75a999495a989e70633a55b2a7dee1300aefb3bb3eeb178ac49",
@@ -333,5 +333,5 @@
     "scores/ourckpt/eval_qwen9b_vertexai_cot-subq_humaneval_set_wan2.2-ti2v-5b_20260423_112711.json": "092fffd25d99473b5db84827f03ecdf1af6496afadb0a27776020024e4192bc6"
   },
   "schema_version": "1",
-  "snapshot_sha": "914533b6908de43733df11915f1378798cefb30bdfb3cb7340e3b7137e52f1e3"
+  "snapshot_sha": "62c9048ed882b54d3d50e7b40e49b8465b3c82691174196a8c45ea65d08c695d"
 }

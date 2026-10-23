@@ -1442,10 +1442,9 @@ def _site_config(catalog: list[dict],
     featured_videos = featured_comparison_payload.get("videos") or []
 
     huggingface_dataset_url = HF_BASE.replace("/resolve/main", "")
-    # Per Round-5 user choice "Hide until paper is posted": no fallback to the
-    # HF dataset card. The hero button + Paper Browse card are suppressed when
-    # the env override is empty; setting PHYGROUND_PAPER_URL re-enables them.
-    paper_url = os.environ.get("PHYGROUND_PAPER_URL", "").strip()
+    # Paper is posted (arXiv:2605.10806). PHYGROUND_PAPER_URL overrides it;
+    # setting it to an empty string hides the hero button + Paper Browse card.
+    paper_url = os.environ.get("PHYGROUND_PAPER_URL", "https://arxiv.org/abs/2605.10806").strip()
 
     return {
         "site": {
